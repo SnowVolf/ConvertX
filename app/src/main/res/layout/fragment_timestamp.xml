@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Timestamp"
+        android:maxLines="1" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:digits="1234567890: ."
+        android:ems="10"
+        android:paddingTop="@dimen/dp16"
+        android:id="@+id/humanDate"
+        android:layout_below="@+id/Timestamp"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

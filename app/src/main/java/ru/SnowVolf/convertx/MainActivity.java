@@ -1,178 +1,218 @@
 package ru.SnowVolf.convertx;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.view.inputmethod.InputMethodManager;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-
-import org.apache.commons.lang3.StringEscapeUtils;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static ru.SnowVolf.convertx.Other.Extras.showAboutDialog;
-import static ru.SnowVolf.convertx.Other.Extras.showSnackBar;
-import static ru.SnowVolf.convertx.Utils.StringUtils.copyToClipboard;
+import ru.SnowVolf.convertx.fragments.Base64Fragment;
+import ru.SnowVolf.convertx.fragments.HexFragment;
+import ru.SnowVolf.convertx.fragments.RgbFragment;
+import ru.SnowVolf.convertx.fragments.UnicodeFragment;
+import ru.SnowVolf.convertx.fragments.extended.ListCoders;
+import ru.SnowVolf.convertx.other.AboutActivity;
+import ru.SnowVolf.convertx.palette.PaletteActivity;
+import ru.SnowVolf.convertx.regexdragon.RegexDragon;
+import ru.SnowVolf.convertx.settings.SettingsActivity;
+import ru.SnowVolf.convertx.utils.SystemF;
 
 
-public class MainActivity extends AppCompatActivity {
-    public EditText ed_unicode;
-    public EditText ed_utf;
-    SharedPreferences sp;
-    public static final String APP_PREFS = "JavaGirlPrefs-ConvertX";
-    public static final String UNICODE = "Unicode.Value";
-    public static final String UTF = "Utf.Value";
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences preferences;
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         super.onCreate(savedInstanceState);
+        if (preferences.getBoolean("Theme.Theme", true)) {
+            preferences.edit().putBoolean("Theme.Theme", true).apply();
+            SystemF.onActivityCreateSetTheme(this);
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+            preferences.edit().putBoolean("Theme.Theme", false).apply();
+        }
         //иначе будет падать на KK и ниже
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.activity_main);
-        ed_unicode = (EditText) findViewById(R.id.unicodeText);
-        ed_utf = (EditText) findViewById(R.id.utfText);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        sp = getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
-        if (sp.contains(UTF) && sp.contains(UNICODE)){
-            ed_utf.setText(sp.getString(UTF, ""));
-            ed_unicode.setText(sp.getString(UNICODE, ""));
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new UnicodeFragment()).commit();
+        //noinspection ConstantConditions
+        getSupportActionBar().setSubtitle(getString(R.string.dr_unicode));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dr_unicode);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        //Подключаем и настраиваем слушателя NavigationDrawer
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                //скрываем клавиатуру при открытиии drawer-a
+                InputMethodManager iMM = (InputMethodManager) MainActivity.this.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE);
+                //noinspection ConstantConditions
+                iMM.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                /*//drawer закрыт, показываем клавиатуру
+                InputMethodManager iMM = (InputMethodManager) MainActivity.this.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE);
+                iMM.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);*/
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+            }
+        });
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.unicode_dec);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (menu != null) {
-            menu.clear();
-        } else
-            menu = new MenuBuilder(this);
-        //добавляем пункты меню
-        menu.add(R.string.convert)
-                .setIcon(R.drawable.ic_menu_convert)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener(menuItem -> {
-                    StartConverting();
-                    return true;
-                });
-        menu.add(R.string.clear_all)
-                .setIcon(R.drawable.ic_menu_clear_all)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener(menuItem -> {
-                    clearAllText();
-                    return true;
-                });
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            //getSupportFragmentManager().popBackStack();
+        } else {
+            //getSupportFragmentManager().popBackStack();
+            super.onBackPressed();
+        }
+    }
 
-        menu.add(R.string.settings)
-                .setIcon(R.drawable.ic_menu_settings)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-                .setOnMenuItemClickListener(menuItem -> {
-                    Toast.makeText(getBaseContext(), "В одном из следующих обновлений...", Toast.LENGTH_LONG).show();
-                    return true;
-                });
-        SubMenu subMenu = menu.addSubMenu(R.string.other);
-        subMenu.add(R.string.about_program).setOnMenuItemClickListener(menuItem -> {showAboutDialog(this); return true;});
-        subMenu.add(R.string.changelog).setOnMenuItemClickListener(menuItem -> {showChangelog(); return true;});
-        subMenu.add(R.string.github).setOnMenuItemClickListener(menuItem -> {VisitGit(); return true;});
+    @SuppressWarnings("ConstantConditions")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setHomeButtonEnabled(true);
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        if (id == R.id.unicode_dec) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dr_unicode);
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_container, new UnicodeFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    //.addToBackStack(null)
+                    .commit();
+            getSupportFragmentManager().popBackStack();
+            getSupportActionBar().setSubtitle(R.string.dr_unicode);
+        } else if (id == R.id.base64_dec) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dr_base64);
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_container, new Base64Fragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    //.addToBackStack(null)
+                    .commit();
+            getSupportActionBar().setSubtitle(getString(R.string.dr_base64));
+        } else if (id == R.id.hex_dec) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dr_hex);
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_container, new HexFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    //.addToBackStack(null)
+                    .commit();
+            getSupportActionBar().setSubtitle(getString(R.string.dr_hex));
+        } else if (id == R.id.rgb_dec) {
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.frame_container, new RgbFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    //.addToBackStack(null)
+                    .commit();
+            getSupportActionBar().setSubtitle(getString(R.string.dr_rgb));
+        } else if (id == R.id.regex_dragon){
+            Intent dragon = new Intent(this, RegexDragon.class);
+            startActivity(dragon);
+        } else if (id == R.id.hex_palette){
+            Intent palette = new Intent(this, PaletteActivity.class);
+            startActivity(palette);
+        } else if (id == R.id.other_dec) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dr_other_coders);
+            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
+            //getFragmentManager().popBackStackImmediate();
+            getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.frame_container, new ListCoders())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    //.addToBackStack(null)
+                    .commit();
+            getSupportActionBar().setSubtitle(getString(R.string.dr_other));
+        } else if (id == R.id.settings_act) {
+            Intent settings = new Intent(this, SettingsActivity.class);
+            startActivity(settings);
+        } else if (id == R.id.nav_about) {
+            Intent about = new Intent(this, AboutActivity.class);
+            startActivity(about);
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void StartConverting() {
-        SharedPreferences.Editor editor = sp.edit();
-        if (!ed_unicode.getText().toString().isEmpty() && ed_utf.getText().toString().isEmpty()) {
-            String unicodeContent = ed_unicode.getText().toString();
-            String text = StringEscapeUtils.unescapeJava(unicodeContent);
-            ed_utf.setText(text);
-            editor.putString(UTF, text);
-            editor.apply();
-            Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT).show();
-        } else if (ed_unicode.getText().toString().isEmpty() && !ed_utf.getText().toString().isEmpty()) {
-            String utfSource = ed_utf.getText().toString();
-            StringBuilder unicodeValue = new StringBuilder();
-            for (int i = 0; i < utfSource.length(); i++)
-                unicodeValue.append("\\u").append(Integer.toHexString(utfSource.charAt(i) | 0x10000).substring(1));
-            ed_unicode.setText(unicodeValue);
-            editor.putString(UNICODE, unicodeValue.toString());
-            editor.apply();
-            sp.edit().putString("Unicode.Value", unicodeValue.toString()).apply();
+    protected void onDestroy(){
+        super.onDestroy();
+    }
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
 
+    }
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        if (preferences.getBoolean("Theme.Theme", true)) {
+            preferences.edit().putBoolean("Theme.Theme", true).apply();
+            SystemF.onActivityCreateSetTheme(this);
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+            preferences.edit().putBoolean("Theme.Theme", false).apply();
         }
     }
-    public void VisitGit(){
-        Uri uri = Uri.parse("https://github.com/SnowVolf/ConvertX/");
-        Intent gitIntent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(Intent.createChooser(gitIntent, "Изучить исходники"));
-    }
-    //собираем инфу о приложении
-    private void showChangelog() {
-        final StringBuilder sb = new StringBuilder();
-        try {
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("changelog"), "UTF-8"));
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    protected void onResume() {
+        super.onResume();
+        if (preferences.getBoolean("Theme.Theme", true)) {
+            preferences.edit().putBoolean("Theme.Theme", true).apply();
+            SystemF.onActivityCreateSetTheme(this);
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+            preferences.edit().putBoolean("Theme.Theme", false).apply();
         }
-        new MaterialDialog.Builder(this)
-                .title(getBuildName(this))
-                .content(sb)
-                .positiveText("ok")
-                .show();
-    }
-    public static String getBuildName(Context context){
-        String programBuild = context.getString(R.string.app_name);
-        try{
-            String pkg = context.getPackageName();
-            PackageInfo pkgInfo = context.getPackageManager().getPackageInfo(pkg, PackageManager.GET_META_DATA);
-            programBuild += " v."+pkgInfo.versionName+" build "+pkgInfo.versionCode;
-
-
-        }catch (PackageManager.NameNotFoundException e1){
-            e1.printStackTrace();
-        }return programBuild;
     }
 
-
-    public void copyUnicode(View v){
-        copyToClipboard(this, ed_unicode.getText().toString());
-        showSnackBar(v);
-    }
-    public void copyUtf(View v){
-        copyToClipboard(this, ed_utf.getText().toString());
-        showSnackBar(v);
-    }
-
-    public void clearUnicode(View v){
-        ed_unicode.setText("");
-        sp.edit().putString(UNICODE, "").apply();
-    }
-    public void clearUtf(View v){
-        ed_utf.setText("");
-        sp.edit().putString(UTF, "").apply();
-    }
-    public void clearAllText(){
-        ed_utf.setText("");
-        sp.edit().putString(UTF, "").apply();
-        ed_unicode.setText("");
-        sp.edit().putString(UNICODE, "").apply();
-        Toast.makeText(this, R.string.cleared, Toast.LENGTH_SHORT).show();
-    }
 }

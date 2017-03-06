@@ -1,4 +1,4 @@
-package ru.SnowVolf.convertx.Utils;
+package ru.SnowVolf.convertx.utils;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

@@ -3,156 +3,228 @@
 
     <item
         is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.3.0\jars\classes.jar"
+        jar="C:\Users\Пользователь\.android\build-cache\66919c566999345a5eaebac511ce9ef556b61809\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_1f400c3d6c6c445f9fbb2b69dfe9a413229fd836.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-watcher\1.5\288101b16513158c2923ad3fb6161d1452b65e73\leakcanary-watcher-1.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="288101b16513158c2923ad3fb6161d1452b65e73">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\leakcanary-watcher-1.5_57523f675bdd9a956fb4240a8a4678e5098dd235.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\fb0539fee27064e79a7673c82b86ae8e9486f227\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_651f9e1e3a498e625d565e00caaa130b4f28d998.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.gradle\caches\modules-2\files-2.1\com.squareup.haha\haha\2.0.3\640a438d2d415c056ca6a673ac26b183b044e160\haha-2.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="640a438d2d415c056ca6a673ac26b183b044e160">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\haha-2.0.3_a3e13567f1f620aea3957150e7bc1798a5397605.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\96e12f9d926cae54da59fe8643dae884a3b0123b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de7a7419adf97a681f96281fdf38be62861047d9">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_3b2724cf863553b49ad815824e26ec5b4fbdaafe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\bea5e6994756da06048dcf605befe8ddd72d49a4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_36511b63c1570c7dcc49ad77c3e93a90b15ee22b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\d57e0923f213f84f145a9e79074f23e1b1f5f2a1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="058253c7da6cf5cb545922d07fcc2cd19d5d0ce1">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_61d437225fa8ec96d08645bc41b09c4f4f1fd90d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\okhttp-3.6.0_da1cfab42f249a6437fbb10ff9739ee96fe505af.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\okio-1.11.0_2324385de9e44b60563a426a73e98a2c0fa39348.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\0b3f3ab0c5320a74a560c1ab286cc6337d1b938b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_09f9602b983681d3402cefb817858be050140c9f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.5\3277b0b0c2ace34a2edb5ddf9d1f67829561fb8f\leakcanary-analyzer-1.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3277b0b0c2ace34a2edb5ddf9d1f67829561fb8f">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\leakcanary-analyzer-1.5_82bbca3cddebe364c21fd5e16d34ceb2ba3ced5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\be6c9313aa82481e8c354283c570512ca09c3262\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_7ce9eaf9751322bf641d0309e19a3ce1a7fcedc2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\692be2b1999a9e2b4d962b18cdf19734577fff37\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_0ee8a44760a6f62a58fe0eedba2be43b955515d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\fa1a2be430a676845d1ded37c92be1e7689e4412\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c7a2672b3122b897a0751f327929ae405ea02bf7">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_d4b0ebc2d54f44239c0ae7f52f21c01c6e0bd217.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\252b9b66b9faf929d1248df97ac9a1c477067b7f\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="a846ddbf5bf88dee5f89d4dffe22c864f576d9b0">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\me.zhanghai.android.materialprogressbar-library-1.3.0_18e183156a517476d643c667271e4a1249493ac3.jar" />
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_9069be4d07f43881d7a5d321ae4b0270703f733d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jar="C:\Users\Пользователь\.android\build-cache\f3c2d18f8ab135598c8823a6ea7a8cf14b61a000\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_31dd472ece0380e4dec1e6642c3b781ff36a03dd.jar" />
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_e0e9d10305633e5246d1e343c87e776c10ae2f4c.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jar="C:\Users\Пользователь\.android\build-cache\f88b755059cd157e494be477510b2a76074a2da7\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_c0724de5132263c1c20bce844b7f6f55ce354c9d.jar" />
+        sha1="30a4938ea5235ccf532b3e9f04200e68547e36ad">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_e5d9af677974fb39b46170e8230f0d7c521c62bc.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\jars\classes.jar"
+        jar="C:\Users\Пользователь\.android\build-cache\03a2233059b20cc1c6d5b0fd97aa048ab44419ce\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.1.0_9c3a6a8fa79028fe3b7f61b21305a13f49728d76.jar" />
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_ed82b254f4380adfa44d7d95fca0d73112b489a3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-v13\25.1.0\jars\classes.jar"
+        jar="C:\Users\Пользователь\.android\build-cache\230267d1704c208c19c8293dda29b9f1c318861d\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="e006c9b6f0aaed9d8c7934b74039738390fe3468">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-v13-25.1.0_46b0326167bbcfd124b746bf5c3b5947e232cf37.jar" />
+        sha1="da1e75b563e3b94eaa6cf61d8897ebed3eec40b2">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_a185ad15294b6d11b26d983510f241bcfeb5c095.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Пользователь\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.1\905075e6c80f206bbe6cf1e809d2caa69f420c76\commons-lang3-3.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="905075e6c80f206bbe6cf1e809d2caa69f420c76">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\commons-lang3-3.1_942aee071d3bc1c6e4cf263363e068ec88eaf983.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.0_b0251c3be76959131a337f6d4863553eeddabaa1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_f8f7dfbeded101d4d4e3c6a5819de6f9f20c46f4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.9.2.3\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2539d6591fd240270dc5ff8b67701ad63ae42379">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.afollestad.material-dialogs-core-0.9.2.3_cb5ce574ccd46931118c6f97055d77b29546d282.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_4e464bdf9659601ce8cc8d00c74e0c50e06ed65c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.0_644476a04a914b63d04e29f55a5026a8bec26f38.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.0_ce9332bc8a71f439d889ff063bf13337d215a5ce.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.1.0_add11589ea03a0c33fcd617361b4431814fa740d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.1.0_552950963c08b53747d070ca82b704569c3b7b61.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_7cac5b6b55b6d19adb03eb1e19f103153b274dde.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_ac50c6709d2ca2b26f7aa2b7091fa4a8b49376bd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\AndroidOld\ConvertX\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jar="C:\Users\Пользователь\.android\build-cache\2b16d4e2d4caa4cce06ba9b9e600fcc2cad1e43a\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\AndroidOld\ConvertX\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.0_34175ac685d65c5997268e525eab0e17ec6c7280.jar" />
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_be1aad07434428603177443626bb40dcd3d5c5d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\5ad91a91bef28788f5dfa414b2ee953f36c917d8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_4c0991509e9c5d069d9ce6580d84c04bf9d87708.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\f235ac91340b2f1acc220adac70906673fc27622\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_64b305850f065b1e9c77096204c2e0475e2c21ec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\a4f8f4ed2e4b7e69c5296627afff5b117dc914f0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="49ea385f2bea4c398b0cced1b4f197941c3d06b9">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_9bd792cbe63760b59860a8203643c428bbf2f0f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\support-annotations-25.2.0_5b2d71a5a0bf50bc101d888a580781f49020a7b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Пользователь\.android\build-cache\a2e1c47e8b0dfdfe69baf659284851714b397aa7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\ProjectX\ConvertX2\app\build\intermediates\pre-dexed\debug\classes_e16a473546360463179b53c823e640f5bb790b48.jar" />
     </item>
 
 </items>

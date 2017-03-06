@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Оформение" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="Theme.Theme"
+        android:summary="Требуется перезапуск приложения"
+        android:title="Светлая тема" />
+    <!--<PreferenceCategory android:title="Взаимодействие"/>
+    <CheckBoxPreference
+        android:enabled="false"
+        android:defaultValue="false"
+        android:key="Usability.Killapp"
+        android:title="Убирать процесс из памяти"
+        android:summary="Отображать кнопку завершения процесса приложения"/>
+    <CheckBoxPreference
+        android:enabled="false"
+        android:defaultValue="false"
+        android:key="Usability.Backstack"
+        android:title="Не сохранять стек фрагментов"
+        android:summary="Включите, если замечаете наслоение фрагментов друг на друга" />-->
+
+
+</PreferenceScreen>

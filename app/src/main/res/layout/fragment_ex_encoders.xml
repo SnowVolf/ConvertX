@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/AppTheme.TableRow">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TableRow>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/md5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checksum_md"
+                android:textColor="@color/blue"
+                android:background="?attr/selectableItemBackground"/>
+        </TableRow>
+
+        <TableRow>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/crc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checksum_crc"
+                android:textColor="@color/red"
+                android:background="?attr/selectableItemBackground"/>
+        </TableRow>
+
+        <TableRow>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/adler32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checksum_adler32"
+                android:background="?attr/selectableItemBackground"/>
+        </TableRow>
+        <TableRow>
+            <View
+                android:layout_height="@dimen/dp1"
+                android:layout_width="match_parent"
+                android:background="@color/dark_gray"
+                android:layout_weight="1"/>
+        </TableRow>
+        <TableRow>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/unescape_xml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/deepOrange"
+                android:text="@string/unescape_xml"
+                android:background="?attr/selectableItemBackground"/>
+        </TableRow>
+        <TableRow>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/timestamp_converter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/blue700"
+                android:text="@string/timestamp_converter"
+                android:background="?attr/selectableItemBackground"/>
+        </TableRow>
+        <TableRow>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/color_converter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/blue700"
+                android:text="hex2smali"
+                android:background="?attr/selectableItemBackground"/>
+        </TableRow>
+    </TableLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

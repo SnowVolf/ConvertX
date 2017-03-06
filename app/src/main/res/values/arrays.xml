@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="baseAlgVal">
+        <item>No wrap (default)</item>
+        <item>No padding</item>
+        <item>URL safe</item>
+        <item>Default</item>
+    </string-array>
+
+</resources>

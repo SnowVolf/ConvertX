@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_regex_dragon"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/dp8"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.SnowVolf.convertx.regexdragon.RegexDragonValidator"
+    tools:showIn="@layout/activity_regex_dragon">
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/c"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp16"
+                    android:hint="RegExp"
+                    android:id="@+id/regex_text"/>
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/plain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp16"
+                android:hint="Текст"
+                android:layout_below="@+id/regex_text"
+                android:layout_alignParentStart="true" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_below="@id/plain_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/dark_gray"/>
+            <TextView
+                android:fontFamily="monospace"
+                android:id="@+id/regex_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp8"
+                android:layout_below="@+id/view"
+                android:text="Совпадений: "/>
+
+            <TextView
+                android:id="@+id/regex_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="monospace"
+                android:paddingTop="@dimen/dp10"
+                android:layout_below="@id/regex_count" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/regex_flags"
+                android:layout_alignBaseline="@+id/regex_count"
+                android:layout_alignBottom="@+id/regex_count"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="test"/>
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+</RelativeLayout>
