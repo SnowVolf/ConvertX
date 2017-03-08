@@ -43,6 +43,10 @@ public class ColorConverterFragment extends Fragment {
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);

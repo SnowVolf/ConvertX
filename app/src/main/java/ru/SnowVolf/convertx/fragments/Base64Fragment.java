@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import ru.SnowVolf.convertx.R;
-import ru.SnowVolf.convertx.other.Extras;
 import ru.SnowVolf.convertx.ui.Toasty;
 
 import static ru.SnowVolf.convertx.utils.StringUtils.copyToClipboard;
@@ -59,8 +58,13 @@ public class Base64Fragment extends Fragment {
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
@@ -165,7 +169,7 @@ public class Base64Fragment extends Fragment {
     public void clearAllText(){
         output.setText("");
         input.setText("");
-        Toasty.info(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
+        Toasty.success(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
     }
 
 }

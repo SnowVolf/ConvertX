@@ -37,7 +37,6 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_4pda"
-        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp16"
@@ -46,10 +45,9 @@
         app:layout_anchorGravity="bottom|end"
         app:backgroundTint="@color/colorPrimary"
         app:borderWidth="@dimen/dp0"
-        app:srcCompat="@drawable/ic_contact_web" />
+        app:srcCompat="@mipmap/about_forpda" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_vk"
-        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp16"
@@ -58,7 +56,7 @@
         app:layout_anchorGravity="bottom|center"
         app:backgroundTint="@color/colorPrimary"
         app:borderWidth="@dimen/dp0"
-        app:srcCompat="@drawable/ic_contact_vk" />
+        app:srcCompat="@mipmap/about_vk" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_email"
@@ -70,6 +68,6 @@
         app:layout_anchorGravity="bottom|start"
         app:backgroundTint="@color/colorPrimary"
         app:borderWidth="@dimen/dp0"
-        app:srcCompat="@drawable/ic_contact_mail" />
+        app:srcCompat="@mipmap/about_email" />
 
 </android.support.design.widget.CoordinatorLayout>

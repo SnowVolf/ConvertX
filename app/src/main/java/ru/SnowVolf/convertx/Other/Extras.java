@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.design.widget.BottomSheetDialog;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;

@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.support.v7.content.res.AppCompatResources;
 
-import com.squareup.leakcanary.ActivityRefWatcher;
 import com.squareup.leakcanary.LeakCanary;
 
 import org.acra.ACRA;

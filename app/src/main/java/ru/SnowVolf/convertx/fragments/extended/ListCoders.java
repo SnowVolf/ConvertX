@@ -41,6 +41,10 @@ public class ListCoders extends Fragment {
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);

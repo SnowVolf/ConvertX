@@ -22,7 +22,6 @@ import java.math.BigInteger;
 import ru.SnowVolf.convertx.R;
 import ru.SnowVolf.convertx.ui.Toasty;
 
-import static ru.SnowVolf.convertx.other.Extras.showToast;
 import static ru.SnowVolf.convertx.utils.StringUtils.copyToClipboard;
 
 /**
@@ -63,10 +62,14 @@ public class HexFragment extends Fragment {
         clearOutp = (Button) rootView.findViewById(R.id.clear_btn);
         return rootView;
     }
-
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
@@ -169,6 +172,6 @@ public class HexFragment extends Fragment {
     public void clearAllText(){
         input.setText("");
         output.setText("");
-        Toasty.info(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
+        Toasty.success(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
     }
 }

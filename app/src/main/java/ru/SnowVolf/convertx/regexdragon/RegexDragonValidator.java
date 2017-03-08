@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 import ru.SnowVolf.convertx.R;
-import ru.SnowVolf.convertx.other.Extras;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -53,10 +52,14 @@ public class RegexDragonValidator extends Fragment {
 
         return rootView;
     }
-
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setHasOptionsMenu(true);
     }
     public void onActivityCreated(Bundle savedInstanceState){

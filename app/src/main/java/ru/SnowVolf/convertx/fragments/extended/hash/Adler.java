@@ -42,6 +42,10 @@ public class Adler extends Fragment {
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -115,6 +119,6 @@ public class Adler extends Fragment {
      public void clearAllText(){
          data.setText("");
          dataOut.setText("");
-         Toasty.info(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
+         Toasty.success(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
     }
 }

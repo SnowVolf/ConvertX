@@ -21,7 +21,6 @@ import java.util.Locale;
 
 import ru.SnowVolf.convertx.R;
 import ru.SnowVolf.convertx.algorhitms.DecoderAlgs;
-import ru.SnowVolf.convertx.other.Extras;
 import ru.SnowVolf.convertx.ui.Toasty;
 
 
@@ -43,8 +42,13 @@ public class TimestampFragment extends Fragment {
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        //setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
@@ -117,7 +121,7 @@ public class TimestampFragment extends Fragment {
     public void clearAllText(){
         Timestamp.setText("");
         normalDate.setText("");
-        Toasty.info(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
+        Toasty.success(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
     }
 
     public void InsertCurrentTimestamp(){

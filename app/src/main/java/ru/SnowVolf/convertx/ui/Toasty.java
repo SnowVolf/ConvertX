@@ -41,7 +41,7 @@ public class Toasty {
 
     private static final @ColorInt int ERROR_COLOR = Color.parseColor("#D50000");
     private static final @ColorInt int INFO_COLOR = Color.parseColor("#212121");
-    private static final @ColorInt int SUCCESS_COLOR = Color.parseColor("#388E3C");
+    private static final @ColorInt int SUCCESS_COLOR = Color.parseColor("#212121");
     private static final @ColorInt int WARNING_COLOR = Color.parseColor("#FFA900");
 
     private static final String TOAST_TYPEFACE = "sans-serif-condensed";

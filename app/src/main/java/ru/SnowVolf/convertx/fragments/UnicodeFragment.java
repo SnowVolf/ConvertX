@@ -21,7 +21,6 @@ import ru.SnowVolf.convertx.algorhitms.DecoderAlgs;
 import ru.SnowVolf.convertx.other.Extras;
 import ru.SnowVolf.convertx.ui.Toasty;
 
-import static ru.SnowVolf.convertx.other.Extras.showToast;
 import static ru.SnowVolf.convertx.utils.StringUtils.copyToClipboard;
 
 /**
@@ -54,8 +53,13 @@ public class UnicodeFragment extends Fragment {
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setHasOptionsMenu(true);
     }
     public void onActivityCreated(Bundle savedInstanceState){
@@ -156,7 +160,7 @@ public class UnicodeFragment extends Fragment {
     public void clearAllText(){
         output.setText("");
         input.setText("");
-        Toasty.info(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
+        Toasty.success(getContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show();
     }
 
 }

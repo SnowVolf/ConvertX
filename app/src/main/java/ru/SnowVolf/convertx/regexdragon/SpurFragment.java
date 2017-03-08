@@ -3,10 +3,11 @@ package ru.SnowVolf.convertx.regexdragon;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -28,13 +29,19 @@ public class SpurFragment extends Fragment{
         return rootView;
     }
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
+
         final StringBuilder sb = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(getContext().getAssets().open("SPUR.md"), "UTF-8"));
@@ -49,5 +56,6 @@ public class SpurFragment extends Fragment{
         Typeface Mono = Typeface.createFromAsset(getContext().getAssets(), "fonts/RobotoMono-Regular.ttf");
         spurr.setTypeface(Mono);
         spurr.setText(sb);
+
     }
 }

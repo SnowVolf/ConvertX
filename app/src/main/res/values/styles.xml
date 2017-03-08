@@ -61,11 +61,13 @@
 
     <style name="PaletteLight" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/light_silver</item>
+        <item name="cardBackgroundColor">@color/white</item>
 
     </style>
 
     <style name="PaletteDark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/palette_bkg_dark</item>
+
+        <item name="cardBackgroundColor">@color/card_bg_dark</item>
 
     </style>
 
