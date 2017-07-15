@@ -4,6 +4,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -119,7 +120,6 @@ public class DecoderAlgs {
             m.appendReplacement(unescapedOutput, entity);
         }
         m.appendTail(unescapedOutput);
-
         return unescapedOutput.toString();
     }
 
@@ -133,12 +133,43 @@ public class DecoderAlgs {
         entities.put("quot", "\"");
         return entities;
     }
-
+    /**
+     * Применяем буржуйскую локаль, чтоб с локальной датой не ебаться
+     * Из-за нее бывают ошибки на некоторых телефонах
+     * Например на моём Wileyfox Swift с кастомом RR N v.5.8.2 (Lineage OS 14.1) всё нормально,
+     * но на HTC One Mini 2 с кастомом CyanogenMod 13,
+     * при попытке получить дату из Timestamp идёт вылет. Такая вот она, локальная дата
+     */
     public static String getNormalDate(long time){
         Date date = new Date(time);
-        Format format = new SimpleDateFormat("dd.MM.YYYY HH:mm:ss");
+        Format format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.ENGLISH);
         return format.format(date);
     }
 
+    public static byte[] hexDecode(String text){
+        int l = text.length();
+        byte[] data = new byte[l/2];
+        for (int i = 0; i < l; i+=2){
+            data[i/2] = (byte) ((Character.digit(text.charAt(i), 16) << 4) + Character.digit(text.charAt(i + 1), 16));
+        }
+        return data;
+    }
 
+    public static String ConvertInt2Hex(int decimal){
+        String digit = "0123456789abcdef";
+        if (decimal <= 0)
+            return "";
+        int sysBase = 16; //основание системы счисления
+        String xdigit = "";
+        while (decimal > 0){
+            int dim = decimal % sysBase;
+            xdigit = digit.charAt(dim) + xdigit;
+            decimal = decimal / sysBase;
+        }
+        return "0x" + xdigit;
+    }
+
+    public static int ConvertHex2Int(String hexadecimal){
+        return Integer.parseInt(hexadecimal, 16);
+    }
 }

@@ -15,3 +15,18 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keepattributes SourceFile,LineNumberTable
+-dontwarn java.util.**
+-dontwarn java.time.**
+#retrolambda
+-dontwarn java.lang.invoke.*
+-dontwarn **$$Lambda$*
+#kotlin
+-dontwarn kotlin.**
+-dontwarn org.jetbrains.annotations.**
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
+}
+-keepclassmembers class **$WhenMappings{
+<fields>;
+}

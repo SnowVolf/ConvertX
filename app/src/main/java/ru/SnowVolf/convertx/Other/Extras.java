@@ -19,13 +19,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import ru.SnowVolf.convertx.R;
+import ru.SnowVolf.convertx.settings.DefStrings;
 
 /**
  * Created by Snow Volf on 27.01.2017.
  */
 
 public class Extras {
-    public static String TAG = "ConvertX";
 
     public static void showGitDialog(Activity context){
         new MaterialDialog.Builder(context)
@@ -36,8 +36,8 @@ public class Extras {
                 .negativeText(R.string.forpda)
                 .neutralText(android.R.string.cancel)
                 //применение goLink
-                .onPositive((dialog, which) -> goLink(context, "https://github.com/SnowVolf/ConvertX/", "Исходники на GitHub"))
-                .onNegative((dialog, which) -> goLink(context, "https://goo.gl/bHrymP", "Исходники на 4pda"))
+                .onPositive((d, w) -> goLink(context, "https://github.com/SnowVolf/ConvertX/", "Исходники на GitHub"))
+                .onNegative((d, w) -> goLink(context, "https://goo.gl/bHrymP", "Исходники на 4pda"))
                 .show();
     }
 
@@ -47,7 +47,7 @@ public class Extras {
         try {
             String pkg = context.getPackageName();
             PackageInfo pkgInfo = context.getPackageManager().getPackageInfo(pkg, PackageManager.GET_META_DATA);
-            programBuild += " v." + pkgInfo.versionName/*+" "+pkgInfo.versionCode*/;
+            programBuild += " v." + pkgInfo.versionName;
         } catch (PackageManager.NameNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -114,12 +114,13 @@ public class Extras {
      * Чтобы не создавать один и тот же код много раз
      * 3 строки кода заменяем одной, потом юзаем где хотим
      */
+    //контекст берем от Activity, иначе будет падать на некоторых прошивках
     public static void goLink(Activity context, String link, String info){
         Uri uri = Uri.parse(link);
         Intent linkIntent = new Intent(Intent.ACTION_VIEW, uri);
         //без этого флага крашится на некоторых устройствах
         linkIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Log.w(TAG, "Activity New Task ok");
+        Log.w(DefStrings.INSTANCE.getTAG(), "Activity New Task ok");
         context.startActivity(Intent.createChooser(linkIntent, info));
     }
 }

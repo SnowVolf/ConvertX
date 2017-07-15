@@ -1,12 +1,10 @@
 package ru.SnowVolf.convertx.palette;
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,46 +13,23 @@ import android.widget.Toast;
 
 import ru.SnowVolf.convertx.R;
 import ru.SnowVolf.convertx.ui.Toasty;
+import ru.SnowVolf.convertx.ui.activity.BaseActivity;
 import ru.SnowVolf.convertx.utils.StringUtils;
-import ru.SnowVolf.convertx.utils.SystemF;
 
-@SuppressWarnings({"ResourceAsColor", "ResourceType", "deprecation"})
-public class PaletteActivity extends AppCompatActivity {
+@SuppressWarnings({"ResourceAsColor", "ResourceType", "deprecation", "SetTextI18n"})
+public class PaletteActivity extends BaseActivity {
     private Button red, pink, purple, deep_purple, indigo, blue, light_blue, cyan, teal,
-           green, light_green, lime, yellow, amber, orange, deep_orange, brown, grey, blue_grey;
-    private Button hex50, hex100, hex200, hex300, hex400, hex500, hex600, hex700, hex800, hex900,
+           green, light_green, lime, yellow, amber, orange, deep_orange, brown, grey, blue_grey,
+    //buttons colors
+     hex50, hex100, hex200, hex300, hex400, hex500, hex600, hex700, hex800, hex900,
             hexa100, hexa200, hexa400, hexa700;
     private TextView caption, code;
-    //10 пробелов
-    private String sp = "          ";
-    private String c0 = "50";
-    private String c1 = "100";
-    private String c2 = "200";
-    private String c3 = "300";
-    private String c4 = "400";
-    private String c5 = "500";
-    private String c6 = "600";
-    private String c7 = "700";
-    private String c8 = "800";
-    private String c9 = "900";
-    private String ca1 = "a100";
-    private String ca2 = "a200";
-    private String ca4 = "a400";
-    private String ca7 = "a700";
-    SharedPreferences preferences;
+    private String[] colorNames = {"50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "a100", "a200", "a400", "a700"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         super.onCreate(savedInstanceState);
-        if (preferences.getBoolean("Theme.Theme", true)) {
-            preferences.edit().putBoolean("Theme.Theme", true).apply();
-            SystemF.onActivityCreateSetTheme(this);
-            setTheme(R.style.PaletteLight);
-        } else {
-            setTheme(R.style.PaletteDark);
-            preferences.edit().putBoolean("Theme.Theme", false).apply();
-        }
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.activity_color_palette);
         InitMainViews();
         InitExtraViews();
@@ -107,114 +82,100 @@ public class PaletteActivity extends AppCompatActivity {
     }
 
     public void SetClicks(){
-        /**
-         * Java8 - сахар
+        /*
+          Java8 - сахар
          */
-        red.setOnClickListener(view -> RedClick());
-        pink.setOnClickListener(view -> PinkClick());
-        purple.setOnClickListener(view -> PurpleClick());
-        deep_purple.setOnClickListener(view -> DeepPurpleClick());
-        indigo.setOnClickListener(view -> IndigoClick());
-        blue.setOnClickListener(view -> BlueClick());
-        light_blue.setOnClickListener(view -> LightBlueClick());
-        cyan.setOnClickListener(view -> CyanClick());
-        teal.setOnClickListener(view -> TealClick());
-        green.setOnClickListener(view -> GreenClick());
-        light_green.setOnClickListener(view -> LightGreenClick());
-        lime.setOnClickListener(view -> LimeClick());
-        yellow.setOnClickListener(view -> YellowClick());
-        amber.setOnClickListener(view -> AmberClick());
-        orange.setOnClickListener(view -> OrangeClick());
-        deep_orange.setOnClickListener(view -> DeepOrangeClick());
-        brown.setOnClickListener(view -> BrownClick());
-        grey.setOnClickListener(view -> GreyClick());
-        blue_grey.setOnClickListener(view -> BlueGreyClick());
+        red.setOnClickListener(__ -> RedClick());
+        pink.setOnClickListener(__ -> PinkClick());
+        purple.setOnClickListener(__ -> PurpleClick());
+        deep_purple.setOnClickListener(__ -> DeepPurpleClick());
+        indigo.setOnClickListener(__ -> IndigoClick());
+        blue.setOnClickListener(__ -> BlueClick());
+        light_blue.setOnClickListener(__ -> LightBlueClick());
+        cyan.setOnClickListener(__ -> CyanClick());
+        teal.setOnClickListener(__ -> TealClick());
+        green.setOnClickListener(__ -> GreenClick());
+        light_green.setOnClickListener(__ -> LightGreenClick());
+        lime.setOnClickListener(__ -> LimeClick());
+        yellow.setOnClickListener(__ -> YellowClick());
+        amber.setOnClickListener(__ -> AmberClick());
+        orange.setOnClickListener(__ -> OrangeClick());
+        deep_orange.setOnClickListener(__ -> DeepOrangeClick());
+        brown.setOnClickListener(__ -> BrownClick());
+        grey.setOnClickListener(__ -> GreyClick());
+        blue_grey.setOnClickListener(__ -> BlueGreyClick());
     }
 
     public void SetExtraClicks(){
-            String hex50s = hex50.getText().toString().substring(12);//отсчитываем 12 символов
-            hex50.setOnClickListener(view -> {
-                code.setText(hex50s);
-                Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-                StringUtils.copyToClipboard(this, hex50s);
+            hex50.setOnClickListener(__ -> {
+                code.setText(hex50.getText().toString().substring(12));
+                showToastNotification();
+                StringUtils.INSTANCE.copyToClipboard(this, hex50.getText().toString().substring(12));
             });
-        String hex100s = hex100.getText().toString().substring(13);//отсчитываем 13 символов
-        hex100.setOnClickListener(view -> {
-            code.setText(hex100s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex100s);
+        hex100.setOnClickListener(__ -> {
+            code.setText(hex100.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex100.getText().toString().substring(13));
         });
-        String hex200s = hex200.getText().toString().substring(13);
-        hex200.setOnClickListener(view -> {
-            code.setText(hex200s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex200s);
+        hex200.setOnClickListener(__ -> {
+            code.setText(hex200.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex200.getText().toString().substring(13));
         });
-        String hex300s = hex300.getText().toString().substring(13);
-        hex300.setOnClickListener(view -> {
-            code.setText(hex300s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex300s);
+        hex300.setOnClickListener(__ -> {
+            code.setText(hex300.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex300.getText().toString().substring(13));
         });
-        String hex400s = hex400.getText().toString().substring(13);
-        hex400.setOnClickListener(view -> {
-            code.setText(hex400s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex400s);
+        hex400.setOnClickListener(__ -> {
+            code.setText(hex400.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex400.getText().toString().substring(13));
         });
-        String hex500s = hex500.getText().toString().substring(13);
-        hex500.setOnClickListener(view -> {
-            code.setText(hex500s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex500s);
+        hex500.setOnClickListener(__ -> {
+            code.setText(hex500.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex500.getText().toString().substring(13));
         });
-        String hex600s = hex600.getText().toString().substring(13);
-        hex600.setOnClickListener(view -> {
-            code.setText(hex600s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex600s);
+        hex600.setOnClickListener(__ -> {
+            code.setText(hex600.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex600.getText().toString().substring(13));
         });
-        String hex700s = hex700.getText().toString().substring(13);
-        hex700.setOnClickListener(view -> {
-            code.setText(hex700s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex700s);
+        hex700.setOnClickListener(__ -> {
+            code.setText(hex700.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex700.getText().toString().substring(13));
         });
-        String hex800s = hex800.getText().toString().substring(13);
-        hex800.setOnClickListener(view -> {
-            code.setText(hex800s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex800s);
+        hex800.setOnClickListener(__ -> {
+            code.setText(hex800.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex800.getText().toString().substring(13));
         });
-        String hex900s = hex900.getText().toString().substring(13);
-        hex900.setOnClickListener(view -> {
-            code.setText(hex900s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hex900s);
+        hex900.setOnClickListener(__ -> {
+            code.setText(hex900.getText().toString().substring(13));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hex900.getText().toString().substring(13));
         });
-        String hexa100s = hexa100.getText().toString().substring(14);//отсчитываем 14 символов
-        hexa100.setOnClickListener(view -> {
-            code.setText(hexa100s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hexa100s);
+        hexa100.setOnClickListener(__ -> {
+            code.setText(hexa100.getText().toString().substring(14));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hexa100.getText().toString().substring(14));
         });
-        String hexa200s = hexa200.getText().toString().substring(14);
-        hexa200.setOnClickListener(view -> {
-            code.setText(hexa200s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hexa200s);
+        hexa200.setOnClickListener(__ -> {
+            code.setText(hexa200.getText().toString().substring(14));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hexa200.getText().toString().substring(14));
         });
-        String hexa400s = hexa400.getText().toString().substring(14);
-        hexa400.setOnClickListener(view -> {
-            code.setText(hexa400s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hexa400s);
+        hexa400.setOnClickListener(__ -> {
+            code.setText(hexa400.getText().toString().substring(14));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hexa400.getText().toString().substring(14));
         });
-        String hexa700s = hexa700.getText().toString().substring(14);
-        hexa700.setOnClickListener(view -> {
-            code.setText(hexa700s);
-            Toasty.info(this, getString(R.string.copied2clipboard), Toast.LENGTH_SHORT, true).show();
-            StringUtils.copyToClipboard(this, hexa700s);
+        hexa700.setOnClickListener(__ -> {
+            code.setText(hexa700.getText().toString().substring(14));
+            showToastNotification();
+            StringUtils.INSTANCE.copyToClipboard(this, hexa700.getText().toString().substring(14));
         });
     }
 
@@ -282,94 +243,41 @@ public class PaletteActivity extends AppCompatActivity {
         RunVisibleHelper();
         SetWhiteness();
         caption.setText("Red");
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.red50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.red50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.red100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.red100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.red200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.red200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.red300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.red300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.red400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.red400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.red500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.red500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.red600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.red600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.red700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.red700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.red800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.red800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.red900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.red900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.reda100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.reda100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.reda200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.reda200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.reda400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.reda400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.reda700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.reda700));
+        setGirl(hex50, R.color.red50, 0);
+        setGirl(hex100, R.color.red100, 1);
+        setGirl(hex200, R.color.red200, 2);
+        setGirl(hex300, R.color.red300, 3);
+        setGirl(hex400, R.color.red400, 4);
+        setGirl(hex500, R.color.red500, 5);
+        setGirl(hex600, R.color.red600, 6);
+        setGirl(hex700, R.color.red700, 7);
+        setGirl(hex800, R.color.red800, 8);
+        setGirl(hex900, R.color.red900, 9);
+        setGirl(hexa100, R.color.reda100, 10);
+        setGirl(hexa200, R.color.reda200, 11);
+        setGirl(hexa400, R.color.reda400, 12);
+        setGirl(hexa700, R.color.reda700, 13);
+        SetExtraClicks();
     }
 
     public void PinkClick(){
         caption.setText("Pink");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.pink50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.pink50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.pink100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.pink100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.pink200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.pink200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.pink300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.pink300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.pink400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.pink400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.pink500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.pink500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.pink600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.pink600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.pink700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.pink700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.pink800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.pink800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.pink900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.pink900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.pinka100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.pinka100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.pinka200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.pinka200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.pinka400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.pinka400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.pinka700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.pinka700));
+        setGirl(hex50, R.color.pink50, 0);
+        setGirl(hex100, R.color.pink100, 1);
+        setGirl(hex200, R.color.pink200, 2);
+        setGirl(hex300, R.color.pink300, 3);
+        setGirl(hex400, R.color.pink400, 4);
+        setGirl(hex500, R.color.pink500, 5);
+        setGirl(hex600, R.color.pink600, 6);
+        setGirl(hex700, R.color.pink700, 7);
+        setGirl(hex800, R.color.pink800, 8);
+        setGirl(hex900, R.color.pink900, 9);
+        setGirl(hexa100, R.color.pinka100, 10);
+        setGirl(hexa200, R.color.pinka200, 11);
+        setGirl(hexa400, R.color.pinka400, 12);
+        setGirl(hexa700, R.color.pinka700, 13);
         SetExtraClicks();
     }
 
@@ -377,47 +285,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Purple");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.purple50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.purple50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.purple100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.purple100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.purple200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.purple200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.purple300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.purple300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.purple400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.purple400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.purple500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.purple500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.purple600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.purple600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.purple700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.purple700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.purple800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.purple800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.purple900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.purple900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.purplea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.purplea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.purplea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.purplea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.purplea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.purplea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.purplea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.purplea700));
+        setGirl(hex50, R.color.purple50, 0);
+        setGirl(hex100, R.color.purple100, 1);
+        setGirl(hex200, R.color.purple200, 2);
+        setGirl(hex300, R.color.purple300, 3);
+        setGirl(hex400, R.color.purple400, 4);
+        setGirl(hex500, R.color.purple500, 5);
+        setGirl(hex600, R.color.purple600, 6);
+        setGirl(hex700, R.color.purple700, 7);
+        setGirl(hex800, R.color.purple800, 8);
+        setGirl(hex900, R.color.purple900, 9);
+        setGirl(hexa100, R.color.purplea100, 10);
+        setGirl(hexa200, R.color.purplea200, 11);
+        setGirl(hexa400, R.color.purplea400, 12);
+        setGirl(hexa700, R.color.purplea700, 13);
         SetExtraClicks();
     }
 
@@ -425,47 +306,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Deep Purple");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.deep_purple50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.deep_purple100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.deep_purple200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.deep_purple300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.deep_purple400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.deep_purple500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.deep_purple600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.deep_purple700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.deep_purple800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.deep_purple900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.deep_purple900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.deep_purplea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.deep_purplea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.deep_purplea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.deep_purplea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.deep_purplea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.deep_purplea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.deep_purplea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.deep_purplea700));
+        setGirl(hex50, R.color.deep_purple50, 0);
+        setGirl(hex100, R.color.deep_purple100, 1);
+        setGirl(hex200, R.color.deep_purple200, 2);
+        setGirl(hex300, R.color.deep_purple300, 3);
+        setGirl(hex400, R.color.deep_purple400, 4);
+        setGirl(hex500, R.color.deep_purple500, 5);
+        setGirl(hex600, R.color.deep_purple600, 6);
+        setGirl(hex700, R.color.deep_purple700, 7);
+        setGirl(hex800, R.color.deep_purple800, 8);
+        setGirl(hex900, R.color.deep_purple900, 9);
+        setGirl(hexa100, R.color.deep_purplea100, 10);
+        setGirl(hexa200, R.color.deep_purplea200, 11);
+        setGirl(hexa400, R.color.deep_purplea400, 12);
+        setGirl(hexa700, R.color.deep_purplea700, 13);
         SetExtraClicks();
     }
 
@@ -473,47 +327,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Indigo");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.indigo50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.indigo50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.indigo100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.indigo100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.indigo200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.indigo200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.indigo300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.indigo300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.indigo400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.indigo400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.indigo500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.indigo500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.indigo600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.indigo600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.indigo700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.indigo700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.indigo800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.indigo800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.indigo900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.indigo900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.indigoa100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.indigoa100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.indigoa200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.indigoa200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.indigoa400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.indigoa400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.indigoa700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.indigoa700));
+        setGirl(hex50, R.color.indigo50, 0);
+        setGirl(hex100, R.color.indigo100, 1);
+        setGirl(hex200, R.color.indigo200, 2);
+        setGirl(hex300, R.color.indigo300, 3);
+        setGirl(hex400, R.color.indigo400, 4);
+        setGirl(hex500, R.color.indigo500, 5);
+        setGirl(hex600, R.color.indigo600, 6);
+        setGirl(hex700, R.color.indigo700, 7);
+        setGirl(hex800, R.color.indigo800, 8);
+        setGirl(hex900, R.color.indigo900, 9);
+        setGirl(hexa100, R.color.indigoa100, 10);
+        setGirl(hexa200, R.color.indigoa200, 11);
+        setGirl(hexa400, R.color.indigoa400, 12);
+        setGirl(hexa700, R.color.indigoa700, 13);
         SetExtraClicks();
     }
 
@@ -521,47 +348,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Blue");
         SetWhiteness();
         RunVisibleHelper();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.blue50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.blue50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.blue100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.blue100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.blue200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.blue200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.blue300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.blue300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.blue400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.blue400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.blue500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.blue500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.blue600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.blue600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.blue700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.blue700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.blue800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.blue800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.blue900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.blue900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.bluea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.bluea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.bluea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.bluea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.bluea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.bluea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.bluea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.bluea700));
+        setGirl(hex50, R.color.blue50, 0);
+        setGirl(hex100, R.color.blue100, 1);
+        setGirl(hex200, R.color.blue200, 2);
+        setGirl(hex300, R.color.blue300, 3);
+        setGirl(hex400, R.color.blue400, 4);
+        setGirl(hex500, R.color.blue500, 5);
+        setGirl(hex600, R.color.blue600, 6);
+        setGirl(hex700, R.color.blue700, 7);
+        setGirl(hex800, R.color.blue800, 8);
+        setGirl(hex900, R.color.blue900, 9);
+        setGirl(hexa100, R.color.bluea100, 10);
+        setGirl(hexa200, R.color.bluea200, 11);
+        setGirl(hexa400, R.color.bluea400, 12);
+        setGirl(hexa700, R.color.bluea700, 13);
         SetExtraClicks();
     }
 
@@ -569,47 +369,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Light-Blue");
         SetWhiteness();
         RunVisibleHelper();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.light_blue50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.light_blue50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.light_blue100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.light_blue100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.light_blue200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.light_blue200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.light_blue300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.light_blue300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.light_blue400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.light_blue400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.light_blue500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.light_blue500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.light_blue600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.light_blue600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.light_blue700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.light_blue700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.light_blue800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.light_blue800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.light_blue900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.light_blue900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.light_bluea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.light_bluea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.light_bluea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.light_bluea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.light_bluea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.light_bluea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.light_bluea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.light_bluea700));
+        setGirl(hex50, R.color.light_blue50, 0);
+        setGirl(hex100, R.color.light_blue100, 1);
+        setGirl(hex200, R.color.light_blue200, 2);
+        setGirl(hex300, R.color.light_blue300, 3);
+        setGirl(hex400, R.color.light_blue400, 4);
+        setGirl(hex500, R.color.light_blue500, 5);
+        setGirl(hex600, R.color.light_blue600, 6);
+        setGirl(hex700, R.color.light_blue700, 7);
+        setGirl(hex800, R.color.light_blue800, 8);
+        setGirl(hex900, R.color.light_blue900, 9);
+        setGirl(hexa100, R.color.light_bluea100, 10);
+        setGirl(hexa200, R.color.light_bluea200, 11);
+        setGirl(hexa400, R.color.light_bluea400, 12);
+        setGirl(hexa700, R.color.light_bluea700, 13);
         SetExtraClicks();
     }
 
@@ -617,47 +390,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Cyan");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.cyan50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.cyan50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.cyan100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.cyan100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.cyan200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.cyan200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.cyan300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.cyan300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.cyan400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.cyan400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.cyan500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.cyan500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.cyan600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.cyan600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.cyan700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.cyan700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.cyan800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.cyan800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.cyan900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.cyan900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.cyana100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.cyana100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.cyana200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.cyana200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.cyana400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.cyana400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.cyana700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.cyana700));
+        setGirl(hex50, R.color.cyan50, 0);
+        setGirl(hex100, R.color.cyan100, 1);
+        setGirl(hex200, R.color.cyan200, 2);
+        setGirl(hex300, R.color.cyan300, 3);
+        setGirl(hex400, R.color.cyan400, 4);
+        setGirl(hex500, R.color.cyan500, 5);
+        setGirl(hex600, R.color.cyan600, 6);
+        setGirl(hex700, R.color.cyan700, 7);
+        setGirl(hex800, R.color.cyan800, 8);
+        setGirl(hex900, R.color.cyan900, 9);
+        setGirl(hexa100, R.color.cyana100, 10);
+        setGirl(hexa200, R.color.cyana200, 11);
+        setGirl(hexa400, R.color.cyana400, 12);
+        setGirl(hexa700, R.color.cyana700, 13);
         SetExtraClicks();
     }
 
@@ -665,47 +411,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Teal");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.teal50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.teal50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.teal100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.teal100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.teal200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.teal200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.teal300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.teal300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.teal400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.teal400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.teal500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.teal500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.teal600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.teal600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.teal700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.teal700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.teal800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.teal800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.teal900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.teal900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.teala100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.teala100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.teala200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.teala200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.teala400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.teala400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.teala700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.teala700));
+        setGirl(hex50, R.color.teal50, 0);
+        setGirl(hex100, R.color.teal100, 1);
+        setGirl(hex200, R.color.teal200, 2);
+        setGirl(hex300, R.color.teal300, 3);
+        setGirl(hex400, R.color.teal400, 4);
+        setGirl(hex500, R.color.teal500, 5);
+        setGirl(hex600, R.color.teal600, 6);
+        setGirl(hex700, R.color.teal700, 7);
+        setGirl(hex800, R.color.teal800, 8);
+        setGirl(hex900, R.color.teal900, 9);
+        setGirl(hexa100, R.color.teala100, 10);
+        setGirl(hexa200, R.color.teala200, 11);
+        setGirl(hexa400, R.color.teala400, 12);
+        setGirl(hexa700, R.color.teala700, 13);
         SetExtraClicks();
     }
 
@@ -713,47 +432,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Green");
         RunVisibleHelper();
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.green50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.green50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.green100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.green100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.green200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.green200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.green300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.green300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.green400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.green400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.green500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.green500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.green600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.green600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.green700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.green700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.green800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.green800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.green900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.green900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.greena100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.greena100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.greena200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.greena200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.greena400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.greena400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.greena700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.greena700));
+        setGirl(hex50, R.color.green50, 0);
+        setGirl(hex100, R.color.green100, 1);
+        setGirl(hex200, R.color.green200, 2);
+        setGirl(hex300, R.color.green300, 3);
+        setGirl(hex400, R.color.green400, 4);
+        setGirl(hex500, R.color.green500, 5);
+        setGirl(hex600, R.color.green600, 6);
+        setGirl(hex700, R.color.green700, 7);
+        setGirl(hex800, R.color.green800, 8);
+        setGirl(hex900, R.color.green900, 9);
+        setGirl(hexa100, R.color.greena100, 10);
+        setGirl(hexa200, R.color.greena200, 11);
+        setGirl(hexa400, R.color.greena400, 12);
+        setGirl(hexa700, R.color.greena700, 13);
         SetExtraClicks();
     }
 
@@ -761,47 +453,20 @@ public class PaletteActivity extends AppCompatActivity {
         RunVisibleHelper();
         SetWhiteness();
         caption.setText("Light-Green");
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.light_green50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.light_green50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.light_green100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.light_green100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.light_green200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.light_green200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.light_green300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.light_green300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.light_green400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.light_green400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.light_green500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.light_green500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.light_green600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.light_green600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.light_green700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.light_green700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.light_green800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.light_green800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.light_green900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.light_green900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.light_greena100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.light_greena100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.light_greena200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.light_greena200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.light_greena400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.light_greena400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.light_greena700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.light_greena700));
+        setGirl(hex50, R.color.light_green50, 0);
+        setGirl(hex100, R.color.light_green100, 1);
+        setGirl(hex200, R.color.light_green200, 2);
+        setGirl(hex300, R.color.light_green300, 3);
+        setGirl(hex400, R.color.light_green400, 4);
+        setGirl(hex500, R.color.light_green500, 5);
+        setGirl(hex600, R.color.light_green600, 6);
+        setGirl(hex700, R.color.light_green700, 7);
+        setGirl(hex800, R.color.light_green800, 8);
+        setGirl(hex900, R.color.light_green900, 9);
+        setGirl(hexa100, R.color.light_greena100, 10);
+        setGirl(hexa200, R.color.light_greena200, 11);
+        setGirl(hexa400, R.color.light_greena400, 12);
+        setGirl(hexa700, R.color.light_greena700, 13);
         SetExtraClicks();
     }
 
@@ -809,47 +474,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Lime");
         RunVisibleHelper();
         SetDarkness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.lime50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.lime50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.lime100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.lime100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.lime200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.lime200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.lime300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.lime300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.lime400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.lime400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.lime500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.lime500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.lime600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.lime600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.lime700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.lime700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.lime800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.lime800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.lime900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.lime900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.limea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.limea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.limea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.limea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.limea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.limea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.limea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.limea700));
+        setGirl(hex50, R.color.lime50, 0);
+        setGirl(hex100, R.color.lime100, 1);
+        setGirl(hex200, R.color.lime200, 2);
+        setGirl(hex300, R.color.lime300, 3);
+        setGirl(hex400, R.color.lime400, 4);
+        setGirl(hex500, R.color.lime500, 5);
+        setGirl(hex600, R.color.lime600, 6);
+        setGirl(hex700, R.color.lime700, 7);
+        setGirl(hex800, R.color.lime800, 8);
+        setGirl(hex900, R.color.lime900, 9);
+        setGirl(hexa100, R.color.limea100, 10);
+        setGirl(hexa200, R.color.limea200, 11);
+        setGirl(hexa400, R.color.limea400, 12);
+        setGirl(hexa700, R.color.limea700, 13);
         SetExtraClicks();
     }
 
@@ -857,47 +495,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Yellow");
         RunVisibleHelper();
         SetDarkness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.yellow50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.yellow50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.yellow100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.yellow100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.yellow200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.yellow200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.yellow300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.yellow300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.yellow400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.yellow400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.yellow500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.yellow500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.yellow600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.yellow600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.yellow700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.yellow700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.yellow800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.yellow800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.yellow900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.yellow900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.yellowa100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.yellowa100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.yellowa200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.yellowa200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.yellowa400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.yellowa400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.yellowa700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.yellowa700));
+        setGirl(hex50, R.color.yellow50, 0);
+        setGirl(hex100, R.color.yellow100, 1);
+        setGirl(hex200, R.color.yellow200, 2);
+        setGirl(hex300, R.color.yellow300, 3);
+        setGirl(hex400, R.color.yellow400, 4);
+        setGirl(hex500, R.color.yellow500, 5);
+        setGirl(hex600, R.color.yellow600, 6);
+        setGirl(hex700, R.color.yellow700, 7);
+        setGirl(hex800, R.color.yellow800, 8);
+        setGirl(hex900, R.color.yellow900, 9);
+        setGirl(hexa100, R.color.yellowa100, 10);
+        setGirl(hexa200, R.color.yellowa200, 11);
+        setGirl(hexa400, R.color.yellowa400, 12);
+        setGirl(hexa700, R.color.yellowa700, 13);
         SetExtraClicks();
     }
 
@@ -905,47 +516,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Amber");
         RunVisibleHelper();
         SetDarkness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.amber50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.amber50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.amber100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.amber100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.amber200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.amber200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.amber300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.amber300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.amber400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.amber400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.amber500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.amber500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.amber600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.amber600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.amber700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.amber700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.amber800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.amber800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.amber900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.amber900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.ambera100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.ambera100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.ambera200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.ambera200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.ambera400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.ambera400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.ambera700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.ambera700));
+        setGirl(hex50, R.color.amber50, 0);
+        setGirl(hex100, R.color.amber100, 1);
+        setGirl(hex200, R.color.amber200, 2);
+        setGirl(hex300, R.color.amber300, 3);
+        setGirl(hex400, R.color.amber400, 4);
+        setGirl(hex500, R.color.amber500, 5);
+        setGirl(hex600, R.color.amber600, 6);
+        setGirl(hex700, R.color.amber700, 7);
+        setGirl(hex800, R.color.amber800, 8);
+        setGirl(hex900, R.color.amber900, 9);
+        setGirl(hexa100, R.color.ambera100, 10);
+        setGirl(hexa200, R.color.ambera200, 11);
+        setGirl(hexa400, R.color.ambera400, 12);
+        setGirl(hexa700, R.color.ambera700, 13);
         SetExtraClicks();
     }
 
@@ -953,47 +537,20 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Orange");
         RunVisibleHelper();
         SetDarkness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.orange50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.orange50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.orange100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.orange100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.orange200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.orange200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.orange300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.orange300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.orange400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.orange400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.orange500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.orange500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.orange600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.orange600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.orange700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.orange700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.orange800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.orange800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.orange900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.orange900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.orangea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.orangea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.orangea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.orangea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.orangea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.orangea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.orangea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.orangea700));
+        setGirl(hex50, R.color.orange50, 0);
+        setGirl(hex100, R.color.orange100, 1);
+        setGirl(hex200, R.color.orange200, 2);
+        setGirl(hex300, R.color.orange300, 3);
+        setGirl(hex400, R.color.orange400, 4);
+        setGirl(hex500, R.color.orange500, 5);
+        setGirl(hex600, R.color.orange600, 6);
+        setGirl(hex700, R.color.orange700, 7);
+        setGirl(hex800, R.color.orange800, 8);
+        setGirl(hex900, R.color.orange900, 9);
+        setGirl(hexa100, R.color.orangea100, 10);
+        setGirl(hexa200, R.color.orangea200, 11);
+        setGirl(hexa400, R.color.orangea400, 12);
+        setGirl(hexa700, R.color.orangea700, 13);
         SetExtraClicks();
     }
 
@@ -1001,82 +558,36 @@ public class PaletteActivity extends AppCompatActivity {
         caption.setText("Deep Orange");
         RunVisibleHelper();
         SetDarkness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.deep_orange50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.deep_orange100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.deep_orange200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.deep_orange300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.deep_orange400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.deep_orange500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.deep_orange600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.deep_orange700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.deep_orange800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.deep_orange900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.deep_orange900));
-
-        hexa100.getBackground().setColorFilter(getResources().getColor(R.color.deep_orangea100), PorterDuff.Mode.SRC_ATOP);
-        hexa100.setText(ca1+sp+getText(R.color.deep_orangea100));
-
-        hexa200.getBackground().setColorFilter(getResources().getColor(R.color.deep_orangea200), PorterDuff.Mode.SRC_ATOP);
-        hexa200.setText(ca2+sp+getText(R.color.deep_orangea200));
-
-        hexa400.getBackground().setColorFilter(getResources().getColor(R.color.deep_orangea400), PorterDuff.Mode.SRC_ATOP);
-        hexa400.setText(ca4+sp+getText(R.color.deep_orangea400));
-
-        hexa700.getBackground().setColorFilter(getResources().getColor(R.color.deep_orangea700), PorterDuff.Mode.SRC_ATOP);
-        hexa700.setText(ca7+sp+getText(R.color.deep_orangea700));
+        setGirl(hex50, R.color.deep_orange50, 0);
+        setGirl(hex100, R.color.deep_orange100, 1);
+        setGirl(hex200, R.color.deep_orange200, 2);
+        setGirl(hex300, R.color.deep_orange300, 3);
+        setGirl(hex400, R.color.deep_orange400, 4);
+        setGirl(hex500, R.color.deep_orange500, 5);
+        setGirl(hex600, R.color.deep_orange600, 6);
+        setGirl(hex700, R.color.deep_orange700, 7);
+        setGirl(hex800, R.color.deep_orange800, 8);
+        setGirl(hex900, R.color.deep_orange900, 9);
+        setGirl(hexa100, R.color.deep_orangea100, 10);
+        setGirl(hexa200, R.color.deep_orangea200, 11);
+        setGirl(hexa400, R.color.deep_orangea400, 12);
+        setGirl(hexa700, R.color.deep_orangea700, 13);
         SetExtraClicks();
     }
 
     public void BrownClick(){
         caption.setText("Brown");
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.brown50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.brown50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.brown100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.brown100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.brown200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.brown200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.brown300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.brown300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.brown400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.brown400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.brown500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.brown500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.brown600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.brown600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.brown700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.brown700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.brown800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.brown800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.brown900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.brown900));
+        setGirl(hex50, R.color.brown50, 0);
+        setGirl(hex100, R.color.brown100, 1);
+        setGirl(hex200, R.color.brown200, 2);
+        setGirl(hex300, R.color.brown300, 3);
+        setGirl(hex400, R.color.brown400, 4);
+        setGirl(hex500, R.color.brown500, 5);
+        setGirl(hex600, R.color.brown600, 6);
+        setGirl(hex700, R.color.brown700, 7);
+        setGirl(hex800, R.color.brown800, 8);
+        setGirl(hex900, R.color.brown900, 9);
         SetExtraClicks();
 
        RunIVisibleHelper();
@@ -1085,35 +596,16 @@ public class PaletteActivity extends AppCompatActivity {
     public void GreyClick(){
         caption.setText("Grey");
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.grey50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.grey50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.grey100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.grey100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.grey200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.grey200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.grey300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.grey300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.grey400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.grey400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.grey500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.grey500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.grey600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.grey600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.grey700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.grey700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.grey800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.grey800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.grey900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.grey900));
+        setGirl(hex50, R.color.grey50, 0);
+        setGirl(hex100, R.color.grey100, 1);
+        setGirl(hex200, R.color.grey200, 2);
+        setGirl(hex300, R.color.grey300, 3);
+        setGirl(hex400, R.color.grey400, 4);
+        setGirl(hex500, R.color.grey500, 5);
+        setGirl(hex600, R.color.grey600, 6);
+        setGirl(hex700, R.color.grey700, 7);
+        setGirl(hex800, R.color.grey800, 8);
+        setGirl(hex900, R.color.grey900, 9);
         SetExtraClicks();
 
         RunIVisibleHelper();
@@ -1122,38 +614,27 @@ public class PaletteActivity extends AppCompatActivity {
     public void BlueGreyClick(){
         caption.setText("BlueGrey");
         SetWhiteness();
-        hex50.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey50), PorterDuff.Mode.SRC_ATOP);
-        hex50.setText(c0+sp+getText(R.color.blue_grey50));
-
-        hex100.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey100), PorterDuff.Mode.SRC_ATOP);
-        hex100.setText(c1+sp+getText(R.color.blue_grey100));
-
-        hex200.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey200), PorterDuff.Mode.SRC_ATOP);
-        hex200.setText(c2+sp+getText(R.color.blue_grey200));
-
-        hex300.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey300), PorterDuff.Mode.SRC_ATOP);
-        hex300.setText(c3+sp+getText(R.color.blue_grey300));
-
-        hex400.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey400), PorterDuff.Mode.SRC_ATOP);
-        hex400.setText(c4+sp+getText(R.color.blue_grey400));
-
-        hex500.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey500), PorterDuff.Mode.SRC_ATOP);
-        hex500.setText(c5+sp+getText(R.color.blue_grey500));
-
-        hex600.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey600), PorterDuff.Mode.SRC_ATOP);
-        hex600.setText(c6+sp+getText(R.color.blue_grey600));
-
-        hex700.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey700), PorterDuff.Mode.SRC_ATOP);
-        hex700.setText(c7+sp+getText(R.color.blue_grey700));
-
-        hex800.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey800), PorterDuff.Mode.SRC_ATOP);
-        hex800.setText(c8+sp+getText(R.color.blue_grey800));
-
-        hex900.getBackground().setColorFilter(getResources().getColor(R.color.blue_grey900), PorterDuff.Mode.SRC_ATOP);
-        hex900.setText(c9+sp+getText(R.color.blue_grey900));
-
+        setGirl(hex50, R.color.blue_grey50, 0);
+        setGirl(hex100, R.color.blue_grey100, 1);
+        setGirl(hex200, R.color.blue_grey200, 2);
+        setGirl(hex300, R.color.blue_grey300, 3);
+        setGirl(hex400, R.color.blue_grey400, 4);
+        setGirl(hex500, R.color.blue_grey500, 5);
+        setGirl(hex600, R.color.blue_grey600, 6);
+        setGirl(hex700, R.color.blue_grey700, 7);
+        setGirl(hex800, R.color.blue_grey800, 8);
+        setGirl(hex900, R.color.blue_grey900, 9);
         SetExtraClicks();
         RunIVisibleHelper();
     }
 
+    private void showToastNotification(){
+        Toasty.info(this, R.string.copied2clipboard, Toast.LENGTH_LONG, true).show();
+    }
+
+    private void setGirl(Button button, int color, int arrayPosition){
+        button.getBackground().setColorFilter(getResources().getColor(color), PorterDuff.Mode.SRC_ATOP);
+        String space = "          ";
+        button.setText(colorNames[arrayPosition]+ space + getText(color));
+    }
 }

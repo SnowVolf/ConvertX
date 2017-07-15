@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MaterialDrawerTheme.Light.DarkToolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryL</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryL23</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textButtonColor">@color/white</item>
+        <item name="android:colorControlHighlight">@color/grey800</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="icon">@color/grey800</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="collapsingToolbarBackground">@color/colorPrimaryL</item>
+        <item name="material_drawer_secondary_text">#616161</item>
+        <item name="android:windowBackground">@color/light_silver</item>
+        <item name="cardsBackground">@style/CardView.LightStyle</item>
+    </style>
+
+    <style name="MaterialDrawerTheme.TranslucentStatus" parent="MaterialDrawerTheme">
+        <item name="icon">@color/colorPrimaryL</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="android:textColorPrimaryInverseNoDisable">@color/colorAccentDark</item>
+        <item name="textButtonColor">@color/black</item>
+        <item name="buttonTint">@color/colorAccentDark</item>
+        <item name="cardBackgroundColor">@color/card_bg_dark</item>
+        <item name="popup">@style/AppTheme.PopupOverlayDark</item>
+        <item name="toolbar">@style/AppTheme.AppBarOverlayDark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="collapsingToolbarBackground">@color/about_toolbar_background</item>
+        <item name="material_drawer_secondary_text">#c8c8c8</item>
+        <item name="android:windowBackground">@color/darkWindowBackground</item>
+        <item name="cardsBackground">@style/CardView.DarkStyle</item>
+    </style>
+
+    <style name="MaterialDrawerTheme.TranslucentStatusBlack" parent="MaterialDrawerTheme">
+        <item name="icon">@color/colorPrimaryL</item>
+        <item name="colorPrimary">@color/grey900</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryBlack</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="android:textColorPrimaryInverseNoDisable">@color/colorAccentDark</item>
+        <item name="textButtonColor">@color/black</item>
+        <item name="buttonTint">@color/colorAccentDark</item>
+        <item name="cardBackgroundColor">@color/card_bg_dark</item>
+        <item name="material_drawer_secondary_text">#c8c8c8</item>
+        <item name="popup">@style/AppTheme.PopupOverlayDark</item>
+        <item name="toolbar">@style/AppTheme.AppBarOverlayDark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="collapsingToolbarBackground">@color/about_toolbar_background</item>
+        <item name="android:windowBackground">@color/darkWindowBackground</item>
+        <item name="cardsBackground">@style/CardView.DarkStyle</item>
+    </style>
+    <color name="colorPrimaryL23">#eeeeee</color>
+</resources>

@@ -1,37 +1,84 @@
 <resources>
 
+    <!--Global app Styles-->
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MaterialDrawerTheme.Light.DarkToolbar" parent="MaterialDrawerTheme.Light.TranslucentStatus">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="icon">@color/grey800</item>
+        <item name="colorPrimary">@color/colorPrimaryL</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkL</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textButtonColor">@color/white</item>
-        <item name="drawerBkg">@drawable/head</item>
+        <item name="material_drawer_background">@color/grey50</item>
+        <item name="material_drawer_primary_text">@color/black</item>
+        <item name="material_drawer_secondary_text">#616161
+        </item>
+        <item name="material_drawer_hint_text">@color/grey600</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/grey200</item>
+        <item name="material_drawer_selected_text">@color/colorAccent</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_primary_text
+        </item>
+
+        <!-- CAB :D -->
+        <item name="windowActionModeOverlay">true</item>
         <item name="cardBackgroundColor">@color/white</item>
+        <item name="popup">@style/AppTheme.PopupOverlayLight</item>
+        <item name="toolbar">@style/AppTheme.AppBarOverlayLight</item>
+        <item name="collapsingToolbarBackground">@color/colorPrimaryL</item>
+        <item name="android:windowBackground">@color/light_silver</item>
+        <item name="cardsBackground">@style/CardView.LightStyle</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+    <style name="MaterialDrawerTheme.TranslucentStatus" parent="MaterialDrawerTheme">
+        <item name="icon">@color/colorPrimaryL</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccentDark</item>
         <item name="android:textColorPrimaryInverseNoDisable">@color/colorAccentDark</item>
-        <item name="textButtonColor">@color/light_silver</item>
-        <item name="drawerBkg">@drawable/head_night</item>
+        <item name="textButtonColor">@color/black</item>
         <item name="buttonTint">@color/colorAccentDark</item>
         <item name="cardBackgroundColor">@color/card_bg_dark</item>
+        <item name="material_drawer_secondary_text">#c8c8c8</item>
+        <item name="popup">@style/AppTheme.PopupOverlayDark</item>
+        <item name="toolbar">@style/AppTheme.AppBarOverlayDark</item>
+        <item name="collapsingToolbarBackground">@color/about_toolbar_background</item>
+        <item name="android:windowBackground">@color/darkWindowBackground</item>
+        <item name="cardsBackground">@style/CardView.DarkStyle</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="MaterialDrawerTheme.TranslucentStatusBlack" parent="MaterialDrawerTheme">
+        <item name="icon">@color/colorPrimaryL</item>
+        <item name="colorPrimary">@color/grey900</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryBlack</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="android:textColorPrimaryInverseNoDisable">@color/colorAccentDark</item>
+        <item name="textButtonColor">@color/black</item>
+        <item name="buttonTint">@color/colorAccentDark</item>
+        <item name="cardBackgroundColor">@color/card_bg_dark</item>
+        <item name="material_drawer_secondary_text">#c8c8c8</item>
+        <item name="popup">@style/AppTheme.PopupOverlayDark</item>
+        <item name="toolbar">@style/AppTheme.AppBarOverlayDark</item>
+        <item name="collapsingToolbarBackground">@color/about_toolbar_background</item>
+        <item name="android:windowBackground">@color/darkWindowBackground</item>
+        <item name="cardsBackground">@style/CardView.DarkStyle</item>
+    </style>
+
+    <style name="MaterialDrawerTheme.Light.DarkToolbar.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlayLight" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlayLight" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.TableRow" parent="AppTheme">
+    <style name="AppTheme.AppBarOverlayDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlayDark" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="AppTheme.TableRow" parent="MaterialDrawerTheme.Light.DarkToolbar">
         <item name="buttonStyle" parent="?android:attr/buttonBarStyle">
             @style/Base.Widget.AppCompat.Button.Borderless.Colored
         </item>
@@ -39,9 +86,11 @@
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat" />
 
-    <style name="Settings" parent="Theme.AppCompat" />
+    <style name="Settings" parent="Theme.AppCompat">
+    </style>
 
-    <style name="Settings.Light" parent="Theme.AppCompat.Light" />
+    <style name="Settings.Light" parent="Theme.AppCompat.Light">
+    </style>
 
     <style name="RGBPanelLabel" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">@color/dark_gray</item>
@@ -62,22 +111,72 @@
     <style name="PaletteLight" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/light_silver</item>
         <item name="cardBackgroundColor">@color/white</item>
-
     </style>
 
     <style name="PaletteDark" parent="Theme.AppCompat.NoActionBar">
-
         <item name="cardBackgroundColor">@color/card_bg_dark</item>
-
     </style>
 
-    <style name="ProfileCardStyle" parent="CardView">
+    <!--Toolbar Style-->
+    <style name="RedToolbar">
+        <item name="colorPrimary">@color/red500</item>
+        <item name="colorPrimaryDark">@color/red900</item>
+        <item name="colorAccent">@color/red</item>
+    </style>
+    <style name="PinkToolbar">
+        <item name="colorPrimary">@color/pink500</item>
+        <item name="colorPrimaryDark">@color/pink900</item>
+        <item name="colorAccent">@color/pink</item>
+    </style>
+    <style name="IndigoToolbar">
+        <item name="colorPrimary">@color/indigo500</item>
+        <item name="colorPrimaryDark">@color/indigo900</item>
+        <item name="colorAccent">@color/indigo</item>
+    </style>
+    <style name="BlueToolbar">
+        <item name="colorPrimary">@color/blue500</item>
+        <item name="colorPrimaryDark">@color/blue900</item>
+        <item name="colorAccent">@color/blue</item>
+    </style>
+    <style name="GreenToolbar">
+        <item name="colorPrimary">@color/green500</item>
+        <item name="colorPrimaryDark">@color/green900</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+    <style name="AmberToolbar">
+        <item name="colorPrimary">@color/ambera700</item>
+        <item name="colorPrimaryDark">@color/amber900</item>
+        <item name="colorAccent">@color/amber</item>
+    </style>
+    <style name="DeepOrangeToolbar">
+        <item name="colorPrimary">@color/deep_orange500</item>
+        <item name="colorPrimaryDark">@color/deep_orange900</item>
+        <item name="colorAccent">@color/deep_orange500</item>
+    </style>
+    <style name="BlueGreyToolbar">
+        <item name="colorPrimary">@color/blue_grey500</item>
+        <item name="colorPrimaryDark">@color/blue_grey900</item>
+        <item name="colorAccent">@color/blue_grey</item>
+    </style>
+
+    <color name="colorPrimaryDarkL">#9e9e9e</color>
+    <color name="colorPrimaryL">#fff</color>
+    <color name="colorPrimaryBlack">#151515</color>
+
+    <style name="CardView.DarkStyle" parent="CardView.Dark">
+        <item name="cardBackgroundColor">@color/grey900</item>
         <item name="android:layout_marginLeft">@dimen/card_margin_horizontal</item>
         <item name="android:layout_marginRight">@dimen/card_margin_horizontal</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="cardCornerRadius">0dp</item>
         <item name="cardElevation">1dp</item>
-
     </style>
-
+    <style name="CardView.LightStyle" parent="CardView.Light">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/card_margin_horizontal</item>
+        <item name="android:layout_marginRight">@dimen/card_margin_horizontal</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardElevation">1dp</item>
+    </style>
 </resources>

@@ -3,11 +3,13 @@ package ru.SnowVolf.convertx.regexdragon;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -21,22 +23,42 @@ import ru.SnowVolf.convertx.R;
  */
 
 public class SpurFragment extends Fragment{
-    TextView spurr;
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View rootView = inflater.inflate(R.layout.fragment_spur, container, false);
-        spurr = (TextView) rootView.findViewById(R.id.regex_spur);
-        return rootView;
-    }
-    @Override
-    public void onDestroyView(){
-        super.onDestroyView();
-    }
+    private TextView spurr;
+    private View rootView;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        rootView = inflater.inflate(R.layout.fragment_spur, container, false);
+        spurr = (TextView) rootView.findViewById(R.id.regex_spur);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+        rootView = null;
+    }
+
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        if (menu != null) {
+            menu.clear();
+        } else
+            menu = new MenuBuilder(getContext());
+        menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            getActivity().finish();
+        return true;
     }
 
     public void onActivityCreated(Bundle savedInstanceState){

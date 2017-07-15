@@ -3,7 +3,7 @@
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    style="@style/AppTheme">
+    style="@style/MaterialDrawerTheme.Light.DarkToolbar">
     <RelativeLayout
         android:id="@+id/sheet_countainer"
         android:layout_width="match_parent"

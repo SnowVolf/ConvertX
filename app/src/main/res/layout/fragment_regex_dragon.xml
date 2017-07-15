@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_regex_dragon"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/dp8"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ru.SnowVolf.convertx.regexdragon.RegexDragonValidator"
-    tools:showIn="@layout/activity_regex_dragon">
+    android:paddingTop="@dimen/activity_vertical_margin">
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/c"
         android:layout_width="match_parent"

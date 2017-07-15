@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
-    <shortcut
+    <!--<shortcut
         android:shortcutId="settings"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_shortcut_settings"
         android:shortcutShortLabel="@string/settings"
         android:shortcutLongLabel="@string/settings"
         android:shortcutDisabledMessage="@string/settings">
@@ -11,35 +11,29 @@
             android:action="android.intent.action.VIEW"
             android:targetPackage="ru.SnowVolf.convertx"
             android:targetClass="ru.SnowVolf.convertx.settings.SettingsActivity" />
-        <!-- If your shortcut is associated with multiple intents, include them
-             here. The last intent in the list determines what the user sees when
-             they launch this shortcut. -->
+        <
         <categories android:name="android.shortcut.conversation" />
-    </shortcut>
+    </shortcut>-->
 
-    <shortcut
+    <!--<shortcut
         android:shortcutId="regex_dragon"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_shortcut_dragon"
         android:shortcutShortLabel="@string/title_activity_regex_dragon"
         android:shortcutLongLabel="@string/title_activity_regex_dragon"
         android:shortcutDisabledMessage="@string/title_activity_regex_dragon">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="ru.SnowVolf.convertx"
-            android:targetClass="ru.SnowVolf.convertx.regexdragon.RegexDragon" />
-        <!-- If your shortcut is associated with multiple intents, include them
-             here. The last intent in the list determines what the user sees when
-             they launch this shortcut. -->
+            android:targetClass="ru.SnowVolf.convertx.regexdragon.RegexDragonFragment" />
         <categories android:name="android.shortcut.conversation" />
-    </shortcut>
+    </shortcut>-->
+
     <shortcut
-        android:shortcutId="list"
+        android:shortcutId="palette"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:shortcutShortLabel="@string/app_name"
-        android:shortcutLongLabel="@string/app_name"
-        android:shortcutDisabledMessage="@string/app_name">
+        android:icon="@drawable/ic_shortcut_palette"
+        android:shortcutShortLabel="@string/shortcut_hex_palette">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="ru.SnowVolf.convertx"

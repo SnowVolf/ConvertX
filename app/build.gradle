@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     signingConfigs {
@@ -11,7 +13,7 @@ android {
         }
     }
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.3'
     def versionPropsFile = file('version.properties')
     if (versionPropsFile.canRead()) {
         def Properties versionProps = new Properties()
@@ -42,7 +44,7 @@ android {
             versionCode versionBuild
             versionName "${versionMajor}.${versionMinor}.${versionPatch} build ${versionBuild}"
             minSdkVersion 17
-            targetSdkVersion 25
+            targetSdkVersion 26
             vectorDrawables.useSupportLibrary = true
         }
 
@@ -62,7 +64,15 @@ android {
         allprojects {
             minifyEnabled true
             shrinkResources true
+            zipAlignEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled false
+            zipAlignEnabled true
         }
     }
     compileOptions {
@@ -71,7 +81,8 @@ android {
     }
 }
 ext {
-    supportLibVersion = "25.2.0"
+    supportLibVersion = "25.3.1"
+    materialDialogsVersion = "0.9.4.5"
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -82,13 +93,21 @@ dependencies {
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:support-v4:${supportLibVersion}"
-    compile 'com.afollestad.material-dialogs:core:0.9.3.0'
-    compile 'com.afollestad.material-dialogs:commons:0.9.3.0'
-    compile 'ch.acra:acra:4.9.2'
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile "com.android.support:support-vector-drawable:${supportLibVersion}"
+    compile "com.android.support:animated-vector-drawable:${supportLibVersion}"
+    compile "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
+    compile "com.afollestad.material-dialogs:commons:${materialDialogsVersion}"
+    compile('com.mikepenz:materialdrawer:5.9.2@aar')
+    {
+        transitive = true
+    }
+    compile 'com.rarepebble:colorpicker:2.2.0'
+    //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    compile 'com.faendir:acra:4.10.0'
     testCompile 'junit:junit:4.12'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

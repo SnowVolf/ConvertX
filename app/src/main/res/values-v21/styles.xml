@@ -1,33 +1,19 @@
 <resources>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MaterialDrawerTheme.Light.DarkToolbar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimaryL</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkL</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textButtonColor">@color/white</item>
-        <item name="drawerBkg">@drawable/head</item>
         <item name="android:colorControlHighlight">@color/grey800</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccentDark</item>
-        <item name="textButtonColor">@color/light_silver</item>
-        <item name="drawerBkg">@drawable/head_night</item>
-        <item name="android:buttonTint">@color/colorAccentDark</item>
-        <item name="android:colorControlHighlight">@color/colorAccentDark</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="icon">@color/grey800</item>
+        <item name="material_drawer_secondary_text">#616161
+        </item>
+        <item name="collapsingToolbarBackground">@color/colorPrimaryL</item>
+        <item name="android:windowBackground">@color/light_silver</item>
+        <item name="cardsBackground">@style/CardView.LightStyle</item>
     </style>
 </resources>

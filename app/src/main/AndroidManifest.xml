@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ru.SnowVolf.convertx">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -12,39 +15,48 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="false"
+        android:resizeableActivity="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        tools:replace="android:name"
+        tools:targetApi="n">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.activity.MainActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
+            <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
+            <meta-data
+                android:name="android.max_aspect"
+                android:value="2.1" />
         </activity>
         <activity
-            android:name=".settings.SettingsActivity"
-            android:label="@string/settings"
-            android:theme="@style/Settings" />
-        <activity
-            android:name=".regexdragon.RegexDragon"
-            android:label="@string/title_activity_regex_dragon"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".palette.PaletteActivity" />
-        <activity
-            android:name=".other.AboutActivity"
-            android:label="@string/about_program"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".other.ChangelistActivity"
-            android:label="@string/changelog"
-            android:theme="@style/AppTheme"/>
+            android:name=".palette.PaletteActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:documentLaunchMode="intoExisting"
+            android:label="@string/activity_palette"
+            android:theme="@style/PaletteLight"
+            tools:targetApi="lollipop">
+
+            <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
+            <meta-data
+                android:name="android.max_aspect"
+                android:value="2.1" />
+        </activity>
+        <activity android:name=".ui.activity.BaseActivity"/>
+        <activity android:name=".settings.SettingsActivity"
+            android:label="@string/settings">
+            <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
+            <meta-data
+                android:name="android.max_aspect"
+                android:value="2.1" />
+        </activity>
     </application>
 
 </manifest>

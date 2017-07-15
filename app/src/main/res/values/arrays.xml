@@ -2,9 +2,32 @@
 <resources>
     <string-array name="baseAlgVal">
         <item>No wrap (default)</item>
+        <item>No close</item>
         <item>No padding</item>
         <item>URL safe</item>
+        <item>CRLF</item>
         <item>Default</item>
     </string-array>
 
+    <string-array name="coderNames">
+        <item>@string/checksum_md</item>
+        <item>@string/checksum_crc</item>
+        <item>@string/checksum_adler32</item>
+        <item>@string/unescape_xml</item>
+        <item>@string/timestamp_converter</item>
+    </string-array>
+    <string-array name="hexMode">
+        <item>String</item>
+        <item>Integer</item>
+    </string-array>
+    <string-array name="theme_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="theme_names">
+        <item>@string/app_theme_light</item>
+        <item>@string/app_theme_dark</item>
+        <item>@string/app_theme_dark_toolbar</item>
+    </string-array>
 </resources>
