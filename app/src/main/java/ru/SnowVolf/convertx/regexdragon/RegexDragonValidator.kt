@@ -58,8 +58,8 @@ class RegexDragonValidator : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         currentFlag!!.text = flags.flagString
-        regexVal.textSize = Preferences.getFontSize().toFloat()
-        sourceSoup.textSize = Preferences.getFontSize().toFloat()
+        regexVal.textSize = Preferences.fontSize.toFloat()
+        sourceSoup.textSize = Preferences.fontSize.toFloat()
         regexVal.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 

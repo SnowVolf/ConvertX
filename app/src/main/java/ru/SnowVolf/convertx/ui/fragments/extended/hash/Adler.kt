@@ -25,11 +25,11 @@ class Adler : BaseFragment() {
     lateinit var dataOut: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(R.layout.fragment_ex, container, false)
-        data = rootView?.findViewById(R.id.exData) as EditText
+        rootView = inflater.inflate(R.layout.fragment_ex, container, false)
+        data = rootView.findViewById(R.id.exData) as EditText
         data.setHint(R.string.hint_adler32)
         data.isFocusable = true
-        dataOut = rootView?.findViewById(R.id.exText) as TextView
+        dataOut = rootView.findViewById(R.id.exText) as TextView
         return rootView
     }
 
@@ -41,7 +41,7 @@ class Adler : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         TITLE = R.string.hint_adler32
-        data.textSize = Preferences.getFontSize().toFloat()
+        data.textSize = Preferences.fontSize.toFloat()
         data.typeface = Mono
         dataOut.typeface = Mono
         data.addTextChangedListener(object : TextWatcher {
@@ -71,11 +71,7 @@ class Adler : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        var menu = menu
-        if (menu != null) {
-            menu.clear()
-        } else
-            menu = MenuBuilder(context)
+        menu.clear()
         //добавляем пункты меню
         menu.add(R.string.copy2clipboard)
             .setIcon(R.drawable.ic_menu_copy)
@@ -95,7 +91,7 @@ class Adler : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item!!.itemId == android.R.id.home)
+        if (item.itemId == android.R.id.home)
             requireActivity().finish()
         return true
     }

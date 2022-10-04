@@ -42,7 +42,7 @@ class CRC : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         TITLE = R.string.hint_crc
-        data.textSize = Preferences.getFontSize().toFloat()
+        data.textSize = Preferences.fontSize.toFloat()
         data.typeface = Mono
         dataOut.typeface = Mono
         data.addTextChangedListener(object : TextWatcher {
@@ -65,11 +65,7 @@ class CRC : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        var menu = menu
-        if (menu != null) {
-            menu.clear()
-        } else
-            menu = MenuBuilder(context)
+        menu.clear()
         //добавляем пункты меню
         menu.add(R.string.copy2clipboard)
             .setIcon(R.drawable.ic_menu_copy)

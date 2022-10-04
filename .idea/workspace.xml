@@ -15,83 +15,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/TheoryFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/ChangelistFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/Misc.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/algorhitms/DecoderAlgs.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/RegexDragonFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/SpurFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/Preferences.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/Interfacer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/BaseActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseMainFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/ColorConverterFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/MdSha.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/Base64Fragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/FontsTesterFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/HexFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/UnicodeFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/Other/Extras.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/palette/PaletteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/palette/PaletteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/NestedWebView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/NestedWebView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/RegexDragonFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/RegexDragonFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/algorhitms/DecoderAlgs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/RegexDragonFragment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/RegexDragonValidator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/RegexDragonValidator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/SpurFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/SpurFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/TheoryFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/UrlExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/UrlExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/ViewPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/ViewPagerAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/CircleImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/CircleImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/Toasty.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/Toasty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseMainFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseMainFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/ColorConverterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/ColorConverterFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/regexdragon/SpurFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/Preferences.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/settings/SettingsFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/Interfacer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/BaseActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/base/BaseMainFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/ColorConverterFragment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/TimestampFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/TimestampFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/UnescaperFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/UnescaperFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/Adler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/Adler.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/CRC.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/CRC.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/MdSha.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/MdSha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extended/hash/MdSha.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/AboutFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/AboutFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/ChangelistFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/ChangelistFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/ChangelistFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/ListCoders.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/extra/ListCoders.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/Base64Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/Base64Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/FontsTesterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/FontsTesterFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/HexFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/HexFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/RgbFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/RgbFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/UnicodeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/UnicodeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/RuntimePermission.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/RuntimePermission.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/StringUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/StringUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/ToastyUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/utils/ToastyUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_changelist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_color_palette.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_color_palette.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_rgb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_rgb.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_regex_dragon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_regex_dragon.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_bottom_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_bottom_sheet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_enter_text.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_enter_text.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ex.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ex_encoders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ex_encoders.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_threory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_threory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_rgb_simple.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_rgb_simple.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/palette_colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/palette_colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/palette_ex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/palette_ex.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/row_palette.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/row_palette.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/widget_toast_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_toast_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/Base64Fragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/FontsTesterFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/HexFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/SnowVolf/convertx/ui/fragments/main/UnicodeFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_about.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_base64.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_dark_theme.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_hex.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_light_theme.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_other_coders.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_palette.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_regexdragon.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_rgb.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dr_unicode.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_exit.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3400,6 +3378,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="288" />
     <property name="VectorAssetImportPath" value="C:\ProjectX" />
+    <property name="android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/SnowVolf/convertx/ui/CircleImageView.java_SELECTED" value="CircleImageView" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="C:/android-sdk" />
@@ -3653,6 +3632,14 @@
       <option name="presentableId" value="Default" />
       <updated>1485534024097</updated>
     </task>
+    <task id="LOCAL-00001" summary="Factored to new BuildTools and newest Android Studio">
+      <created>1664878074692</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664878074692</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3749,6 +3736,13 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Factored to new BuildTools and newest Android Studio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Factored to new BuildTools and newest Android Studio" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/local.properties">

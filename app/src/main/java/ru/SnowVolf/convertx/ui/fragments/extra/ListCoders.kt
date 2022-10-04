@@ -50,11 +50,7 @@ class ListCoders : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        var menu = menu
-        if (menu != null) {
-            menu.clear()
-        } else
-            menu = MenuBuilder(context)
+        menu.clear()
         menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
     }
 

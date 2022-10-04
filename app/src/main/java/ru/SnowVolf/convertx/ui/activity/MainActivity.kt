@@ -88,7 +88,7 @@ class MainActivity : BaseActivity() {
                     .replace(R.id.frame_container, UnicodeFragment())
                     .commit()
                 supportFragmentManager.popBackStack()
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             }
         Log.i(TAG, "OnAdd DrawerItem : 2")
@@ -105,7 +105,7 @@ class MainActivity : BaseActivity() {
                     .beginTransaction()
                     .replace(R.id.frame_container, Base64Fragment())
                     .commit()
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             }
         Log.i(TAG, "OnAdd DrawerItem : 3")
@@ -122,7 +122,7 @@ class MainActivity : BaseActivity() {
                     .beginTransaction()
                     .replace(R.id.frame_container, HexFragment())
                     .commit()
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             }
         Log.i(TAG, "OnAdd DrawerItem : 4")
@@ -152,7 +152,7 @@ class MainActivity : BaseActivity() {
                     .beginTransaction()
                     .replace(R.id.frame_container, FontsTesterFragment())
                     .commit()
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             }
         Log.i(TAG, "OnAdd DrawerItem : 5")
@@ -171,7 +171,7 @@ class MainActivity : BaseActivity() {
                     ex.printStackTrace()
                 }
                 Log.i(TAG, "StartFragment : Dragon")
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             }
         Log.i(TAG, "OnAdd DrawerItem : 6")
@@ -188,7 +188,7 @@ class MainActivity : BaseActivity() {
                     .beginTransaction().replace(R.id.frame_container, ListCoders())
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit()
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             }
         val secondaryOther = SecondaryDrawerItem()
@@ -221,7 +221,7 @@ class MainActivity : BaseActivity() {
                     .replace(R.id.frame_container, AboutFragment())
                     .addToBackStack(null)
                     .commit()
-                Preferences.setDrawerPosition(position)
+                Preferences.drawerPosition = position
                 false
             })
         Log.i(TAG, "OnAdd DrawerItem : 9")
@@ -280,13 +280,13 @@ class MainActivity : BaseActivity() {
                 about,
                 kill
             ).build()
-        result.setSelection(preferences.getInt("drawer.position", 1).toLong())
+        result.setSelection(preferences?.getInt("drawer.position", 1)!!.toLong())
     }
 
     override fun onBackPressed() {
-        if (result!!.isDrawerOpen) {
-            result!!.closeDrawer()
-        } else if (Preferences.isTwiceBackAllowed()) {
+        if (result.isDrawerOpen) {
+            result.closeDrawer()
+        } else if (Preferences.isTwiceBackAllowed) {
             if (supportFragmentManager.backStackEntryCount == 0) {
                 if (press_time + 2000 > System.currentTimeMillis()) {
                     finish()

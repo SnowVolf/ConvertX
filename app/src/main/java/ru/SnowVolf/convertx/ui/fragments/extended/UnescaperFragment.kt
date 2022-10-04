@@ -25,7 +25,7 @@ class UnescaperFragment : BaseFragment() {
     lateinit var dataOut: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(R.layout.fragment_ex, container, false)
+        rootView = inflater.inflate(R.layout.fragment_ex, container, false)
         data = rootView?.findViewById(R.id.exData) as EditText
         data.hint = "Текст зашифрованого XML"
         data.isFocusable = true
@@ -44,7 +44,7 @@ class UnescaperFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         TITLE = R.string.xml
         data.typeface = Mono
-        data.textSize = Preferences.getFontSize().toFloat()
+        data.textSize = Preferences.fontSize.toFloat()
         dataOut.typeface = Mono
         data.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
@@ -60,11 +60,7 @@ class UnescaperFragment : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        var menu = menu
-        if (menu != null) {
-            menu.clear()
-        } else
-            menu = MenuBuilder(context)
+        menu.clear()
         //добавляем пункты меню
         menu.add(R.string.copy2clipboard)
             .setIcon(R.drawable.ic_menu_copy)

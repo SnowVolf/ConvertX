@@ -24,7 +24,7 @@ class TimestampFragment : BaseFragment() {
     lateinit var normalDate: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(R.layout.fragment_timestamp, container, false)
+        rootView = inflater.inflate(R.layout.fragment_timestamp, container, false)
         Timestamp = rootView?.findViewById(R.id.Timestamp) as EditText
         Timestamp.hint = getString(R.string.hint_timestamp)
         Timestamp.isFocusable = true
@@ -43,7 +43,7 @@ class TimestampFragment : BaseFragment() {
         TITLE = R.string.hint_timestamp
         Timestamp.typeface = Mono
         normalDate.typeface = Mono
-        Timestamp.textSize = Preferences.getFontSize().toFloat()
+        Timestamp.textSize = Preferences.fontSize.toFloat()
         Timestamp.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
@@ -66,11 +66,7 @@ class TimestampFragment : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        var menu = menu
-        if (menu != null) {
-            menu.clear()
-        } else
-            menu = MenuBuilder(context)
+        menu.clear()
         //добавляем пункты меню
         menu.add(R.string.cur_timestamp)
             .setIcon(R.drawable.ic_menu_insert_text)

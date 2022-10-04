@@ -1,0 +1,61 @@
+package ru.SnowVolf.convertx.regexdragon
+
+import android.widget.TextView
+import android.os.Bundle
+import ru.SnowVolf.convertx.R
+import android.graphics.Typeface
+import android.view.*
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.fragment.app.Fragment
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.lang.StringBuilder
+
+/**
+ * Created by Snow Volf on 02.03.2017, 20:31
+ */
+class SpurFragment : Fragment() {
+    private var spurr: TextView? = null
+    private lateinit var rootView: View
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(R.layout.fragment_spur, container, false)
+        spurr = rootView.findViewById<View>(R.id.regex_spur) as TextView
+        return rootView
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) activity!!.finish()
+        return true
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val sb = StringBuilder()
+        try {
+            val br = BufferedReader(InputStreamReader(context!!.assets.open("SPUR.md"), "UTF-8"))
+            var line: String?
+            while (br.readLine().also { line = it } != null) {
+                sb.append(line).append("\n")
+            }
+            br.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        val Mono = Typeface.createFromAsset(context!!.assets, "fonts/RobotoMono-Regular.ttf")
+        spurr!!.typeface = Mono
+        spurr!!.text = sb
+    }
+}
