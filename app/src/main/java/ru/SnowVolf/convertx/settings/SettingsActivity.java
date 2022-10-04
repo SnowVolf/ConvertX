@@ -2,12 +2,13 @@ package ru.SnowVolf.convertx.settings;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.Toolbar;
 
 import ru.SnowVolf.convertx.R;
 import ru.SnowVolf.convertx.ui.activity.BaseActivity;

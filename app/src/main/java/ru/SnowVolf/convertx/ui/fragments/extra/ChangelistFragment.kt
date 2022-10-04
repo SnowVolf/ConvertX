@@ -1,77 +1,77 @@
-package ru.SnowVolf.convertx.ui.fragments.extra;
+package ru.SnowVolf.convertx.ui.fragments.extra
 
-import android.graphics.Typeface;
-import android.os.Bundle;
-import android.support.v7.view.menu.MenuBuilder;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.content.Context
+import android.content.pm.PackageManager
+import android.graphics.Typeface
+import android.os.Bundle
+import android.util.Log
+import android.view.*
+import android.widget.TextView
+import androidx.appcompat.view.menu.MenuBuilder
+import ru.SnowVolf.convertx.R
+import ru.SnowVolf.convertx.settings.DefStrings.TAG
+import ru.SnowVolf.convertx.ui.activity.MainActivity
+import ru.SnowVolf.convertx.ui.fragments.base.BaseFragment
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import ru.SnowVolf.convertx.R;
-import ru.SnowVolf.convertx.other.Extras;
-import ru.SnowVolf.convertx.settings.DefStrings;
-import ru.SnowVolf.convertx.ui.activity.MainActivity;
-import ru.SnowVolf.convertx.ui.fragments.base.BaseFragment;
-
-public class ChangelistFragment extends BaseFragment {
-    private TextView changelog;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.activity_changelist, container, false);
-        changelog = (TextView) rootView.findViewById(R.id.text_changelog);
-        return rootView;
+class ChangelistFragment : BaseFragment() {
+    private var changelog: TextView? = null
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(R.layout.activity_changelist, container, false)
+        changelog = rootView.findViewById<View>(R.id.text_changelog) as TextView
+        return rootView
     }
 
-    public void onCreate(Bundle bundle){
-        super.onCreate(bundle);
-        setHasOptionsMenu(true);
-        Log.i(DefStrings.INSTANCE.getTAG(), "StartFragment : Changelist");
+    override fun onCreate(bundle: Bundle?) {
+        super.onCreate(bundle)
+        setHasOptionsMenu(true)
+        Log.i(TAG, "StartFragment : Changelist")
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        TITLE = R.string.changelog;
-        ((MainActivity) getActivity()).setToolbarSubtitle(Extras.getBuildName(getContext()));
-
-        final StringBuilder sb = new StringBuilder();
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        TITLE = R.string.changelog
+        (activity as MainActivity?)!!.setToolbarSubtitle(getBuildName(requireContext()))
+        val sb = StringBuilder()
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(getContext().getAssets().open("CHANGELOG.javagirl"), "UTF-8"));
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
+            val br = BufferedReader(InputStreamReader(requireContext().assets.open("CHANGELOG.javagirl"), "UTF-8"))
+            var line: String?
+            while (br.readLine().also { line = it } != null) {
+                sb.append(line).append("\n")
             }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            br.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
-        Typeface Mono = Typeface.createFromAsset(getContext().getAssets(), "fonts/RobotoMono-Regular.ttf");
-        changelog.setTypeface(Mono);
-        changelog.setText(sb);
+        val Mono = Typeface.createFromAsset(requireContext().assets, "fonts/RobotoMono-Regular.ttf")
+        changelog!!.setTypeface(Mono)
+        changelog!!.text = sb
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        var menu: Menu? = menu
         if (menu != null) {
-            menu.clear();
-        } else
-            menu = new MenuBuilder(getContext());
-        menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            menu.clear()
+        } else menu = MenuBuilder(context)
+        menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            getActivity().finish();
-        return true;
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) requireActivity().finish()
+        return true
+    }
+
+    fun getBuildName(context: Context): String {
+        var programBuild = "" //context.getString(R.string.app_name);
+        try {
+            val pkg = context.packageName
+            val pkgInfo = context.packageManager.getPackageInfo(pkg, PackageManager.GET_META_DATA)
+            programBuild += " v." + pkgInfo.versionName
+        } catch (e1: PackageManager.NameNotFoundException) {
+            e1.printStackTrace()
+        }
+        return programBuild
     }
 }

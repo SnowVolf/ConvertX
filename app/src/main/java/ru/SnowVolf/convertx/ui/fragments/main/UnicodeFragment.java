@@ -1,7 +1,6 @@
 package ru.SnowVolf.convertx.ui.fragments.main;
 
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import ru.SnowVolf.convertx.R;
 import ru.SnowVolf.convertx.algorhitms.DecoderAlgs;

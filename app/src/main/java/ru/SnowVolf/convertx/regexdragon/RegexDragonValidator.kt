@@ -3,15 +3,15 @@ package ru.SnowVolf.convertx.regexdragon
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
-import android.support.v4.app.Fragment
-import android.support.v7.view.menu.MenuBuilder
 import android.text.Editable
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.view.*
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
 import ru.SnowVolf.convertx.R
 import ru.SnowVolf.convertx.settings.Preferences
 import java.util.regex.Pattern
@@ -30,9 +30,11 @@ class RegexDragonValidator : Fragment() {
     private var rootView: View? = null
     private val flags = Flags()
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(R.layout.fragment_regex_dragon, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        rootView = inflater.inflate(R.layout.fragment_regex_dragon, container, false)
         regexVal = rootView?.findViewById(R.id.regex_text) as TextInputEditText
         sourceSoup = rootView?.findViewById(R.id.plain_text) as TextInputEditText
         counter = rootView?.findViewById(R.id.regex_count) as TextView
@@ -92,26 +94,26 @@ class RegexDragonValidator : Fragment() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         var menu = menu
         if (menu != null) {
             menu.clear()
         } else
             menu = MenuBuilder(context)
         menu.add(R.string.clear_all)
-                .setIcon(R.drawable.ic_menu_clear_all)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener { menuItem ->
-                    clearAllText()
-                    true
-                }
+            .setIcon(R.drawable.ic_menu_clear_all)
+            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            .setOnMenuItemClickListener { menuItem ->
+                clearAllText()
+                true
+            }
         menu.add(R.string.flags)
-                .setIcon(R.drawable.ic_menu_regex_flags)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener { menuItem ->
-                    showFlagsList()
-                    true
-                }
+            .setIcon(R.drawable.ic_menu_regex_flags)
+            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            .setOnMenuItemClickListener { menuItem ->
+                showFlagsList()
+                true
+            }
     }
 
     @SuppressLint("SetTextI18n")

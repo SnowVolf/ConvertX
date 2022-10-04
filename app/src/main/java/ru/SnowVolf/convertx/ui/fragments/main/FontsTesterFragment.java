@@ -1,13 +1,7 @@
 package ru.SnowVolf.convertx.ui.fragments.main;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.AppCompatImageButton;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,15 +14,16 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.rarepebble.colorpicker.ColorPickerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.AppCompatImageButton;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import ru.SnowVolf.convertx.R;
 import ru.SnowVolf.convertx.settings.Preferences;
-import ru.SnowVolf.convertx.ui.Toasty;
 import ru.SnowVolf.convertx.ui.fragments.base.BaseFragment;
-import ru.SnowVolf.convertx.utils.StringUtils;
 
 /**
  * Created by Snow Volf on 04.07.2017, 18:15
@@ -80,10 +75,10 @@ public class FontsTesterFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
         TITLE = R.string.dr_fonts_tester;
-        mFontBackground.setOnClickListener(v -> showColorBackgroundDialog());
+        //mFontBackground.setOnClickListener(v -> showColorBackgroundDialog());
         mEditLayout.setOnClickListener(v -> showFontTextDialog());
         mBackgroundLayout.setBackgroundColor(Preferences.getColorBackground());
-        mFontColorLayout.setOnClickListener(v -> showFontColorDialog());
+        //mFontColorLayout.setOnClickListener(v -> showFontColorDialog());
         setAllText(Preferences.getTextString());
         setAllTextColor(Preferences.getColorText());
 
@@ -209,60 +204,60 @@ public class FontsTesterFragment extends BaseFragment {
                 .show();
     }
 
-    private void showFontColorDialog(){
-        ColorPickerView pickerView = new ColorPickerView(getActivity());
-        pickerView.setColor(Preferences.getColorText());
-        pickerView.showAlpha(false);
-        AlertDialog dialog = new AlertDialog.Builder(getContext())
-                .setTitle(R.string.font_color)
-                .setView(pickerView)
-                .setPositiveButton(R.string.ok, (d, i) -> {
-                    Preferences.setColorText(pickerView.getColor());
-                    setAllTextColor(pickerView.getColor());
-                })
-                .setNegativeButton(R.string.cancel, null)
-                .setNeutralButton(R.string.paste, null)
-                .show();
-        dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(v1 -> {
-            String color = StringUtils.INSTANCE.readFromClipboard();
-            if (color != null && color.matches("#([0-9A-f]{6})")){
-                pickerView.setColor(Color.parseColor(color));
-            } else if (color != null && color.matches("#([0-9A-f]{8})")){
-                pickerView.setColor(Color.parseColor(color));
-            } else if (color != null && !color.matches("#([0-9A-f]{6})") && !color.matches("#([0-9A-f]{8})")){
-                Toasty.error(getActivity(), getString(R.string.color_dosent_match_regexp), Toast.LENGTH_SHORT, true).show();
-            } else {
-                Toasty.error(getContext(), "NULL", Toast.LENGTH_LONG, true).show();
-            }
-        });
-    }
+//    private void showFontColorDialog(){
+//        ColorPickerView pickerView = new ColorPickerView(getActivity());
+//        pickerView.setColor(Preferences.getColorText());
+//        pickerView.showAlpha(false);
+//        AlertDialog dialog = new AlertDialog.Builder(getContext())
+//                .setTitle(R.string.font_color)
+//                .setView(pickerView)
+//                .setPositiveButton(R.string.ok, (d, i) -> {
+//                    Preferences.setColorText(pickerView.getColor());
+//                    setAllTextColor(pickerView.getColor());
+//                })
+//                .setNegativeButton(R.string.cancel, null)
+//                .setNeutralButton(R.string.paste, null)
+//                .show();
+//        dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(v1 -> {
+//            String color = StringUtils.INSTANCE.readFromClipboard();
+//            if (color != null && color.matches("#([0-9A-f]{6})")){
+//                pickerView.setColor(Color.parseColor(color));
+//            } else if (color != null && color.matches("#([0-9A-f]{8})")){
+//                pickerView.setColor(Color.parseColor(color));
+//            } else if (color != null && !color.matches("#([0-9A-f]{6})") && !color.matches("#([0-9A-f]{8})")){
+//                Toasty.error(getActivity(), getString(R.string.color_dosent_match_regexp), Toast.LENGTH_SHORT, true).show();
+//            } else {
+//                Toasty.error(getContext(), "NULL", Toast.LENGTH_LONG, true).show();
+//            }
+//        });
+//    }
 
-    private void showColorBackgroundDialog(){
-        ColorPickerView pickerView = new ColorPickerView(getActivity());
-        pickerView.setColor(Preferences.getColorBackground());
-        pickerView.showAlpha(false);
-        AlertDialog dialog = new AlertDialog.Builder(getContext())
-                .setTitle(R.string.backround_color)
-                .setView(pickerView)
-                .setPositiveButton(R.string.ok, (d, i) -> {
-                    Preferences.setColorBackground(pickerView.getColor());
-                    mBackgroundLayout.setBackgroundColor(pickerView.getColor());
-                })
-                .setNegativeButton(R.string.cancel, null)
-                .setNeutralButton(R.string.paste, null)
-                .show();
-                dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(v1 -> {
-                    String color = StringUtils.INSTANCE.readFromClipboard();
-                    if (color != null && color.matches("#([0-9A-f]{6})")){
-                        pickerView.setColor(Color.parseColor(color));
-                    } else if (color != null && color.matches("#([0-9A-f]{8})")){
-                        pickerView.setColor(Color.parseColor(color));
-                    } else if (color != null && !color.matches("#([0-9A-f]{6})") && !color.matches("#([0-9A-f]{8})")){
-                        Toasty.error(getActivity(), getString(R.string.color_dosent_match_regexp), Toast.LENGTH_SHORT, true).show();
-                    } else {
-                        Toasty.error(getContext(), "NULL", Toast.LENGTH_LONG, true).show();
-                    }
-        });
-    }
+//    private void showColorBackgroundDialog(){
+//        ColorPickerView pickerView = new ColorPickerView(getActivity());
+//        pickerView.setColor(Preferences.getColorBackground());
+//        pickerView.showAlpha(false);
+//        AlertDialog dialog = new AlertDialog.Builder(getContext())
+//                .setTitle(R.string.backround_color)
+//                .setView(pickerView)
+//                .setPositiveButton(R.string.ok, (d, i) -> {
+//                    Preferences.setColorBackground(pickerView.getColor());
+//                    mBackgroundLayout.setBackgroundColor(pickerView.getColor());
+//                })
+//                .setNegativeButton(R.string.cancel, null)
+//                .setNeutralButton(R.string.paste, null)
+//                .show();
+//                dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(v1 -> {
+//                    String color = StringUtils.INSTANCE.readFromClipboard();
+//                    if (color != null && color.matches("#([0-9A-f]{6})")){
+//                        pickerView.setColor(Color.parseColor(color));
+//                    } else if (color != null && color.matches("#([0-9A-f]{8})")){
+//                        pickerView.setColor(Color.parseColor(color));
+//                    } else if (color != null && !color.matches("#([0-9A-f]{6})") && !color.matches("#([0-9A-f]{8})")){
+//                        Toasty.error(getActivity(), getString(R.string.color_dosent_match_regexp), Toast.LENGTH_SHORT, true).show();
+//                    } else {
+//                        Toasty.error(getContext(), "NULL", Toast.LENGTH_LONG, true).show();
+//                    }
+//        });
+//    }
 
 }

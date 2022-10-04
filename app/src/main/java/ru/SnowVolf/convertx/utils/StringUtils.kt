@@ -15,7 +15,7 @@ object StringUtils {
     fun copyToClipboard(context: Context, code: String) {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("char", code)
-        clipboard.primaryClip = clip
+        clipboard.setPrimaryClip(clip)
     }
 
     fun readFromClipboard(): String? {

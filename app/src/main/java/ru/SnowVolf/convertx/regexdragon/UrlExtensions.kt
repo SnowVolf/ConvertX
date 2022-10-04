@@ -2,13 +2,15 @@ package ru.SnowVolf.convertx.regexdragon
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 
 import com.afollestad.materialdialogs.MaterialDialog
 
 import ru.SnowVolf.convertx.R
-import ru.SnowVolf.convertx.other.Extras
+import ru.SnowVolf.convertx.settings.DefStrings
 import ru.SnowVolf.convertx.ui.Toasty
 import ru.SnowVolf.convertx.utils.StringUtils
 
@@ -37,7 +39,7 @@ internal object UrlExtensions {
                         val id = finalIds[which]
                         try {
                             when (id) {
-                                OPEN_IN_BROWSER -> Extras.goLink(activity, url, "")
+                                OPEN_IN_BROWSER -> goLink(activity, url, "")
                                 SHARE_IT -> {
                                     val intent2 = shareText(url, url)
                                     activity.startActivity(intent2)
@@ -49,7 +51,6 @@ internal object UrlExtensions {
                             }
                         } catch (ignored: Throwable) {
                         }
-
                         dialog.dismiss()
                     }
                     .show()
@@ -68,5 +69,19 @@ internal object UrlExtensions {
         intent.putExtra(Intent.EXTRA_TEXT, text)
         intent.type = "text/plain"
         return intent
+    }
+
+    /**
+     * Чтобы не создавать один и тот же код много раз
+     * 3 строки кода заменяем одной, потом юзаем где хотим
+     */
+    //контекст берем от Activity, иначе будет падать на некоторых прошивках
+    fun goLink(context: Activity, link: String, info: String) {
+        val uri = Uri.parse(link)
+        val linkIntent = Intent(Intent.ACTION_VIEW, uri)
+        //без этого флага крашится на некоторых устройствах
+        linkIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        Log.w(DefStrings.TAG, "Activity New Task ok")
+        context.startActivity(Intent.createChooser(linkIntent, info))
     }
 }

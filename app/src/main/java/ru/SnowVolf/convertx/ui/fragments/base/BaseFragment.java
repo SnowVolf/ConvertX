@@ -2,9 +2,10 @@ package ru.SnowVolf.convertx.ui.fragments.base;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
 import android.view.View;
+
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 import ru.SnowVolf.convertx.R;
 

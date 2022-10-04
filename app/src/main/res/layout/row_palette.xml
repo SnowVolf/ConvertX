@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/dp6"
     android:paddingBottom="@dimen/dp6"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="2dp">
@@ -32,7 +32,7 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:paddingEnd="@dimen/dp12"
-                android:id="@+id/colorHex"/>
+                android:id="@+id/colorHex" />
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

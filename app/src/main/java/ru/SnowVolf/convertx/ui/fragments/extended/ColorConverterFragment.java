@@ -2,7 +2,6 @@ package ru.SnowVolf.convertx.ui.fragments.extended;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuBuilder;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -15,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.view.menu.MenuBuilder;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

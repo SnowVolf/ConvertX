@@ -1,61 +1,61 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'kotlin-android-extensions'
 
+def Properties versionProps = new Properties()
+
 android {
-    signingConfigs {
-        allprojects {
-            storeFile file('C:/AndroidOld/UnrealCommander/app/SVolfDev.key')
-            keyAlias 'SVolf Releases'
-            keyPassword 'SVolf Android Dev'
-            storePassword 'Snow_Volf'
-        }
-    }
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+
+    compileSdkVersion 33
     def versionPropsFile = file('version.properties')
     if (versionPropsFile.canRead()) {
-        def Properties versionProps = new Properties()
 
         versionProps.load(new FileInputStream(versionPropsFile))
 
-        def value = 0
-
         def runTasks = gradle.startParameter.taskNames
-        if ('assemble' in runTasks || 'assembleRelease' in runTasks || 'aR' in runTasks) {
-            value = 1;
+
+        def versionMajor = versionProps['VERSION_MAJOR'].toInteger()
+        def versionMinor = versionProps['VERSION_MINOR'].toInteger()
+        def versionPatch = versionProps['VERSION_PATCH'].toInteger()
+        // increment build number on every gradle sync
+        def versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
+        // versionProps['CACHED_VERSION']
+        // Используется для поддержки Instant Run в дебаг режиме. Потому что при инкрементальном обновлении постоянно меняется versionCode
+        // в AndroidManifest.xml из-за чего применение изменений становится невозможным без полной установки приложения.
+        // Этот костыль берет для дебаг версии versionCode с последней релизной сборки и не меняет его на протяжении всего процесса debug сборок,
+        // обновляется на новое, в тот момент, когда происходит релизная сборка проекта
+
+
+        // only in release build
+        if (':app:assembleRelease' in runTasks || 'aR' in runTasks) {
+            versionPatch++;
+            if (versionPatch >= 9) {
+                versionPatch = 0;
+                versionMinor++;
+            }
+            if (versionMinor >= 9) {
+                versionMinor = 0;
+                versionMajor++;
+            }
+            // sync if release
+            versionProps['CACHED_VERSION'] = versionBuild.toString()
         }
 
-        def versionMajor = versionProps['VERSION_MAJOR'].toInteger() + value
-        def versionMinor = versionProps['VERSION_MINOR'].toInteger() + value
-        def versionPatch = versionProps['VERSION_PATCH'].toInteger() + value
-        def versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
-        def versionNumber = versionProps['VERSION_NUMBER'].toInteger() + value
-
+        versionProps['VERSION_MAJOR'] = versionMajor.toString()
+        versionProps['VERSION_MINOR'] = versionMinor.toString()
         versionProps['VERSION_PATCH'] = versionPatch.toString()
         versionProps['VERSION_BUILD'] = versionBuild.toString()
-        versionProps['VERSION_NUMBER'] = versionNumber.toString()
 
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
             applicationId "ru.SnowVolf.convertx"
+            minSdk 21
+            //noinspection ExpiredTargetSdkVersion
+            targetSdk 30
             versionCode versionBuild
-            versionName "${versionMajor}.${versionMinor}.${versionPatch} build ${versionBuild}"
-            minSdkVersion 17
-            targetSdkVersion 26
-            vectorDrawables.useSupportLibrary = true
-        }
-
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                def fileNaming = "apk/ConvertX"
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    output.outputFile = new File(getProject().getRootDir(), "${fileNaming}-${versionMajor}.${versionMinor}.${versionPatch} b${versionBuild}.apk")
-                }
-            }
+            versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+            multiDexEnabled true
         }
     } else {
         throw new GradleException("Could not read version.properties!")
@@ -76,37 +76,39 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        // Flag to enable support for the new language APIs
+        //coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    namespace 'ru.SnowVolf.convertx'
+    defaultConfig {
+        signingConfig signingConfigs.debug
     }
 }
 ext {
-    supportLibVersion = "25.3.1"
     materialDialogsVersion = "0.9.4.5"
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile "com.android.support:appcompat-v7:${supportLibVersion}"
-    compile "com.android.support:design:${supportLibVersion}"
-    compile "com.android.support:cardview-v7:${supportLibVersion}"
-    compile "com.android.support:support-v4:${supportLibVersion}"
-    compile "com.android.support:support-vector-drawable:${supportLibVersion}"
-    compile "com.android.support:animated-vector-drawable:${supportLibVersion}"
-    compile "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
-    compile "com.afollestad.material-dialogs:commons:${materialDialogsVersion}"
-    compile('com.mikepenz:materialdrawer:5.9.2@aar')
-    {
-        transitive = true
-    }
-    compile 'com.rarepebble:colorpicker:2.2.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
+    implementation "com.afollestad.material-dialogs:commons:${materialDialogsVersion}"
+    implementation('com.mikepenz:materialdrawer:5.9.2@aar')
+            {
+                transitive = true
+            }
     //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    compile 'com.faendir:acra:4.10.0'
-    testCompile 'junit:junit:4.12'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.faendir:acra:4.10.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
 repositories {
     mavenCentral()

@@ -10,66 +10,75 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex50"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textColor="@color/black"/>
-        <android.support.v7.widget.AppCompatButton
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex100"
             android:layout_below="@id/hex50"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textColor="@color/black"/>
-        <android.support.v7.widget.AppCompatButton
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex200"
             android:layout_below="@id/hex100"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textColor="@color/black"/>
-        <android.support.v7.widget.AppCompatButton
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex300"
             android:layout_below="@id/hex200"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textColor="@color/black"/>
-        <android.support.v7.widget.AppCompatButton
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex400"
             android:layout_below="@id/hex300"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex500"
             android:layout_below="@id/hex400"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex600"
             android:layout_below="@id/hex500"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex700"
             android:layout_below="@id/hex600"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex800"
             android:layout_below="@id/hex700"
@@ -77,7 +86,8 @@
             android:layout_height="match_parent"
             android:textColor="@color/white"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hex900"
             android:layout_below="@id/hex800"
@@ -85,30 +95,34 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hexa100"
             android:layout_below="@id/hex900"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textColor="@color/black"/>
-        <android.support.v7.widget.AppCompatButton
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hexa200"
             android:layout_below="@id/hexa100"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textColor="@color/black"/>
-        <android.support.v7.widget.AppCompatButton
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hexa400"
             android:layout_below="@id/hexa200"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Base.Widget.AppCompat.Button.Colored" />
-        <android.support.v7.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
             android:text="nullpointerecxeptionguard"
             android:id="@+id/hexa700"
             android:layout_below="@id/hexa400"

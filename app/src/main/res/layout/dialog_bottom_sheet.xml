@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="160dp"
     style="@style/MaterialDrawerTheme.Light.DarkToolbar">
+
     <RelativeLayout
         android:id="@+id/sheet_countainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/sheet_title"
-        android:paddingLeft="@dimen/dp8"
-        android:paddingRight="@dimen/dp8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:textColor="@color/dark_gray"
-        android:textStyle="bold"
-        style="@style/TextAppearance.AppCompat.Title"/>
-    <View
-        android:id="@+id/sheet_divider"
+
+        <TextView
+            android:id="@+id/sheet_title"
+            android:paddingLeft="@dimen/dp8"
+            android:paddingRight="@dimen/dp8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="@color/dark_gray"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Title" />
+
+        <View
+            android:id="@+id/sheet_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/sheet_title"
         android:background="@color/gray"
         android:layout_margin="@dimen/dp8" />
-    <TextView
-        android:id="@+id/sheet_content"
-        android:paddingLeft="@dimen/dp8"
-        android:paddingRight="@dimen/dp8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sheet_divider"
-        android:textSize="16sp"
-        android:fontFamily="monospace"
-        android:textColor="@color/dark_gray"/>
+
+        <TextView
+            android:id="@+id/sheet_content"
+            android:paddingLeft="@dimen/dp8"
+            android:paddingRight="@dimen/dp8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_divider"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/dark_gray" />
     </RelativeLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

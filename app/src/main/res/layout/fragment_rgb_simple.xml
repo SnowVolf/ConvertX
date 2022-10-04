@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v7.widget.CardView
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="230dp"
             style="?attr/cardsBackground"
             android:id="@+id/mainCard">
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadeScrollbars="true">
+
                 <RelativeLayout
                     android:id="@+id/textBackground"
                     android:layout_width="match_parent"
@@ -91,6 +95,7 @@
                         android:layout_alignStart="@+id/textViewSerif"
                         android:layout_marginTop="7dp"
                         android:id="@+id/textViewSansSerif"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -99,20 +104,23 @@
                         android:layout_below="@+id/textViewSansSerif"
                         android:layout_alignStart="@+id/textViewSansSerif"
                         android:layout_marginTop="7dp"
-                        android:id="@+id/textViewSansSerifCond"/>
+                        android:id="@+id/textViewSansSerifCond" />
                 </RelativeLayout>
             </ScrollView>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/toolsCard"
             android:layout_below="@+id/mainCard"
             android:layout_alignParentStart="true"
             style="?attr/cardsBackground">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <LinearLayout
                     android:id="@+id/seekLayout"
                     android:layout_width="match_parent"
@@ -130,28 +138,31 @@
                         android:text="16"
                         android:layout_weight="0.01"
                         android:maxLines="1"
-                        android:inputType="number"/>
+                        android:inputType="number" />
+
                     <SeekBar
                         android:id="@+id/textSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:max="64"
-                        android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageButton
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/textButtonMinus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ic_exposure_neg_1"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        style="@style/Base.Widget.AppCompat.Button.Small"/>
-                    <android.support.v7.widget.AppCompatImageButton
+                        style="@style/Base.Widget.AppCompat.Button.Small" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/textButtonPlus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ic_exposure_plus_1"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        style="@style/Base.Widget.AppCompat.Button.Small"/>
+                        style="@style/Base.Widget.AppCompat.Button.Small" />
                 </LinearLayout>
                 <ScrollView
                     android:layout_below="@id/seekLayout"
@@ -240,16 +251,17 @@
                             android:text="@string/background_color"
                             android:layout_centerVertical="true"
                             android:layout_toEndOf="@+id/imageView2" />
+
                         <ru.SnowVolf.convertx.ui.CircleImageView
                             android:layout_width="54dp"
                             android:layout_height="54dp"
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
-                            android:padding="@dimen/dp4"/>
+                            android:padding="@dimen/dp4" />
                     </RelativeLayout>
                 </RelativeLayout>
                 </ScrollView>
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

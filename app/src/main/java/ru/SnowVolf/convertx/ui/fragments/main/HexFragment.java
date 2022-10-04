@@ -1,8 +1,6 @@
 package ru.SnowVolf.convertx.ui.fragments.main;
 
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.view.menu.MenuBuilder;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -19,7 +17,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
+import androidx.appcompat.view.menu.MenuBuilder;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.acra.ACRA;
 

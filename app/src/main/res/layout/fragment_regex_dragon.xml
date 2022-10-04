@@ -7,22 +7,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/c"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/dp16"
-                    android:hint="RegExp"
-                    android:id="@+id/regex_text"/>
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/regex_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="RegExp"
+                android:paddingBottom="@dimen/dp16" />
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/plain_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,10 +66,10 @@
                 android:layout_alignParentEnd="true"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
-                android:text="test"/>
+                android:text="test" />
 
         </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout"

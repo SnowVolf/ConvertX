@@ -1,13 +1,13 @@
 package ru.SnowVolf.convertx.ui.fragments.extended
 
 import android.os.Bundle
-import android.support.v7.view.menu.MenuBuilder
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuBuilder
 import ru.SnowVolf.convertx.R
 import ru.SnowVolf.convertx.algorhitms.DecoderAlgs
 import ru.SnowVolf.convertx.settings.Preferences
@@ -23,7 +23,7 @@ class TimestampFragment : BaseFragment() {
     lateinit var Timestamp: EditText
     lateinit var normalDate: TextView
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_timestamp, container, false)
         Timestamp = rootView?.findViewById(R.id.Timestamp) as EditText
         Timestamp.hint = getString(R.string.hint_timestamp)
@@ -65,7 +65,7 @@ class TimestampFragment : BaseFragment() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         var menu = menu
         if (menu != null) {
             menu.clear()
@@ -73,12 +73,12 @@ class TimestampFragment : BaseFragment() {
             menu = MenuBuilder(context)
         //добавляем пункты меню
         menu.add(R.string.cur_timestamp)
-                .setIcon(R.drawable.ic_menu_insert_text)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener { menuItem ->
-                    InsertCurrentTimestamp()
-                    true
-                }
+            .setIcon(R.drawable.ic_menu_insert_text)
+            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            .setOnMenuItemClickListener { menuItem ->
+                InsertCurrentTimestamp()
+                true
+            }
         /* menu.add(R.string.convert)
                 .setIcon(R.drawable.ic_menu_convert)
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
@@ -95,16 +95,16 @@ class TimestampFragment : BaseFragment() {
                 }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item?.itemId == android.R.id.home)
-            activity.finish()
+            requireActivity().finish()
         return true
     }
 
     fun clearAllText() {
         Timestamp.setText("")
         normalDate.text = ""
-        Toasty.success(context, getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
     }
 
     fun InsertCurrentTimestamp() {

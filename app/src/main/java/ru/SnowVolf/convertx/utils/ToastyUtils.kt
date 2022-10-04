@@ -6,10 +6,9 @@ import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.NinePatchDrawable
 import android.os.Build
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
 import android.view.View
-
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import ru.SnowVolf.convertx.R
 
 /**
@@ -45,7 +44,7 @@ class ToastyUtils {
                 view.setBackgroundDrawable(drawable)
         }
 
-        fun getDrawable(context: Context, @DrawableRes id: Int): Drawable {
+        fun getDrawable(context: Context, @DrawableRes id: Int): Drawable? {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 return context.getDrawable(id)
             else

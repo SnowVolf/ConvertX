@@ -1,15 +1,15 @@
 package ru.SnowVolf.convertx.ui.fragments.extended.hash
 
+import android.content.Context
 import android.os.Bundle
-import android.support.v7.view.menu.MenuBuilder
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuBuilder
 import ru.SnowVolf.convertx.R
-import ru.SnowVolf.convertx.other.Extras
 import ru.SnowVolf.convertx.settings.Preferences
 import ru.SnowVolf.convertx.ui.Toasty
 import ru.SnowVolf.convertx.ui.fragments.base.BaseFragment
@@ -24,7 +24,7 @@ class Adler : BaseFragment() {
     lateinit var data: EditText
     lateinit var dataOut: TextView
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_ex, container, false)
         data = rootView?.findViewById(R.id.exData) as EditText
         data.setHint(R.string.hint_adler32)
@@ -70,7 +70,7 @@ class Adler : BaseFragment() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         var menu = menu
         if (menu != null) {
             menu.clear()
@@ -78,31 +78,35 @@ class Adler : BaseFragment() {
             menu = MenuBuilder(context)
         //добавляем пункты меню
         menu.add(R.string.copy2clipboard)
-                .setIcon(R.drawable.ic_menu_copy)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener { menuItem ->
-                    copyToClipboard(context, dataOut.text.toString())
-                    Extras.showToast(context, getString(R.string.copied2clipboard))
-                    true
-                }
+            .setIcon(R.drawable.ic_menu_copy)
+            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            .setOnMenuItemClickListener { menuItem ->
+                copyToClipboard(requireContext(), dataOut.text.toString())
+                showToast(context, getString(R.string.copied2clipboard))
+                true
+            }
         menu.add(R.string.clear_all)
-                .setIcon(R.drawable.ic_menu_clear_all)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener { menuItem ->
-                    clearAllText()
-                    true
-                }
+            .setIcon(R.drawable.ic_menu_clear_all)
+            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            .setOnMenuItemClickListener { menuItem ->
+                clearAllText()
+                true
+            }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item!!.itemId == android.R.id.home)
-            activity.finish()
+            requireActivity().finish()
         return true
     }
 
     fun clearAllText() {
         data.setText("")
         dataOut.text = ""
-        Toasty.success(context, getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+    }
+
+    fun showToast(context: Context?, text: String?) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 }

@@ -1,11 +1,11 @@
 package ru.SnowVolf.convertx.ui.fragments.extra
 
 import android.os.Bundle
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.view.menu.MenuBuilder
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.fragment.app.FragmentTransaction
 import ru.SnowVolf.convertx.R
 import ru.SnowVolf.convertx.ui.fragments.base.BaseFragment
 import ru.SnowVolf.convertx.ui.fragments.extended.TimestampFragment
@@ -21,7 +21,7 @@ import ru.SnowVolf.convertx.ui.fragments.extended.hash.MdSha
 class ListCoders : BaseFragment() {
     private var listView: ListView? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater!!.inflate(R.layout.fragment_ex_encoders, container, false)
         listView = rootView!!.findViewById(R.id.coder_list) as ListView
         return rootView
@@ -36,7 +36,7 @@ class ListCoders : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         TITLE = R.string.dr_other1
         val items = resources.getStringArray(R.array.coderNames)
-        val titleAdapter = ArrayAdapter(context, R.layout.list_row, R.id.list_title, items)
+        val titleAdapter = ArrayAdapter(requireContext(), R.layout.list_row, R.id.list_title, items)
         listView!!.adapter = titleAdapter
         listView!!.setOnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -49,7 +49,7 @@ class ListCoders : BaseFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         var menu = menu
         if (menu != null) {
             menu.clear()
@@ -58,54 +58,54 @@ class ListCoders : BaseFragment() {
         menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item!!.itemId == android.R.id.home)
-            activity.finish()
+            requireActivity().finish()
         return true
     }
 
     fun startAdler() {
-        activity.supportFragmentManager.popBackStack()
-        activity.supportFragmentManager
-                .beginTransaction().replace(R.id.frame_container, Adler())
-                .addToBackStack(null)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().supportFragmentManager
+            .beginTransaction().replace(R.id.frame_container, Adler())
+            .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 
     fun startCRC() {
-        activity.supportFragmentManager.popBackStack()
-        activity.supportFragmentManager
-                .beginTransaction().replace(R.id.frame_container, CRC())
-                .addToBackStack(null)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().supportFragmentManager
+            .beginTransaction().replace(R.id.frame_container, CRC())
+            .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 
     fun startMD() {
-        activity.supportFragmentManager.popBackStack()
-        activity.supportFragmentManager
-                .beginTransaction().replace(R.id.frame_container, MdSha())
-                .addToBackStack(null)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().supportFragmentManager
+            .beginTransaction().replace(R.id.frame_container, MdSha())
+            .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 
     fun startXML() {
-        activity.supportFragmentManager.popBackStack()
-        activity.supportFragmentManager
-                .beginTransaction().replace(R.id.frame_container, UnescaperFragment())
-                .addToBackStack(null)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().supportFragmentManager
+            .beginTransaction().replace(R.id.frame_container, UnescaperFragment())
+            .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 
     fun startTimestamp() {
-        activity.supportFragmentManager.popBackStack()
-        activity.supportFragmentManager
-                .beginTransaction().replace(R.id.frame_container, TimestampFragment())
-                .addToBackStack(null)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().supportFragmentManager
+            .beginTransaction().replace(R.id.frame_container, TimestampFragment())
+            .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 }
