@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Оформение" />
+    <PreferenceCategory android:title="@string/settings_ct_themes">
     <ListPreference
         android:defaultValue="0"
         android:entries="@array/theme_names"
         android:entryValues="@array/theme_values"
         android:key="ITheme.Theme"
-        android:title="Тема" />
+        android:title="@string/settings_theme" />
+    </PreferenceCategory>
     <Preference
         android:key="Interaction.FontSize"
-        android:title="Размер шрифта полей ввода"/>
-    <PreferenceCategory android:title="Взаимодействие" />
+        android:title="@string/settings_fontsize"/>
+    <PreferenceCategory android:title="@string/settings_ct_interact">
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="Interaction.Back"
-        android:title="Двойное нажатие для выхода"/>
+        android:title="@string/settings_twicebtn"/>
+    </PreferenceCategory>
 </PreferenceScreen>

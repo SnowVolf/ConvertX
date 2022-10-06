@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ConvertX.iml" filepath="$PROJECT_DIR$/.idea/modules/ConvertX.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ConvertX.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ConvertX.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ConvertX.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ConvertX.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ConvertX.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ConvertX.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ConvertX.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ConvertX.app.unitTest.iml" />
     </modules>

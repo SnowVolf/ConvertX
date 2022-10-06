@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 def Properties versionProps = new Properties()
 
@@ -49,10 +48,10 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "ru.SnowVolf.convertx"
-            minSdk 21
+            applicationId "ru.svolf.convertx"
+            minSdk 26
             //noinspection ExpiredTargetSdkVersion
-            targetSdk 30
+            targetSdk 33
             versionCode versionBuild
             versionName "${versionMajor}.${versionMinor}.${versionPatch}"
             multiDexEnabled true
@@ -61,7 +60,7 @@ android {
         throw new GradleException("Could not read version.properties!")
     }
     buildTypes {
-        allprojects {
+        release {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
@@ -85,11 +84,16 @@ android {
         jvmTarget = '11'
     }
 
-    namespace 'ru.SnowVolf.convertx'
+    namespace 'ru.svolf.convertx'
     defaultConfig {
         signingConfig signingConfigs.debug
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
+
 ext {
     materialDialogsVersion = "0.9.4.5"
 }
@@ -99,16 +103,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "com.afollestad.material-dialogs:core:${materialDialogsVersion}"
-    implementation "com.afollestad.material-dialogs:commons:${materialDialogsVersion}"
-    implementation('com.mikepenz:materialdrawer:5.9.2@aar')
-            {
-                transitive = true
-            }
-    //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    implementation 'com.faendir:acra:4.10.0'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    implementation('com.mikepenz:materialdrawer:5.9.2@aar') { transitive = true }
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.preference:preference-ktx:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+
 }
 repositories {
     mavenCentral()

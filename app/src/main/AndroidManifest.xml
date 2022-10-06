@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".App"
@@ -16,11 +12,11 @@
         android:largeHeap="false"
         android:resizeableActivity="true"
         android:supportsRtl="true"
-        tools:replace="android:name"
-        tools:targetApi="n">
+        tools:replace="android:name">
         <activity
             android:name=".ui.activity.MainActivity"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,8 +35,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:documentLaunchMode="intoExisting"
             android:label="@string/activity_palette"
-            android:theme="@style/PaletteLight"
-            tools:targetApi="lollipop">
+            android:theme="@style/PaletteLight">
 
             <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
             <meta-data
@@ -48,13 +43,6 @@
                 android:value="2.1" />
         </activity>
         <activity android:name=".ui.activity.BaseActivity"/>
-        <activity android:name=".settings.SettingsActivity"
-            android:label="@string/settings">
-            <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
-            <meta-data
-                android:name="android.max_aspect"
-                android:value="2.1" />
-        </activity>
     </application>
 
 </manifest>

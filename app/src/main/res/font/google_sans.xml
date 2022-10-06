@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Обычный -->
+    <font android:font="@font/googlesans_regular"
+        android:fontStyle="normal"
+        android:fontWeight="200"/>
+    <!-- Средний -->
+    <font android:font="@font/googlesans_medium"
+        android:fontStyle="normal"
+        android:fontWeight="400"/>
+    <!-- Жирный -->
+    <font android:font="@font/googlesans_bold"
+        android:fontStyle="normal"
+        android:fontWeight="600"/>
+
+    <!-- Обычный курсив -->
+    <font android:font="@font/googlesans_italic"
+        android:fontStyle="italic"
+        android:fontWeight="200"/>
+    <!-- Средний курсив -->
+    <font android:font="@font/googlesans_mediumitalic"
+        android:fontStyle="italic"
+        android:fontWeight="400"/>
+    <!-- Жирный курсив -->
+    <font android:font="@font/googlesans_bolditalic"
+        android:fontStyle="italic"
+        android:fontWeight="600"/>
+</font-family>

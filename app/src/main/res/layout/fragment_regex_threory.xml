@@ -5,7 +5,7 @@
     android:id="@+id/swipe_refresh"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <ru.SnowVolf.convertx.regexdragon.NestedWebView
+    <ru.svolf.convertx.regexdragon.NestedWebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

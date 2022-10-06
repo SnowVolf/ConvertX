@@ -9,6 +9,12 @@
         <item>Default</item>
     </string-array>
 
+    <string-array name="browser_actions">
+        <item>Открыть в браузере</item>
+        <item>Поделиться ссылкой</item>
+        <item>Скопировать ссылку</item>
+    </string-array>
+
     <string-array name="coderNames">
         <item>@string/checksum_md</item>
         <item>@string/checksum_crc</item>

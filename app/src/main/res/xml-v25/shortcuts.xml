@@ -36,8 +36,8 @@
         android:shortcutShortLabel="@string/shortcut_hex_palette">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="ru.SnowVolf.convertx"
-            android:targetClass="ru.SnowVolf.convertx.palette.PaletteActivity" />
+            android:targetPackage="ru.svolf.convertx"
+            android:targetClass="ru.svolf.convertx.palette.PaletteActivity" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut. -->

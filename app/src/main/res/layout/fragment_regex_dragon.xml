@@ -10,43 +10,36 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/c"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/linearLayout">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/regex_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="RegExp"
+                android:hint="@string/hint_regexp"
                 android:paddingBottom="@dimen/dp16" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/plain_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/dp16"
-                android:hint="Текст"
+                android:hint="@string/hint_test_string"
                 android:layout_below="@+id/regex_text"
                 android:layout_alignParentStart="true" />
 
-            <View
-                android:id="@+id/view"
-                android:layout_below="@id/plain_text"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp1"
-                android:background="@color/dark_gray"/>
             <TextView
                 android:fontFamily="monospace"
                 android:id="@+id/regex_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/dp8"
-                android:layout_below="@+id/view"
-                android:text="Совпадений: "/>
+                android:layout_below="@+id/plain_text"
+                android:text="@string/hint_matches"/>
 
             <TextView
                 android:id="@+id/regex_result"
@@ -70,14 +63,5 @@
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:orientation="horizontal">
-    </LinearLayout>
 
 </RelativeLayout>

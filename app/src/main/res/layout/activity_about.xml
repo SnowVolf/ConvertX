@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ru.SnowVolf.convertx.ui.CircleImageView
+                <ru.svolf.convertx.ui.CircleImageView
                     android:src="@drawable/circle_girl"
                     android:id="@+id/artem_profile_img"
                     android:layout_width="120dp"
@@ -41,7 +41,9 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_about" />
+    <include
+        android:id="@+id/content"
+        layout="@layout/content_about" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_4pda"
