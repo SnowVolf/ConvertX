@@ -30,7 +30,7 @@ import java.lang.Exception
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        addPreferencesFromResource(R.xml.setting)
+        addPreferencesFromResource(R.xml.settings)
         //регистрируем слушателя
         preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
         //иначе будет падать на kit-kat

@@ -8,16 +8,19 @@ import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.view.*
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.ActivityAboutBinding
-import ru.svolf.convertx.ui.fragments.base.BaseFragment
 
 /**
  * Created by Snow Volf on 21.03.2017, 1:42
  */
 
-class AboutFragment : BaseFragment() {
+class AboutFragment : Fragment() {
     lateinit var binding: ActivityAboutBinding
+    lateinit var navController: NavController
 
     internal var preambulaText = "Программа пригодится людям работающим с <b>*.apk</b> <br/>" +
             "<b>Функции:</b><br>" +
@@ -59,16 +62,15 @@ class AboutFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = NavHostFragment.findNavController(this)
         binding.content.aboutPreambula.text = Html.fromHtml(preambulaText, Html.FROM_HTML_MODE_COMPACT)
         binding.content.aboutContent.text = Html.fromHtml(aboutText, Html.FROM_HTML_MODE_COMPACT)
-
-        activityTitle = R.string.about_program
         /**
          * Чтобы ссылки, которые мы запихали в TextView, были кликабельны.
          * Метод с `Linkify.addLinks(about, Linkify.ALL);` у меня не заработал
          */
         binding.content.aboutContent.movementMethod = LinkMovementMethod.getInstance()
-        binding.content.aboutChangelist.setOnClickListener { _ -> showChangelog() }
+        binding.content.aboutChangelist.setOnClickListener { _ -> navController.navigate(R.id.action_aboutFragment_to_changelistFragment) }
         binding.content.aboutGit.setOnClickListener { _ -> showGitDialog() }
 
         binding.fab4pda.setOnClickListener { _ -> goLink(requireActivity(), "https://4pda.ru/forum/index.php?showuser=4324432", "4pda") }
@@ -84,14 +86,6 @@ class AboutFragment : BaseFragment() {
         if (item.itemId == android.R.id.home)
             requireActivity().finish()
         return true
-    }
-
-    private fun showChangelog() {
-        requireActivity().supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.frame_container, ChangelistFragment())
-            .addToBackStack(null)
-            .commit()
     }
 
     /**

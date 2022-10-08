@@ -19,7 +19,6 @@ class HexFragment : BaseMainFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityTitle = R.string.dr_hex
         binding.fieldInput.hint = getString(R.string.hint_string)
         binding.fieldOutput.apply {
             setHint(R.string.hint_hex)

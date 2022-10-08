@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-<include
-    android:id="@+id/app_bar"
-    layout="@layout/app_bar_main"/>
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="?attr/popup"
+        app:layout_scrollFlags="scroll|enterAlways|snap" />
+    <com.roacult.backdrop.BackdropLayout
+        android:id="@+id/backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:front_header_radius="@dimen/dp16"
+        app:disable_when_open="true"
+        app:toolbarId="@id/toolbar"
+        app:front_layout="@id/host_bg"
+        app:back_layout="@id/backdrop_menu"
+        app:menuDrawable="@drawable/menu"
+        app:closeDrawable="@drawable/close">
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/backdrop_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:paddingBottom="16dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listItem="@layout/item_main_menu" />
+
+        <LinearLayout
+            android:id="@+id/host_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backdrop_front_bg">
+            <fragment
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:fitsSystemWindows="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/main_navigator" />
+        </LinearLayout>
+    </com.roacult.backdrop.BackdropLayout>
 </LinearLayout>

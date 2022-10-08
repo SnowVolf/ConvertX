@@ -17,7 +17,6 @@ class UnicodeFragment : BaseMainFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityTitle = R.string.dr_unicode
         binding.fieldInput.setHint(R.string.hint_utf)
         binding.fieldOutput.setHint(R.string.hint_unicode)
     }

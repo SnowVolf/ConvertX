@@ -13,7 +13,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        PreferenceManager.setDefaultValues(this, R.xml.setting, false)
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false)
     }
 
     var preferences: SharedPreferences? = null

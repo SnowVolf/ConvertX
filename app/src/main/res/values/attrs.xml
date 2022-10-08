@@ -15,5 +15,6 @@
     <declare-styleable name="about">
         <attr name="collapsingToolbarBackground" format="color"/>
         <attr name="cardsBackground" format="color"/>
+        <attr name="backdropColor" format="color"/>
     </declare-styleable>
 </resources>

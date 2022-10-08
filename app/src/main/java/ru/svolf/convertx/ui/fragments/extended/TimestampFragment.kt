@@ -7,29 +7,22 @@ import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.algorhitms.Decoder
 import ru.svolf.convertx.settings.Preferences
 import ru.svolf.convertx.ui.Toasty
-import ru.svolf.convertx.ui.fragments.base.BaseFragment
-
 
 /**
  * Created by Snow Volf on 26.02.2017, 20:44
  */
 
-class TimestampFragment : BaseFragment() {
+class TimestampFragment : Fragment() {
     lateinit var Timestamp: EditText
     lateinit var normalDate: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater.inflate(R.layout.fragment_timestamp, container, false)
-        Timestamp = rootView?.findViewById(R.id.Timestamp) as EditText
-        Timestamp.hint = getString(R.string.hint_timestamp)
-        Timestamp.isFocusable = true
-        normalDate = rootView?.findViewById(R.id.humanDate) as TextView
-        normalDate.hint = "dd.MM.yyyy HH:mm:ss"
-        return rootView
+        return inflater.inflate(R.layout.fragment_timestamp, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +30,14 @@ class TimestampFragment : BaseFragment() {
         setHasOptionsMenu(true)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        activityTitle = R.string.hint_timestamp
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Timestamp = view.findViewById(R.id.Timestamp) as EditText
+        Timestamp.hint = getString(R.string.hint_timestamp)
+        Timestamp.isFocusable = true
+        normalDate = view.findViewById(R.id.humanDate) as TextView
+        normalDate.hint = "dd.MM.yyyy HH:mm:ss"
+
         Timestamp.textSize = Preferences.fontSize.toFloat()
         Timestamp.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
@@ -72,13 +70,6 @@ class TimestampFragment : BaseFragment() {
                 InsertCurrentTimestamp()
                 true
             }
-        /* menu.add(R.string.convert)
-                .setIcon(R.drawable.ic_menu_convert)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener(menuItem -> {
-                    ConvertDate2Timestamp();
-                    return true;
-                });*/
         menu.add(R.string.clear_all)
                 .setIcon(R.drawable.ic_menu_clear_all)
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)

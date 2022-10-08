@@ -8,40 +8,39 @@ import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.algorhitms.Decoder
 import ru.svolf.convertx.settings.Preferences
 import ru.svolf.convertx.ui.Toasty
-import ru.svolf.convertx.ui.fragments.base.BaseFragment
 import ru.svolf.convertx.utils.StringUtils
 
 /**
  * Created by Snow Volf on 22.02.2017, 19:51
  */
 
-class XmlDecodeFragment : BaseFragment() {
+class XmlDecodeFragment : Fragment() {
     lateinit var data: EditText
     lateinit var dataOut: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater.inflate(R.layout.fragment_ex, container, false)
-        data = rootView?.findViewById(R.id.exData) as EditText
-        data.hint = "Текст зашифрованого XML"
-        data.isFocusable = true
-        dataOut = rootView?.findViewById(R.id.exText) as TextView
-        dataOut.hint = "Преобразует символы \"&quot;\", \"&apos;\", т.д. в нормальный текст"
-        return rootView
+
+        return inflater.inflate(R.layout.fragment_ex, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setRetainInstance(true);
         setHasOptionsMenu(true)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        activityTitle = R.string.xml
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        data = view.findViewById(R.id.exData) as EditText
+        data.hint = "Текст зашифрованого XML"
+        data.isFocusable = true
+        dataOut = view.findViewById(R.id.exText) as TextView
+        dataOut.hint = "Преобразует символы \"&quot;\", \"&apos;\", т.д. в нормальный текст"
+
         data.textSize = Preferences.fontSize.toFloat()
         data.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}

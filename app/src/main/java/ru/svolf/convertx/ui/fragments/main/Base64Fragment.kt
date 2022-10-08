@@ -18,7 +18,6 @@ class Base64Fragment : BaseMainFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityTitle = R.string.dr_base64
         val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(requireActivity(), R.array.baseAlgVal, android.R.layout
             .simple_spinner_item)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

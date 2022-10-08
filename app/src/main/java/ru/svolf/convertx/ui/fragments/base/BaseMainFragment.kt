@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.FragmentMainBinding
 import ru.svolf.convertx.extension.clear
@@ -23,14 +24,13 @@ import ru.svolf.convertx.utils.StringUtils.readFromClipboard
 /**
  * Created by Snow Volf on 20.06.2017, 11:35
  */
-open class BaseMainFragment : BaseFragment() {
+open class BaseMainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        rootView = binding.root
-        return rootView
+        return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/unicodeFragment">
+
+    <fragment
+        android:id="@+id/unicodeFragment"
+        android:name="ru.svolf.convertx.ui.fragments.main.UnicodeFragment"
+        android:label="@string/dr_unicode"
+        tools:layout="@layout/fragment_main"/>
+
+    <fragment
+        android:id="@+id/base64Fragment"
+        android:name="ru.svolf.convertx.ui.fragments.main.Base64Fragment"
+        android:label="@string/dr_base64"
+        tools:layout="@layout/fragment_main"/>
+    <fragment
+        android:id="@+id/hexFragment"
+        android:name="ru.svolf.convertx.ui.fragments.main.HexFragment"
+        android:label="@string/dr_hex"
+        tools:layout="@layout/fragment_main"/>
+    <fragment
+        android:id="@+id/regexDragonFragment"
+        android:name="ru.svolf.convertx.regexdragon.RegexFragment"
+        android:label="@string/dr_regex_dragon"
+        tools:layout="@layout/fragment_regex_dragon"/>
+    <activity
+        android:id="@+id/paletteActivity"
+        android:name="ru.svolf.convertx.palette.PaletteActivity"
+        android:label="@string/dr_hex_palette"
+        tools:layout="@layout/activity_color_palette"/>
+    <fragment
+        android:id="@+id/listCoders"
+        android:name="ru.svolf.convertx.ui.fragments.extra.ExtendedCodersFragment"
+        android:label="@string/dr_other1"
+        tools:layout="@layout/fragment_ex_encoders">
+        <action
+            android:id="@+id/action_listCoders_to_adler"
+            app:destination="@id/adler" />
+        <action
+            android:id="@+id/action_listCoders_to_CRC"
+            app:destination="@id/CRC" />
+        <action
+            android:id="@+id/action_listCoders_to_mdSha"
+            app:destination="@id/mdSha" />
+        <action
+            android:id="@+id/action_listCoders_to_xmlDecodeFragment"
+            app:destination="@id/xmlDecodeFragment" />
+        <action
+            android:id="@+id/action_listCoders_to_timestampFragment"
+            app:destination="@id/timestampFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.svolf.convertx.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/activity_settings"/>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ru.svolf.convertx.ui.fragments.extra.AboutFragment"
+        android:label="@string/dr_about"
+        tools:layout="@layout/activity_about">
+        <action
+            android:id="@+id/action_aboutFragment_to_changelistFragment"
+            app:destination="@id/changelistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adler"
+        android:name="ru.svolf.convertx.ui.fragments.extended.hash.AdlerFragment"
+        android:label="@string/checksum_adler32"
+        tools:layout="@layout/fragment_ex"/>
+    <fragment
+        android:id="@+id/CRC"
+        android:name="ru.svolf.convertx.ui.fragments.extended.hash.CrcFragment"
+        android:label="@string/checksum_crc"
+        tools:layout="@layout/fragment_ex"/>
+    <fragment
+        android:id="@+id/mdSha"
+        android:name="ru.svolf.convertx.ui.fragments.extended.hash.MdShaFragment"
+        android:label="@string/checksum_md"
+        tools:layout="@layout/fragment_ex"/>
+    <fragment
+        android:id="@+id/xmlDecodeFragment"
+        android:name="ru.svolf.convertx.ui.fragments.extended.XmlDecodeFragment"
+        android:label="@string/unescape_xml"
+        tools:layout="@layout/fragment_ex"/>
+    <fragment
+        android:id="@+id/changelistFragment"
+        android:name="ru.svolf.convertx.ui.fragments.extra.ChangelogFragment"
+        android:label="@string/changelog"
+        tools:layout="@layout/activity_changelist" />
+    <fragment
+        android:id="@+id/timestampFragment"
+        android:name="ru.svolf.convertx.ui.fragments.extended.TimestampFragment"
+        android:label="@string/timestamp_converter"
+        tools:layout="@layout/fragment_ex"/>
+
+</navigation>
