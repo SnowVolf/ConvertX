@@ -171,24 +171,24 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     }
 
     fun getFrontLayout() : View {
-        Log.w(TAG, "getFrontLayout: called")
+        //Log.w(TAG, "getFrontLayout: called")
         if(::frontLayout.isInitialized ) {
-            Log.w(TAG, "getFrontLayout: layout initialized")
+            //Log.w(TAG, "getFrontLayout: layout initialized")
             return frontLayout
         } else  {
-            Log.w(TAG, "getFrontLayout: null, id = $frontLayoutId" )
+            //Log.w(TAG, "getFrontLayout: null, id = $frontLayoutId" )
             frontLayout = findViewById(frontLayoutId) ?: throw Exception("please provide a valid id for front layout")
         }
         return frontLayout
     }
 
     fun getBackLayout() : View {
-        Log.w(TAG, "getBackLayout: called")
+        //Log.w(TAG, "getBackLayout: called")
         if(::backLayout.isInitialized) {
-            Log.w(TAG, "getBackLayout: layout initialized")
+            //Log.w(TAG, "getBackLayout: layout initialized")
             return backLayout
         } else {
-            Log.w(TAG, "getBackLayout: null, id = $backLayoutId" )
+            //Log.w(TAG, "getBackLayout: null, id = $backLayoutId" )
             backLayout = findViewById(backLayoutId) ?: throw Exception("please provide a valid id for back layout")
         }
         return backLayout
