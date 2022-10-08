@@ -10,7 +10,6 @@ import android.view.View.OnFocusChangeListener
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.CallSuper
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.FragmentMainBinding

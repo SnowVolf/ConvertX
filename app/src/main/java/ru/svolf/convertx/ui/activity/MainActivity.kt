@@ -5,20 +5,18 @@ import android.os.Process
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.mikepenz.fastadapter.ClickListener
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.ActivityMainBinding
-import ru.svolf.convertx.settings.Preferences
-import ru.svolf.convertx.ui.Toasty
 import ru.svolf.convertx.ui.fragments.base.MainMenuItem
+import kotlin.system.exitProcess
 
 class MainActivity : BaseActivity() {
     lateinit var binding: ActivityMainBinding
@@ -49,19 +47,14 @@ class MainActivity : BaseActivity() {
     private fun initMenu(){
         val itemAdapter = ItemAdapter<MainMenuItem>()
         val fastAdapter = FastAdapter.with(itemAdapter)
-
         binding.backdropMenu.adapter = fastAdapter
-        itemAdapter.add(
-            MainMenuItem(1, R.drawable.ic_dr_unicode, R.string.dr_unicode),
-            MainMenuItem(2, R.drawable.ic_dr_base64, R.string.dr_base64),
-            MainMenuItem(3, R.drawable.ic_dr_hex, R.string.dr_hex),
-            MainMenuItem(4, R.drawable.ic_dr_regexdragon, R.string.dr_regex_dragon),
-            MainMenuItem(5, R.drawable.ic_dr_palette, R.string.dr_hex_palette),
-            MainMenuItem(6, R.drawable.ic_dr_other_coders, R.string.dr_other1),
-            MainMenuItem(7, R.drawable.ic_info, R.string.dr_about),
-            MainMenuItem(8, R.drawable.ic_dr_settings, R.string.settings),
-            MainMenuItem(9, R.drawable.ic_action_arrow_back, R.string.dr_close_app)
-        )
+
+        val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        val data = viewModel.getData()
+        data.observe(this) { items ->
+            itemAdapter.add(items)
+        }
+
         fastAdapter.onClickListener = object: ClickListener<MainMenuItem> {
             override fun invoke(v: View?, adapter: IAdapter<MainMenuItem>, item: MainMenuItem, position: Int): Boolean {
                 binding.backdrop.close();
@@ -110,7 +103,7 @@ class MainActivity : BaseActivity() {
             .setMessage(R.string.dr_close_app)
             .setPositiveButton(R.string.yes) { d, i ->
                 Process.killProcess(Process.myPid())
-                System.exit(0)
+                exitProcess(0)
             }
             .setNegativeButton(R.string.no, null)
             .show()
