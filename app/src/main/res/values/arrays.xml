@@ -9,12 +9,6 @@
         <item>Default</item>
     </string-array>
 
-    <string-array name="browser_actions">
-        <item>Открыть в браузере</item>
-        <item>Поделиться ссылкой</item>
-        <item>Скопировать ссылку</item>
-    </string-array>
-
     <string-array name="coderNames">
         <item>@string/checksum_md</item>
         <item>@string/checksum_crc</item>
@@ -34,6 +28,5 @@
     <string-array name="theme_names">
         <item>@string/app_theme_light</item>
         <item>@string/app_theme_dark</item>
-        <item>@string/app_theme_dark_toolbar</item>
     </string-array>
 </resources>

@@ -4,34 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:fitsSystemWindows="true"
     app:layout_scrollFlags="scroll|enterAlways|snap">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
-        android:fitsSystemWindows="true"
         android:theme="?attr/toolbar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
             android:background="?attr/collapsingToolbarBackground"
             android:scaleType="centerInside"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ru.svolf.convertx.ui.CircleImageView
-                    android:src="@drawable/circle_girl"
+                    android:src="@mipmap/ic_launcher"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    app:civ_border_color="@color/about_civ_border"
                     app:civ_border_width="@dimen/dp1"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -51,9 +47,10 @@
         android:scaleType="center"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#3291ca"
         app:borderWidth="@dimen/dp0"
-        app:srcCompat="@mipmap/about_forpda" />
+        app:maxImageSize="24dp"
+        app:srcCompat="@drawable/forum" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabVk"
@@ -63,9 +60,10 @@
         android:scaleType="center"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|center"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#74b5e0"
         app:borderWidth="@dimen/dp0"
-        app:srcCompat="@mipmap/about_vk" />
+        app:maxImageSize="24dp"
+        app:srcCompat="@drawable/telegram_svgrepo_com" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_email"
@@ -75,8 +73,9 @@
         android:scaleType="center"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|start"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#ff655b"
         app:borderWidth="@dimen/dp0"
-        app:srcCompat="@mipmap/about_email" />
+        app:maxImageSize="24dp"
+        app:srcCompat="@drawable/email_variant" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

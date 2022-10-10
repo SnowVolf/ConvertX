@@ -15,8 +15,7 @@ object Interfacer {
         val theme: Int
         theme = when (Theme.values()[SettingsFragment.getThemeIndex(ctx)]) {
             Theme.LIGHT -> R.style.MaterialDrawerTheme_Light_DarkToolbar
-            Theme.DARK -> R.style.MaterialDrawerTheme_TranslucentStatus
-            Theme.PURE_DARK -> R.style.MaterialDrawerTheme_TranslucentStatusBlack
+            Theme.DARK -> R.style.MaterialDrawerTheme_TranslucentStatusBlack
             else -> R.style.MaterialDrawerTheme_Light_DarkToolbar
         }
         ctx.setTheme(theme)
@@ -49,6 +48,6 @@ object Interfacer {
     }
 
     enum class Theme {
-        LIGHT, DARK, PURE_DARK
+        LIGHT, DARK
     }
 }

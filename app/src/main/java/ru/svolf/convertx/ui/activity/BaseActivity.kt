@@ -13,7 +13,9 @@ open class BaseActivity : AppCompatActivity() {
     //Theme
     private val mThemeReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            recreate()
+            finish()
+            startActivity(getIntent())
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 

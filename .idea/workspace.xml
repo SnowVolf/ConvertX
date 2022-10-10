@@ -15,13 +15,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Factored to new BuildTools and newest Android Studio">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/email_variant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/forum.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_receipt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/telegram_svgrepo_com.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/CHANGELOG.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/RegexFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/RegexFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/UrlExtensions.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/Interfacer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/Interfacer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/activity/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/activity/BaseActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_changelist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/activity/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/activity/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/fragments/extra/AboutFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/fragments/extra/AboutFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/fragments/main/Base64Fragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/fragments/main/Base64Fragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/fragments/main/UnicodeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/ui/fragments/main/UnicodeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/circle_girl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dragon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dragon.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_toast_info_outline.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_toast_info_outline.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_regex_dragon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_regex_dragon.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_spur.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_spur.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/about_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/about_forpda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/about_vk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/about_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/about_forpda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/about_vk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/about_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/about_forpda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/about_vk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/about_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/about_forpda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/about_vk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/about_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/about_forpda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/about_vk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml-v25/shortcuts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml-v25/shortcuts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +105,9 @@
         <option value="Kotlin Class" />
       </list>
     </option>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -3336,6 +3382,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ApkExportedModule" value="ConvertX.app" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
@@ -3354,6 +3401,7 @@
     <property name="android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED" value="BackdropLayout" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
+    <property name="android.recentlyUsedThemes" value="android:Theme.Material.Light.DarkActionBar" />
     <property name="android.sdk.path" value="C:/android-sdk" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="device.picker.selection" value="3d28c4c2" />
@@ -3383,11 +3431,11 @@
       <recent name="C:\ProjectX\ConvertX2\app\src\main\res\drawable-v21" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\ConvertX\app\src\main\res\drawable" />
       <recent name="C:\ProjectX\ConvertX2\app\src\main\java" />
       <recent name="C:\ProjectX\ConvertX2\app\src\main\res\xml" />
       <recent name="C:\ProjectX\ConvertX2\app\src\main\res\layout" />
       <recent name="C:\ProjectX\ConvertX2\app\src\main\res\drawable-xxhdpi" />
-      <recent name="C:\ProjectX\ConvertX2\app\src\main\res\drawable-xhdpi" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="ru.svolf.convertx.ui.activity" />

@@ -7,7 +7,9 @@ import android.util.Base64
 import android.view.View
 import android.widget.*
 import ru.svolf.convertx.algorhitms.Decoder
+import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.settings.Preferences
+import ru.svolf.convertx.ui.Toasty
 
 /**
  * Created by Snow Volf on 28.01.2017.
@@ -18,8 +20,8 @@ class Base64Fragment : BaseMainFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(requireActivity(), R.array.baseAlgVal, android.R.layout
-            .simple_spinner_item)
+        val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(requireActivity(),
+            R.array.baseAlgVal, android.R.layout.simple_spinner_item)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.fieldInput.setHint(R.string.hint_utf)
         binding.fieldOutput.setHint(R.string.hint_base64)
@@ -28,7 +30,7 @@ class Base64Fragment : BaseMainFragment() {
             adapter = spinnerAdapter
             setSelection(Preferences.getSpinnerPosition("spinner.base64"))
         }.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, `is`: View, pos: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>?, v: View?, pos: Int, id: Long) {
                 for (i in 0 until binding.spinnerMode.count) {
                     if (pos == i) {
                         algorhitm = algs[i]
@@ -49,7 +51,15 @@ class Base64Fragment : BaseMainFragment() {
     }
 
     override fun convertOutput(output: String) {
-        val text = Decoder.decodeBase64(output, algs[Preferences.getSpinnerPosition("spinner.base64")])
-        binding.fieldInput.setText(text)
+        if (output.isNotEmpty() and !output.matches("^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?\$".toRegex())){
+            binding.fieldInput.setText(output)
+            binding.fieldOutput.clear()
+            binding.fieldInput.requestFocus()
+            Toasty.error(requireContext(), getString(R.string.message_malformed_base64)).show()
+        } else {
+            val text = Decoder.decodeBase64(output, algs[Preferences.getSpinnerPosition("spinner.base64")])
+            binding.fieldInput.setText(text)
+        }
+
     }
 }

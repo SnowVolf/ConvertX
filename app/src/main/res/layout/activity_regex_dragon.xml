@@ -1,23 +1,20 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_collapseMode="pin"
-        app:layout_scrollFlags="scroll|enterAlways|snap"
         app:tabGravity="fill"
-        app:tabMode="fixed"
-        app:tabPaddingEnd="0dp"
-        app:tabPaddingStart="0dp" />
+        app:tabMode="fixed" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

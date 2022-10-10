@@ -1,33 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<shortcut
-        android:shortcutId="settings"
-        android:enabled="true"
-        android:icon="@drawable/ic_shortcut_settings"
-        android:shortcutShortLabel="@string/settings"
-        android:shortcutLongLabel="@string/settings"
-        android:shortcutDisabledMessage="@string/settings">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetPackage="ru.SnowVolf.convertx"
-            android:targetClass="ru.SnowVolf.convertx.settings.SettingsActivity" />
-        <
-        <categories android:name="android.shortcut.conversation" />
-    </shortcut>-->
-
-    <!--<shortcut
-        android:shortcutId="regex_dragon"
-        android:enabled="true"
-        android:icon="@drawable/ic_shortcut_dragon"
-        android:shortcutShortLabel="@string/title_activity_regex_dragon"
-        android:shortcutLongLabel="@string/title_activity_regex_dragon"
-        android:shortcutDisabledMessage="@string/title_activity_regex_dragon">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetPackage="ru.SnowVolf.convertx"
-            android:targetClass="ru.SnowVolf.convertx.regexdragon.RegexDragonFragment" />
-        <categories android:name="android.shortcut.conversation" />
-    </shortcut>-->
 
     <shortcut
         android:shortcutId="palette"
@@ -35,9 +7,9 @@
         android:icon="@drawable/ic_shortcut_palette"
         android:shortcutShortLabel="@string/shortcut_hex_palette">
         <intent
-            android:action="android.intent.action.VIEW"
+            android:action="ru.svolf.convertx.ACTION_PALETTE"
             android:targetPackage="ru.svolf.convertx"
-            android:targetClass="ru.svolf.convertx.palette.PaletteActivity" />
+            android:targetClass="ru.svolf.convertx.ui.activity.MainActivity" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut. -->

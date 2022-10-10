@@ -32,7 +32,8 @@ class UnicodeFragment : BaseMainFragment() {
         if (output.isNotEmpty() and !output.matches("(\\\\u[0-9]{4})+".toRegex())) {
             binding.fieldInput.setText(output)
             binding.fieldOutput.clear()
-            Toasty.info(requireContext(), "Текст не соответствует кодировке Unicode, распознан как обычный текст", Toast.LENGTH_SHORT, true).show()
+            binding.fieldInput.requestFocus()
+            Toasty.error(requireContext(), getString(R.string.message_malformed_unicode)).show()
         } else {
             val text = Decoder.decodeUnicode(output)
             binding.fieldOutput.setText(text)

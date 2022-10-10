@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/unicodeFragment">
+    app:startDestination="@id/baseMainFragment">
 
     <fragment
         android:id="@+id/unicodeFragment"
@@ -95,5 +95,10 @@
         android:name="ru.svolf.convertx.ui.fragments.extended.TimestampFragment"
         android:label="@string/timestamp_converter"
         tools:layout="@layout/fragment_ex"/>
+    <!-- Костыль для того чтобы не пропадало гамбургерное меню-->
+    <fragment
+        android:id="@+id/baseMainFragment"
+        android:name="ru.svolf.convertx.ui.fragments.base.BaseMainFragment"
+        android:label="BaseMainFragment" />
 
 </navigation>

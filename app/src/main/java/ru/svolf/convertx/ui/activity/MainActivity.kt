@@ -1,5 +1,6 @@
 package ru.svolf.convertx.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Process
 import android.view.View
@@ -9,19 +10,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.mikepenz.fastadapter.ClickListener
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.ActivityMainBinding
+import ru.svolf.convertx.settings.Preferences
+import ru.svolf.convertx.ui.Toasty
 import ru.svolf.convertx.ui.fragments.base.MainMenuItem
 import kotlin.system.exitProcess
 
 class MainActivity : BaseActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var navController: NavController
+    private val navController: NavController by lazy { Navigation.findNavController(this, R.id.nav_host_fragment) }
     private val navHostFragment: Fragment? by lazy { supportFragmentManager.findFragmentById(R.id.nav_host_fragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,24 +34,43 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
-        //supportActionBar.setHomeAsUpIndicator(R.drawable.ic_list);
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(false)
         initNavigation()
         initMenu()
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val pkg = packageName
+        if (intent != null){
+            when (intent.action) {
+                pkg.plus(".ACTION_UNICODE") -> navController.navigate(R.id.unicodeFragment)
+                pkg.plus(".ACTION_BASE64") -> navController.navigate(R.id.base64Fragment)
+                pkg.plus(".ACTION_HEX") -> navController.navigate(R.id.hexFragment)
+                pkg.plus(".ACTION_REGEX") -> navController.navigate(R.id.regexDragonFragment)
+                pkg.plus(".ACTION_PALETTE") -> navController.navigate(R.id.paletteActivity)
+                else -> {
+                    Toasty.info(this, "Missing action, please update ConvertX to latest version").show()
+                }
+            }
+        }
+    }
+
     private fun initNavigation() {
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
+        navController.navigate(R.id.unicodeFragment)
 
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (navHostFragment?.childFragmentManager?.backStackEntryCount == 0) {
-                    finish()
+                // костыль для NavigationUI
+                if (navHostFragment?.childFragmentManager?.backStackEntryCount == 1) {
+                    if (Preferences.isTwiceBackAllowed and (press_time + 2000 < System.currentTimeMillis()) ) {
+                        press_time = System.currentTimeMillis()
+                        Toasty.info(this@MainActivity, getString(R.string.press_back_once_more)).show()
+                    } else finish()
                 } else {
                     navController.navigateUp()
-                    binding.backdrop.update(false)
                 }
             }
         })
@@ -66,40 +90,12 @@ class MainActivity : BaseActivity() {
         fastAdapter.onClickListener = object: ClickListener<MainMenuItem> {
             override fun invoke(v: View?, adapter: IAdapter<MainMenuItem>, item: MainMenuItem, position: Int): Boolean {
                 binding.backdrop.close()
-                when(item.id) {
-                    1 -> {
-                        navController.navigate(R.id.unicodeFragment)
-                        binding.backdrop.close()
-                    }
-                    2 -> {
-                        navController.navigate(R.id.base64Fragment)
-                        binding.backdrop.close()
-                    }
-                    3 -> {
-                        navController.navigate(R.id.hexFragment)
-                        binding.backdrop.close()
-                    }
-                    4 -> {
-                        navController.navigate(R.id.regexDragonFragment)
-                        binding.backdrop.close()
-                    }
-                    5 -> {
-                        navController.navigate(R.id.paletteActivity)
-                        binding.backdrop.close()
-                    }
-                    6 -> {
-                        navController.navigate(R.id.listCoders)
-                        binding.backdrop.close()
-                    }
-                    7 -> {
-                        navController.navigate(R.id.aboutFragment)
-                        binding.backdrop.close()
-                    }
-                    8 -> {
-                        navController.navigate(R.id.settingsFragment)
-                        binding.backdrop.close()
-                    }
-                    9 -> showExitDialog()
+                binding.backdrop.menuIcon = R.drawable.menu
+                // Exit button
+                if (item.id == android.R.id.home) {
+                    showExitDialog()
+                } else {
+                    navController.navigate(item.id)
                 }
                 return false
             }
