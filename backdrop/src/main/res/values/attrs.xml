@@ -10,5 +10,6 @@
         <attr name="animationDuration" format="integer"/>
         <attr name="disable_when_open" format="boolean"/>
         <attr name="front_header_radius" format="dimension"/>
+        <attr name="icon_color" format="reference" />
     </declare-styleable>
 </resources>

@@ -9,7 +9,7 @@
         <intent
             android:action="ru.svolf.convertx.ACTION_PALETTE"
             android:targetPackage="ru.svolf.convertx"
-            android:targetClass="ru.svolf.convertx.ui.activity.MainActivity" />
+            android:targetClass="ru.svolf.convertx.presentation.activity.MainActivity" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut. -->

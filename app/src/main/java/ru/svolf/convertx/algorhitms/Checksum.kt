@@ -21,7 +21,7 @@ object Checksum {
      */
     private val errAlg = "Неизвестный алгоритм. SDK < 22"
 
-    fun MD5(MD: String): String {
+    fun encodeMD5(MD: String): String {
         val messageDigest: MessageDigest
         val digest: ByteArray//new byte[0] можно не использовать
 
@@ -46,7 +46,7 @@ object Checksum {
         return result
     }
 
-    fun SHA1(SHA1: String): String {
+    fun encodeSHA1(SHA1: String): String {
         val messageDigest: MessageDigest
         val digest: ByteArray
         try {
@@ -70,7 +70,7 @@ object Checksum {
         return result
     }
 
-    fun SHA224(SHA224: String): String {
+    fun encodeSHA224(SHA224: String): String {
         val messageDigest: MessageDigest
         val digest: ByteArray
 
@@ -95,7 +95,7 @@ object Checksum {
         return result
     }
 
-    fun SHA384(SHA384: String): String {
+    fun encodeSHA384(SHA384: String): String {
         val messageDigest: MessageDigest
         val digest: ByteArray
 
@@ -120,7 +120,7 @@ object Checksum {
         return result
     }
 
-    fun SHA512(SHA512: String): String {
+    fun encodeSHA512(SHA512: String): String {
         val messageDigest: MessageDigest
         val digest: ByteArray
 

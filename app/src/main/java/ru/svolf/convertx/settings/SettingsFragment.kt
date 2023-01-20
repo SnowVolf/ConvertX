@@ -1,28 +1,27 @@
 package ru.svolf.convertx.settings
 
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.os.Bundle
-import ru.svolf.convertx.R
-import android.content.SharedPreferences
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import android.content.Intent
 import android.annotation.SuppressLint
 import android.content.Context
-import android.widget.SeekBar
-import android.widget.EditText
-import android.widget.TextView
-import android.text.TextWatcher
-import android.text.Editable
-import android.widget.SeekBar.OnSeekBarChangeListener
 import android.content.DialogInterface
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.os.Bundle
 import android.preference.PreferenceManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import ru.svolf.convertx.ui.Interfacer
-import java.lang.Exception
+import ru.svolf.convertx.R
+import ru.svolf.convertx.utils.Interfacer
 
 /**
  * Created by Snow Volf on 27.01.2017, 6:51

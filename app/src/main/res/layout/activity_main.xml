@@ -8,9 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:popupTheme="?attr/popup"
-        app:layout_scrollFlags="scroll|enterAlways|snap" />
+        android:layout_height="?attr/actionBarSize" />
     <com.roacult.backdrop.BackdropLayout
         android:id="@+id/backdrop"
         android:layout_width="match_parent"

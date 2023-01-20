@@ -5,7 +5,6 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="?attr/toolbar"
         android:id="@+id/bar">
 
         <androidx.appcompat.widget.Toolbar
@@ -13,7 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="?attr/popup"
             app:layout_scrollFlags="scroll|enterAlways|snap" />
     </com.google.android.material.appbar.AppBarLayout>
     <FrameLayout

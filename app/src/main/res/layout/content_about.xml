@@ -10,13 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/profile_block_counts"
-            style="?attr/cardsBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="@dimen/card_margin_horizontal">
+            android:layout_margin="@dimen/card_margin_horizontal">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -27,15 +26,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" />
             </HorizontalScrollView>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/profile_block_about"
-            style="?attr/cardsBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_block_counts"
             android:descendantFocusability="beforeDescendants"
+            android:layout_margin="@dimen/dp8"
             android:focusableInTouchMode="true">
 
             <RelativeLayout
@@ -89,12 +88,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="@dimen/dp10" />
             </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
-            style="?attr/cardsBackground"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp8"
             android:layout_below="@+id/profile_block_about">
 
             <LinearLayout
@@ -123,6 +122,6 @@
                     android:paddingBottom="@dimen/dp16" />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

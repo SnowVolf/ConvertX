@@ -93,20 +93,17 @@ android {
         viewBinding true
     }
 }
+def latestFastAdapterRelease = '5.7.0'
+def nav_version = '2.5.3'
 
-ext {
-    materialDialogsVersion = "0.9.4.5"
-}
 dependencies {
     implementation project(path: ':backdrop')
-    implementation 'android.arch.navigation:navigation-common-ktx:1.0.0'
-    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
-    def latestFastAdapterRelease = '5.7.0'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.preference:preference-ktx:1.2.0'

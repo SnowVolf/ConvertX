@@ -89,4 +89,5 @@
     <string name="tab_regex">Регулярки</string>
     <string name="message_malformed_base64">Текст не распознан как base64, помещен как обычный текст</string>
     <string name="message_malformed_unicode">Текст не соответствует кодировке Unicode, распознан как обычный текст</string>
+    <string name="flags_placeholder">Флаги</string>
 </resources>
