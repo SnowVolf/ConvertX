@@ -6,18 +6,18 @@
 
     <fragment
         android:id="@+id/unicodeFragment"
-        android:name="ru.svolf.convertx.ui.fragments.main.UnicodeFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.main.UnicodeFragment"
         android:label="@string/dr_unicode"
         tools:layout="@layout/fragment_main"/>
 
     <fragment
         android:id="@+id/base64Fragment"
-        android:name="ru.svolf.convertx.ui.fragments.main.Base64Fragment"
+        android:name="ru.svolf.convertx.presentation.fragments.main.Base64Fragment"
         android:label="@string/dr_base64"
         tools:layout="@layout/fragment_main"/>
     <fragment
         android:id="@+id/hexFragment"
-        android:name="ru.svolf.convertx.ui.fragments.main.HexFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.main.HexFragment"
         android:label="@string/dr_hex"
         tools:layout="@layout/fragment_main"/>
     <fragment
@@ -27,12 +27,12 @@
         tools:layout="@layout/fragment_regex_dragon"/>
     <activity
         android:id="@+id/paletteActivity"
-        android:name="ru.svolf.convertx.palette.PaletteActivity"
+        android:name="ru.svolf.convertx.presentation.activity.PaletteActivity"
         android:label="@string/dr_hex_palette"
         tools:layout="@layout/activity_color_palette"/>
     <fragment
         android:id="@+id/listCoders"
-        android:name="ru.svolf.convertx.ui.fragments.extra.ExtendedCodersFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extra.ExtendedCodersFragment"
         android:label="@string/dr_other1"
         tools:layout="@layout/fragment_ex_encoders">
         <action
@@ -58,7 +58,7 @@
         tools:layout="@layout/activity_settings"/>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="ru.svolf.convertx.ui.fragments.extra.AboutFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extra.AboutFragment"
         android:label="@string/dr_about"
         tools:layout="@layout/activity_about">
         <action
@@ -67,38 +67,38 @@
     </fragment>
     <fragment
         android:id="@+id/adler"
-        android:name="ru.svolf.convertx.ui.fragments.extended.hash.AdlerFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extended.hash.AdlerFragment"
         android:label="@string/checksum_adler32"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/CRC"
-        android:name="ru.svolf.convertx.ui.fragments.extended.hash.CrcFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extended.hash.CrcFragment"
         android:label="@string/checksum_crc"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/mdSha"
-        android:name="ru.svolf.convertx.ui.fragments.extended.hash.MdShaFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extended.hash.MdShaFragment"
         android:label="@string/checksum_md"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/xmlDecodeFragment"
-        android:name="ru.svolf.convertx.ui.fragments.extended.XmlDecodeFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extended.XmlDecodeFragment"
         android:label="@string/unescape_xml"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/changelistFragment"
-        android:name="ru.svolf.convertx.ui.fragments.extra.ChangelogFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extra.ChangelogFragment"
         android:label="@string/changelog"
         tools:layout="@layout/activity_changelist" />
     <fragment
         android:id="@+id/timestampFragment"
-        android:name="ru.svolf.convertx.ui.fragments.extended.TimestampFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.extended.TimestampFragment"
         android:label="@string/timestamp_converter"
         tools:layout="@layout/fragment_ex"/>
     <!-- Костыль для того чтобы не пропадало гамбургерное меню-->
     <fragment
         android:id="@+id/baseMainFragment"
-        android:name="ru.svolf.convertx.ui.fragments.base.BaseMainFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.base.BaseMainFragment"
         android:label="BaseMainFragment" />
 
 </navigation>

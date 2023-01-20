@@ -1,6 +1,6 @@
 package ru.svolf.convertx.regexdragon
 
-import java.util.*
+import java.util.regex.Pattern
 
 /**
  * Created by Snow Volf on 26.02.2017, 11:29
@@ -51,32 +51,32 @@ internal class Flags {
         get() {
             var data = 0
             if (mData[0]) {
-                data = 2
+                data = Pattern.CASE_INSENSITIVE
             }
             if (mData[1]) {
-                return data or 8
+                return data or Pattern.MULTILINE
             }
             if (mData[2]) {
-                return data or 4
+                return data or Pattern.COMMENTS
             }
             if (mData[3]) {
-                return data or 32
+                return data or Pattern.DOTALL
             }
             if (mData[4]) {
-                return data or 16
+                return data or Pattern.LITERAL
             }
             if (mData[5]) {
-                return data or 64
+                return data or Pattern.UNICODE_CASE
             }
             if (mData[6]) {
-                return data or 1
+                return data or Pattern.UNIX_LINES
             }
             return data
         }
 
     val flagString: String
         get() {
-            var data = "/"
+            var data = "/g"
             if (mData[0]) {
                 data += "i"
             }
@@ -97,9 +97,6 @@ internal class Flags {
             }
             if (mData[6]) {
                 data += "d"
-            }
-            if (data == "/") {
-                return "Флаги"
             }
             return data
         }

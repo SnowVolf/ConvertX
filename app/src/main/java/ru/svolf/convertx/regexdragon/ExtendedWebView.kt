@@ -1,8 +1,6 @@
 package ru.svolf.convertx.regexdragon
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.os.Build
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.ActionMode
@@ -19,14 +17,6 @@ class ExtendedWebView : NestedWebView {
     constructor(ctx: Context, attributeSet: AttributeSet) : super(ctx, attributeSet) {}
 
     constructor(ctx: Context, attributeSet: AttributeSet, defStyleAtrr: Int) : super(ctx, attributeSet, defStyleAtrr) {}
-
-    @TargetApi(19)
-    fun evalJs(js: String) {
-        if (Build.VERSION.SDK_INT >= 19)
-            evaluateJavascript(js, null)
-        else
-            loadUrl("javascript:" + js)
-    }
 
     private var actionModeListener: OnStartActionModeListener? = null
 
@@ -47,12 +37,7 @@ class ExtendedWebView : NestedWebView {
     }
 
     private fun myActionMode(callback: ActionMode.Callback, type: Int): ActionMode {
-        val actionMode: ActionMode
-        if (Build.VERSION.SDK_INT >= 23) {
-            actionMode = super.startActionMode(callback, type)
-        } else {
-            actionMode = startActionMode(callback)
-        }
+        val actionMode: ActionMode = super.startActionMode(callback, type)
         if (actionModeListener != null)
             actionModeListener!!.OnStart(actionMode, callback, type)
         return actionMode

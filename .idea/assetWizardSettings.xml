@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android/sdk/icons/material/materialicons/receipt/baseline_receipt_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android/sdk/icons/material/materialicons/arrow_drop_down/baseline_arrow_drop_down_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_receipt" />
+                            <entry key="outputName" value="ic_drop_down" />
                             <entry key="sourceFile" value="E:\UserData\SVolf\Downloads\telegram-svgrepo-com.svg" />
                           </map>
                         </option>

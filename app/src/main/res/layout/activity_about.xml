@@ -9,22 +9,18 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:theme="?attr/toolbar">
+        android:layout_height="@dimen/app_bar_height">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/collapsingToolbarBackground"
-            android:scaleType="centerInside"
-            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ru.svolf.convertx.ui.CircleImageView
+                <ru.svolf.convertx.utils.CircleImageView
                     android:src="@mipmap/ic_launcher"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
