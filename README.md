@@ -4,9 +4,9 @@ This app converts strings with commonly used algorithms. API 26+
 
 ## Screens
 
-| ![Main Sreen](/screens/main_screen.png) | ![Menu Screen](menu_screen.png) | ![Base64 Screen](/base64_screen.png) |
+| ![Main Sreen](/screens/main_screen.png) | ![Menu Screen](/screens/menu_screen.png) | ![Base64 Screen](/screens/base64_screen.png) |
 |--|--|--|
-| ![Palette Screen](/palette_screen.png) | ![Regexp Screen](/regexp_screen.png) | |
+| ![Palette Screen](screens/palette_screen.png) | ![Regexp Screen](/screens/regexp_screen.png) | |
 
 ## Converters
 
