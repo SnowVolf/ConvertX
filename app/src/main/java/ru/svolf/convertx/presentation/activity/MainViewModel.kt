@@ -15,7 +15,7 @@ class MainViewModel : ViewModel() {
             MainMenuItem(R.id.base64Fragment, R.drawable.ic_dr_base64, R.string.dr_base64),
             MainMenuItem(R.id.hexFragment, R.drawable.ic_dr_hex, R.string.dr_hex),
             MainMenuItem(R.id.regexDragonFragment, R.drawable.ic_dr_regexdragon, R.string.dr_regex_dragon),
-            MainMenuItem(R.id.paletteActivity, R.drawable.ic_dr_palette, R.string.dr_hex_palette),
+            MainMenuItem(R.id.paletteFragment, R.drawable.ic_dr_palette, R.string.dr_hex_palette),
             MainMenuItem(R.id.listCoders, R.drawable.ic_dr_other_coders, R.string.dr_other1),
             MainMenuItem(R.id.aboutFragment, R.drawable.ic_info, R.string.dr_about),
             MainMenuItem(R.id.settingsFragment, R.drawable.ic_dr_settings, R.string.settings),

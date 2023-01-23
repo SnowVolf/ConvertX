@@ -51,7 +51,7 @@ class MainActivity : BaseActivity() {
                 pkg.plus(".ACTION_BASE64") -> navController.navigate(R.id.base64Fragment)
                 pkg.plus(".ACTION_HEX") -> navController.navigate(R.id.hexFragment)
                 pkg.plus(".ACTION_REGEX") -> navController.navigate(R.id.regexDragonFragment)
-                pkg.plus(".ACTION_PALETTE") -> navController.navigate(R.id.paletteActivity)
+                pkg.plus(".ACTION_PALETTE") -> navController.navigate(R.id.paletteFragment)
                 else -> {
                     Toasty.info(this, "Missing action, please update ConvertX to latest version").show()
                 }

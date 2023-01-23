@@ -42,20 +42,6 @@
                 <action android:name="ru.svolf.convertx.ACTION_PALETTE"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
-            <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
-            <meta-data
-                android:name="android.max_aspect"
-                android:value="2.1" />
-        </activity>
-        <activity
-            android:name=".presentation.activity.PaletteActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:documentLaunchMode="intoExisting"
-            android:label="@string/activity_palette">
-
             <!-- Для экранов Galaxy S8, LG G6, и т.д. -->
             <meta-data
                 android:name="android.max_aspect"

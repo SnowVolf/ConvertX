@@ -19,17 +19,17 @@
         android:id="@+id/hexFragment"
         android:name="ru.svolf.convertx.presentation.fragments.main.HexFragment"
         android:label="@string/dr_hex"
-        tools:layout="@layout/fragment_main"/>
+        tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/regexDragonFragment"
         android:name="ru.svolf.convertx.regexdragon.RegexFragment"
         android:label="@string/dr_regex_dragon"
-        tools:layout="@layout/fragment_regex_dragon"/>
-    <activity
-        android:id="@+id/paletteActivity"
-        android:name="ru.svolf.convertx.presentation.activity.PaletteActivity"
+        tools:layout="@layout/fragment_regex_dragon" />
+    <fragment
+        android:id="@+id/paletteFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.main.PaletteFragment"
         android:label="@string/dr_hex_palette"
-        tools:layout="@layout/activity_color_palette"/>
+        tools:layout="@layout/fragment_color_palette" />
     <fragment
         android:id="@+id/listCoders"
         android:name="ru.svolf.convertx.presentation.fragments.extra.ExtendedCodersFragment"

@@ -1,5 +1,8 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
+}
 
 def Properties versionProps = new Properties()
 
@@ -105,14 +108,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation "com.mikepenz:fastadapter:${latestFastAdapterRelease}"
     implementation "com.mikepenz:fastadapter-extensions-binding:${latestFastAdapterRelease}" // view binding helpers
-
-}
-repositories {
-    mavenCentral()
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1'
 }

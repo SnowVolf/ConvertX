@@ -52,7 +52,6 @@
     <string name="flags">Флаги</string>
     <string name="cur_timestamp">Текущий Timestamp</string>
 
-    <string name="shortcut_hex_palette">Палитра HEX</string>
     <string name="ok">OK</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
@@ -64,7 +63,6 @@
     <string name="dlg_font_size">Размер шрифта</string>
     <string name="app_theme_light">Светлая</string>
     <string name="app_theme_dark">Тёмная</string>
-    <string name="activity_palette">Палитра</string>
     <string name="reset">Сброс</string>
     <string name="paste">Вставить</string>
     <string name="cancel">Отмена</string>
@@ -89,5 +87,4 @@
     <string name="tab_regex">Регулярки</string>
     <string name="message_malformed_base64">Текст не распознан как base64, помещен как обычный текст</string>
     <string name="message_malformed_unicode">Текст не соответствует кодировке Unicode, распознан как обычный текст</string>
-    <string name="flags_placeholder">Флаги</string>
 </resources>

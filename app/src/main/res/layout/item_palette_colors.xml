@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp8"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="@dimen/dp8"
+    android:layout_marginBottom="2dp"
+    app:strokeWidth="@dimen/dp0">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/color_accent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp16"
+            android:paddingTop="@dimen/dp8"
+            android:paddingEnd="@dimen/dp16"
+            android:paddingBottom="@dimen/dp8"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/color_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:padding="@dimen/dp8"
+            app:layout_constraintBottom_toBottomOf="@+id/color_accent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/color_accent" />
+
+        <ru.svolf.convertx.utils.CircleImageView
+            android:id="@+id/color_view"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_margin="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp16"
+            app:civ_border_color="?colorOnSurface"
+            app:civ_border_width="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
