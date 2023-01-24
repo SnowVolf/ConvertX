@@ -1,4 +1,6 @@
 ﻿# ConvertX
+<a href="https://apps.rustore.ru/app/ru.svolf.convertx" target="_blank">
+<img src="/screens/rustore.svg" alt="Get on RuStore" height="80"/></a>
 
 This app converts strings with commonly used algorithms. API 26+
 

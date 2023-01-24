@@ -14,48 +14,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Update README.md">
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/colors_palette.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/api/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/api/Palette.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/api/Squash.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/dto/ColorsItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/dto/PaletteItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/PaletteFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/PaletteViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/space_mono.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_color_palette.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_palette_colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_palette_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/regex/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/extension/EditExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/extension/EditExtension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/MainViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/PaletteActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/RegexValidatorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/RegexValidatorFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/edit_text_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_drop_down.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_shortcut_palette.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_color_palette.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/palette_colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/palette_ex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors_palette.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml-v25/shortcuts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/palette_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/screens/palette_screen.png" afterDir="false" />
-    </list>
+    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Release 1.8.6" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -3672,7 +3631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674222023665</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Release 1.8.6">
+      <created>1674483161985</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674483161985</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3775,7 +3741,8 @@
     <MESSAGE value="Factored to new BuildTools and newest Android Studio" />
     <MESSAGE value="Release 1.8.0" />
     <MESSAGE value="Update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
+    <MESSAGE value="Release 1.8.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release 1.8.6" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
