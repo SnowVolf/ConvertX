@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.algorhitms.Decoder
 import ru.svolf.convertx.settings.Preferences
-import ru.svolf.convertx.utils.Toasty
 
 /**
  * Created by Snow Volf on 26.02.2017, 20:44
@@ -88,7 +87,7 @@ class TimestampFragment : Fragment() {
     fun clearAllText() {
         Timestamp.setText("")
         normalDate.text = ""
-        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
     }
 
     fun InsertCurrentTimestamp() {

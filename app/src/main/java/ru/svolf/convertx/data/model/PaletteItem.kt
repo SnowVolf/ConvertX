@@ -1,11 +1,11 @@
-package ru.svolf.convertx.dto
+package ru.svolf.convertx.data.model
 
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
 import ru.svolf.convertx.R
-import ru.svolf.convertx.api.Color
+import ru.svolf.convertx.data.entity.Color
 import ru.svolf.convertx.databinding.ItemPaletteColorsBinding
 
 /*

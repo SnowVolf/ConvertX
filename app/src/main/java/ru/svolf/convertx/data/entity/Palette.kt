@@ -1,4 +1,4 @@
-package ru.svolf.convertx.api
+package ru.svolf.convertx.data.entity
 
 /*
  * Created by SVolf on 22.01.2023, 20:52

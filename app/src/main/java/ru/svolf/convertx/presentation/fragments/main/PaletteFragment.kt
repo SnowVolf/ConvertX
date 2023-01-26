@@ -10,10 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import ru.svolf.convertx.R
+import ru.svolf.convertx.data.model.ColorsItem
+import ru.svolf.convertx.data.model.PaletteItem
 import ru.svolf.convertx.databinding.FragmentColorPaletteBinding
-import ru.svolf.convertx.dto.ColorsItem
-import ru.svolf.convertx.dto.PaletteItem
 import ru.svolf.convertx.utils.StringUtils
+import java.util.stream.Collectors
 
 /*
  * Created by SVolf on 23.01.2023, 16:09
@@ -42,13 +43,12 @@ class PaletteFragment : Fragment() {
         val paletteClickAdapter = FastAdapter.with(paletteAdapter)
 
         viewModel.getPalettes().observe(viewLifecycleOwner) {
-            for (p in it) {
-                itemAdapter.add(ColorsItem(p))
+            itemAdapter.add(
+                it.stream().map(::ColorsItem).collect(Collectors.toList())
+            )
+            it[0].colors.forEach { c ->
+                paletteAdapter.add(PaletteItem(c))
             }
-        }
-
-        for (c in viewModel.getPalettes().value?.get(0)!!.colors) {
-            paletteAdapter.add(PaletteItem(c))
         }
 
         itemClickAdapter.onClickListener = { _, _, colorsItem, _ ->

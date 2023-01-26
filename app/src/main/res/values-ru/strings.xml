@@ -13,6 +13,7 @@
     <string name="dr_base64">Декодер Base64</string>
     <string name="dr_hex">HEX Декодер</string>
     <string name="dr_other1">Прочие инструменты</string>
+    <string name="history">История кодировок</string>
     <string name="git_hub">GitHub</string>
     <string name="changelog">История изменений</string>
     <string name="settings">Параметры</string>

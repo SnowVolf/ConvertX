@@ -94,11 +94,16 @@
         android:id="@+id/timestampFragment"
         android:name="ru.svolf.convertx.presentation.fragments.extended.TimestampFragment"
         android:label="@string/timestamp_converter"
-        tools:layout="@layout/fragment_ex"/>
+        tools:layout="@layout/fragment_ex" />
     <!-- Костыль для того чтобы не пропадало гамбургерное меню-->
     <fragment
         android:id="@+id/baseMainFragment"
         android:name="ru.svolf.convertx.presentation.fragments.base.BaseMainFragment"
         android:label="BaseMainFragment" />
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="ru.svolf.convertx.presentation.fragments.main.HistoryFragment"
+        android:label="@string/history" />
 
 </navigation>

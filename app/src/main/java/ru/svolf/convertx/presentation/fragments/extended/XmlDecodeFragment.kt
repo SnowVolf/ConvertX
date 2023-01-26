@@ -13,7 +13,6 @@ import ru.svolf.convertx.R
 import ru.svolf.convertx.algorhitms.Decoder
 import ru.svolf.convertx.settings.Preferences
 import ru.svolf.convertx.utils.StringUtils
-import ru.svolf.convertx.utils.Toasty
 
 /**
  * Created by Snow Volf on 22.02.2017, 19:51
@@ -85,7 +84,7 @@ class XmlDecodeFragment : Fragment() {
     fun clearAllText() {
         data.setText("")
         dataOut.text = ""
-        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
     }
 
     fun showToast(context: Context?, text: String?) {

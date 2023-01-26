@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Process
 import android.view.View
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +20,6 @@ import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.ActivityMainBinding
 import ru.svolf.convertx.presentation.fragments.base.MainMenuItem
 import ru.svolf.convertx.settings.Preferences
-import ru.svolf.convertx.utils.Toasty
 import kotlin.system.exitProcess
 
 class MainActivity : BaseActivity() {
@@ -38,6 +38,7 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowHomeEnabled(false)
         supportActionBar?.setHomeButtonEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         initNavigation()
         initMenu()
     }
@@ -53,7 +54,7 @@ class MainActivity : BaseActivity() {
                 pkg.plus(".ACTION_REGEX") -> navController.navigate(R.id.regexDragonFragment)
                 pkg.plus(".ACTION_PALETTE") -> navController.navigate(R.id.paletteFragment)
                 else -> {
-                    Toasty.info(this, "Missing action, please update ConvertX to latest version").show()
+                    Toast.makeText(this, "Missing action, please update ConvertX to latest version", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -69,7 +70,7 @@ class MainActivity : BaseActivity() {
                 if (navHostFragment?.childFragmentManager?.backStackEntryCount == 1) {
                     if (Preferences.isTwiceBackAllowed and (press_time + 2000 < System.currentTimeMillis()) ) {
                         press_time = System.currentTimeMillis()
-                        Toasty.info(this@MainActivity, getString(R.string.press_back_once_more)).show()
+                        Toast.makeText(this@MainActivity, getString(R.string.press_back_once_more), Toast.LENGTH_SHORT).show()
                     } else finish()
                 } else {
                     navController.navigateUp()

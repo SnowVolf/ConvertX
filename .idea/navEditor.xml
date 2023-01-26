@@ -101,6 +101,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="historyFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="276" />
+                            <option name="y" value="316" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="listCoders">
                     <value>
                       <LayoutPositions>
@@ -154,13 +166,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="paletteActivity">
+                  <entry key="paletteFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="49" />
-                            <option name="y" value="1164" />
+                            <option name="x" value="284" />
+                            <option name="y" value="24" />
                           </Point>
                         </option>
                       </LayoutPositions>

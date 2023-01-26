@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.settings.Preferences
 import ru.svolf.convertx.utils.StringUtils.copyToClipboard
-import ru.svolf.convertx.utils.Toasty
 import java.util.zip.CRC32
 
 /**
@@ -88,8 +87,7 @@ class CrcFragment : Fragment() {
     fun clearAllText() {
         data.setText("")
         dataOut.text = ""
-
-        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        showToast(context, getString(R.string.cleared))
     }
 
     fun showToast(context: Context?, text: String?) {

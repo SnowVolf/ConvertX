@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
 import ru.svolf.convertx.settings.Preferences
 import ru.svolf.convertx.utils.StringUtils.copyToClipboard
-import ru.svolf.convertx.utils.Toasty
 import java.util.zip.Adler32
 
 /**
@@ -95,7 +94,7 @@ class AdlerFragment : Fragment() {
     fun clearAllText() {
         data.setText("")
         dataOut.text = ""
-        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
     }
 
     fun showToast(context: Context?, text: String?) {

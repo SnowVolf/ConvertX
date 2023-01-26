@@ -4,12 +4,15 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.google.android.material.color.DynamicColors
+import ru.svolf.convertx.di.DaggerMainComponent
 
 /**
  * Created by Snow Volf on 06.02.2017.
  */
 
 class App : Application() {
+    val mainComponent = DaggerMainComponent.create()
+
     override fun onCreate() {
         super.onCreate()
         instance = this

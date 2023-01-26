@@ -11,13 +11,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import ru.svolf.convertx.App
 import ru.svolf.convertx.R
+import ru.svolf.convertx.data.dao.HistoryDao
 import ru.svolf.convertx.databinding.FragmentMainBinding
 import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.settings.Preferences
 import ru.svolf.convertx.utils.StringUtils.copyToClipboard
 import ru.svolf.convertx.utils.StringUtils.readFromClipboard
-import ru.svolf.convertx.utils.Toasty
 
 
 /**
@@ -25,16 +26,18 @@ import ru.svolf.convertx.utils.Toasty
  */
 open class BaseMainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
+    private lateinit var databaseDao: HistoryDao
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        databaseDao = (context?.applicationContext as App).mainComponent.getDbManager().getDatabase().historyDao()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,12 +99,12 @@ open class BaseMainFragment : Fragment() {
 
     fun copyInput(v: EditText) {
         copyToClipboard(requireContext(), v.text.toString())
-        Toasty.info(requireContext(), getString(R.string.copied2clipboard)).show()
+        Toast.makeText(requireContext(), getString(R.string.copied2clipboard), Toast.LENGTH_SHORT).show()
     }
 
     fun copyOutput(v: EditText) {
         copyToClipboard(requireContext(), v.text.toString())
-        Toasty.info(requireContext(), getString(R.string.copied2clipboard)).show()
+        Toast.makeText(requireContext(), getString(R.string.copied2clipboard), Toast.LENGTH_SHORT).show()
     }
 
     fun clearOutput(edit: EditText) {
@@ -115,7 +118,11 @@ open class BaseMainFragment : Fragment() {
     open fun clearAllText() {
         binding.fieldInput.clear()
         binding.fieldOutput.setText("")
-        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
+    }
+
+    fun getDao(): HistoryDao {
+        return databaseDao
     }
 
     inner class InputWatcher : TextWatcher {
@@ -135,8 +142,8 @@ open class BaseMainFragment : Fragment() {
                 inputHandler.removeCallbacks(inputRunnable)
             }
             inputRunnable = Runnable { convertInput(s.toString()) }
-            // Ждем 1,5 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
-            inputHandler.postDelayed(inputRunnable, 1500)
+            // Ждем 2 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
+            inputHandler.postDelayed(inputRunnable, 2000)
         }
     }
 
@@ -156,8 +163,8 @@ open class BaseMainFragment : Fragment() {
                 outputHandler.removeCallbacks(outputRunnable)
             }
             outputRunnable = Runnable { convertOutput(s.toString()) }
-            // Ждем 1,5 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
-            outputHandler.postDelayed(outputRunnable, 1500)
+            // Ждем 2 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
+            outputHandler.postDelayed(outputRunnable, 2000)
         }
 
     }

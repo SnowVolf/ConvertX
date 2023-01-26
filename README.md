@@ -23,7 +23,7 @@ This app converts strings with commonly used algorithms. API 26+
 
 ## Build & Download
 
-You can check [releases page](https://github.com/SnowVolf/ConvertX/releases) for lastest version
+You can check [releases page](https://github.com/SnowVolf/ConvertX/releases) for latest version
 You can also build this app from sources in Android Studio or Intellij IDEA (`Build -> Build Bundles -> Build APK`)
 
 

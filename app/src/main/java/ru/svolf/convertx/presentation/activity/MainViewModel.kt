@@ -17,8 +17,9 @@ class MainViewModel : ViewModel() {
             MainMenuItem(R.id.regexDragonFragment, R.drawable.ic_dr_regexdragon, R.string.dr_regex_dragon),
             MainMenuItem(R.id.paletteFragment, R.drawable.ic_dr_palette, R.string.dr_hex_palette),
             MainMenuItem(R.id.listCoders, R.drawable.ic_dr_other_coders, R.string.dr_other1),
-            MainMenuItem(R.id.aboutFragment, R.drawable.ic_info, R.string.dr_about),
+            MainMenuItem(R.id.historyFragment, R.drawable.ic_history, R.string.history),
             MainMenuItem(R.id.settingsFragment, R.drawable.ic_dr_settings, R.string.settings),
+            MainMenuItem(R.id.aboutFragment, R.drawable.ic_info, R.string.dr_about),
             MainMenuItem(android.R.id.home, R.drawable.ic_action_arrow_back, R.string.dr_close_app)
         )
     }

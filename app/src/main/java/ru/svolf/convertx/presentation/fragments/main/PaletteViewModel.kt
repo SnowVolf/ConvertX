@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import ru.svolf.convertx.App
-import ru.svolf.convertx.api.Palette
-import ru.svolf.convertx.api.Squash
+import ru.svolf.convertx.data.entity.Palette
+import ru.svolf.convertx.data.entity.Squash
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

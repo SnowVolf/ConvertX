@@ -16,7 +16,6 @@ import ru.svolf.convertx.algorhitms.Checksum.encodeSHA224
 import ru.svolf.convertx.algorhitms.Checksum.encodeSHA384
 import ru.svolf.convertx.algorhitms.Checksum.encodeSHA512
 import ru.svolf.convertx.settings.Preferences
-import ru.svolf.convertx.utils.Toasty
 
 /**
  * Created by Snow Volf on 14.02.2017.
@@ -81,6 +80,6 @@ class MdShaFragment : Fragment() {
     fun clearAllText() {
         data!!.setText("")
         dataOut!!.text = ""
-        Toasty.success(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT, true).show()
+        Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
     }
 }

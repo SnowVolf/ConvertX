@@ -2,12 +2,13 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
+    id 'kotlin-kapt'
 }
 
 def Properties versionProps = new Properties()
 
 android {
-
+    namespace 'ru.svolf.convertx'
     compileSdkVersion 33
     def versionPropsFile = file('version.properties')
     if (versionPropsFile.canRead()) {
@@ -29,7 +30,7 @@ android {
 
 
         // only in release build
-        if (':app:assembleRelease' in runTasks || 'aR' in runTasks) {
+        if (":${project.name}:assembleRelease" in runTasks || 'aR' in runTasks) {
             versionPatch++;
             if (versionPatch >= 9) {
                 versionPatch = 0;
@@ -64,14 +65,14 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             zipAlignEnabled true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            debuggable false
+            debuggable true
             jniDebuggable false
             minifyEnabled false
             zipAlignEnabled true
@@ -87,7 +88,6 @@ android {
         jvmTarget = '11'
     }
 
-    namespace 'ru.svolf.convertx'
     defaultConfig {
         signingConfig signingConfigs.debug
     }
@@ -98,9 +98,18 @@ android {
 }
 def latestFastAdapterRelease = '5.7.0'
 def nav_version = '2.5.3'
+def room_version = "2.5.0"
+def dagger_version = '2.44.2'
 
 dependencies {
     implementation project(path: ':backdrop')
+    implementation "androidx.room:room-runtime:$room_version"
+    // To use Kotlin annotation processing tool (kapt)
+    kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation fileTree(include: ['*.jar'], dir: 'libs')

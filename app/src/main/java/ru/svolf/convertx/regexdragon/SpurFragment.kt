@@ -1,14 +1,13 @@
 package ru.svolf.convertx.regexdragon
 
-import android.widget.TextView
 import android.os.Bundle
-import ru.svolf.convertx.R
 import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import ru.svolf.convertx.R
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.lang.StringBuilder
 
 /**
  * Created by Snow Volf on 02.03.2017, 20:31

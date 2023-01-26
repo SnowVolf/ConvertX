@@ -8,11 +8,15 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
 import ru.svolf.convertx.algorhitms.Decoder
+import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.presentation.fragments.base.BaseMainFragment
 import ru.svolf.convertx.settings.Preferences
-import ru.svolf.convertx.utils.Toasty
 
 /**
  * Created by Snow Volf on 28.01.2017.
@@ -66,16 +70,26 @@ class HexFragment : BaseMainFragment() {
             try {
                 string = Decoder.intToHex(input.toInt())
             } catch (ex: java.lang.NumberFormatException){
-                Toasty.error(requireContext(), ex.message!!).show()
+                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
             }
         } else {
             try {
                 string = Decoder.toHexString(input)
-            } catch (ex: java.lang.NumberFormatException){
-                Toasty.error(requireContext(), ex.message!!).show()
+            } catch (ex: java.lang.NumberFormatException) {
+                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
             }
         }
         binding.fieldOutput.setText(string)
+        CoroutineScope(Dispatchers.IO).launch {
+            val hist = HistoryItem().apply {
+                this.id = System.currentTimeMillis()
+                this.input = input
+                this.output = string
+                this.decoder = 2
+                this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
+            }
+            getDao().insert(hist)
+        }
     }
 
     override fun convertOutput(output: String) {
@@ -84,17 +98,27 @@ class HexFragment : BaseMainFragment() {
             try {
                 string = Decoder.hexToInt(output)
             } catch (ex: java.lang.NumberFormatException){
-                Toasty.error(requireContext(), ex.message!!).show()
+                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
             }
         } else {
             try {
                 val string2 = output.replaceFirst("0x", "")
                 string = Decoder.decodeHexString(string2)
-            } catch (ex: Exception){
-                Toasty.error(requireContext(), ex.message!!).show()
+            } catch (ex: Exception) {
+                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
             }
         }
         binding.fieldInput.setText(string)
+        CoroutineScope(Dispatchers.IO).launch {
+            val hist = HistoryItem().apply {
+                this.id = System.currentTimeMillis()
+                this.input = string
+                this.output = output
+                this.decoder = 2
+                this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
+            }
+            getDao().insert(hist)
+        }
     }
 
 

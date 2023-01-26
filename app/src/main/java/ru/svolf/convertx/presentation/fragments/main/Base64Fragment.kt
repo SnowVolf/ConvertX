@@ -4,12 +4,16 @@ import android.util.Base64
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
 import ru.svolf.convertx.algorhitms.Decoder
+import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.presentation.fragments.base.BaseMainFragment
 import ru.svolf.convertx.settings.Preferences
-import ru.svolf.convertx.utils.Toasty
 
 /**
  * Created by Snow Volf on 28.01.2017.
@@ -50,6 +54,16 @@ class Base64Fragment : BaseMainFragment() {
     override fun convertInput(input: String) {
         val text = Decoder.encodeBase64(input, algs[Preferences.getSpinnerPosition("spinner.base64")])
         binding.fieldOutput.setText(text)
+        CoroutineScope(Dispatchers.IO).launch {
+            val hist = HistoryItem().apply {
+                id = System.currentTimeMillis()
+                this.input = input
+                output = text
+                decoder = 1
+                spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
+            }
+            getDao().insert(hist)
+        }
     }
 
     override fun convertOutput(output: String) {
@@ -57,10 +71,20 @@ class Base64Fragment : BaseMainFragment() {
             binding.fieldInput.setText(output)
             binding.fieldOutput.clear()
             binding.fieldInput.requestFocus()
-            Toasty.error(requireContext(), getString(R.string.message_malformed_base64)).show()
+            Toast.makeText(requireContext(), getString(R.string.message_malformed_base64), Toast.LENGTH_SHORT).show()
         } else {
             val text = Decoder.decodeBase64(output, algs[Preferences.getSpinnerPosition("spinner.base64")])
             binding.fieldInput.setText(text)
+            CoroutineScope(Dispatchers.IO).launch {
+                val hist = HistoryItem().apply {
+                    id = System.currentTimeMillis()
+                    input = text
+                    this.output = output
+                    decoder = 1
+                    spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
+                }
+                getDao().insert(hist)
+            }
         }
 
     }
