@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android/sdk/icons/material/materialicons/history/baseline_history_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android/sdk/icons/material/materialicons/remove/baseline_remove_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_history" />
+                            <entry key="outputName" value="ic_remove" />
                             <entry key="sourceFile" value="E:\UserData\SVolf\Downloads\telegram-svgrepo-com.svg" />
                           </map>
                         </option>

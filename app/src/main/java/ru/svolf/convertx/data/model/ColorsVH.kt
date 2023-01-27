@@ -13,7 +13,7 @@ import ru.svolf.convertx.databinding.ItemPaletteMainBinding
  * Created by SVolf on 23.01.2023, 16:17
  * This file is a part of "ConvertX" project
  */
-class ColorsItem(var palette: Palette) : AbstractBindingItem<ItemPaletteMainBinding>() {
+class ColorsVH(var palette: Palette) : AbstractBindingItem<ItemPaletteMainBinding>() {
 
     override val type: Int
         get() = R.id.item_main_palette

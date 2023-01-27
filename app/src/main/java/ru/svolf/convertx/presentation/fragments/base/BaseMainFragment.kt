@@ -10,6 +10,8 @@ import android.view.View.OnFocusChangeListener
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.CallSuper
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import ru.svolf.convertx.App
 import ru.svolf.convertx.R
@@ -28,10 +30,8 @@ open class BaseMainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
     private lateinit var databaseDao: HistoryDao
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         databaseDao = (context?.applicationContext as App).mainComponent.getDbManager().getDatabase().historyDao()
     }
 
@@ -42,10 +42,27 @@ open class BaseMainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menu.clear()
+                menuInflater.inflate(R.menu.menu_clear, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.menu_clear -> {
+                        clearAllText()
+                        return true
+                    }
+                }
+                return false
+            }
+        })
         val inputWatcher = InputWatcher()
         val outputWatcher = OutputWatcher()
 
-        binding.fieldInput.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+        binding.fieldInput.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.fieldInput.addTextChangedListener(inputWatcher)
             } else {
@@ -53,17 +70,17 @@ open class BaseMainFragment : Fragment() {
             }
         }
 
-        binding.fieldOutput.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+        binding.fieldOutput.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.fieldOutput.addTextChangedListener(outputWatcher)
             } else {
                 binding.fieldOutput.removeTextChangedListener(outputWatcher)
             }
         }
-        binding.btnCopyInput.setOnClickListener { v: View? -> copyInput(binding.fieldInput) }
-        binding.btnCopyOutput.setOnClickListener { v: View? -> copyOutput(binding.fieldOutput) }
-        binding.btnClearInput.setOnClickListener { v: View? -> clearOutput(binding.fieldInput) }
-        binding.btnPasteOutput.setOnClickListener { v: View? -> pasteInput(binding.fieldOutput) }
+        binding.btnCopyInput.setOnClickListener { copyInput(binding.fieldInput) }
+        binding.btnCopyOutput.setOnClickListener { copyOutput(binding.fieldOutput) }
+        binding.btnClearInput.setOnClickListener { clearOutput(binding.fieldInput) }
+        binding.btnPasteOutput.setOnClickListener { pasteInput(binding.fieldOutput) }
 
         onViewsReady()
     }
@@ -79,39 +96,27 @@ open class BaseMainFragment : Fragment() {
             }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        //добавляем пункты меню
-        menu.add(R.string.clear_all)
-            .setIcon(R.drawable.ic_menu_clear_all)
-            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            .setOnMenuItemClickListener { menuItem: MenuItem? ->
-                clearAllText()
-                true
-            }
-    }
-
     open fun convertInput(input: String) {}
 
     open fun convertOutput(output: String) {}
 
     open fun onViewsReady() {}
 
-    fun copyInput(v: EditText) {
+    private fun copyInput(v: EditText) {
         copyToClipboard(requireContext(), v.text.toString())
         Toast.makeText(requireContext(), getString(R.string.copied2clipboard), Toast.LENGTH_SHORT).show()
     }
 
-    fun copyOutput(v: EditText) {
+    private fun copyOutput(v: EditText) {
         copyToClipboard(requireContext(), v.text.toString())
         Toast.makeText(requireContext(), getString(R.string.copied2clipboard), Toast.LENGTH_SHORT).show()
     }
 
-    fun clearOutput(edit: EditText) {
+    private fun clearOutput(edit: EditText) {
         edit.setText("")
     }
 
-    fun pasteInput(edit: EditText) {
+    private fun pasteInput(edit: EditText) {
         edit.setText(readFromClipboard())
     }
 
@@ -141,7 +146,11 @@ open class BaseMainFragment : Fragment() {
             if (this::inputRunnable.isInitialized) {
                 inputHandler.removeCallbacks(inputRunnable)
             }
-            inputRunnable = Runnable { convertInput(s.toString()) }
+            inputRunnable = Runnable {
+                if (!s.isNullOrBlank()) {
+                    convertInput(s.toString())
+                }
+            }
             // Ждем 2 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
             inputHandler.postDelayed(inputRunnable, 2000)
         }
@@ -162,7 +171,11 @@ open class BaseMainFragment : Fragment() {
             if (this::outputRunnable.isInitialized) {
                 outputHandler.removeCallbacks(outputRunnable)
             }
-            outputRunnable = Runnable { convertOutput(s.toString()) }
+            outputRunnable = Runnable {
+                if (!s.isNullOrBlank()) {
+                    convertOutput(s.toString())
+                }
+            }
             // Ждем 2 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
             outputHandler.postDelayed(outputRunnable, 2000)
         }

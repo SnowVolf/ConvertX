@@ -1,8 +1,12 @@
 package ru.svolf.convertx.data.model
 
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
+import com.mikepenz.fastadapter.swipe.ISwipeable
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.databinding.ItemHistoryBinding
@@ -13,10 +17,17 @@ import java.util.*
  * Created by SVolf on 26.01.2023, 20:50
  * This file is a part of "ConvertX" project
  */
-class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<ItemHistoryBinding>() {
+class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<ItemHistoryBinding>(), ISwipeable {
+    var swipedDirection: Int = 0
+    var swipedAction: Runnable? = null
 
     override val type: Int
-        get() = R.id.text_decoder_type
+        get() = R.id.item_content
+
+    override val isSwipeable: Boolean
+        get() = true
+
+    val id = historyItem.id
 
     override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): ItemHistoryBinding {
         return ItemHistoryBinding.inflate(inflater, parent, false)
@@ -24,6 +35,21 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
 
     override fun bindView(binding: ItemHistoryBinding, payloads: List<Any>) {
         super.bindView(binding, payloads)
+        val context = binding.root.context
+        binding.swipeResultContent.visibility = if (swipedDirection != 0) View.VISIBLE else View.GONE
+        binding.itemContent.visibility = if (swipedDirection != 0) View.GONE else View.VISIBLE
+
+        var swipedAction: CharSequence? = null
+        var swipedText: CharSequence? = null
+
+        if (swipedDirection != 0) {
+            swipedAction = context.getString(R.string.action_undo)
+            swipedText = if (swipedDirection == ItemTouchHelper.LEFT) context.getString(R.string.message_removed) else "Unknown"
+            binding.swipeResultContent.setBackgroundColor(if (swipedDirection == ItemTouchHelper.LEFT) Color.RED else Color.BLUE)
+        }
+        binding.swipedAction.text = swipedAction ?: "Kuka"
+        binding.swipedText.text = swipedText ?: "Belik"
+
         val dateFormat = SimpleDateFormat("EEE, HH:mm", Locale.getDefault())
         binding.contentInput.text = historyItem.input
         binding.textOutput.text = historyItem.output

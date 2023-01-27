@@ -13,8 +13,14 @@ interface HistoryDao {
     @Query("SELECT * FROM History")
     fun getAll(): LiveData<List<HistoryItem>>
 
+    @Query("SELECT * FROM History WHERE id=:id")
+    fun getById(id: Long): HistoryItem
+
+    @Query("DELETE FROM History")
+    fun deleteAll()
+
     @Delete
-    fun delete(item: HistoryItem)
+    fun delete(vararg items: HistoryItem)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(item: HistoryItem)

@@ -43,7 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/main_navigator" />
+                app:navGraph="@navigation/main_navigator"
+                tools:layout="@layout/fragment_main" />
         </LinearLayout>
     </com.roacult.backdrop.BackdropLayout>
 </LinearLayout>

@@ -85,8 +85,7 @@ class MainActivity : BaseActivity() {
         binding.backdropMenu.adapter = fastAdapter
 
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        val data = viewModel.getData()
-        data.observe(this) { items ->
+        viewModel.getData().observe(this) { items ->
             itemAdapter.add(items)
         }
 

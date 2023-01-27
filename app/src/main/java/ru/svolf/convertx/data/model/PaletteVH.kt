@@ -12,7 +12,7 @@ import ru.svolf.convertx.databinding.ItemPaletteColorsBinding
  * Created by SVolf on 23.01.2023, 16:27
  * This file is a part of "ConvertX" project
  */
-class PaletteItem(var color: Color) : AbstractBindingItem<ItemPaletteColorsBinding>() {
+class PaletteVH(var color: Color) : AbstractBindingItem<ItemPaletteColorsBinding>() {
 
     override val type: Int
         get() = R.id.color_accent

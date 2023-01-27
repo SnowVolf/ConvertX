@@ -8,7 +8,7 @@ import androidx.room.Room
  * This file is a part of "ConvertX" project
  */
 class DbManager(context: Context) {
-    private var appDatabase: AppDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "ConvertXDb").build()
+    private var appDatabase: AppDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "ConvertX_Db").build()
 
     fun getDatabase(): AppDatabase {
         return appDatabase

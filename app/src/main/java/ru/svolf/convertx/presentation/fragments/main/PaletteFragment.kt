@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import ru.svolf.convertx.R
-import ru.svolf.convertx.data.model.ColorsItem
-import ru.svolf.convertx.data.model.PaletteItem
+import ru.svolf.convertx.data.model.ColorsVH
+import ru.svolf.convertx.data.model.PaletteVH
 import ru.svolf.convertx.databinding.FragmentColorPaletteBinding
 import ru.svolf.convertx.utils.StringUtils
 import java.util.stream.Collectors
@@ -37,17 +37,17 @@ class PaletteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val itemAdapter = ItemAdapter<ColorsItem>()
-        val paletteAdapter = ItemAdapter<PaletteItem>()
+        val itemAdapter = ItemAdapter<ColorsVH>()
+        val paletteAdapter = ItemAdapter<PaletteVH>()
         val itemClickAdapter = FastAdapter.with(itemAdapter)
         val paletteClickAdapter = FastAdapter.with(paletteAdapter)
 
         viewModel.getPalettes().observe(viewLifecycleOwner) {
             itemAdapter.add(
-                it.stream().map(::ColorsItem).collect(Collectors.toList())
+                it.stream().map(::ColorsVH).collect(Collectors.toList())
             )
             it[0].colors.forEach { c ->
-                paletteAdapter.add(PaletteItem(c))
+                paletteAdapter.add(PaletteVH(c))
             }
         }
 
@@ -56,7 +56,7 @@ class PaletteFragment : Fragment() {
                 paletteAdapter.clear()
             }
             for (c in colorsItem.palette.colors) {
-                paletteAdapter.add(PaletteItem(c))
+                paletteAdapter.add(PaletteVH(c))
             }
             true
         }
