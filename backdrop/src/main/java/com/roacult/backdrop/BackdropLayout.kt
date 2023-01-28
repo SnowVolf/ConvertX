@@ -10,10 +10,14 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
+import androidx.customview.widget.Openable
 import top.defaults.drawabletoolbox.DrawableBuilder
 
-class BackdropLayout @JvmOverloads constructor(context: Context, attribute : AttributeSet? = null, defStyleAttr: Int = 0)
-    : FrameLayout(context, attribute, defStyleAttr){
+class BackdropLayout @JvmOverloads constructor(context: Context, attribute: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(
+    context,
+    attribute,
+    defStyleAttr
+), Openable {
 
     /**
      * set peek height
@@ -29,9 +33,9 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     private var disablingView : View? = null
     private lateinit var toolbar : Toolbar
     private var disableWhenOpened  = true
-    var menuIcon : Int = R.drawable.menu
-    var closeIcon : Int = R.drawable.close
-    var duration = DEFAULT_DURATION
+    var menuIcon : Int
+    var closeIcon : Int
+    var duration: Int
     var frontHeaderRadius : Int = 0
 
     /**
@@ -40,9 +44,9 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
      * */
     private var onBackdropChangeStateListener : ((State) -> Unit)? = null
 
-    private var state : State = State.CLOSE
+    private var state : State
 
-    private val animator =  ValueAnimator()
+    private val animator: ValueAnimator
 
     companion object {
         const val OLD_PARCE ="oldParce"
@@ -74,29 +78,14 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         }
     }
 
-    init {
-        val typedArray = context.obtainStyledAttributes(attribute, R.styleable.BackdropLayout)
-        frontLayoutId = typedArray.getResourceId(R.styleable.BackdropLayout_front_layout,0)
-        backLayoutId = typedArray.getResourceId(R.styleable.BackdropLayout_back_layout,0)
-
-        if(frontLayoutId == 0 || backLayoutId ==0 )
-            throw Exception("you should provide both front and back layout in xml file")
-
-        peeckHeight = typedArray.getDimension(R.styleable.BackdropLayout_peekHeight,0F)
-        toolbarId = typedArray.getResourceId(R.styleable.BackdropLayout_toolbarId,0)
-        menuIcon = typedArray.getResourceId(R.styleable.BackdropLayout_menuDrawable,R.drawable.menu)
-        disableWhenOpened = typedArray.getBoolean(R.styleable.BackdropLayout_disable_when_open , false)
-        closeIcon = typedArray.getResourceId(R.styleable.BackdropLayout_closeDrawable,R.drawable.close)
-        duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration, DEFAULT_DURATION)
-        frontHeaderRadius = typedArray.getDimensionPixelSize(R.styleable.BackdropLayout_front_header_radius,0)
-
-        typedArray.recycle()
+    override fun isOpen(): Boolean {
+        return state == State.OPEN
     }
 
     /**
      * open : show back layout and swap front layout
      * */
-    fun open() {
+    override fun open() {
         if(state == State.OPEN) return
         state = State.OPEN
         update(true)
@@ -105,7 +94,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     /**
      * close : hide back layout and swap front layout
      * */
-    fun close(){
+    override fun close(){
         if(state== State.CLOSE) return
         state= State.CLOSE
         update(true)
@@ -255,5 +244,26 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
 
     private fun getTransitionHeight(): Float {
         return getBackLayout().height.toFloat().coerceAtMost(height - peeckHeight)
+    }
+
+    init {
+        this.menuIcon = R.drawable.menu
+        this.closeIcon = R.drawable.close
+        this.duration = DEFAULT_DURATION
+        this.state = State.CLOSE
+        this.animator = ValueAnimator()
+        val typedArray = context.obtainStyledAttributes(attribute, R.styleable.BackdropLayout)
+        frontLayoutId = typedArray.getResourceId(R.styleable.BackdropLayout_front_layout, 0)
+        backLayoutId = typedArray.getResourceId(R.styleable.BackdropLayout_back_layout, 0)
+        if (frontLayoutId == 0 || backLayoutId == 0)
+            throw Exception("you should provide both front and back layout in xml file")
+        peeckHeight = typedArray.getDimension(R.styleable.BackdropLayout_peekHeight, 0F)
+        toolbarId = typedArray.getResourceId(R.styleable.BackdropLayout_toolbarId, 0)
+        menuIcon = typedArray.getResourceId(R.styleable.BackdropLayout_menuDrawable, R.drawable.menu)
+        disableWhenOpened = typedArray.getBoolean(R.styleable.BackdropLayout_disable_when_open, false)
+        closeIcon = typedArray.getResourceId(R.styleable.BackdropLayout_closeDrawable, R.drawable.close)
+        duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration, DEFAULT_DURATION)
+        frontHeaderRadius = typedArray.getDimensionPixelSize(R.styleable.BackdropLayout_front_header_radius, 0)
+        typedArray.recycle()
     }
 }

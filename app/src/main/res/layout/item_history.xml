@@ -36,7 +36,6 @@
             android:gravity="center_vertical|start"
             android:lines="1"
             android:singleLine="true"
-            android:text="Undo"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/primary_text_dark"

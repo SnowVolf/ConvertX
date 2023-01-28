@@ -2,37 +2,37 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/baseMainFragment">
+    app:startDestination="@id/unicodeFragment">
 
     <fragment
         android:id="@+id/unicodeFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.main.UnicodeFragment"
+        android:name="ru.svolf.convertx.presentation.screens.unicode.UnicodeFragment"
         android:label="@string/dr_unicode"
         tools:layout="@layout/fragment_main"/>
 
     <fragment
         android:id="@+id/base64Fragment"
-        android:name="ru.svolf.convertx.presentation.fragments.main.Base64Fragment"
+        android:name="ru.svolf.convertx.presentation.screens.base64.Base64Fragment"
         android:label="@string/dr_base64"
         tools:layout="@layout/fragment_main"/>
     <fragment
         android:id="@+id/hexFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.main.HexFragment"
+        android:name="ru.svolf.convertx.presentation.screens.hex.HexFragment"
         android:label="@string/dr_hex"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/regexDragonFragment"
-        android:name="ru.svolf.convertx.regexdragon.RegexFragment"
+        android:name="ru.svolf.convertx.presentation.screens.regex.RegexFragment"
         android:label="@string/dr_regex_dragon"
         tools:layout="@layout/fragment_regex_dragon" />
     <fragment
         android:id="@+id/paletteFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.main.PaletteFragment"
+        android:name="ru.svolf.convertx.presentation.screens.palette.PaletteFragment"
         android:label="@string/dr_hex_palette"
         tools:layout="@layout/fragment_color_palette" />
     <fragment
         android:id="@+id/listCoders"
-        android:name="ru.svolf.convertx.presentation.fragments.extra.ExtendedCodersFragment"
+        android:name="ru.svolf.convertx.presentation.screens.other.ExtendedCodersFragment"
         android:label="@string/dr_other1"
         tools:layout="@layout/fragment_ex_encoders">
         <action
@@ -53,12 +53,12 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="ru.svolf.convertx.settings.SettingsFragment"
+        android:name="ru.svolf.convertx.presentation.screens.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/activity_settings"/>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.extra.AboutFragment"
+        android:name="ru.svolf.convertx.presentation.screens.about.AboutFragment"
         android:label="@string/dr_about"
         tools:layout="@layout/activity_about">
         <action
@@ -67,43 +67,38 @@
     </fragment>
     <fragment
         android:id="@+id/adler"
-        android:name="ru.svolf.convertx.presentation.fragments.extended.hash.AdlerFragment"
+        android:name="ru.svolf.convertx.presentation.screens.other.AdlerFragment"
         android:label="@string/checksum_adler32"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/CRC"
-        android:name="ru.svolf.convertx.presentation.fragments.extended.hash.CrcFragment"
+        android:name="ru.svolf.convertx.presentation.screens.other.CrcFragment"
         android:label="@string/checksum_crc"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/mdSha"
-        android:name="ru.svolf.convertx.presentation.fragments.extended.hash.MdShaFragment"
+        android:name="ru.svolf.convertx.presentation.screens.other.MdShaFragment"
         android:label="@string/checksum_md"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/xmlDecodeFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.extended.XmlDecodeFragment"
+        android:name="ru.svolf.convertx.presentation.screens.other.XmlDecodeFragment"
         android:label="@string/unescape_xml"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/changelistFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.extra.ChangelogFragment"
+        android:name="ru.svolf.convertx.presentation.screens.about.ChangelogFragment"
         android:label="@string/changelog"
         tools:layout="@layout/activity_changelist" />
     <fragment
         android:id="@+id/timestampFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.extended.TimestampFragment"
+        android:name="ru.svolf.convertx.presentation.screens.other.TimestampFragment"
         android:label="@string/timestamp_converter"
         tools:layout="@layout/fragment_ex" />
-    <!-- Костыль для того чтобы не пропадало гамбургерное меню-->
-    <fragment
-        android:id="@+id/baseMainFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.base.BaseMainFragment"
-        android:label="BaseMainFragment" />
-
     <fragment
         android:id="@+id/historyFragment"
-        android:name="ru.svolf.convertx.presentation.fragments.main.HistoryFragment"
-        android:label="@string/history" />
+        android:name="ru.svolf.convertx.presentation.screens.history.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history"/>
 
 </navigation>

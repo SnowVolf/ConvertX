@@ -33,5 +33,6 @@
         <item name="icon_color">?colorOnSurface</item>
         <item name="backdropColor">?colorSurfaceVariant</item>
         <item name="fontFamily">@font/google_sans</item>
+        <item name="android:homeAsUpIndicator">@drawable/menu</item>
     </style>
 </resources>

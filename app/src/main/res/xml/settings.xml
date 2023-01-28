@@ -12,7 +12,7 @@
         android:key="Interaction.FontSize"
         android:title="@string/settings_fontsize"/>
     <PreferenceCategory android:title="@string/settings_ct_interact">
-    <CheckBoxPreference
+    <SwitchPreference
         android:defaultValue="true"
         android:key="Interaction.Back"
         android:title="@string/settings_twicebtn"/>

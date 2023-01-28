@@ -14,7 +14,56 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Swipe to delete in history" />
+    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Swipe to delete in history">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/algorhitms/Checksum.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Checksum.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/algorhitms/Decoder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/HistoryVH.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/HistoryVH.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/MainComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/MainComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/activity/MainViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/base/BaseMainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseMainFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/base/MainMenuItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/MainMenuVH.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extended/TimestampFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/TimestampFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extended/XmlDecodeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/XmlDecodeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extended/hash/AdlerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/AdlerFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extended/hash/CrcFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/CrcFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extended/hash/MdShaFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/MdShaFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extra/AboutFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/AboutFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extra/ChangelogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/ChangelogFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/extra/ExtendedCodersFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/ExtendedCodersFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/Base64Fragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/base64/Base64Fragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/HexFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/hex/HexFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/HistoryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/HistoryViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/PaletteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/PaletteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/fragments/main/UnicodeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/unicode/UnicodeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/Flags.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/Flags.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/NestedWebView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/RegexFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/RegexValidatorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexValidatorFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/SpurFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/SpurFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/regexdragon/ViewPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ViewPagerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/settings/Preferences.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/settings/Preferences.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/settings/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/settings/SettingsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_changelist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backdrop/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backdrop/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +103,7 @@
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
         <option value="resourceFile" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -2829,6 +2879,10 @@
       <projects_view />
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -3334,35 +3388,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ApkExportedModule&quot;: &quot;ConvertX.app&quot;,
-    &quot;ExportApk.ApkPathForConvertX.app&quot;: &quot;D:\\GitHub\\ConvertX\\app&quot;,
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;ScreenshotViewer.SavePath&quot;: &quot;D:/GitHub/ConvertX/screens&quot;,
-    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
-    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
-    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
-    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
-    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
-    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
-    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/Architectre/app/src/main/java/ru/svolf/architectre/lesson5/di/DatabaseModule.kt&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ApkExportedModule": "ConvertX.app",
+    "ExportApk.ApkPathForConvertX.app": "D:\\GitHub\\ConvertX\\app",
+    "PROJECT_TRUSTED_KEY": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "ScreenRecorder.SavePath": "E:\\UserData\\SVolf\\Desktop\\device-2023-01-28-125142.webm",
+    "ScreenshotViewer.SavePath": "D:/GitHub/ConvertX/screens",
+    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
+    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
+    "android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED": "View",
+    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
+    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
+    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED": "CircleImageView",
+    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED": "CircleImageView",
+    "android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED": "BackdropLayout",
+    "cidr.known.project.marker": "true",
+    "last.edited.regexp": "\\u0000\\u009c",
+    "last_opened_file_path": "E:/UserData/SVolf/Desktop",
+    "project.structure.last.edited": "Dependencies",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.customizations"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ExportApk.BuildVariants&quot;: [
-      &quot;release&quot;
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
     ]
   }
-}</component>
+}]]></component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -3381,15 +3438,18 @@
       <recent name="C:\ProjectX\ConvertX2\app\src\main\res\drawable-v21" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\ConvertX\app\src\main\java\ru\svolf\convertx\presentation\screens\other" />
+      <recent name="D:\GitHub\ConvertX\app\src\main\java\ru\svolf\convertx\presentation\base" />
       <recent name="D:\GitHub\ConvertX\app\src\main\res\drawable" />
       <recent name="D:\GitHub\ConvertX\app\src\main\java\ru\svolf\convertx\utils" />
       <recent name="C:\ProjectX\ConvertX2\app\src\main\java" />
-      <recent name="C:\ProjectX\ConvertX2\app\src\main\res\xml" />
-      <recent name="C:\ProjectX\ConvertX2\app\src\main\res\layout" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="ru.svolf.convertx.annotations" />
-      <recent name="ru.svolf.convertx.ui.activity" />
+      <recent name="ru.svolf.convertx.presentation.screens.regex" />
+      <recent name="ru.svolf.convertx.presentation.screens.other" />
+      <recent name="ru.svolf.convertx.presentation.screens.about" />
+      <recent name="ru.svolf.convertx.presentation.screens.palette" />
+      <recent name="ru.svolf.convertx.presentation.screens.history" />
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
@@ -3661,7 +3721,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674825652414</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Swipe to delete in history">
+      <created>1674829972032</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674829972032</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">

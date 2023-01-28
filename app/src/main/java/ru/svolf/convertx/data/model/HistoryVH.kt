@@ -38,16 +38,16 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
         val context = binding.root.context
         binding.swipeResultContent.visibility = if (swipedDirection != 0) View.VISIBLE else View.GONE
         binding.itemContent.visibility = if (swipedDirection != 0) View.GONE else View.VISIBLE
-
-        var swipedAction: CharSequence? = null
+        // For future updates
+        //var swipedAction: CharSequence? = null
         var swipedText: CharSequence? = null
 
         if (swipedDirection != 0) {
-            swipedAction = context.getString(R.string.action_undo)
+            //swipedAction = context.getString(R.string.action_undo)
             swipedText = if (swipedDirection == ItemTouchHelper.LEFT) context.getString(R.string.message_removed) else "Unknown"
             binding.swipeResultContent.setBackgroundColor(if (swipedDirection == ItemTouchHelper.LEFT) Color.RED else Color.BLUE)
         }
-        binding.swipedAction.text = swipedAction ?: "Kuka"
+        //binding.swipedAction.text = swipedAction ?: "Kuka"
         binding.swipedText.text = swipedText ?: "Belik"
 
         val dateFormat = SimpleDateFormat("EEE, HH:mm", Locale.getDefault())
@@ -63,6 +63,7 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
         binding.textOutput.text = null
         binding.textDecoderType.text = null
         binding.textTime.text = null
+        swipedAction = null
     }
 
     private fun getDecoderType(type: Int?): String {
