@@ -9,12 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.mikepenz.fastadapter.ClickListener
 import com.mikepenz.fastadapter.FastAdapter
+import com.mikepenz.fastadapter.IAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.drag.ItemTouchCallback
 import com.mikepenz.fastadapter.drag.SimpleDragCallback
@@ -92,6 +96,32 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
             ItemTouchHelper(touchCallback) // Create ItemTouchHelper and pass with parameter the SimpleDragCallback
         touchHelper.attachToRecyclerView(binding.historyList) // Attach ItemTouchHelper to RecyclerView
 
+        fastItemAdapter.onClickListener = object : ClickListener<HistoryVH> {
+            override fun invoke(v: View?, adapter: IAdapter<HistoryVH>, item: HistoryVH, position: Int): Boolean {
+                val sourceItem = viewModel.getItem(item.id!!)
+                val bundle = bundleOf(
+                    "input_string" to sourceItem?.input,
+                    "output_string" to sourceItem?.output,
+                    "decoder_switch" to sourceItem?.spinnerPosition
+                )
+                return when (item.decoder) {
+                    0 -> {
+                        findNavController().navigate(R.id.unicodeFragment, bundle)
+                        true
+                    }
+                    1 -> {
+                        findNavController().navigate(R.id.base64Fragment, bundle)
+                        true
+                    }
+                    2 -> {
+                        findNavController().navigate(R.id.hexFragment, bundle)
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+        }
     }
 
     override fun itemSwiped(position: Int, direction: Int) {

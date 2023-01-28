@@ -2,10 +2,11 @@ package ru.svolf.convertx.presentation.screens.history
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.svolf.convertx.App
+import ru.svolf.convertx.data.entity.HistoryItem
 
 /*
  * Created by SVolf on 26.01.2023, 16:55
@@ -18,9 +19,19 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     val data = dao.getAll()
 
     fun remove(itemId: Long) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(Dispatchers.IO) {
             dao.delete(dao.getById(itemId))
         }
+    }
+
+
+    fun getItem(itemId: Long): HistoryItem? {
+        var fallback: HistoryItem? = null
+        viewModelScope.launch(Dispatchers.IO) {
+            fallback = dao.getById(itemId)
+        }
+        Thread.sleep(250)
+        return fallback
     }
 
     override fun onCleared() {

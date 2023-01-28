@@ -28,7 +28,7 @@ import ru.svolf.convertx.utils.StringUtils.readFromClipboard
  */
 open class BaseMainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
     private lateinit var databaseDao: HistoryDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +85,10 @@ open class BaseMainFragment : Fragment() {
         binding.btnPasteOutput.setOnClickListener { pasteInput(binding.fieldOutput) }
 
         onViewsReady()
+
+        binding.fieldInput.setText(arguments?.getString("input_string"))
+        binding.fieldOutput.setText(arguments?.getString("output_string"))
+        arguments?.getInt("decoder_switch")?.let { binding.spinnerMode.setSelection(it) }
     }
 
     @CallSuper

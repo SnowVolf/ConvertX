@@ -29,6 +29,8 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
 
     val id = historyItem.id
 
+    val decoder = historyItem.decoder
+
     override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): ItemHistoryBinding {
         return ItemHistoryBinding.inflate(inflater, parent, false)
     }
