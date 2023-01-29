@@ -55,9 +55,7 @@ class PaletteFragment : Fragment() {
             if (paletteAdapter.adapterItemCount != 0) {
                 paletteAdapter.clear()
             }
-            for (c in colorsItem.palette.colors) {
-                paletteAdapter.add(PaletteVH(c))
-            }
+            colorsItem.palette.colors.forEach { paletteAdapter.add(PaletteVH(it)) }
             true
         }
 

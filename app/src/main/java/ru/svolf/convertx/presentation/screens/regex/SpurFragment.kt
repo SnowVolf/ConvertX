@@ -1,56 +1,39 @@
 package ru.svolf.convertx.presentation.screens.regex
 
+import android.content.Context
 import android.os.Bundle
-import android.view.*
-import android.widget.TextView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.svolf.convertx.R
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
+import ru.svolf.convertx.databinding.FragmentSpurBinding
 
 /**
  * Created by Snow Volf on 02.03.2017, 20:31
  */
 class SpurFragment : Fragment() {
-    private var spurr: TextView? = null
-    private lateinit var rootView: View
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-        setHasOptionsMenu(true)
-    }
-
+    private var _binding: FragmentSpurBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater.inflate(R.layout.fragment_spur, container, false)
-        spurr = rootView.findViewById<View>(R.id.regex_spur) as TextView
-        return rootView
+        _binding = FragmentSpurBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        menu.add("").setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.regexSpur.text = readTextFileFromAssets(requireContext(), "SPUR.md")
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) activity!!.finish()
-        return true
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val sb = StringBuilder()
-        try {
-            val br = BufferedReader(InputStreamReader(context!!.assets.open("SPUR.md"), "UTF-8"))
-            var line: String?
-            while (br.readLine().also { line = it } != null) {
-                sb.append(line).append("\n")
-            }
-            br.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        spurr!!.text = sb
+    private fun readTextFileFromAssets(context: Context, fileName: String): String {
+        val inputStream = context.assets.open(fileName)
+        val buffer = ByteArray(inputStream.available())
+        inputStream.read(buffer)
+        inputStream.close()
+        return String(buffer)
     }
 }

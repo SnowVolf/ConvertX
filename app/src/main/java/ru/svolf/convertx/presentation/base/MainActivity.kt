@@ -16,8 +16,8 @@ import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import ru.svolf.convertx.R
-import ru.svolf.convertx.databinding.ActivityMainBinding
 import ru.svolf.convertx.data.model.MainMenuVH
+import ru.svolf.convertx.databinding.ActivityMainBinding
 import ru.svolf.convertx.presentation.screens.settings.Preferences
 import kotlin.system.exitProcess
 
@@ -69,14 +69,15 @@ class MainActivity : BaseActivity() {
 
         fastAdapter.onClickListener = object: ClickListener<MainMenuVH> {
             override fun invoke(v: View?, adapter: IAdapter<MainMenuVH>, item: MainMenuVH, position: Int): Boolean {
+                // Иначе экран появится, но панель не закроется
                 binding.backdrop.close()
-                binding.backdrop.menuIcon = R.drawable.menu
                 // Exit button
                 if (item.id == android.R.id.home) {
                     showExitDialog()
                 } else {
+                    // Для того чтобы не было блуждания по экранам
+                    navController.popBackStack()
                     navController.navigate(item.id)
-                    //navHostFragment?.childFragmentManager?.popBackStack()
                 }
                 return false
             }

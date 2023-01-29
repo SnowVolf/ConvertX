@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory android:title="@string/settings_ct_themes">
-    <ListPreference
-        android:defaultValue="0"
-        android:entries="@array/theme_names"
-        android:entryValues="@array/theme_values"
-        android:key="ITheme.Theme"
-        android:title="@string/settings_theme" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/theme_names"
+            android:entryValues="@array/theme_values"
+            android:key="ITheme.Theme"
+            android:title="@string/settings_theme" />
     </PreferenceCategory>
-    <Preference
-        android:key="Interaction.FontSize"
-        android:title="@string/settings_fontsize"/>
+    <SeekBarPreference
+        android:defaultValue="16"
+        android:key="AppFontSize"
+        android:max="32"
+        android:title="@string/settings_fontsize"
+        app:min="12"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="false" />
     <PreferenceCategory android:title="@string/settings_ct_interact">
-    <SwitchPreference
-        android:defaultValue="true"
-        android:key="Interaction.Back"
-        android:title="@string/settings_twicebtn"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="Interaction.Back"
+            android:title="@string/settings_twicebtn" />
     </PreferenceCategory>
 </PreferenceScreen>

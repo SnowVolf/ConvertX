@@ -9,18 +9,17 @@ import android.view.*
 import android.view.View.OnFocusChangeListener
 import android.widget.EditText
 import android.widget.Toast
-import androidx.annotation.CallSuper
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import ru.svolf.convertx.App
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.dao.HistoryDao
 import ru.svolf.convertx.databinding.FragmentMainBinding
 import ru.svolf.convertx.extension.clear
-import ru.svolf.convertx.presentation.screens.settings.Preferences
 import ru.svolf.convertx.utils.StringUtils.copyToClipboard
-import ru.svolf.convertx.utils.StringUtils.readFromClipboard
+import ru.svolf.convertx.utils.SwipeEditText.OnSwipeListener
 
 
 /**
@@ -30,9 +29,11 @@ open class BaseMainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     val binding get() = _binding!!
     private lateinit var databaseDao: HistoryDao
+    private lateinit var viewModel: MainFragmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
         databaseDao = (context?.applicationContext as App).mainComponent.getDbManager().getDatabase().historyDao()
     }
 
@@ -63,43 +64,61 @@ open class BaseMainFragment : Fragment() {
 
         val inputWatcher = InputWatcher()
         val outputWatcher = OutputWatcher()
+        binding.fieldInput.apply {
+            onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    addTextChangedListener(inputWatcher)
+                } else {
+                    removeTextChangedListener(inputWatcher)
+                }
+            }
+            setOnSwipeListener(object : OnSwipeListener {
+                override fun onSwipeLeft() {
+                    clear()
+                }
 
-        binding.fieldInput.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                binding.fieldInput.addTextChangedListener(inputWatcher)
-            } else {
-                binding.fieldInput.removeTextChangedListener(inputWatcher)
+                override fun onSwipeRight() {
+
+                }
+            })
+            setOnCompoundClickListener {
+                copyInput(this)
             }
         }
 
-        binding.fieldOutput.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                binding.fieldOutput.addTextChangedListener(outputWatcher)
-            } else {
-                binding.fieldOutput.removeTextChangedListener(outputWatcher)
+        binding.fieldOutput.apply {
+            onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    addTextChangedListener(outputWatcher)
+                } else {
+                    removeTextChangedListener(outputWatcher)
+                }
+            }
+            setOnSwipeListener(object : OnSwipeListener {
+                override fun onSwipeLeft() {
+                    clear()
+                }
+
+                override fun onSwipeRight() {
+
+                }
+            })
+            setOnCompoundClickListener {
+                copyInput(this)
             }
         }
-        binding.btnCopyInput.setOnClickListener { copyInput(binding.fieldInput) }
-        binding.btnCopyOutput.setOnClickListener { copyOutput(binding.fieldOutput) }
-        binding.btnClearInput.setOnClickListener { binding.fieldInput.clear() }
-        binding.btnPasteOutput.setOnClickListener { pasteInput(binding.fieldOutput) }
+
+
+        viewModel.textSize.observe(viewLifecycleOwner) {
+            binding.fieldOutput.textSize = it.toFloat()
+            binding.fieldInput.textSize = it.toFloat()
+        }
 
         onViewsReady()
 
         binding.fieldInput.setText(arguments?.getString("input_string"))
         binding.fieldOutput.setText(arguments?.getString("output_string"))
         arguments?.getInt("decoder_switch")?.let { binding.spinnerMode.setSelection(it) }
-    }
-
-    @CallSuper
-    override fun onResume() {
-        super.onResume()
-            try {
-                binding.fieldOutput.textSize = Preferences.fontSize.toFloat()
-                binding.fieldInput.textSize = Preferences.fontSize.toFloat()
-            } catch (ex: Exception) {
-                ex.printStackTrace()
-            }
     }
 
     override fun onDestroyView() {
@@ -116,15 +135,6 @@ open class BaseMainFragment : Fragment() {
     private fun copyInput(v: EditText) {
         copyToClipboard(requireContext(), v.text.toString())
         Toast.makeText(requireContext(), getString(R.string.copied2clipboard), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun copyOutput(v: EditText) {
-        copyToClipboard(requireContext(), v.text.toString())
-        Toast.makeText(requireContext(), getString(R.string.copied2clipboard), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun pasteInput(edit: EditText) {
-        edit.setText(readFromClipboard())
     }
 
     open fun clearAllText() {

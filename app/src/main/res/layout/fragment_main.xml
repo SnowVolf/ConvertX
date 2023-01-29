@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+        <ru.svolf.convertx.utils.SwipeEditText
             android:id="@+id/field_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,28 +24,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:drawableRight="@drawable/ic_menu_copy"
+            app:fontFamily="@font/space_mono"
             tools:text="Input text" />
 
-        <Button
-            android:id="@+id/btn_clear_input"
+
+        <TextView
+            android:id="@+id/text_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp8"
-            android:layout_marginEnd="@dimen/dp8"
-            android:text="@string/clear"
-            app:layout_constraintEnd_toStartOf="@+id/btn_copy_input"
-            app:layout_constraintTop_toBottomOf="@+id/field_input" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_info"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="Swipe -> to clear the input text"
+            app:fontFamily="@font/space_mono"
+            app:layout_constraintBottom_toTopOf="@id/field_output"
+            app:layout_constraintStart_toStartOf="@+id/field_input"
+            app:layout_constraintTop_toBottomOf="@id/field_input" />
 
-        <Button
-            android:id="@+id/btn_copy_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/copy2clipboard"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btn_clear_input"
-            app:layout_constraintEnd_toEndOf="@+id/field_input" />
-
-
-        <EditText
+        <ru.svolf.convertx.utils.SwipeEditText
             android:id="@+id/field_output"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -54,7 +53,9 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_copy_input"
+            android:drawableRight="@drawable/ic_menu_copy"
+            app:fontFamily="@font/space_mono"
+            app:layout_constraintTop_toBottomOf="@+id/text_info"
             tools:text="Output text" />
 
 
@@ -71,25 +72,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/field_output"
             tools:visibility="visible" />
-
-
-        <Button
-            android:id="@+id/btn_paste_output"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp8"
-            android:layout_marginEnd="@dimen/dp8"
-            android:text="@string/paste"
-            app:layout_constraintEnd_toStartOf="@id/btn_copy_output"
-            app:layout_constraintTop_toBottomOf="@id/field_output" />
-
-        <Button
-            android:id="@+id/btn_copy_output"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/copy2clipboard"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

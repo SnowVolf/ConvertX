@@ -4,7 +4,6 @@ import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ru.svolf.convertx.annotations.Decoder
 
 /*
  * Created by SVolf on 26.01.2023, 13:42
@@ -24,7 +23,6 @@ class HistoryItem {
     /**
      * Тип декодера который нужно открыть
      **/
-    @Decoder
     var decoder: Int? = null
 
     /**

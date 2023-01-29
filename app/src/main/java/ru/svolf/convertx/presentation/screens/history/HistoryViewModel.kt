@@ -5,6 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import ru.svolf.convertx.App
 import ru.svolf.convertx.data.entity.HistoryItem
 
@@ -25,13 +27,14 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     }
 
 
-    fun getItem(itemId: Long): HistoryItem? {
-        var fallback: HistoryItem? = null
-        viewModelScope.launch(Dispatchers.IO) {
-            fallback = dao.getById(itemId)
+    fun getItem(itemId: Long): HistoryItem {
+        val historyItem: HistoryItem = runBlocking {
+            withContext(Dispatchers.IO) {
+                val historyItem = dao.getById(itemId)
+                historyItem
+            }
         }
-        Thread.sleep(250)
-        return fallback
+        return historyItem
     }
 
     override fun onCleared() {

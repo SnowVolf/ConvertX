@@ -1,14 +1,13 @@
 package ru.svolf.convertx.presentation.screens.unicode
 
 import android.widget.Toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.*
 import ru.svolf.convertx.R
-import ru.svolf.convertx.utils.algorhitms.Decoder
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.presentation.base.BaseMainFragment
+import ru.svolf.convertx.utils.algorhitms.Decoder
 
 /**
  * Created by Snow Volf on 28.01.2017.
@@ -25,15 +24,20 @@ class UnicodeFragment : BaseMainFragment() {
         val unicodeValue = StringBuilder()
         for (element in input) unicodeValue.append("\\u").append(Integer.toHexString(element.code or 0x10000).substring(1))
         binding.fieldOutput.setText(unicodeValue)
-        CoroutineScope(Dispatchers.IO).launch {
-            val hist = HistoryItem().apply {
-                this.id = System.currentTimeMillis()
-                this.input = input
-                this.output = unicodeValue.toString()
-                this.decoder = 0
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                val hist = runBlocking {
+                    HistoryItem().apply {
+                        this.id = System.currentTimeMillis()
+                        this.input = input
+                        this.output = unicodeValue.toString()
+                        this.decoder = 0
+                    }
+                }
+                getDao().insert(hist)
             }
-            getDao().insert(hist)
         }
+
     }
 
     override fun convertOutput(output: String) {
