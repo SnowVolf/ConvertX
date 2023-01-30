@@ -8,7 +8,7 @@ This app converts strings with commonly used algorithms. API 26+
 
 | ![Main Sreen](/screens/main_screen.png) | ![Menu Screen](/screens/menu_screen.png) | ![Base64 Screen](/screens/base64_screen.png) |
 |--|--|--|
-| ![Palette Screen](screens/palette_screen.png) | ![Regexp Screen](/screens/regexp_screen.png) | ![History](/screens/history_screen.png) |
+| ![Palette Screen](screens/palette_screen.png) | ![Regexp Screen](/screens/regexp_screen.png) | ![History](/screens/history_screen.jpg) |
 
 ## Converters
 
