@@ -32,20 +32,6 @@ internal class Flags {
             }
             return data
         }
-    /**
-     * Чтобы не забыть
-     * CANON_EQ (no effect on Android) == 128
-     * CASE_INSENSITIVE == 2
-     * COMMENTS == 4
-     * DOTALL == 32
-     * LITERAL == 16
-     * MULTILINE == 8
-     * UNICODE_CASE == 64
-     * UNICODE_CHARACTER_CLASS (no effect on Android) == 256
-     * UNIX_LINES == 1
-
-     * все константы можно посмотреть на developer.android.com
-     */
 
     val flags: Int
         get() {
@@ -100,5 +86,4 @@ internal class Flags {
             }
             return data
         }
-
 }

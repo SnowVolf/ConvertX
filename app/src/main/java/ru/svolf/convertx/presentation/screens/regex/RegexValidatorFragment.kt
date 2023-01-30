@@ -7,7 +7,10 @@ import android.text.TextWatcher
 import android.text.style.BackgroundColorSpan
 import android.view.*
 import androidx.core.content.ContextCompat
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.FragmentRegexDragonBinding
@@ -32,6 +35,20 @@ class RegexValidatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_regex, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when(menuItem.itemId) {
+                    R.id.item_clear -> clearAllText()
+                    R.id.regex_flags -> showFlagsList()
+                }
+                return false
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         binding.regexFlags.text = flags.flagString
         binding.regexText.apply {
             textSize = Preferences.fontSize.toFloat()
@@ -42,7 +59,7 @@ class RegexValidatorFragment : Fragment() {
 
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
                     if (binding.plainText.text.toString().isNotEmpty()) {
-                        testRegex(text.toString())
+                        testRegex(binding.regexText.text.toString())
                     }
                 }
 
@@ -60,7 +77,7 @@ class RegexValidatorFragment : Fragment() {
                 }
 
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                    testRegex(text.toString())
+                    testRegex(binding.regexText.text.toString())
                 }
 
                 override fun afterTextChanged(editable: Editable) {
@@ -75,49 +92,28 @@ class RegexValidatorFragment : Fragment() {
         _binding = null
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
-        menu.add(R.string.clear_all)
-            .setIcon(R.drawable.ic_menu_clear_all)
-            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            .setOnMenuItemClickListener { menuItem ->
-                clearAllText()
-                true
-            }
-        menu.add(R.string.flags)
-            .setIcon(R.drawable.ic_menu_regex_flags)
-            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            .setOnMenuItemClickListener { menuItem ->
-                showFlagsList()
-                true
-            }
-    }
-
 
     fun testRegex(regexString: String) {
         if (regexString.isEmpty()) {
-            binding.regexCount.text = "Совпадений: 0"
             binding.regexResult.text = binding.plainText.text
             return
         }
         try {
-            val m = Pattern.compile(regexString, flags.flags).matcher(binding.plainText.text)
+            val pattern = Pattern.compile(regexString, flags.flags)
+            val matcher = pattern.matcher(binding.plainText.text)
             val spannable = SpannableString(binding.plainText.text)
             var i = 0
-            while (m.find()) {
+            while (matcher.find()) {
                 spannable.setSpan(
                     BackgroundColorSpan(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark)),
-                    m.start(),
-                    m.end(),
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+                    matcher.start(),
+                    matcher.end(),
+                    33
                 )
                 i++
             }
             binding.regexResult.text = spannable
-            if (i == 1) {
-                binding.regexCount.text = i.toString() + getString(R.string.one_match)
-            } else
-                binding.regexCount.text = getString(R.string.more_matches) + i
+            binding.regexCount.text = resources.getQuantityString(R.plurals.regex_matches, i, i)
         } catch (pse: PatternSyntaxException) {
             binding.regexResult.text = pse.message
         }

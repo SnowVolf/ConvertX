@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu>
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_clear"
+        android:icon="@drawable/ic_menu_clear_all"
+        android:title="@string/clear_all"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/regex_flags"
+        android:icon="@drawable/ic_menu_regex_flags"
+        android:title="@string/flags"
+        app:showAsAction="always"/>
 </menu>

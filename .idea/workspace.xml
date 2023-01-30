@@ -14,27 +14,34 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Working History">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainFragmentViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_regex.xml" afterDir="false" />
+    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Screens refactoring">
+      <change afterPath="$PROJECT_DIR$/.idea/androidTestResultsUserPreferences.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/ru/svolf/convertx/presentation/base/BaseActivityTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/cpp/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/cpp/app.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/plurals.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/plurals.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/screens/regex/FlagsTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/annotations/Decoder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/entity/HistoryItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/entity/HistoryItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseMainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseMainFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/AboutFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/AboutFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/ChangelogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/ChangelogFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/base64/Base64Fragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/base64/Base64Fragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/ExtendedCodersFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/ExtendedCodersFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/Flags.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/Flags.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexValidatorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexValidatorFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/SpurFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/SpurFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/settings/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/settings/SettingsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/unicode/UnicodeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/unicode/UnicodeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_font_size.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_regex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_regex.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +75,6 @@
       <list>
         <option value="ASClass" />
         <option value="layoutResourceFile_vertical" />
-        <option value="valueResourceFile" />
         <option value="navigationResourceFile" />
         <option value="Kotlin Annotation" />
         <option value="Kotlin Interface" />
@@ -77,6 +83,9 @@
         <option value="Kotlin Class" />
         <option value="Kotlin File" />
         <option value="resourceFile" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -3361,42 +3370,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ApkExportedModule": "ConvertX.app",
-    "ExportApk.ApkPathForConvertX.app": "D:\\GitHub\\ConvertX\\app",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "ScreenRecorder.SavePath": "E:\\UserData\\SVolf\\Desktop\\device-swipe.webm",
-    "ScreenshotViewer.SavePath": "D:/GitHub/ConvertX/screens",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED": "View",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED": "NestedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED": "SwipeEditText",
-    "android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED": "BackdropLayout",
-    "cidr.known.project.marker": "true",
-    "last.edited.regexp": "\\u0000\\u009c",
-    "last_opened_file_path": "E:/UserData/SVolf/Desktop",
-    "project.structure.last.edited": "Dependencies",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.customizations"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ApkExportedModule&quot;: &quot;ConvertX.app&quot;,
+    &quot;ExportApk.ApkPathForConvertX.app&quot;: &quot;D:\\GitHub\\ConvertX\\app&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;E:\\UserData\\SVolf\\Desktop\\device-swipe.webm&quot;,
+    &quot;ScreenshotViewer.SavePath&quot;: &quot;D:/GitHub/ConvertX/screens&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED&quot;: &quot;NestedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED&quot;: &quot;BlurToolbar&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED&quot;: &quot;SwipeEditText&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED&quot;: &quot;BackdropLayout&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last.edited.regexp&quot;: &quot;\\u0000\\u009c&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/AppFetcher/app/build.gradle&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -3421,6 +3436,9 @@
       <recent name="D:\GitHub\ConvertX\app\src\main\java\ru\svolf\convertx\utils" />
       <recent name="C:\ProjectX\ConvertX2\app\src\main\java" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="ru.svolf.convertx.presentation.screens.regex" />
       <recent name="ru.svolf.convertx.presentation.screens.other" />
@@ -3434,11 +3452,16 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ru.SnowVolf.convertx" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.svolf.convertx.presentation.screens.base64" />
+      <recent name="ru.svolf.convertx.presentation.base" />
+      <recent name="ru.svolf.convertx.presentation.screens.regex" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="android.support.design.widget" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -3557,7 +3580,7 @@
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="CLEAR_LOGCAT" value="true" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
@@ -3600,11 +3623,136 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BaseActivityTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="ConvertX.app.androidTest" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="ru.svolf.convertx.presentation.base.BaseActivityTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_NAME_REGEX" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="RETENTION_ENABLED" value="No" />
+      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
+      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testThemeReceiver()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="ConvertX.app.androidTest" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="METHOD_NAME" value="testThemeReceiver" />
+      <option name="CLASS_NAME" value="ru.svolf.convertx.presentation.base.BaseActivityTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_NAME_REGEX" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="RETENTION_ENABLED" value="No" />
+      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
+      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="FlagsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+            <option value="--tests" />
+            <option value="&quot;ru.svolf.convertx.presentation.screens.regex.FlagsTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ConvertX2" />
@@ -3636,6 +3784,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Android Instrumented Tests.BaseActivityTest" />
+      <item itemvalue="Android Instrumented Tests.testThemeReceiver()" />
+      <item itemvalue="Gradle.FlagsTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android Instrumented Tests.BaseActivityTest" />
+        <item itemvalue="Android Instrumented Tests.testThemeReceiver()" />
+        <item itemvalue="Gradle.FlagsTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -3712,7 +3873,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674922667092</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Screens refactoring">
+      <created>1674996790162</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674996790162</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3819,7 +3987,8 @@
     <MESSAGE value="Base History integration&#10;- Room&#10;- Dagger2&#10;- Java Streams" />
     <MESSAGE value="Swipe to delete in history" />
     <MESSAGE value="Working History" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working History" />
+    <MESSAGE value="Screens refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Screens refactoring" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

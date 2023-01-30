@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
+    <ru.svolf.convertx.utils.BlurToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"

@@ -38,7 +38,7 @@
             android:drawableStart="@drawable/ic_info"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
-            android:text="Swipe -> to clear the input text"
+            android:text="@string/msg_swipe_to_clear"
             app:fontFamily="@font/space_mono"
             app:layout_constraintBottom_toTopOf="@id/field_output"
             app:layout_constraintStart_toStartOf="@+id/field_input"

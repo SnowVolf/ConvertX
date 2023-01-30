@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="regex_matches">
+        <item quantity="one">%d match</item>
+        <item quantity="few">%d matches</item>
+        <item quantity="many">%d matches</item>
+        <item quantity="other">%d matches</item>
+        <item quantity="zero">No matches</item>
+    </plurals>
+</resources>

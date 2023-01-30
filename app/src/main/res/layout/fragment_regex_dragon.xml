@@ -1,62 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/regex_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_regexp"
-                android:paddingBottom="@dimen/dp16"
-                android:maxLines="1"/>
+    <EditText
+        android:id="@+id/regex_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp8"
+        android:hint="@string/hint_regexp"
+        android:maxLines="2"
+        app:layout_constraintBottom_toTopOf="@+id/plain_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:layout_marginTop="@dimen/dp16"
-                android:id="@+id/plain_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/dp16"
-                android:hint="@string/hint_test_string"
-                android:maxLines="2"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/plain_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/hint_test_string"
+        android:maxLines="2"
+        android:paddingBottom="@dimen/dp16"
+        app:layout_constraintBottom_toTopOf="@+id/regex_flags"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regex_text" />
+
+
+    <TextView
+        android:id="@+id/regex_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="monospace"
+        app:layout_constraintEnd_toStartOf="@+id/regex_flags"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/plain_text"
+        tools:text="@tools:sample/cities" />
+
+    <TextView
+        android:id="@+id/regex_flags"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp8"
+        android:fontFamily="monospace"
+        android:gravity="end"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/regex_count"
+        app:layout_constraintTop_toBottomOf="@id/plain_text"
+        tools:text="@tools:sample/cities" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/regex_flags">
 
         <TextView
-            android:fontFamily="monospace"
-            android:id="@+id/regex_count"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp8"
-            android:layout_weight="1"
-            android:text="@string/hint_matches"/>
-        <TextView
+            android:id="@+id/regex_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/regex_flags"
             android:fontFamily="monospace"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:gravity="end"/>
-    </LinearLayout>
+            android:paddingTop="@dimen/dp10"
+            android:textSize="16sp" />
 
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    </androidx.core.widget.NestedScrollView>
 
-            <TextView
-                android:id="@+id/regex_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:fontFamily="monospace"
-                android:paddingTop="@dimen/dp10" />
-
-            </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ import ru.svolf.convertx.utils.Interfacer
 open class BaseActivity : AppCompatActivity() {
 
     //Theme
-    private val mThemeReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+    val mThemeReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             finish()
             startActivity(getIntent())

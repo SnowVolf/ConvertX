@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="regex_matches">
+        <item quantity="one">%d совпадение</item>
+        <item quantity="few">%d совпадения</item>
+        <item quantity="many">%d совпадений</item>
+        <item quantity="other">%d совпадение</item>
+    </plurals>
+</resources>

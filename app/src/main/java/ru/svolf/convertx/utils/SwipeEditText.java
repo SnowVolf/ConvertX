@@ -1,16 +1,22 @@
 package ru.svolf.convertx.utils;
 
+import static android.content.Context.VIBRATOR_SERVICE;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
 public class SwipeEditText extends AppCompatEditText {
     private static final String TAG = "SwipeEditText";
-    private static final float SWIPE_THRESHOLD = 0.3f;
+    private static final float SWIPE_THRESHOLD = 0.2f;
     private float startX;
     private float endX;
     private float deltaX;
@@ -41,10 +47,13 @@ public class SwipeEditText extends AppCompatEditText {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     startX = event.getX();
+                    Log.d(TAG, "init: ACTION_DOWN");
                     break;
                 case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_MOVE:
+                    Log.d(TAG, "init: ACTION_UP or MOVE");
                     if (drawable != null && onCompoundClickListener != null) {
-                        if (event.getRawX() >= (getRight() - drawable.getBounds().width())) {
+                        if (startX >= (getRight() - drawable.getBounds().width())) {
                             onCompoundClickListener.onDrawableClicked();
                             break;
                         }
@@ -78,6 +87,7 @@ public class SwipeEditText extends AppCompatEditText {
                                 .setDuration(250)
                                 .start();
                     }
+                    performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                     break;
             }
             return performClick();
@@ -87,6 +97,11 @@ public class SwipeEditText extends AppCompatEditText {
     @Override
     public boolean performClick() {
         return super.performClick();
+    }
+
+    @Override
+    public boolean isHapticFeedbackEnabled() {
+        return true;
     }
 
     public void setOnSwipeListener(OnSwipeListener onSwipeLeftListener) {

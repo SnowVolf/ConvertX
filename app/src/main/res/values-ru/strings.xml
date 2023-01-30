@@ -9,9 +9,9 @@
     <string name="explore_git_src">Изучить исходники</string>
 
     <!--drawer-->
-    <string name="dr_unicode">Unicode Декодер</string>
+    <string name="dr_unicode">Unicode декодер</string>
     <string name="dr_base64">Декодер Base64</string>
-    <string name="dr_hex">HEX Декодер</string>
+    <string name="dr_hex">HEX декодер</string>
     <string name="dr_other1">Прочие инструменты</string>
     <string name="history">История кодировок</string>
     <string name="git_hub">GitHub</string>
@@ -40,10 +40,6 @@
     <!--ACRA-->
 
     <!--RegexDragon-->
-    <string name="one_match">" совпадение"</string>
-    <string name="more_matches">"Совпадений: "</string>
-    <string name="illegal_syntax1">Неверный синтаксис!\n</string>
-    <string name="illegal_syntax2">\nОшибка выделена символом ^\nПроверьте правильность regexp</string>
     <!---->
     <string name="about_author">Об авторе</string>
     <string name="unescape_xml">Unescape xml</string>
@@ -61,11 +57,8 @@
     <string name="regex_flags_title">Флаги regex</string>
     <string name="press_back_once_more">Нажмите еще раз, для выхода</string>
     <string name="hint_timestamp">Timestamp</string>
-    <string name="dlg_font_size">Размер шрифта</string>
     <string name="app_theme_light">Светлая</string>
     <string name="app_theme_dark">Тёмная</string>
-    <string name="reset">Сброс</string>
-    <string name="paste">Вставить</string>
     <string name="cancel">Отмена</string>
     <string name="settings_theme">Тема</string>
     <string name="settings_fontsize">Размер шрифта полей ввода</string>
@@ -74,7 +67,6 @@
     <string name="settings_ct_interact">Взаимодействие</string>
     <string name="hint_regexp">Регулярное выражение</string>
     <string name="hint_test_string">Текст для проверки</string>
-    <string name="hint_matches">Совпадений:</string>
     <string name="hint_string">String</string>
     <string name="about_preambula"><![CDATA[Программа пригодится людям работающим с <b>*.apk</b> <br/><b>Функции:</b><br><b>*</b> Кодирование/Декодирование Unicode<br><b>*</b> Кодирование/Декодирование Base64<br><b>*</b> Кодирование/Декодирование HEX<br><b>*</b> Просмотр и копирование палитры цветов в HEX<br><b>*</b> Кодирование <b>Adler32/CRC32/MD5/SHA-1, 224, 384, 512</b><br><b>*</b> Проверка регулярных выражений<br><b>*</b> XML unescaper<br><b>*</b> Timestamp converter<br><br><br>]]></string>
     <string name="about_about"><![CDATA[Автор и разработчик: <b><a href="http://4pda.to/forum/index.php?showuser=4324432">Snow Volf</a></b> (Артем Жиганов)<br>
@@ -89,6 +81,6 @@
     <string name="message_malformed_base64">Текст не распознан как base64, помещен как обычный текст</string>
     <string name="message_malformed_unicode">Текст не соответствует кодировке Unicode, распознан как обычный текст</string>
     <string name="message_history_empty">Все, что вы декодировали\nотобразится здесь</string>
-    <string name="action_undo">Отменить</string>
     <string name="message_removed">Запись удалена</string>
+    <string name="msg_swipe_to_clear"><![CDATA[Свайп -> вправо для того чтобы очистить текст]]></string>
 </resources>

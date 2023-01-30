@@ -21,11 +21,6 @@ class ExtendedCodersFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_ex_encoders, container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listView = view.findViewById(R.id.coder_list) as ListView
@@ -42,16 +37,6 @@ class ExtendedCodersFragment : Fragment() {
                 4 -> navController.navigate(R.id.action_listCoders_to_timestampFragment)
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home)
-            requireActivity().finish()
-        return true
     }
 
 }
