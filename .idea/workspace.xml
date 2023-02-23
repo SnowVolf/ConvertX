@@ -16,8 +16,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Screens refactoring&#10;- Use DiffUtil in history screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/MainMenuVH.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/MainMenuVH.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexValidatorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexValidatorFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3345,48 +3348,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ApkExportedModule": "ConvertX.app",
-    "ExportApk.ApkPathForConvertX.app": "D:\\GitHub\\ConvertX\\app",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ScreenRecorder.SavePath": "E:\\UserData\\SVolf\\Desktop\\device-2023-02-23-200804.webm",
-    "ScreenshotViewer.SavePath": "D:/GitHub/ConvertX/screens",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED": "View",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED": "NestedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED": "BlurToolbar",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED": "SwipeEditText",
-    "android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED": "BackdropLayout",
-    "cidr.known.project.marker": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last.edited.regexp": "\\u0000\\u009c",
-    "last_directory_selection": "D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation",
-    "last_opened_file_path": "E:/UserData/SVolf/Desktop",
-    "project.structure.last.edited": "Dependencies",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.customizations"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ApkExportedModule&quot;: &quot;ConvertX.app&quot;,
+    &quot;ExportApk.ApkPathForConvertX.app&quot;: &quot;D:\\GitHub\\ConvertX\\app&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;E:\\UserData\\SVolf\\Desktop\\device-2023-02-23-200804.webm&quot;,
+    &quot;ScreenshotViewer.SavePath&quot;: &quot;D:/GitHub/ConvertX/screens&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED&quot;: &quot;NestedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED&quot;: &quot;BlurToolbar&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED&quot;: &quot;SwipeEditText&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED&quot;: &quot;BackdropLayout&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last.edited.regexp&quot;: &quot;\\u0000\\u009c&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/UserData/SVolf/Desktop&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />

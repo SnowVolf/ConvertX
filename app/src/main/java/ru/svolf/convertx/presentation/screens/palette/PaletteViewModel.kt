@@ -20,6 +20,7 @@ import java.io.InputStreamReader
 class PaletteViewModel(application: Application) : AndroidViewModel(application) {
     private val palettes: MutableLiveData<List<Palette>>
 
+
     init {
         val squash = Json.decodeFromString<Squash>(getColors())
         palettes = MutableLiveData(squash.palettes)

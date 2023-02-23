@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import ru.svolf.convertx.R
@@ -24,13 +24,8 @@ import java.util.stream.Collectors
  */
 class PaletteFragment : Fragment() {
     private var _binding: FragmentColorPaletteBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var viewModel: PaletteViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[PaletteViewModel::class.java]
-    }
+	private val binding get() = _binding!!
+	private val viewModel by viewModels<PaletteViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentColorPaletteBinding.inflate(inflater, container, false)
@@ -44,20 +39,21 @@ class PaletteFragment : Fragment() {
         val itemClickAdapter = FastAdapter.with(itemAdapter)
         val paletteClickAdapter = FastAdapter.with(paletteAdapter)
 
-        viewModel.getPalettes().observe(viewLifecycleOwner) {
-            itemAdapter.add(
-                it.stream().map(::ColorsVH).collect(Collectors.toList())
-            )
-            it[0].colors.forEach { c ->
-                paletteAdapter.add(PaletteVH(c))
-            }
-        }
+		viewModel.getPalettes().observe(viewLifecycleOwner) {
+			itemAdapter.add(
+				it.stream().map(::ColorsVH).collect(Collectors.toList())
+			)
+			it[0].colors.forEach { c ->
+				paletteAdapter.add(PaletteVH(c))
+			}
+		}
 
-        itemClickAdapter.onClickListener = { _, _, colorsItem, _ ->
+		itemClickAdapter.onClickListener = { _, _, colorsItem, _ ->
+			paletteAdapter.clear()
 			colorsItem.palette.colors.forEach { paletteAdapter.add(PaletteVH(it)) }
 			paletteClickAdapter.notifyAdapterDataSetChanged()
-            true
-        }
+			true
+		}
 
 		paletteClickAdapter.onClickListener = { _, _, paletteItem, _ ->
 			StringUtils.copyToClipboard(requireContext(), paletteItem.color.hex)

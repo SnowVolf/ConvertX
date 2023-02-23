@@ -8,6 +8,9 @@ import ru.svolf.convertx.databinding.ItemMainMenuBinding
 
 class MainMenuVH(var id: Int, private var icon: Int, private var title: Int) : AbstractBindingItem<ItemMainMenuBinding>() {
 
+    override var identifier: Long
+        get() = id.toLong()
+        set(value) {}
 
     override val type: Int
         get() = R.id.item_title

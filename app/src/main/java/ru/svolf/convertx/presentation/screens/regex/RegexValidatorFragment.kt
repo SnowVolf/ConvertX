@@ -112,14 +112,12 @@ class RegexValidatorFragment : Fragment() {
             spannable = SpannableString(binding.plainText.text)
             occursCount = 0
             while (matcher.find()) {
-                for (i in 0 until  matcher.groupCount()){
-                    spannable.setSpan(
-                        BackgroundColorSpan(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark)),
-                        matcher.start(),
-                        matcher.end(),
-                        33
-                    )
-                }
+                spannable.setSpan(
+                    BackgroundColorSpan(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark)),
+                    matcher.start(),
+                    matcher.end(),
+                    33
+                )
                 occursCount++
             }
             binding.regexResult.text = spannable
