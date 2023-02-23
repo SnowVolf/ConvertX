@@ -1,6 +1,8 @@
 package ru.svolf.convertx.presentation.screens.palette
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,23 +54,26 @@ class PaletteFragment : Fragment() {
         }
 
         itemClickAdapter.onClickListener = { _, _, colorsItem, _ ->
-            if (paletteAdapter.adapterItemCount != 0) {
-                paletteAdapter.clear()
-            }
-            colorsItem.palette.colors.forEach { paletteAdapter.add(PaletteVH(it)) }
+			colorsItem.palette.colors.forEach { paletteAdapter.add(PaletteVH(it)) }
+			paletteClickAdapter.notifyAdapterDataSetChanged()
             true
         }
 
-        paletteClickAdapter.onClickListener = { _, _, paletteItem, _ ->
-            StringUtils.copyToClipboard(requireContext(), paletteItem.color.hex)
-            Toast.makeText(context, R.string.copied2clipboard, Toast.LENGTH_SHORT).show()
-            true
-        }
+		paletteClickAdapter.onClickListener = { _, _, paletteItem, _ ->
+			StringUtils.copyToClipboard(requireContext(), paletteItem.color.hex)
+			Toast.makeText(context, R.string.copied2clipboard, Toast.LENGTH_SHORT).show()
+			true
+		}
 
-        binding.palettesList.adapter = itemClickAdapter
-        binding.colorList.adapter = paletteClickAdapter
+		binding.palettesList.adapter = itemClickAdapter
+		binding.colorList.adapter = paletteClickAdapter
 
-    }
+		Handler(Looper.myLooper()!!).postDelayed({
+			//restore selections (this has to be done after the items were added
+			paletteClickAdapter.withSavedInstanceState(savedInstanceState)
+		}, 50)
+
+	}
 
     override fun onDestroyView() {
         _binding = null

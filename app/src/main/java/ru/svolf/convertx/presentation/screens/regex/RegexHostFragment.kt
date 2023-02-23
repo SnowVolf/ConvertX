@@ -11,17 +11,17 @@ import com.google.android.material.tabs.TabLayoutMediator
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.ActivityRegexDragonBinding
 
-class RegexFragment : Fragment() {
-    private var _binding: ActivityRegexDragonBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var mediator: TabLayoutMediator
-    private val icTab = intArrayOf(
-        R.drawable.dragon,
-        R.drawable.ic_receipt
-    )
+class RegexHostFragment : Fragment() {
+	private var _binding: ActivityRegexDragonBinding? = null
+	private val binding get() = _binding!!
+	private lateinit var mediator: TabLayoutMediator
+	private val icTab = intArrayOf(
+		R.drawable.dragon,
+		R.drawable.ic_receipt
+	)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = ActivityRegexDragonBinding.inflate(inflater, container, false)
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+		_binding = ActivityRegexDragonBinding.inflate(inflater, container, false)
         return binding.root
     }
 

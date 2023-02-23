@@ -1,6 +1,7 @@
 package ru.svolf.convertx.data.model
 
 import android.graphics.Color
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +11,6 @@ import com.mikepenz.fastadapter.swipe.ISwipeable
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.databinding.ItemHistoryBinding
-import java.text.SimpleDateFormat
-import java.util.*
 
 /*
  * Created by SVolf on 26.01.2023, 20:50
@@ -27,7 +26,9 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
     override val isSwipeable: Boolean
         get() = true
 
-    val id = historyItem.id
+    override var identifier: Long
+        get() = historyItem.id!!
+        set(value) {}
 
     val decoder = historyItem.decoder
 
@@ -52,11 +53,12 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
         //binding.swipedAction.text = swipedAction ?: "Kuka"
         binding.swipedText.text = swipedText ?: "Belik"
 
-        val dateFormat = SimpleDateFormat("EEE, HH:mm", Locale.getDefault())
         binding.contentInput.text = historyItem.input
         binding.textOutput.text = historyItem.output
         binding.textDecoderType.text = getDecoderType(historyItem.decoder)
-        binding.textTime.text = historyItem.id?.let { dateFormat.format(Date(it)) }
+        binding.textTime.text = historyItem.id?.let {
+            DateUtils.getRelativeTimeSpanString(it, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
+        }
     }
 
     override fun unbindView(binding: ItemHistoryBinding) {

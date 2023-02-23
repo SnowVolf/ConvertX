@@ -11,6 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backdrop/ConvertX.backdrop.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/backdrop/ConvertX.backdrop.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backdrop/ConvertX.backdrop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/backdrop/ConvertX.backdrop.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backdrop/ConvertX.backdrop.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/backdrop/ConvertX.backdrop.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/ConvertX.feature.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/ConvertX.feature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/regexp/ConvertX.feature.regexp.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/regexp/ConvertX.feature.regexp.iml" />
     </modules>
   </component>
 </project>

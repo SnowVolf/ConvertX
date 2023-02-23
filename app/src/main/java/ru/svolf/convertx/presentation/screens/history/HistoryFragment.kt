@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,7 +19,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mikepenz.fastadapter.ClickListener
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IAdapter
-import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.adapters.FastItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import com.mikepenz.fastadapter.drag.ItemTouchCallback
 import com.mikepenz.fastadapter.drag.SimpleDragCallback
 import com.mikepenz.fastadapter.swipe.SimpleSwipeCallback
@@ -29,7 +30,6 @@ import ru.svolf.convertx.R
 import ru.svolf.convertx.data.model.HistoryVH
 import ru.svolf.convertx.databinding.FragmentHistoryBinding
 import java.util.*
-import java.util.stream.Collectors
 
 /**
  * Created by Snow Volf on 21.06.2017, 8:12
@@ -37,9 +37,9 @@ import java.util.stream.Collectors
 class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemSwipeCallback {
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: HistoryViewModel
-    private val itemAdapter = ItemAdapter<HistoryVH>()
-    private val fastItemAdapter by lazy { FastAdapter.with(itemAdapter) }
+    private val viewModel by viewModels<HistoryViewModel>()
+    private val itemHolders = FastItemAdapter<HistoryVH>()
+    private val fastItemAdapter by lazy { FastAdapter.with(itemHolders) }
 
     //drag & drop
     private lateinit var touchCallback: SimpleDragCallback
@@ -48,17 +48,11 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
     private val deleteHandler = Handler(Looper.getMainLooper()) {
         val item = it.obj as HistoryVH
         item.swipedAction = null
-        val pos12 = itemAdapter.getAdapterPosition(item)
+        val pos12 = itemHolders.getAdapterPosition(item)
         if (pos12 != RecyclerView.NO_POSITION) {
-            itemAdapter.itemFilter.remove(pos12)
-            viewModel.remove(item.id!!)
+            viewModel.remove(item.identifier)
         }
         true
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -69,14 +63,13 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.historyList.apply {
-            adapter = fastItemAdapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            adapter = fastItemAdapter
         }
         viewModel.data.observe(viewLifecycleOwner) { list ->
             binding.textEmpty.visibility = if (list.isNullOrEmpty()) View.VISIBLE else View.GONE
-            itemAdapter.set(list.stream()
-                .map(::HistoryVH)
-                .collect(Collectors.toList()).reversed())
+
+            FastAdapterDiffUtil[itemHolders.itemAdapter] = list
         }
 
         //add drag and drop for item
@@ -98,11 +91,11 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
 
         fastItemAdapter.onClickListener = object : ClickListener<HistoryVH> {
             override fun invoke(v: View?, adapter: IAdapter<HistoryVH>, item: HistoryVH, position: Int): Boolean {
-                val sourceItem = viewModel.getItem(item.id!!)
+                val sourceItem = viewModel.getItem(item.identifier)
                 val bundle = bundleOf(
-                    "input_string" to sourceItem?.input,
-                    "output_string" to sourceItem?.output,
-                    "decoder_switch" to sourceItem?.spinnerPosition
+                    "input_string" to sourceItem.input,
+                    "output_string" to sourceItem.output,
+                    "decoder_switch" to sourceItem.spinnerPosition
                 )
                 return when (item.decoder) {
                     0 -> {
@@ -125,7 +118,7 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
     }
 
     override fun itemSwiped(position: Int, direction: Int) {
-        val item = itemAdapter.getAdapterItem(position) ?: return
+        val item = itemHolders.getAdapterItem(position) ?: return
         item.swipedDirection = direction
 
         // This can vary depending on direction but remove & archive simulated here both results in
@@ -137,12 +130,11 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
             deleteHandler.removeMessages(message)
 
             item.swipedDirection = 0
-            val position1 = itemAdapter.getAdapterPosition(item)
+            val position1 = itemHolders.getAdapterPosition(item)
             if (position1 != RecyclerView.NO_POSITION) {
-                fastItemAdapter.notifyItemChanged(position1)
+                viewModel.remove(item.identifier)
             }
         }
-        fastItemAdapter.notifyItemChanged(position)
     }
 
     override fun onDestroyView() {
@@ -151,7 +143,7 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
     }
 
     override fun itemTouchOnMove(oldPosition: Int, newPosition: Int): Boolean {
-        DragDropUtil.onMove(itemAdapter, oldPosition, newPosition)  // change position
+        DragDropUtil.onMove(itemHolders, oldPosition, newPosition)  // change position
         return true
     }
 }

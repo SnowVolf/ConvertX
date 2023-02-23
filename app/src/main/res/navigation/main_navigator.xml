@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/regexDragonFragment"
-        android:name="ru.svolf.convertx.presentation.screens.regex.RegexFragment"
+        android:name="ru.svolf.convertx.presentation.screens.regex.RegexHostFragment"
         android:label="@string/dr_regex_dragon"
         tools:layout="@layout/fragment_regex_dragon" />
     <fragment

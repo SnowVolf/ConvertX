@@ -10,7 +10,7 @@ import ru.svolf.convertx.data.entity.HistoryItem
  */
 @Dao
 interface HistoryDao {
-    @Query("SELECT * FROM History")
+    @Query("SELECT * FROM History ORDER BY id DESC")
     fun getAll(): LiveData<List<HistoryItem>>
 
     @Query("SELECT * FROM History WHERE id=:id")

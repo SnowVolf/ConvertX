@@ -16,6 +16,7 @@ import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.FragmentRegexDragonBinding
 import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.presentation.screens.settings.Preferences
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 
@@ -27,6 +28,12 @@ class RegexValidatorFragment : Fragment() {
     private var _binding: FragmentRegexDragonBinding? = null
     private val binding get() = _binding!!
     private val flags = Flags()
+
+    private lateinit var pattern: Pattern
+    private lateinit var matcher: Matcher
+    private lateinit var spannable: SpannableString
+    private var occursCount: Int = 0
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentRegexDragonBinding.inflate(inflater, container, false)
@@ -49,6 +56,7 @@ class RegexValidatorFragment : Fragment() {
                 return false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         binding.regexFlags.text = flags.flagString
         binding.regexText.apply {
             textSize = Preferences.fontSize.toFloat()
@@ -93,27 +101,29 @@ class RegexValidatorFragment : Fragment() {
     }
 
 
-    fun testRegex(regexString: String) {
+    private fun testRegex(regexString: String) {
         if (regexString.isEmpty()) {
             binding.regexResult.text = binding.plainText.text
             return
         }
         try {
-            val pattern = Pattern.compile(regexString, flags.flags)
-            val matcher = pattern.matcher(binding.plainText.text)
-            val spannable = SpannableString(binding.plainText.text)
-            var i = 0
+            pattern = Pattern.compile(regexString, flags.flags)
+            matcher = pattern.matcher(binding.plainText.text)
+            spannable = SpannableString(binding.plainText.text)
+            occursCount = 0
             while (matcher.find()) {
-                spannable.setSpan(
-                    BackgroundColorSpan(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark)),
-                    matcher.start(),
-                    matcher.end(),
-                    33
-                )
-                i++
+                for (i in 0 until  matcher.groupCount()){
+                    spannable.setSpan(
+                        BackgroundColorSpan(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark)),
+                        matcher.start(),
+                        matcher.end(),
+                        33
+                    )
+                }
+                occursCount++
             }
             binding.regexResult.text = spannable
-            binding.regexCount.text = resources.getQuantityString(R.plurals.regex_matches, i, i)
+            binding.regexCount.text = resources.getQuantityString(R.plurals.regex_matches, occursCount, occursCount)
         } catch (pse: PatternSyntaxException) {
             binding.regexResult.text = pse.message
         }
@@ -147,5 +157,6 @@ class RegexValidatorFragment : Fragment() {
         binding.regexText.clear()
         binding.regexCount.text = ""
         binding.regexResult.text = ""
+
     }
 }
