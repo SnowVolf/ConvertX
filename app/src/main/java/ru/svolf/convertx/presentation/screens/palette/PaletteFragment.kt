@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.model.ColorsVH
 import ru.svolf.convertx.data.model.PaletteVH
 import ru.svolf.convertx.databinding.FragmentColorPaletteBinding
 import ru.svolf.convertx.utils.StringUtils
-import java.util.stream.Collectors
 
 /*
  * Created by SVolf on 23.01.2023, 16:09
@@ -33,25 +33,22 @@ class PaletteFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val itemAdapter = ItemAdapter<ColorsVH>()
-        val paletteAdapter = ItemAdapter<PaletteVH>()
-        val itemClickAdapter = FastAdapter.with(itemAdapter)
-        val paletteClickAdapter = FastAdapter.with(paletteAdapter)
+		super.onViewCreated(view, savedInstanceState)
+		val itemAdapter = ItemAdapter<ColorsVH>()
+		val paletteAdapter = ItemAdapter<PaletteVH>()
+		val itemClickAdapter = FastAdapter.with(itemAdapter)
+		val paletteClickAdapter = FastAdapter.with(paletteAdapter)
 
-		viewModel.getPalettes().observe(viewLifecycleOwner) {
-			itemAdapter.add(
-				it.stream().map(::ColorsVH).collect(Collectors.toList())
-			)
-			it[0].colors.forEach { c ->
-				paletteAdapter.add(PaletteVH(c))
-			}
+		viewModel.getCurrentPalette().observe(viewLifecycleOwner) {
+			FastAdapterDiffUtil[paletteAdapter] = it
 		}
 
-		itemClickAdapter.onClickListener = { _, _, colorsItem, _ ->
-			paletteAdapter.clear()
-			colorsItem.palette.colors.forEach { paletteAdapter.add(PaletteVH(it)) }
-			paletteClickAdapter.notifyAdapterDataSetChanged()
+		viewModel.getAllPalettes().observe(viewLifecycleOwner) {
+			FastAdapterDiffUtil[itemAdapter] = it
+		}
+
+		itemClickAdapter.onClickListener = { _, _, _, ps ->
+			viewModel.setCurrentPalette(ps)
 			true
 		}
 

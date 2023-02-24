@@ -18,6 +18,10 @@ class ColorsVH(var palette: Palette) : AbstractBindingItem<ItemPaletteMainBindin
     override val type: Int
         get() = R.id.item_main_palette
 
+    override var identifier: Long
+        get() = Color.parseColor(palette.colors[5].hex).toLong()
+        set(value) {}
+
     override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): ItemPaletteMainBinding {
         return ItemPaletteMainBinding.inflate(inflater, parent, false)
     }

@@ -33,13 +33,12 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
 
 
     fun getItem(itemId: Long): HistoryItem {
-        val historyItem: HistoryItem = runBlocking {
-            withContext(Dispatchers.IO) {
-                val historyItem = dao.getById(itemId)
-                historyItem
-            }
-        }
-        return historyItem
+        return runBlocking {
+			withContext(Dispatchers.IO) {
+				val historyItem = dao.getById(itemId)
+				historyItem
+			}
+		}
     }
 
     override fun onCleared() {

@@ -17,6 +17,10 @@ class PaletteVH(var color: Color) : AbstractBindingItem<ItemPaletteColorsBinding
     override val type: Int
         get() = R.id.color_accent
 
+    override var identifier: Long
+        get() = android.graphics.Color.parseColor(color.hex).toLong()
+        set(value) {}
+
     override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): ItemPaletteColorsBinding {
         return ItemPaletteColorsBinding.inflate(inflater, parent, false)
     }
