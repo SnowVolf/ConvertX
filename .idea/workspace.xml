@@ -14,15 +14,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Small Palette fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/ColorsVH.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/ColorsVH.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/PaletteVH.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/PaletteVH.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/extension/EditExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/_EditText.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryViewModel.kt" afterDir="false" />
+    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Refactored Palette to ViewModel &amp; DiffUtil">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/version.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/version.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3875,7 +3868,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677174004905</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Refactored Palette to ViewModel &amp; DiffUtil">
+      <created>1677220149056</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1677220149056</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3985,7 +3985,8 @@
     <MESSAGE value="Screens refactoring" />
     <MESSAGE value="Screens refactoring&#10;- Use DiffUtil in history screen" />
     <MESSAGE value="Small Palette fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small Palette fixes" />
+    <MESSAGE value="Refactored Palette to ViewModel &amp; DiffUtil" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Palette to ViewModel &amp; DiffUtil" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

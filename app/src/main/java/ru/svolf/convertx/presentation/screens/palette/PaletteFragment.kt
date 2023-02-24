@@ -39,16 +39,17 @@ class PaletteFragment : Fragment() {
 		val itemClickAdapter = FastAdapter.with(itemAdapter)
 		val paletteClickAdapter = FastAdapter.with(paletteAdapter)
 
-		viewModel.getCurrentPalette().observe(viewLifecycleOwner) {
-			FastAdapterDiffUtil[paletteAdapter] = it
+		with(viewModel) {
+			getCurrentPalette().observe(viewLifecycleOwner) {
+				FastAdapterDiffUtil[paletteAdapter] = it
+			}
+			getAllPalettes().observe(viewLifecycleOwner) {
+				FastAdapterDiffUtil[itemAdapter] = it
+			}
 		}
 
-		viewModel.getAllPalettes().observe(viewLifecycleOwner) {
-			FastAdapterDiffUtil[itemAdapter] = it
-		}
-
-		itemClickAdapter.onClickListener = { _, _, _, ps ->
-			viewModel.setCurrentPalette(ps)
+		itemClickAdapter.onClickListener = { _, _, _, position ->
+			viewModel.setCurrentPalette(position)
 			true
 		}
 
