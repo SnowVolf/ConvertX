@@ -1,28 +1,25 @@
 package ru.svolf.convertx.presentation.screens.hex
 
 import android.text.method.DigitsKeyListener
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.*
 import ru.svolf.convertx.R
-import ru.svolf.convertx.utils.algorhitms.Decoder
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.presentation.base.BaseMainFragment
 import ru.svolf.convertx.presentation.screens.settings.Preferences
+import ru.svolf.convertx.utils.algorhitms.Decoder
 
 /**
  * Created by Snow Volf on 28.01.2017.
  */
 class HexFragment : BaseMainFragment() {
     private var isInt = false
+    private var resultedString: Deferred<String>? = null
 
     override fun onViewsReady() {
         super.onViewsReady()
@@ -52,78 +49,78 @@ class HexFragment : BaseMainFragment() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        //добавляем пункты меню
-        menu.add(R.string.clear_all)
-            .setIcon(R.drawable.ic_menu_clear_all)
-            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            .setOnMenuItemClickListener { menuItem: MenuItem? ->
-                clearAllText()
-                true
-            }
-    }
-
     override fun convertInput(input: String) {
-        var string = ""
-        if (isInt){
-            try {
-                string = Decoder.intToHex(input.toInt())
-            } catch (ex: java.lang.NumberFormatException){
-                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            if (isInt) {
+                try {
+                    resultedString = async(Dispatchers.Default) {
+                        Decoder.intToHex(input.toInt())
+                    }
+                } catch (ex: java.lang.NumberFormatException) {
+                    Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                try {
+                    resultedString = async(Dispatchers.Default) {
+                        Decoder.toHexString(input)
+                    }
+                } catch (ex: java.lang.NumberFormatException) {
+                    Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+                }
             }
-        } else {
-            try {
-                string = Decoder.toHexString(input)
-            } catch (ex: java.lang.NumberFormatException) {
-                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+
+            withContext(Dispatchers.IO) {
+                val hist = HistoryItem().apply {
+                    this.id = persistedId
+                    this.input = input
+                    this.output = resultedString?.await()
+                    this.decoder = 2
+                    this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
+                }
+                getDao().insert(hist)
             }
-        }
-        binding.fieldOutput.setText(string)
-        CoroutineScope(Dispatchers.IO).launch {
-            val hist = HistoryItem().apply {
-                this.id = System.currentTimeMillis()
-                this.input = input
-                this.output = string
-                this.decoder = 2
-                this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
-            }
-            getDao().insert(hist)
+            binding.fieldOutput.setText(resultedString?.await())
         }
     }
 
     override fun convertOutput(output: String) {
-        var string = ""
-        if (isInt){
-            try {
-                string = Decoder.hexToInt(output)
-            } catch (ex: java.lang.NumberFormatException){
-                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            var string: Deferred<String>? = null
+            if (isInt) {
+                try {
+                    string = async(Dispatchers.Default) {
+                        Decoder.hexToInt(output)
+                    }
+                } catch (ex: java.lang.NumberFormatException) {
+                    Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                try {
+                    val string2 = output.replaceFirst("0x", "")
+                    string = async(Dispatchers.Default) {
+                        Decoder.decodeHexString(string2)
+                    }
+                } catch (ex: Exception) {
+                    Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+                }
             }
-        } else {
-            try {
-                val string2 = output.replaceFirst("0x", "")
-                string = Decoder.decodeHexString(string2)
-            } catch (ex: Exception) {
-                Toast.makeText(requireContext(), ex.message!!, Toast.LENGTH_SHORT).show()
+            withContext(Dispatchers.IO) {
+                val hist = HistoryItem().apply {
+                    this.id = persistedId
+                    this.input = string?.await()
+                    this.output = output
+                    this.decoder = 2
+                    this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
+                }
+                getDao().insert(hist)
             }
-        }
-        binding.fieldInput.setText(string)
-        CoroutineScope(Dispatchers.IO).launch {
-            val hist = HistoryItem().apply {
-                this.id = System.currentTimeMillis()
-                this.input = string
-                this.output = output
-                this.decoder = 2
-                this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
-            }
-            getDao().insert(hist)
+            binding.fieldInput.setText(string?.await())
         }
     }
 
 
-    fun addListener(mode: Int){
-        when (mode){
+    private fun addListener(mode: Int) {
+        when (mode) {
             0 -> isInt = false
             1 -> isInt = true
         }

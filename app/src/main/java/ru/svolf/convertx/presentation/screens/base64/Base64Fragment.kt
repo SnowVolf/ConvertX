@@ -5,15 +5,17 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.svolf.convertx.R
-import ru.svolf.convertx.utils.algorhitms.Decoder
 import ru.svolf.convertx.data.entity.HistoryItem
-import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.presentation.base.BaseMainFragment
 import ru.svolf.convertx.presentation.screens.settings.Preferences
+import ru.svolf.convertx.utils.algorhitms.Decoder
+import ru.svolf.convertx.utils.clear
 
 /**
  * Created by Snow Volf on 28.01.2017.
@@ -52,17 +54,21 @@ class Base64Fragment : BaseMainFragment() {
     }
 
     override fun convertInput(input: String) {
-        val text = Decoder.encodeBase64(input, algs[Preferences.getSpinnerPosition("spinner.base64")])
-        binding.fieldOutput.setText(text)
-        CoroutineScope(Dispatchers.IO).launch {
-            val hist = HistoryItem().apply {
-                id = System.currentTimeMillis()
-                this.input = input
-                output = text
-                decoder = 1
-                spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
+        lifecycleScope.launch {
+            val text = async(Dispatchers.Default) {
+                Decoder.encodeBase64(input, algs[Preferences.getSpinnerPosition("spinner.base64")])
             }
-            getDao().insert(hist)
+            withContext(Dispatchers.IO) {
+                val hist = HistoryItem().apply {
+                    id = persistedId
+                    this.input = input
+                    output = text.await()
+                    decoder = 1
+                    spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
+                }
+                getDao().insert(hist)
+            }
+            binding.fieldOutput.setText(text.await())
         }
     }
 
@@ -73,17 +79,21 @@ class Base64Fragment : BaseMainFragment() {
             binding.fieldInput.requestFocus()
             Toast.makeText(requireContext(), getString(R.string.message_malformed_base64), Toast.LENGTH_SHORT).show()
         } else {
-            val text = Decoder.decodeBase64(output, algs[Preferences.getSpinnerPosition("spinner.base64")])
-            binding.fieldInput.setText(text)
-            CoroutineScope(Dispatchers.IO).launch {
-                val hist = HistoryItem().apply {
-                    id = System.currentTimeMillis()
-                    input = text
-                    this.output = output
-                    decoder = 1
-                    spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
+            lifecycleScope.launch {
+                val text = async(Dispatchers.Default) {
+                    Decoder.decodeBase64(output, algs[Preferences.getSpinnerPosition("spinner.base64")])
                 }
-                getDao().insert(hist)
+                withContext(Dispatchers.IO) {
+                    val hist = HistoryItem().apply {
+                        id = persistedId
+                        input = text.await()
+                        this.output = output
+                        decoder = 1
+                        spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
+                    }
+                    getDao().insert(hist)
+                }
+                binding.fieldInput.setText(text.await())
             }
         }
 

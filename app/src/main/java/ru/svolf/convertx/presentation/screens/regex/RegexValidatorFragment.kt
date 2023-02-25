@@ -14,8 +14,8 @@ import androidx.lifecycle.Lifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.svolf.convertx.R
 import ru.svolf.convertx.databinding.FragmentRegexDragonBinding
-import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.presentation.screens.settings.Preferences
+import ru.svolf.convertx.utils.clear
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException

@@ -1,13 +1,17 @@
 package ru.svolf.convertx.presentation.screens.unicode
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
-import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.presentation.base.BaseMainFragment
 import ru.svolf.convertx.utils.algorhitms.Decoder
+import ru.svolf.convertx.utils.clear
 
 /**
  * Created by Snow Volf on 28.01.2017.
@@ -26,15 +30,12 @@ class UnicodeFragment : BaseMainFragment() {
         binding.fieldOutput.setText(unicodeValue)
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                val hist = runBlocking {
-                    HistoryItem().apply {
-                        this.id = System.currentTimeMillis()
-                        this.input = input
-                        this.output = unicodeValue.toString()
-                        this.decoder = 0
-                    }
-                }
-                getDao().insert(hist)
+                getDao().insert(HistoryItem().apply {
+                    this.id = persistedId
+                    this.input = input
+                    this.output = unicodeValue.toString()
+                    this.decoder = 0
+                })
             }
         }
 
@@ -48,16 +49,22 @@ class UnicodeFragment : BaseMainFragment() {
             binding.fieldInput.requestFocus()
             Toast.makeText(requireContext(), getString(R.string.message_malformed_unicode), Toast.LENGTH_SHORT).show()
         } else {
-            val text = Decoder.decodeUnicode(output)
-            binding.fieldOutput.setText(text)
-            CoroutineScope(Dispatchers.IO).launch {
-                val hist = HistoryItem().apply {
-                    id = System.currentTimeMillis()
-                    input = text
-                    this.output = output
-                    decoder = 0
+            lifecycleScope.launch {
+                val text = async {
+                    Decoder.decodeUnicode(output)
                 }
-                getDao().insert(hist)
+
+                withContext(Dispatchers.IO) {
+                    val hist = HistoryItem().apply {
+                        id = persistedId
+                        input = text.await()
+                        this.output = output
+                        decoder = 0
+                    }
+                    getDao().insert(hist)
+                }
+                binding.fieldInput.setText(text.await())
+                Log.e("SUKA", "FINISH")
             }
         }
     }

@@ -10,12 +10,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ru.svolf.convertx.R
+import ru.svolf.convertx.presentation.screens.settings.Preferences
 import ru.svolf.convertx.utils.algorhitms.Checksum.encodeMD5
 import ru.svolf.convertx.utils.algorhitms.Checksum.encodeSHA1
 import ru.svolf.convertx.utils.algorhitms.Checksum.encodeSHA224
 import ru.svolf.convertx.utils.algorhitms.Checksum.encodeSHA384
 import ru.svolf.convertx.utils.algorhitms.Checksum.encodeSHA512
-import ru.svolf.convertx.presentation.screens.settings.Preferences
 
 /**
  * Created by Snow Volf on 14.02.2017.
@@ -34,10 +34,10 @@ class MdShaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        data = view.findViewById<View>(R.id.exData) as EditText
+        data = view.findViewById<View>(R.id.field_input_data) as EditText
         data!!.setHint(R.string.hint_md_sha)
         data!!.isFocusable = true
-        dataOut = view.findViewById<View>(R.id.exText) as TextView
+        dataOut = view.findViewById<View>(R.id.text_output) as TextView
 
         data!!.textSize = Preferences.fontSize.toFloat()
 

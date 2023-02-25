@@ -20,14 +20,14 @@
             android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/exData"
+                    android:id="@+id/field_input_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="monospace" />
 
             <TextView
-                android:id="@+id/exText"
+                android:id="@+id/text_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/dp10"

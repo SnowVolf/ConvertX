@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import android.view.View.OnFocusChangeListener
 import android.widget.EditText
@@ -17,9 +18,9 @@ import ru.svolf.convertx.App
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.dao.HistoryDao
 import ru.svolf.convertx.databinding.FragmentMainBinding
-import ru.svolf.convertx.extension.clear
 import ru.svolf.convertx.utils.StringUtils.copyToClipboard
 import ru.svolf.convertx.utils.SwipeEditText.OnSwipeListener
+import ru.svolf.convertx.utils.clear
 
 
 /**
@@ -27,9 +28,24 @@ import ru.svolf.convertx.utils.SwipeEditText.OnSwipeListener
  */
 open class BaseMainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
-    val binding get() = _binding!!
+    protected val binding get() = _binding!!
     private lateinit var databaseDao: HistoryDao
     private lateinit var viewModel: MainFragmentViewModel
+
+    /**
+     * Specify item ID for database. Needs for updates in case of sequence decoding.
+     * For example:
+     * - Type: A long time ago
+     * - Wait 2 sec
+     * - Value decoded
+     * - Saved to database
+     * - Added 3 dots (A long time ago...)
+     * - Wait 2 sec
+     * - Value decoded
+     * - Updates EXITING item instead of creating a new one
+     * This key has been updated automatically in case of removing all text from EditText
+     */
+    protected var persistedId: Long = System.currentTimeMillis()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +124,6 @@ open class BaseMainFragment : Fragment() {
             }
         }
 
-
         viewModel.textSize.observe(viewLifecycleOwner) {
             binding.fieldOutput.textSize = it.toFloat()
             binding.fieldInput.textSize = it.toFloat()
@@ -143,7 +158,7 @@ open class BaseMainFragment : Fragment() {
         Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
     }
 
-    fun getDao(): HistoryDao {
+    protected fun getDao(): HistoryDao {
         return databaseDao
     }
 
@@ -152,7 +167,6 @@ open class BaseMainFragment : Fragment() {
         private val inputHandler = Handler(Looper.getMainLooper())
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -160,12 +174,17 @@ open class BaseMainFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable?) {
+            if (s.isNullOrEmpty()) {
+                persistedId = System.currentTimeMillis()
+                Log.e("TAGS", "RESET VAL = $persistedId")
+            }
             if (this::inputRunnable.isInitialized) {
                 inputHandler.removeCallbacks(inputRunnable)
             }
             inputRunnable = Runnable {
                 if (!s.isNullOrBlank()) {
                     convertInput(s.toString())
+                    Log.e("TAGS", "CHECK VAL = $persistedId")
                 }
             }
             // Ждем 2 секунды пока не закончится ввод текста, чтобы не нагружать зря систему
@@ -185,12 +204,17 @@ open class BaseMainFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable?) {
+            if (s.isNullOrEmpty()) {
+                persistedId = System.currentTimeMillis()
+                Log.e("TAGS", "RESET VAL = $persistedId")
+            }
             if (this::outputRunnable.isInitialized) {
                 outputHandler.removeCallbacks(outputRunnable)
             }
             outputRunnable = Runnable {
                 if (!s.isNullOrBlank()) {
                     convertOutput(s.toString())
+                    Log.e("TAGS", "NEW VAL = $persistedId")
                 }
             }
             // Ждем 2 секунды пока не закончится ввод текста, чтобы не нагружать зря систему

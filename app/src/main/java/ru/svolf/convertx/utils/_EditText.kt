@@ -1,7 +1,7 @@
- package ru.svolf.convertx.extension
+ package ru.svolf.convertx.utils
 
-import android.widget.EditText
+ import android.widget.TextView
 
- fun EditText.clear() {
+ fun TextView.clear() {
      setText("")
  }

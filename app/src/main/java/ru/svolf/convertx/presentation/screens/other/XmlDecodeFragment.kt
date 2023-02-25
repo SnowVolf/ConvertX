@@ -1,94 +1,32 @@
 package ru.svolf.convertx.presentation.screens.other
 
-import android.content.Context
-import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.*
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
+import ru.svolf.convertx.presentation.base.BaseTextCoderFragment
 import ru.svolf.convertx.utils.algorhitms.Decoder
-import ru.svolf.convertx.presentation.screens.settings.Preferences
-import ru.svolf.convertx.utils.StringUtils
 
 /**
  * Created by Snow Volf on 22.02.2017, 19:51
  */
 
-class XmlDecodeFragment : Fragment() {
-    lateinit var data: EditText
-    lateinit var dataOut: TextView
+class XmlDecodeFragment : BaseTextCoderFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.fragment_ex, container, false)
+    override fun onViewsReady() {
+        super.onViewsReady()
+        binding.fieldInputData.setHint(R.string.hint_encoded_xml)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        data = view.findViewById(R.id.exData) as EditText
-        data.hint = "Текст зашифрованого XML"
-        data.isFocusable = true
-        dataOut = view.findViewById(R.id.exText) as TextView
-        dataOut.hint = "Преобразует символы \"&quot;\", \"&apos;\", т.д. в нормальный текст"
-
-        data.textSize = Preferences.fontSize.toFloat()
-        data.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-
-            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-
-            override fun afterTextChanged(editable: Editable) {
-                val source = data.text.toString()
-                val unescaped = Decoder.unescapeXml(source)
-                dataOut.text = unescaped
+    override fun convertInput(input: String) {
+        super.convertInput(input)
+        lifecycleScope.launch {
+            val unescaped = async(Dispatchers.Default) {
+                Decoder.unescapeXml(input)
             }
-        })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        //добавляем пункты меню
-        menu.add(R.string.copy2clipboard)
-            .setIcon(R.drawable.ic_menu_copy)
-            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            .setOnMenuItemClickListener { menuItem ->
-                StringUtils.copyToClipboard(requireContext(), dataOut.text.toString())
-                showToast(context, getString(R.string.copied2clipboard))
-
-                true
-            }
-        menu.add(R.string.clear_all)
-            .setIcon(R.drawable.ic_menu_clear_all)
-            .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            .setOnMenuItemClickListener { menuItem ->
-                clearAllText()
-                true
-            }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item!!.itemId == android.R.id.home)
-            requireActivity().finish()
-        return true
-    }
-
-    fun clearAllText() {
-        data.setText("")
-        dataOut.text = ""
-        Toast.makeText(requireContext(), getString(R.string.cleared), Toast.LENGTH_SHORT).show()
-    }
-
-    fun showToast(context: Context?, text: String?) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+            binding.textOutput.text = unescaped.await()
+        }
     }
 
 }
