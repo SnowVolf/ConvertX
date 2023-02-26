@@ -22,9 +22,8 @@
     <string name="dr_about">About</string>
 
 
-    <string name="checksum_crc">CRC32 checksum</string>
+    <string name="checksum_crc">CRC32</string>
     <string name="checksum_adler32">Adler 32</string>
-    <string name="checksum_md">MD…SHA</string>
 
 
     <string name="hint_unicode">Unicode</string>
@@ -33,7 +32,6 @@
     <string name="hint_base64">Base64</string>
     <string name="hint_adler32">Adler32</string>
     <string name="hint_crc">CRC</string>
-    <string name="hint_md_sha">MD5…SHA</string>
 
 
     <string name="forpda">4pda</string>

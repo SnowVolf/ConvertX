@@ -1,6 +1,5 @@
 package ru.svolf.convertx.presentation.screens.unicode
 
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -10,6 +9,7 @@ import kotlinx.coroutines.withContext
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.presentation.base.BaseMainFragment
+import ru.svolf.convertx.utils.DecoderConst
 import ru.svolf.convertx.utils.algorhitms.Decoder
 import ru.svolf.convertx.utils.clear
 
@@ -34,11 +34,10 @@ class UnicodeFragment : BaseMainFragment() {
                     this.id = persistedId
                     this.input = input
                     this.output = unicodeValue.toString()
-                    this.decoder = 0
+                    this.decoder = DecoderConst.UNICODE
                 })
             }
         }
-
     }
 
     override fun convertOutput(output: String) {
@@ -59,12 +58,11 @@ class UnicodeFragment : BaseMainFragment() {
                         id = persistedId
                         input = text.await()
                         this.output = output
-                        decoder = 0
+                        decoder = DecoderConst.UNICODE
                     }
                     getDao().insert(hist)
                 }
                 binding.fieldInput.setText(text.await())
-                Log.e("SUKA", "FINISH")
             }
         }
     }

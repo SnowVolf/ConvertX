@@ -29,6 +29,7 @@ import com.mikepenz.fastadapter.utils.DragDropUtil
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.model.HistoryVH
 import ru.svolf.convertx.databinding.FragmentHistoryBinding
+import ru.svolf.convertx.utils.DecoderConst
 import java.util.*
 
 /**
@@ -74,7 +75,7 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
 
         //add drag and drop for item
         //and add swipe as well
-        val leaveBehindDrawableLeft = ContextCompat.getDrawable(requireContext(), R.drawable.ic_remove)
+        val leaveBehindDrawableLeft = ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete)
         touchCallback = SimpleSwipeDragCallback(
             this,
             this,
@@ -98,15 +99,15 @@ class HistoryFragment : Fragment(), ItemTouchCallback, SimpleSwipeCallback.ItemS
                     "decoder_switch" to sourceItem.spinnerPosition
                 )
                 return when (item.decoder) {
-                    0 -> {
+                    DecoderConst.UNICODE -> {
                         findNavController().navigate(R.id.unicodeFragment, bundle)
                         true
                     }
-                    1 -> {
+                    DecoderConst.BASE64 -> {
                         findNavController().navigate(R.id.base64Fragment, bundle)
                         true
                     }
-                    2 -> {
+                    DecoderConst.HEX -> {
                         findNavController().navigate(R.id.hexFragment, bundle)
                         true
                     }

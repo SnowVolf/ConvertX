@@ -12,6 +12,7 @@ import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.presentation.base.BaseMainFragment
 import ru.svolf.convertx.presentation.screens.settings.Preferences
+import ru.svolf.convertx.utils.DecoderConst
 import ru.svolf.convertx.utils.algorhitms.Decoder
 
 /**
@@ -73,9 +74,9 @@ class HexFragment : BaseMainFragment() {
                 val hist = HistoryItem().apply {
                     this.id = persistedId
                     this.input = input
-                    this.output = resultedString?.await()
-                    this.decoder = 2
-                    this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
+					this.output = resultedString?.await()
+					this.decoder = DecoderConst.HEX
+					this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
                 }
                 getDao().insert(hist)
             }
@@ -108,9 +109,9 @@ class HexFragment : BaseMainFragment() {
                 val hist = HistoryItem().apply {
                     this.id = persistedId
                     this.input = string?.await()
-                    this.output = output
-                    this.decoder = 2
-                    this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
+					this.output = output
+					this.decoder = DecoderConst.HEX
+					this.spinnerPosition = Preferences.getSpinnerPosition("spinner.hex")
                 }
                 getDao().insert(hist)
             }

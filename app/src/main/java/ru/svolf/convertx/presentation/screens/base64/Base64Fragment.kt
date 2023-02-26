@@ -14,6 +14,7 @@ import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.presentation.base.BaseMainFragment
 import ru.svolf.convertx.presentation.screens.settings.Preferences
+import ru.svolf.convertx.utils.DecoderConst
 import ru.svolf.convertx.utils.algorhitms.Decoder
 import ru.svolf.convertx.utils.clear
 
@@ -63,7 +64,7 @@ class Base64Fragment : BaseMainFragment() {
                     id = persistedId
                     this.input = input
                     output = text.await()
-                    decoder = 1
+                    decoder = DecoderConst.BASE64
                     spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
                 }
                 getDao().insert(hist)
@@ -88,7 +89,7 @@ class Base64Fragment : BaseMainFragment() {
                         id = persistedId
                         input = text.await()
                         this.output = output
-                        decoder = 1
+                        decoder = DecoderConst.BASE64
                         spinnerPosition = Preferences.getSpinnerPosition("spinner.base64")
                     }
                     getDao().insert(hist)

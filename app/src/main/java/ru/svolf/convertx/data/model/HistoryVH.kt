@@ -11,6 +11,7 @@ import com.mikepenz.fastadapter.swipe.ISwipeable
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.HistoryItem
 import ru.svolf.convertx.databinding.ItemHistoryBinding
+import ru.svolf.convertx.utils.DecoderConst
 
 /*
  * Created by SVolf on 26.01.2023, 20:50
@@ -72,12 +73,12 @@ class HistoryVH(private val historyItem: HistoryItem) : AbstractBindingItem<Item
 
     private fun getDecoderType(type: Int?): String {
         return when (type) {
-            0 -> "Unicode"
-            1 -> "Base64"
-            2 -> "HEX"
-            3 -> "Regexp"
-            else -> "Unknown"
-        }
+			DecoderConst.UNICODE -> "Unicode"
+			DecoderConst.BASE64 -> "Base64"
+			DecoderConst.HEX -> "HEX"
+			3 -> "Regexp"
+			else -> "Unknown"
+		}
     }
 
 }

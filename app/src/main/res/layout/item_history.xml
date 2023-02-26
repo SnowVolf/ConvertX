@@ -58,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toStartOf="@+id/barrier_split"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -73,6 +74,7 @@
             app:layout_constraintEnd_toStartOf="@+id/barrier_split"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/content_input"
+            app:fontFamily="sans-serif-condensed"
             tools:text="Output string sample" />
 
         <TextView
@@ -93,6 +95,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/text_output"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_decoder_type"
+            app:fontFamily="sans-serif-condensed"
             tools:text="15:15" />
 
         <androidx.constraintlayout.widget.Barrier

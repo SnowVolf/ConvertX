@@ -20,9 +20,8 @@
     <string name="dr_about">О программе</string>
 
     <!--checksum fragment-->
-    <string name="checksum_crc">CRC checksum [32]</string>
+    <string name="checksum_crc">CRC 32</string>
     <string name="checksum_adler32">Adler 32</string>
-    <string name="checksum_md">MD [5], SHA [1, 224, 384, 512]</string>
 
     <!--hint-->
     <string name="hint_unicode">Unicode</string>
@@ -31,7 +30,6 @@
     <string name="hint_base64">Base64</string>
     <string name="hint_adler32">Adler32</string>
     <string name="hint_crc">CRC</string>
-    <string name="hint_md_sha">MD5 | SHA [1, 224, 384, 512]</string>
 
     <!--other-->
     <string name="forpda">4pda</string>

@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import ru.svolf.convertx.App
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.dao.HistoryDao
@@ -30,7 +30,7 @@ open class BaseMainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     protected val binding get() = _binding!!
     private lateinit var databaseDao: HistoryDao
-    private lateinit var viewModel: MainFragmentViewModel
+    private val viewModel by viewModels<MainFragmentViewModel>()
 
     /**
      * Specify item ID for database. Needs for updates in case of sequence decoding.
@@ -49,7 +49,6 @@ open class BaseMainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
         databaseDao = (context?.applicationContext as App).mainComponent.getDbManager().getDatabase().historyDao()
     }
 

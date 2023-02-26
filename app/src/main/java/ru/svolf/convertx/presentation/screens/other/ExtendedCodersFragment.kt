@@ -1,7 +1,9 @@
 package ru.svolf.convertx.presentation.screens.other
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
@@ -30,11 +32,10 @@ class ExtendedCodersFragment : Fragment() {
         listView!!.adapter = titleAdapter
         listView!!.setOnItemClickListener { _, _, position, _ ->
             when (position) {
-                0 -> navController.navigate(R.id.action_listCoders_to_mdSha)
-                1 -> navController.navigate(R.id.action_listCoders_to_CRC)
-                2 -> navController.navigate(R.id.action_listCoders_to_adler)
-                3 -> navController.navigate(R.id.action_listCoders_to_xmlDecodeFragment)
-                4 -> navController.navigate(R.id.action_listCoders_to_timestampFragment)
+                0 -> navController.navigate(R.id.action_listCoders_to_CRC)
+                1 -> navController.navigate(R.id.action_listCoders_to_adler)
+                2 -> navController.navigate(R.id.action_listCoders_to_xmlDecodeFragment)
+                3 -> navController.navigate(R.id.action_listCoders_to_timestampFragment)
             }
         }
     }

@@ -42,9 +42,6 @@
             android:id="@+id/action_listCoders_to_CRC"
             app:destination="@id/CRC" />
         <action
-            android:id="@+id/action_listCoders_to_mdSha"
-            app:destination="@id/mdSha" />
-        <action
             android:id="@+id/action_listCoders_to_xmlDecodeFragment"
             app:destination="@id/xmlDecodeFragment" />
         <action
@@ -74,11 +71,6 @@
         android:id="@+id/CRC"
         android:name="ru.svolf.convertx.presentation.screens.other.CrcFragment"
         android:label="@string/checksum_crc"
-        tools:layout="@layout/fragment_ex"/>
-    <fragment
-        android:id="@+id/mdSha"
-        android:name="ru.svolf.convertx.presentation.screens.other.MdShaFragment"
-        android:label="@string/checksum_md"
         tools:layout="@layout/fragment_ex"/>
     <fragment
         android:id="@+id/xmlDecodeFragment"
