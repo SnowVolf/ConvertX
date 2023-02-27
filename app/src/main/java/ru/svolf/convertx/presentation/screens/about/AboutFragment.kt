@@ -5,9 +5,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.Html
-import android.text.method.LinkMovementMethod
-import android.view.*
-import androidx.appcompat.app.AlertDialog
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -24,7 +24,6 @@ class AboutFragment : Fragment() {
     lateinit var navController: NavController
 
     private var preambulaText = R.string.about_preambula
-    private var aboutText = R.string.about_about
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = ActivityAboutBinding.inflate(inflater, container, false)
@@ -35,12 +34,7 @@ class AboutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = NavHostFragment.findNavController(this)
         binding.content.aboutPreambula.text = Html.fromHtml(getString(preambulaText), Html.FROM_HTML_MODE_COMPACT)
-        binding.content.aboutContent.text = Html.fromHtml(getString(aboutText), Html.FROM_HTML_MODE_COMPACT)
-        /**
-         * Чтобы ссылки, которые мы запихали в TextView, были кликабельны.
-         * Метод с `Linkify.addLinks(about, Linkify.ALL);` у меня не заработал
-         */
-        binding.content.aboutContent.movementMethod = LinkMovementMethod.getInstance()
+
         binding.content.aboutChangelist.setOnClickListener { _ -> navController.navigate(R.id.action_aboutFragment_to_changelistFragment) }
         binding.content.aboutGit.setOnClickListener { _ -> showGitDialog() }
 

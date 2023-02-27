@@ -5,7 +5,7 @@ import android.os.Process
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -22,9 +22,10 @@ import ru.svolf.convertx.presentation.screens.settings.Preferences
 import kotlin.system.exitProcess
 
 class MainActivity : BaseActivity() {
-    lateinit var binding: ActivityMainBinding
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     private val navController: NavController by lazy { Navigation.findNavController(this, R.id.nav_host_fragment) }
-    private val navHostFragment: Fragment? by lazy { supportFragmentManager.findFragmentById(R.id.nav_host_fragment) }
 
     companion object {
         var press_time = 0L
@@ -32,21 +33,28 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         initNavigation()
         initMenu()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun initNavigation() {
         NavigationUI.setupActionBarWithNavController(this, navController, binding.backdrop)
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            binding.toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.menu)
+        }
 
-        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // костыль для NavigationUI
-                if (navHostFragment?.childFragmentManager?.backStackEntryCount == 0) {
-                    if (Preferences.isTwiceBackAllowed and (press_time + 2000 < System.currentTimeMillis()) ) {
+                if (navController.previousBackStackEntry == null) {
+                    if (Preferences.isTwiceBackAllowed and (press_time + 2000 < System.currentTimeMillis())) {
                         press_time = System.currentTimeMillis()
                         Toast.makeText(this@MainActivity, getString(R.string.press_back_once_more), Toast.LENGTH_SHORT).show()
                     } else finish()

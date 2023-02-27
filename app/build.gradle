@@ -30,7 +30,7 @@ android {
 
 
         // only in release build
-        if (":${project.name}:assembleRelease" in runTasks || 'aR' in runTasks) {
+        if (":app:assembleRelease" in runTasks || 'aR' in runTasks) {
             versionPatch++;
             if (versionPatch >= 9) {
                 versionPatch = 0;
@@ -56,7 +56,7 @@ android {
             minSdk 26
             //noinspection ExpiredTargetSdkVersion
             targetSdk 33
-            versionCode versionBuild
+            versionCode versionProps['CACHED_VERSION'].toInteger()
             versionName "${versionMajor}.${versionMinor}.${versionPatch}"
             multiDexEnabled true
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -81,7 +81,7 @@
         android:id="@+id/changelistFragment"
         android:name="ru.svolf.convertx.presentation.screens.about.ChangelogFragment"
         android:label="@string/changelog"
-        tools:layout="@layout/activity_changelist" />
+        tools:layout="@layout/fragment_changelist" />
     <fragment
         android:id="@+id/timestampFragment"
         android:name="ru.svolf.convertx.presentation.screens.other.TimestampFragment"

@@ -43,8 +43,13 @@ object Decoder {
 						}
 						outBuffer.append(value.toChar())
 					} else {
-						if (aChar == 't') aChar = '\t' else if (aChar == 'r') aChar = '\r' else if (aChar == 'n') aChar =
-							'\n' else if (aChar == 'f') aChar = '\u000c'
+						when (aChar) {
+							't' -> aChar = '\t'
+							'r' -> aChar = '\r'
+							'n' -> aChar =
+								'\n'
+							'f' -> aChar = '\u000c'
+						}
 						outBuffer.append(aChar)
 					}
 				} else outBuffer.append(aChar)
@@ -74,7 +79,7 @@ object Decoder {
 			while (m.find()) {
 				ent = m.group(2)
 				hashmark = m.group(1)
-				if (hashmark != null && hashmark.length > 0) {
+				if (hashmark != null && hashmark.isNotEmpty()) {
 					code = ent.toInt()
 					entity = Character.toString(code.toChar())
 				} else {
@@ -152,27 +157,27 @@ object Decoder {
 	* Декодирование hex в число (int)
 	*/
 	suspend fun hexToInt(hexadecimal: String): String {
-		return coroutineScope {
-			hexadecimal.toInt(16).toString().replaceFirst("0x", "")
+		return suspendCoroutine {
+			try {
+				val test = hexadecimal.toInt(16).toString().replaceFirst("0x", "")
+				it.resume(test)
+			} catch (ex: Throwable) {
+				it.resume("Error. Out of range")
+			}
 		}
 	}
 
 	/*
 	 * Декодирование int в hex
 	 */
-	suspend fun intToHex(decimal: Int): String {
+	suspend fun intToHex(decimal: String): String {
 		return suspendCoroutine {
-			var decimal = decimal
-			val digit = "0123456789abcdef"
-			if (decimal <= 0) it.resume("")
-			val sysBase = 16 //основание системы счисления
-			var xdigit = ""
-			while (decimal > 0) {
-				val dim = decimal % sysBase
-				xdigit = digit[dim].toString() + xdigit
-				decimal = decimal / sysBase
+			try {
+				val xdigit = Integer.toHexString(decimal.toInt())
+				it.resume("0x$xdigit")
+			} catch (ex: Throwable) {
+				it.resume("Error. Out of range")
 			}
-			it.resume("0x$xdigit")
 		}
 	}
 
