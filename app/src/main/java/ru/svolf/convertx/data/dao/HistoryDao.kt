@@ -1,30 +1,26 @@
 package ru.svolf.convertx.data.dao
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
-import ru.svolf.convertx.data.entity.HistoryItem
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+import ru.svolf.convertx.data.entity.HistoryEntity
 
-/*
- * Created by SVolf on 26.01.2023, 14:32
- * This file is a part of "ConvertX" project
- */
 @Dao
 interface HistoryDao {
     @Query("SELECT * FROM History ORDER BY id DESC")
-    fun getAll(): LiveData<List<HistoryItem>>
+    fun observeAll(): Flow<List<HistoryEntity>>
 
-    @Query("SELECT * FROM History WHERE id=:id")
-    fun getById(id: Long): HistoryItem
-
-    @Query("DELETE FROM History")
-    fun deleteAll()
-
-    @Delete
-    fun delete(vararg items: HistoryItem)
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(item: HistoryItem)
+    @Query("SELECT * FROM History WHERE id = :id LIMIT 1")
+    suspend fun findById(id: Long): HistoryEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(item: HistoryItem)
+    suspend fun upsert(entity: HistoryEntity)
+
+    @Query("DELETE FROM History WHERE id = :id")
+    suspend fun deleteById(id: Long)
+
+    @Query("DELETE FROM History")
+    suspend fun deleteAll()
 }

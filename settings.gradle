@@ -6,4 +6,4 @@ pluginManagement {
     }
 }
 
-include ':app', ':backdrop'
+include ':app'

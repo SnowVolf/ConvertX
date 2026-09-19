@@ -1,10 +1,8 @@
 package ru.svolf.convertx.utils
 
 import android.content.ClipData
-import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
-import ru.svolf.convertx.App
 
 
 /**
@@ -18,14 +16,4 @@ object StringUtils {
         clipboard.setPrimaryClip(clip)
     }
 
-    fun readFromClipboard(): String? {
-        val clipboard = App.instance?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        if (clipboard.hasPrimaryClip()) {
-            val description = clipboard.primaryClipDescription
-            val data = clipboard.primaryClip
-            if (data != null && description != null && description.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))
-                return data.getItemAt(0).text.toString()
-        }
-        return null
-    }
 }

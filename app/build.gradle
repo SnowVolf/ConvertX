@@ -1,95 +1,54 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.2.10'
-    id 'com.android.legacy-kapt' version '9.4.0'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.compose)
 }
 
 def Properties versionProps = new Properties()
+def versionPropsFile = file('version.properties')
+if (!versionPropsFile.canRead()) {
+    throw new GradleException('Could not read version.properties!')
+}
+versionProps.load(new FileInputStream(versionPropsFile))
 
 android {
     namespace 'ru.svolf.convertx'
-    compileSdk = 37
-    def versionPropsFile = file('version.properties')
-    if (versionPropsFile.canRead()) {
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
-        versionProps.load(new FileInputStream(versionPropsFile))
-
-        def runTasks = gradle.startParameter.taskNames
-
-        def versionMajor = versionProps['VERSION_MAJOR'].toInteger()
-        def versionMinor = versionProps['VERSION_MINOR'].toInteger()
-        def versionPatch = versionProps['VERSION_PATCH'].toInteger()
-        // increment build number on every gradle sync
-        def versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
-        // versionProps['CACHED_VERSION']
-        // Используется для поддержки Instant Run в дебаг режиме. Потому что при инкрементальном обновлении постоянно меняется versionCode
-        // в AndroidManifest.xml из-за чего применение изменений становится невозможным без полной установки приложения.
-        // Этот костыль берет для дебаг версии versionCode с последней релизной сборки и не меняет его на протяжении всего процесса debug сборок,
-        // обновляется на новое, в тот момент, когда происходит релизная сборка проекта
-
-
-        // only in release build
-        if (":app:assembleRelease" in runTasks || 'aR' in runTasks) {
-            versionPatch++;
-            if (versionPatch >= 9) {
-                versionPatch = 0;
-                versionMinor++;
-            }
-            if (versionMinor >= 9) {
-                versionMinor = 0;
-                versionMajor++;
-            }
-            // sync if release
-            versionProps['CACHED_VERSION'] = versionBuild.toString()
-        }
-
-        versionProps['VERSION_MAJOR'] = versionMajor.toString()
-        versionProps['VERSION_MINOR'] = versionMinor.toString()
-        versionProps['VERSION_PATCH'] = versionPatch.toString()
-        versionProps['VERSION_BUILD'] = versionBuild.toString()
-
-        versionProps.store(versionPropsFile.newWriter(), null)
-
-        defaultConfig {
-            applicationId "ru.svolf.convertx"
-            minSdk 26
-            //noinspection ExpiredTargetSdkVersion
-            targetSdk 37
-            versionCode versionProps['CACHED_VERSION'].toInteger()
-            versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-            multiDexEnabled true
-            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        }
-    } else {
-        throw new GradleException("Could not read version.properties!")
+    defaultConfig {
+        applicationId 'ru.svolf.convertx'
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+        versionCode versionProps['CACHED_VERSION'].toInteger()
+        versionName "${versionProps['VERSION_MAJOR']}.${versionProps['VERSION_MINOR']}.${versionProps['VERSION_PATCH']}"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
-            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             debuggable true
-            jniDebuggable false
             minifyEnabled false
             zipAlignEnabled true
+            signingConfig signingConfigs.debug
         }
     }
+
     compileOptions {
-        // Flag to enable support for the new language APIs
-        //coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    defaultConfig {
-        signingConfig signingConfigs.debug
-    }
 
     buildFeatures {
-        viewBinding true
+        compose true
+        viewBinding false
     }
 }
 
@@ -99,55 +58,43 @@ kotlin {
     }
 }
 
-def latestFastAdapterRelease = '5.7.0'
-def nav_version = '2.10.1'
-def room_version = "2.8.5"
-def dagger_version = '2.60.1'
-def lifecycle_version = '2.11.0'
-def appcompat_version = '1.8.0'
-def material_version = '1.14.0'
-def preference_version = '1.2.1'
-def local_broadcast_manager_version = '1.1.0'
-def android_test_version = '1.7.0'
-def android_test_junit_version = '1.3.0'
-def espresso_version = '3.7.0'
-
 dependencies {
-    implementation project(path: ':backdrop')
-    implementation "androidx.room:room-runtime:$room_version"
-    // To use Kotlin annotation processing tool (kapt)
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation platform(libs.androidx.compose.bom)
+    androidTestImplementation platform(libs.androidx.compose.bom)
 
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.compose.foundation
+    implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.material.icons.extended
+    implementation libs.androidx.compose.runtime
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.ui.tooling.preview
+    debugImplementation libs.androidx.compose.ui.tooling
+    androidTestImplementation libs.androidx.compose.ui.test.junit4
+    debugImplementation libs.androidx.compose.ui.test.manifest
 
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation libs.androidx.navigation3.runtime
+    implementation libs.androidx.navigation3.ui
+    implementation libs.androidx.lifecycle.viewmodel.navigation3
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.lifecycle.runtime.compose
+    implementation libs.androidx.lifecycle.runtime.ktx
 
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "com.google.android.material:material:$material_version"
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation "androidx.preference:preference-ktx:$preference_version"
-    implementation "androidx.localbroadcastmanager:localbroadcastmanager:$local_broadcast_manager_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation libs.androidx.room.runtime
+    implementation libs.androidx.room.ktx
+    ksp libs.androidx.room.compiler
 
-    implementation "com.mikepenz:fastadapter:${latestFastAdapterRelease}"
+    implementation libs.androidx.datastore.preferences
+    implementation libs.dagger
+    ksp libs.dagger.compiler
+    implementation libs.kotlinx.serialization.json
 
-    implementation "com.mikepenz:fastadapter-extensions-binding:${latestFastAdapterRelease}" // view binding helpers
-    implementation "com.mikepenz:fastadapter-extensions-diff:${latestFastAdapterRelease}" // diff util helpers
-    implementation "com.mikepenz:fastadapter-extensions-drag:${latestFastAdapterRelease}" // drag support
-    implementation "com.mikepenz:fastadapter-extensions-paged:${latestFastAdapterRelease}" // paging support
-    implementation "com.mikepenz:fastadapter-extensions-scroll:${latestFastAdapterRelease}" // scroll helpers
-    implementation "com.mikepenz:fastadapter-extensions-swipe:${latestFastAdapterRelease}" // swipe support
-    implementation "com.mikepenz:fastadapter-extensions-ui:${latestFastAdapterRelease}" // pre-defined ui components
-    implementation "com.mikepenz:fastadapter-extensions-utils:${latestFastAdapterRelease}" // needs the `expandable`, `drag` and `scroll` extension.
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.test.rules
+    androidTestImplementation libs.androidx.test.junit
+    androidTestImplementation libs.androidx.test.espresso
+}
 
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation "androidx.test:rules:$android_test_version"
-    androidTestImplementation "androidx.test.ext:junit:$android_test_junit_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+ksp {
+    arg('room.schemaLocation', "$projectDir/schemas")
 }

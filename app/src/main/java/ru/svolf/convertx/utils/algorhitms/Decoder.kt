@@ -5,7 +5,8 @@ import kotlinx.coroutines.coroutineScope
 import java.math.BigInteger
 import java.text.Format
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import java.util.regex.Pattern
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -77,7 +78,7 @@ object Decoder {
 			var code: Int
 			//Пока найдено
 			while (m.find()) {
-				ent = m.group(2)
+                ent = m.group(2) ?: ""
 				hashmark = m.group(1)
 				if (hashmark != null && hashmark.isNotEmpty()) {
 					code = ent.toInt()
@@ -93,7 +94,7 @@ object Decoder {
 						entity = "&$ent;"
 					}
 				}
-				m.appendReplacement(unescapedOutput, entity)
+                m.appendReplacement(unescapedOutput, entity ?: "")
 			}
 			m.appendTail(unescapedOutput)
 			unescapedOutput.toString()

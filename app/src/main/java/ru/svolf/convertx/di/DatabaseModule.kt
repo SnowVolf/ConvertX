@@ -1,19 +1,20 @@
 package ru.svolf.convertx.di
 
 import android.content.Context
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import ru.svolf.convertx.App
-import ru.svolf.convertx.data.DbManager
+import ru.svolf.convertx.data.AppDatabase
+import ru.svolf.convertx.data.dao.HistoryDao
+import javax.inject.Singleton
 
-/*
- * Created by SVolf on 26.01.2023, 15:10
- * This file is a part of "ConvertX" project
- */
 @Module
-class DatabaseModule {
+object DatabaseModule {
     @Provides
-    fun provideManager(): DbManager {
-        return DbManager(App.instance as Context)
-    }
+    @Singleton
+    fun provideDatabase(context: Context): AppDatabase =
+        Room.databaseBuilder(context, AppDatabase::class.java, "ConvertX_Db").build()
+
+    @Provides
+    fun provideHistoryDao(database: AppDatabase): HistoryDao = database.historyDao()
 }

@@ -1,36 +1,15 @@
 package ru.svolf.convertx
 
 import android.app.Application
-import android.content.SharedPreferences
-import android.preference.PreferenceManager
-import com.google.android.material.color.DynamicColors
-import ru.svolf.convertx.di.DaggerMainComponent
-
-/**
- * Created by Snow Volf on 06.02.2017.
- */
+import ru.svolf.convertx.di.AppComponent
+import ru.svolf.convertx.di.DaggerAppComponent
 
 class App : Application() {
-    val mainComponent = DaggerMainComponent.create()
+    lateinit var appComponent: AppComponent
+        private set
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
-        PreferenceManager.setDefaultValues(this, R.xml.settings, false)
-        DynamicColors.applyToActivitiesIfAvailable(this)
+        appComponent = DaggerAppComponent.factory().create(this)
     }
-
-    var preferences: SharedPreferences? = null
-    val prefs: SharedPreferences
-        get() {
-            if (preferences == null)
-                preferences = PreferenceManager.getDefaultSharedPreferences(instance!!.applicationContext)
-            return preferences!!
-        }
-
-    companion object {
-        var instance: App? = null
-            private set
-    }
-
 }
