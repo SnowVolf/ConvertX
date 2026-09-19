@@ -14,10 +14,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Removed MD/SHA feature">
+    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="compose migration">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/clear_swipe.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/ConverterScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/ConverterScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/HistoryScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/HistoryScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/Backdrop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/Backdrop.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/BackdropContent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/BackdropContent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/ConvertXNavigation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/ConvertXNavigation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/ui/ConvertXTheme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/ui/ConvertXTheme.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3958,7 +3962,15 @@
       <option name="project" value="LOCAL" />
       <updated>1677394225351</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="compose migration">
+      <option name="closed" value="true" />
+      <created>1789815336189</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1789815336189</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -4085,7 +4097,8 @@
     <MESSAGE value="Code optimizations&#10;&#10;- All encoders are now asynchronous&#10;- Proceed migration to BaseTextCoderFragment&#10;- Optimized history insertion to avoid duplicates" />
     <MESSAGE value="Update conversion features and refine app UI" />
     <MESSAGE value="Removed MD/SHA feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed MD/SHA feature" />
+    <MESSAGE value="compose migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="compose migration" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -36,7 +36,11 @@ internal fun Backdrop(
     backContent: @Composable () -> Unit,
     frontContent: @Composable () -> Unit
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
         toolbarContent()
 
         BoxWithConstraints(
@@ -95,7 +99,7 @@ internal fun Backdrop(
                         .offset(y = offset)
                         .zIndex(2f)
                         .clickable(onClick = onClose)
-                        .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.10f))
+                        .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.20f))
                 )
             }
         }

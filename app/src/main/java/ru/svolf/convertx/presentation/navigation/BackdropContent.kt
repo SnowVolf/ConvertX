@@ -32,7 +32,7 @@ internal fun BackdropContent(
 ) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colorScheme.surface
+        color = MaterialTheme.colorScheme.background
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),

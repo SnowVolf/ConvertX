@@ -1,5 +1,8 @@
 package ru.svolf.convertx.presentation.compose
 
+import android.content.ClipData
+import android.content.Context
+import android.media.MediaPlayer
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -8,9 +11,11 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,13 +27,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.LocalAutofillHighlightBrush
-import androidx.compose.foundation.text.LocalAutofillHighlightColor
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -38,11 +43,12 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -69,10 +75,11 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.ClipEntry
+import androidx.compose.ui.platform.LocalClipboard
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
@@ -141,7 +148,7 @@ internal fun ConverterScreen(
             label = inputHint,
             textStyle = textStyle,
             highlightPulse = if (state.highlightInput) state.conversionPulse else 0L,
-            trailingIcon = {
+            copyAction = {
                 CopyButton(state.input, copiedMessage, snackbar)
             }
         )
@@ -180,7 +187,7 @@ internal fun ConverterScreen(
             label = outputHint,
             textStyle = textStyle,
             highlightPulse = if (state.highlightInput) 0L else state.conversionPulse,
-            trailingIcon = {
+            copyAction = {
                 CopyButton(state.output, copiedMessage, snackbar)
             }
         )
@@ -200,10 +207,11 @@ private fun SwipeToClearTextField(
     label: String,
     textStyle: TextStyle,
     highlightPulse: Long,
-    trailingIcon: @Composable () -> Unit
+    copyAction: @Composable () -> Unit
 ) {
     val offsetX = remember { Animatable(0f) }
     val hapticFeedback = LocalHapticFeedback.current
+    val context = LocalContext.current
     val currentValue by rememberUpdatedState(value)
     val currentOnSwipeToClear by rememberUpdatedState(onSwipeToClear)
     val currentOnValueChange by rememberUpdatedState(onValueChange)
@@ -250,6 +258,24 @@ private fun SwipeToClearTextField(
     val fieldColor = MaterialTheme.colorScheme.surfaceContainerHighest
     val activeBorderColor = MaterialTheme.colorScheme.primary
 
+    fun animateClearFromButton() {
+        if (currentValue.isEmpty()) return
+        hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+        animationScope.launch {
+            offsetX.stop()
+            playClearSound(context)
+            offsetX.animateTo(
+                targetValue = -maxSwipe,
+                animationSpec = tween(durationMillis = 500)
+            )
+            currentOnSwipeToClear()
+            offsetX.animateTo(
+                targetValue = 0f,
+                animationSpec = tween(durationMillis = 500)
+            )
+        }
+    }
+
     Box(
         modifier = modifier
             .graphicsLayer { translationX = offsetX.value }
@@ -273,6 +299,7 @@ private fun SwipeToClearTextField(
                     },
                     onDragEnd = {
                         if (thresholdReached && currentValue.isNotEmpty()) {
+                            playClearSound(context)
                             currentOnSwipeToClear()
                         }
                         animationScope.launch {
@@ -326,53 +353,95 @@ private fun SwipeToClearTextField(
                 }
             }
     ) {
-        Box(Modifier.fillMaxWidth()) {
-            CompositionLocalProvider(
-                LocalAutofillHighlightBrush provides SolidColor(Color.Transparent),
-                @Suppress("DEPRECATION")
-                (LocalAutofillHighlightColor provides Color.Transparent)
-            ) {
-                BasicTextField(
-                    state = textFieldState,
+        Column(Modifier.fillMaxWidth()) {
+            Box(Modifier.fillMaxWidth()) {
+                CompositionLocalProvider(
+                    LocalAutofillHighlightBrush provides SolidColor(Color.Transparent),
+                ) {
+                    BasicTextField(
+                        state = textFieldState,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .onFocusChanged { if (it.isFocused) onFocused() }
+                            .padding(start = 16.dp, top = 34.dp, end = 16.dp, bottom = 14.dp),
+                        lineLimits = TextFieldLineLimits.MultiLine(minLines),
+                        textStyle = textStyle.copy(color = MaterialTheme.colorScheme.onSurface)
+                    )
+                }
+                Text(
+                    text = label,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .onFocusChanged { if (it.isFocused) onFocused() }
-                        .padding(start = 16.dp, top = 34.dp, end = 64.dp, bottom = 14.dp),
-                    lineLimits = TextFieldLineLimits.MultiLine(minLines),
-                    textStyle = textStyle.copy(color = MaterialTheme.colorScheme.onSurface)
+                        .align(Alignment.TopStart)
+                        .padding(start = 16.dp, top = 12.dp),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            Text(
-                text = label,
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .padding(start = 16.dp, top = 12.dp),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+            HorizontalDivider(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
             )
-            Box(
+            Row(
                 modifier = Modifier
-                    .align(Alignment.CenterEnd)
-                    .padding(end = 8.dp)
+                    .fillMaxWidth()
+                    .padding(end = 8.dp),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                trailingIcon()
+                ClearButton(onClick = { animateClearFromButton() })
+                copyAction()
             }
         }
     }
 }
 
 @Composable
+private fun ClearButton(onClick: () -> Unit) {
+    TextButton(
+        modifier = Modifier.height(48.dp),
+        onClick = onClick
+    ) {
+        Icon(
+            Icons.Default.Clear,
+            contentDescription = stringResource(R.string.clear)
+        )
+        Spacer(Modifier.width(8.dp))
+        Text(stringResource(R.string.clear))
+    }
+}
+
+@Composable
 private fun CopyButton(value: String, message: String, snackbar: SnackbarHostState) {
-    val clipboard = LocalClipboardManager.current
+    val clipboard = LocalClipboard.current
     val scope = rememberCoroutineScope()
-    IconButton(onClick = {
-        clipboard.setText(AnnotatedString(value))
-        scope.launch { snackbar.showSnackbar(message) }
-    }) {
+    TextButton(
+        modifier = Modifier.height(48.dp),
+        onClick = {
+            scope.launch {
+                clipboard.setClipEntry(ClipEntry(ClipData.newPlainText(null, value)))
+                snackbar.showSnackbar(message)
+            }
+        }
+    ) {
         Icon(
             Icons.Default.ContentCopy,
             contentDescription = stringResource(R.string.copy2clipboard)
         )
+        Spacer(Modifier.width(8.dp))
+        Text(stringResource(R.string.copy2clipboard))
+    }
+}
+
+private fun playClearSound(context: Context) {
+    MediaPlayer.create(context, R.raw.clear_swipe)?.apply {
+        setVolume(0.55f, 0.55f)
+        setOnCompletionListener { player -> player.release() }
+        setOnErrorListener { player, _, _ ->
+            player.release()
+            true
+        }
+        start()
     }
 }
 
