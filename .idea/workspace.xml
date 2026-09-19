@@ -15,24 +15,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="compose migration">
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/android/util/Base64.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/TestDoubles.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/ConverterEngineTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/HistoryRepositoryTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/SettingsRepositoryTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/entity/PaletteTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/navigation/HistoryRouteMapperTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/viewmodel/ConverterViewModelTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/viewmodel/HistoryViewModelTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/viewmodel/SettingsViewModelTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/utils/algorhitms/DecoderTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/build-and-upload-drive.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/ConverterEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/ConverterEngine.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/HistoryRecordTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/HistoryRecordTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/viewmodel/RegexViewModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/viewmodel/RegexViewModelTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3429,7 +3416,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "codex/r8-release-optimization-audit",
     "kotlin-language-version-configured": "true",
     "last.edited.regexp": "\\u0000\\u009c",
     "last_directory_selection": "D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation",
@@ -4122,7 +4109,8 @@
     <MESSAGE value="Update conversion features and refine app UI" />
     <MESSAGE value="Removed MD/SHA feature" />
     <MESSAGE value="compose migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="compose migration" />
+    <MESSAGE value="tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
