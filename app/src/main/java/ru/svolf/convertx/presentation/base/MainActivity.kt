@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -35,6 +37,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        applyWindowInsets()
         setSupportActionBar(binding.toolbar)
         initNavigation()
         initMenu()
@@ -45,10 +48,31 @@ class MainActivity : BaseActivity() {
         _binding = null
     }
 
+    private fun applyWindowInsets() {
+        val root = binding.root
+        val initialLeft = root.paddingLeft
+        val initialTop = root.paddingTop
+        val initialRight = root.paddingRight
+        val initialBottom = root.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val ime = insets.getInsets(WindowInsetsCompat.Type.ime())
+            view.setPadding(
+                initialLeft,
+                initialTop + systemBars.top,
+                initialRight,
+                initialBottom + maxOf(systemBars.bottom, ime.bottom)
+            )
+            insets
+        }
+        ViewCompat.requestApplyInsets(root)
+    }
+
     private fun initNavigation() {
         NavigationUI.setupActionBarWithNavController(this, navController, binding.backdrop)
         navController.addOnDestinationChangedListener { _, _, _ ->
-            binding.toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.menu)
+            binding.toolbar.navigationIcon = ContextCompat.getDrawable(this, com.roacult.backdrop.R.drawable.menu)
         }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {

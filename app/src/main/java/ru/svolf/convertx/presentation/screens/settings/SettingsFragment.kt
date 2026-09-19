@@ -29,7 +29,8 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         setCurrentValue(preferenceScreen.findPreference("ITheme.Theme"))
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
+        if (key == null) return
         when (key) {
             "ITheme.Theme" -> {
                 setCurrentValue(preferenceScreen.findPreference(key))

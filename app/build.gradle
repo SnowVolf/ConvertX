@@ -1,15 +1,14 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
-    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.2.10'
+    id 'com.android.legacy-kapt' version '9.4.0'
 }
 
 def Properties versionProps = new Properties()
 
 android {
     namespace 'ru.svolf.convertx'
-    compileSdkVersion 33
+    compileSdk = 37
     def versionPropsFile = file('version.properties')
     if (versionPropsFile.canRead()) {
 
@@ -55,7 +54,7 @@ android {
             applicationId "ru.svolf.convertx"
             minSdk 26
             //noinspection ExpiredTargetSdkVersion
-            targetSdk 33
+            targetSdk 37
             versionCode versionProps['CACHED_VERSION'].toInteger()
             versionName "${versionMajor}.${versionMinor}.${versionPatch}"
             multiDexEnabled true
@@ -70,7 +69,7 @@ android {
             shrinkResources true
             zipAlignEnabled true
             debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             debuggable true
@@ -85,10 +84,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = '11'
-    }
-
     defaultConfig {
         signingConfig signingConfigs.debug
     }
@@ -97,10 +92,17 @@ android {
         viewBinding true
     }
 }
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+    }
+}
+
 def latestFastAdapterRelease = '5.7.0'
 def nav_version = '2.5.3'
 def room_version = "2.5.0"
-def dagger_version = '2.44.2'
+def dagger_version = '2.60.1'
 
 dependencies {
     implementation project(path: ':backdrop')

@@ -1,2 +1,9 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
 include ':app', ':backdrop'
-include ':feature:regexp'
