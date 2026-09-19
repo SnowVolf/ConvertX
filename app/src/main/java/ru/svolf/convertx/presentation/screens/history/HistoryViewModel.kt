@@ -3,7 +3,7 @@ package ru.svolf.convertx.presentation.screens.history
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +21,7 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     private val database = (application as App).mainComponent.getDbManager().getDatabase()
     private val dao = database.historyDao()
 
-    val data: LiveData<List<HistoryVH>> = Transformations.map(dao.getAll()) { histories ->
+    val data: LiveData<List<HistoryVH>> = dao.getAll().map { histories ->
         histories.map(::HistoryVH)
     }
 

@@ -3,7 +3,7 @@ package ru.svolf.convertx.presentation.screens.palette
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import ru.svolf.convertx.App
@@ -27,7 +27,7 @@ class PaletteViewModel(application: Application) : AndroidViewModel(application)
         colorsGallery.value = squash.palettes
     }
 
-    fun getCurrentPalette() = Transformations.map(currentPalette) { palette ->
+    fun getCurrentPalette() = currentPalette.map { palette ->
         palette.colors.map {
             PaletteVH(it)
         }.toList()
@@ -37,7 +37,7 @@ class PaletteViewModel(application: Application) : AndroidViewModel(application)
         currentPalette.value = squash.palettes[index]
     }
 
-    fun getAllPalettes() = Transformations.map(colorsGallery) { list ->
+    fun getAllPalettes() = colorsGallery.map { list ->
         list.map {
             ColorsVH(it)
         }.toList()
