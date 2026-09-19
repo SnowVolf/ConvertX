@@ -15,170 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="Removed MD/SHA feature">
-      <change afterPath="$PROJECT_DIR$/app/schemas/ru.svolf.convertx.data.AppDatabase/1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/ru/svolf/convertx/presentation/MainActivityTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/ConverterEngine.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/HistoryRecord.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/HistoryRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/PaletteRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/SettingsRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/entity/HistoryEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/AppComponent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/AppModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/DataStoreModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/RepositoryModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/AboutScreens.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/ConvertXApp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/ConverterScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/HistoryScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/OtherToolsScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/PaletteScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/RegexScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/SettingsScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/AppRoutes.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/Backdrop.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/BackdropContent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/ConvertXNavigation.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/HistoryRouteMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/navigation/RouteCatalog.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/ui/ConvertXTheme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/viewmodel/ConverterViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/viewmodel/HistoryViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/viewmodel/PaletteViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/viewmodel/RegexViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/viewmodel/SettingsViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/viewmodel/ViewModelFactories.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/data/HistoryRecordTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/viewmodel/RegexViewModelTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/ru/svolf/convertx/presentation/base/BaseActivityTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/AppDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/DbManager.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/dao/HistoryDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/dao/HistoryDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/entity/HistoryItem.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/ColorsVH.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/HistoryVH.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/MainMenuVH.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/data/model/PaletteVH.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/DatabaseModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/DatabaseModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/di/MainComponent.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseMainFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/BaseTextCoderFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainFragmentViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/base/MainViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/AboutFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/about/ChangelogFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/base64/Base64Fragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/hex/HexFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/history/HistoryViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/AdlerFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/CrcFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/ExtendedCodersFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/TimestampFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/other/XmlDecodeFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/palette/PaletteViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/Flags.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexHostFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/RegexValidatorFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/SpurFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ViewPagerAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/settings/Preferences.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/settings/SettingsFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/screens/unicode/UnicodeFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/Interfacer.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/PrettyPaddingItemDecoration.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/StringUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/StringUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/_EditText.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/utils/algorhitms/Decoder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_base64.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_hex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_other_coders.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_palette.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_regexdragon.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_dr_unicode.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/backdrop_front_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dragon.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/edit_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_action_arrow_back.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_delete.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_history.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_clear_all.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_copy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_insert_text.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_regex_flags.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_remove.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/item_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/spinner_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/time_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_regex_dragon.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_about.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_changelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_color_palette.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ex_encoders.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_regex_dragon.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_spur.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_history.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_main_menu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_palette_colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_palette_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_row.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_clear.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_converters.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_regex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_navigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/ru/svolf/convertx/presentation/screens/regex/FlagsTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/androidTest/java/com/roacult/backdrop/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/com/roacult/backdrop/Utils.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/Compatible.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/Constants.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/DrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/DrawableProperties.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/DrawableWrapperBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/FlipDrawable.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/FlipDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/LayerDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/PathShapeDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/RippleDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/RotateDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/ScaleDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/java/top/defaults/drawabletoolbox/StateListDrawableBuilder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/res/drawable/close.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/res/drawable/menu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/res/values/attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdrop/src/test/java/com/roacult/backdrop/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/ConverterScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/ConverterScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/HistoryScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/svolf/convertx/presentation/compose/HistoryScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3536,56 +3375,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ApkExportedModule": "ConvertX.app",
-    "ExportApk.ApkPathForConvertX.app": "D:\\GitHub\\ConvertX\\app",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ScreenRecorder.SavePath": "E:\\UserData\\SVolf\\Desktop\\suka.webm",
-    "ScreenshotViewer.SavePath": "D:/GitHub/ConvertX/screens",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatEditText.java_SELECTED": "AppCompatEditText",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatTextView.java_SELECTED": "AppCompatTextView",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED": "View",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED": "NestedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED": "BlurToolbar",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED": "SwipeEditText",
-    "android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED": "BackdropLayout",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last.edited.regexp": "\\u0000\\u009c",
-    "last_directory_selection": "D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation",
-    "last_opened_file_path": "/home/svolf/Projects/ConvertX",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.customizations"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;ConvertX.app&quot;,
+    &quot;ExportApk.ApkPathForConvertX.app&quot;: &quot;D:\\GitHub\\ConvertX\\app&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;E:\\UserData\\SVolf\\Desktop\\suka.webm&quot;,
+    &quot;ScreenshotViewer.SavePath&quot;: &quot;D:/GitHub/ConvertX/screens&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatEditText.java_SELECTED&quot;: &quot;AppCompatEditText&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatTextView.java_SELECTED&quot;: &quot;AppCompatTextView&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED&quot;: &quot;NestedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED&quot;: &quot;BlurToolbar&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED&quot;: &quot;SwipeEditText&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED&quot;: &quot;BackdropLayout&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;\\u0000\\u009c&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/svolf/Projects/ConvertX&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -4697,5 +4536,21 @@
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="ru.svolf.convertx">
+          <value>
+            <CheckInfo lastCheckTimestamp="1789811684365" />
+          </value>
+        </entry>
+        <entry key="ru.svolf.convertx.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1789811684363" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
