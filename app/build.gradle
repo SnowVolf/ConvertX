@@ -50,6 +50,12 @@ android {
         compose true
         viewBinding false
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 kotlin {
@@ -89,7 +95,10 @@ dependencies {
     ksp libs.dagger.compiler
     implementation libs.kotlinx.serialization.json
 
-    testImplementation libs.junit
+    testImplementation libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+    testRuntimeOnly libs.junit.platform.launcher
+    testImplementation libs.kotlinx.coroutines.test
     androidTestImplementation libs.androidx.test.rules
     androidTestImplementation libs.androidx.test.junit
     androidTestImplementation libs.androidx.test.espresso

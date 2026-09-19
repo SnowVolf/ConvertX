@@ -97,7 +97,7 @@ object Decoder {
                 m.appendReplacement(unescapedOutput, entity ?: "")
 			}
 			m.appendTail(unescapedOutput)
-			unescapedOutput.toString()
+			it.resume(unescapedOutput.toString())
 		}
 	}
 

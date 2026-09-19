@@ -36,7 +36,8 @@ class ConverterEngine @Inject constructor() {
             }
 
             is HexRoute -> if (mode == 1) {
-                if (fromInput) Decoder.intToHex(value) else Decoder.hexToInt(value)
+                if (fromInput) Decoder.intToHex(value)
+                else Decoder.hexToInt(value.removePrefix("0x").removePrefix("0X"))
             } else if (fromInput) {
                 Decoder.toHexString(value)
             } else Decoder.decodeHexString(value.removePrefix("0x"))

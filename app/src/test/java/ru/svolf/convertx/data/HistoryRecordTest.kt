@@ -1,7 +1,7 @@
 package ru.svolf.convertx.data
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 import ru.svolf.convertx.data.entity.HistoryEntity
 
 class HistoryRecordTest {
