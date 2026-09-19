@@ -14,12 +14,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="compose migration">
-      <change afterPath="$PROJECT_DIR$/scripts/build-and-upload-drive.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+    <list default="true" id="0387bd22-2e0e-4813-94e2-83444faf01ff" name="Default" comment="proguard + optimizations">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3382,56 +3378,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ApkExportedModule": "ConvertX.app",
-    "ExportApk.ApkPathForConvertX.app": "D:\\GitHub\\ConvertX\\app",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ScreenRecorder.SavePath": "E:\\UserData\\SVolf\\Desktop\\suka.webm",
-    "ScreenshotViewer.SavePath": "D:/GitHub/ConvertX/screens",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatEditText.java_SELECTED": "AppCompatEditText",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatTextView.java_SELECTED": "AppCompatTextView",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED": "View",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
-    "android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED": "NestedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED": "ExtendedWebView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED": "BlurToolbar",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED": "CircleImageView",
-    "android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED": "SwipeEditText",
-    "android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED": "BackdropLayout",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "codex/r8-release-optimization-audit",
-    "kotlin-language-version-configured": "true",
-    "last.edited.regexp": "\\u0000\\u009c",
-    "last_directory_selection": "D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation",
-    "last_opened_file_path": "/home/svolf/Projects/ConvertX",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.customizations"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;ConvertX.app&quot;,
+    &quot;ExportApk.ApkPathForConvertX.app&quot;: &quot;D:\\GitHub\\ConvertX\\app&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;E:\\UserData\\SVolf\\Desktop\\suka.webm&quot;,
+    &quot;ScreenshotViewer.SavePath&quot;: &quot;D:/GitHub/ConvertX/screens&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatEditText.java_SELECTED&quot;: &quot;AppCompatEditText&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatTextView.java_SELECTED&quot;: &quot;AppCompatTextView&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/SVolf/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
+    &quot;android-custom-viewD:/Android/SDK/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/presentation/screens/regex/NestedWebView.kt_SELECTED&quot;: &quot;NestedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/regexdragon/ExtendedWebView.kt_SELECTED&quot;: &quot;ExtendedWebView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/ui/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/BlurToolbar.java_SELECTED&quot;: &quot;BlurToolbar&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/CircleImageView.java_SELECTED&quot;: &quot;CircleImageView&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/app/src/main/java/ru/svolf/convertx/utils/SwipeEditText.java_SELECTED&quot;: &quot;SwipeEditText&quot;,
+    &quot;android-custom-viewD:/GitHub/ConvertX/backdrop/src/main/java/com/roacult/backdrop/BackdropLayout.kt_SELECTED&quot;: &quot;BackdropLayout&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;codex/r8-release-optimization-audit&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;\\u0000\\u009c&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/GitHub/ConvertX/app/src/androidTest/java/ru/svolf/convertx/presentation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/svolf/Projects/ConvertX&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -3981,7 +3977,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789821293533</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="proguard + optimizations">
+      <option name="closed" value="true" />
+      <created>1789827478561</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1789827478561</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -4110,7 +4114,8 @@
     <MESSAGE value="Removed MD/SHA feature" />
     <MESSAGE value="compose migration" />
     <MESSAGE value="tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests" />
+    <MESSAGE value="proguard + optimizations" />
+    <option name="LAST_COMMIT_MESSAGE" value="proguard + optimizations" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
