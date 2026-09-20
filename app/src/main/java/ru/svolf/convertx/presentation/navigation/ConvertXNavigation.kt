@@ -1,32 +1,16 @@
 package ru.svolf.convertx.presentation.navigation
 
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,7 +18,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -45,8 +28,6 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
 import ru.svolf.convertx.di.AppComponent
 import ru.svolf.convertx.presentation.compose.AboutScreen
@@ -57,12 +38,13 @@ import ru.svolf.convertx.presentation.compose.OtherToolsScreen
 import ru.svolf.convertx.presentation.compose.PaletteScreen
 import ru.svolf.convertx.presentation.compose.RegexScreen
 import ru.svolf.convertx.presentation.compose.SettingsScreen
+import ru.svolf.convertx.presentation.compose.TextToolScreen
 import ru.svolf.convertx.presentation.viewmodel.ConverterViewModel
 import ru.svolf.convertx.presentation.viewmodel.HistoryViewModel
 import ru.svolf.convertx.presentation.viewmodel.PaletteViewModel
 import ru.svolf.convertx.presentation.viewmodel.RegexViewModel
 import ru.svolf.convertx.presentation.viewmodel.SettingsViewModel
-import kotlin.time.Duration.Companion.seconds
+import ru.svolf.convertx.presentation.viewmodel.TextToolViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,159 +61,77 @@ fun ConvertXNavigation(component: AppComponent) {
         viewModel(factory = component.settingsViewModelFactory())
     val settings by settingsViewModel.state.collectAsStateWithLifecycle()
     val pressAgainMessage = stringResource(R.string.press_back_once_more)
-
-    LaunchedEffect(exitArmed) {
-        if (exitArmed) {
-            delay(2.seconds)
-            exitArmed = false
-        }
+    var toolbarActions by remember {
+        mutableStateOf<@Composable androidx.compose.foundation.layout.RowScope.() -> Unit>({})
     }
 
-    BackHandler {
-        when {
-            backdropOpen -> backdropOpen = false
-            backStack.size > 1 -> backStack.removeLastOrNull()
-            settings.twiceBackToExit && !exitArmed -> {
-                exitArmed = true
-                scope.launch { snackbar.showSnackbar(pressAgainMessage) }
-            }
-
-            else -> activity?.finish()
-        }
-    }
-
-    if (showExitDialog) {
-        AlertDialog(
-            onDismissRequest = { showExitDialog = false },
-            text = { Text(stringResource(R.string.dr_close_app)) },
-            confirmButton = {
-                TextButton(onClick = { activity?.finish() }) { Text(stringResource(R.string.yes)) }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    showExitDialog = false
-                }) { Text(stringResource(R.string.no)) }
-            }
-        )
-    }
+    NavigationBackHandler(
+        backdropOpen = backdropOpen,
+        onCloseBackdrop = { backdropOpen = false },
+        backStack = backStack,
+        twiceBackToExit = settings.twiceBackToExit,
+        exitArmed = exitArmed,
+        onArmExit = { exitArmed = true },
+        onDisarmExit = { exitArmed = false },
+        snackbar = snackbar,
+        pressAgainMessage = pressAgainMessage,
+        activity = activity,
+        scope = scope
+    )
+    if (showExitDialog) ExitDialog(activity, onDismiss = { showExitDialog = false })
 
     Backdrop(
         isOpen = backdropOpen,
         onClose = { backdropOpen = false },
-        toolbarContent = {
-            TopAppBar(
-                modifier = Modifier.padding(horizontal = 8.dp),
-                title = {
-                    Text(
-                        text = routeTitle(currentRoute),
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                },
-                navigationIcon = {
-                    Card(
-                        modifier = Modifier
-                            .size(46.dp),
-                        shape = CircleShape,
-                        elevation = CardDefaults.cardElevation(
-                            defaultElevation = 4.dp
-                        ),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surface,
-                        )
-                    ) {
-                        IconButton(onClick = { backdropOpen = !backdropOpen }) {
-                            Icon(
-                                imageVector = if (backdropOpen) Icons.Default.Close else Icons.Default.Menu,
-                                contentDescription = stringResource(
-                                    if (backdropOpen) R.string.dr_close_app else R.string.dr_other1
-                                )
-                            )
-                        }
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent,
-                    scrolledContainerColor = MaterialTheme.colorScheme.background,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground,
-                    actionIconContentColor = MaterialTheme.colorScheme.onBackground
-                )
-            )
+        toolbarContent = { 
+            NavigationToolbar(currentRoute, backdropOpen, toolbarActions) { backdropOpen = !backdropOpen } 
         },
         backContent = {
-            BackdropContent(
-                onRouteSelected = { route ->
-                    backdropOpen = false
-                    if (route == null) {
-                        showExitDialog = true
-                    } else {
-                        backStack.clear()
-                        backStack.add(UnicodeRoute)
-                        if (route != UnicodeRoute) backStack.add(route)
-                    }
-                }
-            )
-        },
-        frontContent = {
-            Scaffold(
-                contentWindowInsets = WindowInsets(0, 0, 0, 0),
-                snackbarHost = { SnackbarHost(snackbar, Modifier.navigationBarsPadding()) }
-            ) { padding ->
-                NavDisplay(
-                    backStack = backStack,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding),
-                    onBack = { backStack.removeLastOrNull() },
-                    entryDecorators = listOf(
-                        rememberSaveableStateHolderNavEntryDecorator(),
-                        rememberViewModelStoreNavEntryDecorator()
-                    ),
-                    entryProvider = entryProvider {
-                        entry<UnicodeRoute> {
-                            converterEntry(
-                                component,
-                                UnicodeRoute,
-                                settings.fontSize,
-                                snackbar
-                            )
-                        }
-                        entry<Base64Route> { key ->
-                            converterEntry(
-                                component,
-                                key,
-                                settings.fontSize,
-                                snackbar
-                            )
-                        }
-                        entry<HexRoute> { key ->
-                            converterEntry(
-                                component,
-                                key,
-                                settings.fontSize,
-                                snackbar
-                            )
-                        }
-                        entry<TextToolRoute> { key ->
-                            converterEntry(
-                                component,
-                                key,
-                                settings.fontSize,
-                                snackbar
-                            )
-                        }
-                        entry<RegexRoute> { regexEntry(component) }
-                        entry<PaletteRoute> { paletteEntry(component, snackbar) }
-                        entry<HistoryRoute> { historyEntry(component, backStack) }
-                        entry<SettingsRoute> { settingsEntry(component) }
-                        entry<OtherToolsRoute> { OtherToolsScreen { backStack.add(it) } }
-                        entry<AboutRoute> { AboutScreen(onChangelog = { backStack.add(ChangelogRoute) }) }
-                        entry<ChangelogRoute> { ChangelogScreen() }
-                    }
-                )
+            BackdropContent { route ->
+                selectRoute(route, backStack, { backdropOpen = false }, { showExitDialog = true })
             }
+        },
+        frontContent = { 
+            NavigationFront(component, backStack, settings.fontSize, snackbar) { toolbarActions = it } 
         }
     )
+}
+
+@Composable
+private fun NavigationFront(
+    component: AppComponent,
+    backStack: MutableList<NavKey>,
+    fontSize: Int,
+    snackbar: SnackbarHostState,
+    setToolbarActions: (@Composable androidx.compose.foundation.layout.RowScope.() -> Unit) -> Unit
+) {
+    Scaffold(
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
+        snackbarHost = { SnackbarHost(snackbar, Modifier.navigationBarsPadding()) }
+    ) { padding ->
+        NavDisplay(
+            backStack = backStack,
+            modifier = Modifier.fillMaxSize().padding(padding),
+            onBack = { backStack.removeLastOrNull() },
+            entryDecorators = listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator()
+            ),
+            entryProvider = entryProvider {
+                entry<UnicodeRoute> { converterEntry(component, UnicodeRoute, fontSize, snackbar) }
+                entry<Base64Route> { converterEntry(component, it, fontSize, snackbar) }
+                entry<HexRoute> { converterEntry(component, it, fontSize, snackbar) }
+                entry<TextToolRoute> { textToolEntry(component, it, fontSize, snackbar, setToolbarActions) }
+                entry<RegexRoute> { regexEntry(component) }
+                entry<PaletteRoute> { paletteEntry(component, snackbar) }
+                entry<HistoryRoute> { historyEntry(component, backStack) }
+                entry<SettingsRoute> { settingsEntry(component) }
+                entry<OtherToolsRoute> { OtherToolsScreen { backStack.add(it) } }
+                entry<AboutRoute> { AboutScreen(onChangelog = { backStack.add(ChangelogRoute) }) }
+                entry<ChangelogRoute> { ChangelogScreen() }
+            }
+        )
+    }
 }
 
 @Composable
@@ -245,6 +145,20 @@ private fun converterEntry(
         viewModel(factory = component.converterViewModelFactory().forRoute(route))
     val state by viewModel.state.collectAsStateWithLifecycle()
     ConverterScreen(route, state, fontSize, viewModel, snackbar)
+}
+
+@Composable
+private fun textToolEntry(
+    component: AppComponent,
+    route: TextToolRoute,
+    fontSize: Int,
+    snackbar: SnackbarHostState,
+    setToolbarActions: (@Composable androidx.compose.foundation.layout.RowScope.() -> Unit) -> Unit
+) {
+    val viewModel: TextToolViewModel =
+        viewModel(factory = component.textToolViewModelFactory().forRoute(route))
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    TextToolScreen(route, state, fontSize, viewModel, snackbar, setToolbarActions)
 }
 
 @Composable

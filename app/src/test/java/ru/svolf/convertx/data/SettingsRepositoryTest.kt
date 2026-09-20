@@ -69,7 +69,10 @@ class SettingsRepositoryTest {
                         throw java.io.IOException("read failed")
                     }
 
-                override suspend fun updateData(transform: suspend (androidx.datastore.preferences.core.Preferences) -> androidx.datastore.preferences.core.Preferences) =
+                override suspend fun updateData(
+                    transform: suspend (androidx.datastore.preferences.core.Preferences) ->
+                        androidx.datastore.preferences.core.Preferences
+                ) =
                     error("not used")
             }
         )

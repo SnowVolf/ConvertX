@@ -15,6 +15,11 @@ import kotlin.coroutines.suspendCoroutine
  * Created by Snow Volf on 21.02.2017, 8:42
  */
 object Decoder {
+	private const val HEX_RADIX = 16
+	private const val UNICODE_HEX_DIGITS = 4
+	private const val HEX_SHIFT = 4
+	private const val HEX_LETTER_OFFSET = 10
+
 	/**
 	 * Расшифровка Unicode
 	 */
@@ -31,12 +36,15 @@ object Decoder {
 					if (aChar == 'u') {
 						// Читаем массив
 						var value = 0
-						for (i in 0..3) {
+							for (i in 0 until UNICODE_HEX_DIGITS) {
 							aChar = tracer[x++]
 							value = when (aChar) {
-								'0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> (value shl 4) + aChar.code - '0'.code
-								'a', 'b', 'c', 'd', 'e', 'f' -> (value shl 4) + 10 + aChar.code - 'a'.code
-								'A', 'B', 'C', 'D', 'E', 'F' -> (value shl 4) + 10 + aChar.code - 'A'.code
+									'0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ->
+										(value shl HEX_SHIFT) + aChar.code - '0'.code
+									'a', 'b', 'c', 'd', 'e', 'f' ->
+										(value shl HEX_SHIFT) + HEX_LETTER_OFFSET + aChar.code - 'a'.code
+									'A', 'B', 'C', 'D', 'E', 'F' ->
+										(value shl HEX_SHIFT) + HEX_LETTER_OFFSET + aChar.code - 'A'.code
 								else -> throw IllegalArgumentException(
 									"Malformed   \\uxxxx   encoding."
 								)
@@ -159,12 +167,10 @@ object Decoder {
 	*/
 	suspend fun hexToInt(hexadecimal: String): String {
 		return suspendCoroutine {
-			try {
-				val test = hexadecimal.toInt(16).toString().replaceFirst("0x", "")
-				it.resume(test)
-			} catch (ex: Throwable) {
-				it.resume("Error. Out of range")
-			}
+			val result = runCatching {
+				hexadecimal.toInt(HEX_RADIX).toString().replaceFirst("0x", "")
+			}.getOrElse { "Error. Out of range" }
+			it.resume(result)
 		}
 	}
 
@@ -173,12 +179,11 @@ object Decoder {
 	 */
 	suspend fun intToHex(decimal: String): String {
 		return suspendCoroutine {
-			try {
+			val result = runCatching {
 				val xdigit = Integer.toHexString(decimal.toInt())
-				it.resume("0x$xdigit")
-			} catch (ex: Throwable) {
-				it.resume("Error. Out of range")
-			}
+				"0x$xdigit"
+			}.getOrElse { "Error. Out of range" }
+			it.resume(result)
 		}
 	}
 

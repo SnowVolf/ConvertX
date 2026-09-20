@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -38,6 +39,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.HistoryRecord
@@ -86,8 +89,6 @@ private fun HistorySwipeItem(
     val hapticFeedback = LocalHapticFeedback.current
     val currentOnDelete by rememberUpdatedState(onDelete)
     val currentOnOpen by rememberUpdatedState(onOpen)
-    var thresholdReached = false
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -110,69 +111,86 @@ private fun HistorySwipeItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .graphicsLayer { translationX = swipeOffset.value }
-                .pointerInput(maxSwipeDistance) {
-                    val maxSwipePx = maxSwipeDistance.toPx()
-                    detectHorizontalDragGestures(
-                        onHorizontalDrag = { change, dragAmount ->
-                            val nextOffset = (swipeOffset.value + dragAmount)
-                                .coerceIn(-maxSwipePx, 0f)
-                            if (nextOffset != swipeOffset.value) {
-                                change.consume()
-                                scope.launch { swipeOffset.snapTo(nextOffset) }
-                                val isThresholdReached = nextOffset <= -maxSwipePx
-                                if (isThresholdReached && !thresholdReached) {
-                                    thresholdReached = true
-                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                                } else if (!isThresholdReached) {
-                                    thresholdReached = false
-                                }
-                            }
-                        },
-                        onDragEnd = {
-                            scope.launch {
-                                if (swipeOffset.value <= -maxSwipePx) {
-                                    currentOnDelete()
-                                } else {
-                                    swipeOffset.animateTo(0f, tween(durationMillis = 180))
-                                }
-                            }
-                            thresholdReached = false
-                        },
-                        onDragCancel = {
-                            scope.launch {
-                                swipeOffset.animateTo(0f, tween(durationMillis = 180))
-                            }
-                            thresholdReached = false
-                        }
-                    )
-                }
+                .historySwipeGesture(
+                    maxSwipeDistance = maxSwipeDistance,
+                    swipeOffset = swipeOffset,
+                    scope = scope,
+                    hapticFeedback = hapticFeedback,
+                    onDelete = currentOnDelete
+                )
                 .clickable { currentOnOpen() },
             shape = shape
         ) {
-            Column(Modifier.padding(12.dp)) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        record.input,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Text(
-                        decoderName(record.decoder),
-                        style = MaterialTheme.typography.labelMedium
-                    )
-                }
-                Text(record.output, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                Text(
-                    DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
-                        .format(Date(record.id)),
-                    style = MaterialTheme.typography.labelSmall
-                )
-            }
+            HistoryCardContent(record)
         }
+    }
+}
+
+private fun Modifier.historySwipeGesture(
+    maxSwipeDistance: Dp,
+    swipeOffset: Animatable<Float, *>,
+    scope: CoroutineScope,
+    hapticFeedback: HapticFeedback,
+    onDelete: () -> Unit
+): Modifier = pointerInput(maxSwipeDistance) {
+    val maxSwipePx = maxSwipeDistance.toPx()
+    var thresholdReached = false
+    detectHorizontalDragGestures(
+        onHorizontalDrag = { change, dragAmount ->
+            val nextOffset = (swipeOffset.value + dragAmount).coerceIn(-maxSwipePx, 0f)
+            if (nextOffset != swipeOffset.value) {
+                change.consume()
+                scope.launch { swipeOffset.snapTo(nextOffset) }
+                val reached = nextOffset <= -maxSwipePx
+                if (reached && !thresholdReached) {
+                    thresholdReached = true
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                } else if (!reached) {
+                    thresholdReached = false
+                }
+            }
+        },
+        onDragEnd = {
+            scope.launch {
+                if (swipeOffset.value <= -maxSwipePx) {
+                    onDelete()
+                } else {
+                    swipeOffset.animateTo(0f, tween(durationMillis = 180))
+                }
+            }
+            thresholdReached = false
+        },
+        onDragCancel = {
+            scope.launch { swipeOffset.animateTo(0f, tween(durationMillis = 180)) }
+            thresholdReached = false
+        }
+    )
+}
+
+@Composable
+private fun HistoryCardContent(record: HistoryRecord) {
+    Column(Modifier.padding(12.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                record.input,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f)
+            )
+            Text(
+                decoderName(record.decoder),
+                style = MaterialTheme.typography.labelMedium
+            )
+        }
+        Text(record.output, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(
+            DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
+                .format(Date(record.id)),
+            style = MaterialTheme.typography.labelSmall
+        )
     }
 }
 
