@@ -8,18 +8,12 @@ import java.util.Base64 as JavaBase64
  */
 class Base64 private constructor() {
     companion object {
-        @JvmField
-        val DEFAULT: Int = 0
-        @JvmField
-        val NO_PADDING: Int = 1
-        @JvmField
-        val NO_WRAP: Int = 2
-        @JvmField
-        val CRLF: Int = 4
-        @JvmField
-        val URL_SAFE: Int = 8
-        @JvmField
-        val NO_CLOSE: Int = 16
+        const val DEFAULT: Int = 0
+        const val NO_PADDING: Int = 1
+        const val NO_WRAP: Int = 2
+        const val CRLF: Int = 4
+        const val URL_SAFE: Int = 8
+        const val NO_CLOSE: Int = 16
 
         @JvmStatic
         fun encode(input: ByteArray, flags: Int): ByteArray {

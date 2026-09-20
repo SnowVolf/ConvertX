@@ -4,6 +4,29 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.detekt)
+}
+
+detekt {
+    toolVersion = libs.versions.detekt.get()
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    buildUponDefaultConfig = true
+    allRules = false
+    ignoreFailures = false
+    basePath = rootProject.projectDir
+}
+
+tasks.withType(dev.detekt.gradle.Detekt).configureEach {
+    exclude("**/build/**")
+    exclude("**/generated/**")
+    exclude("**/ksp/**")
+
+    reports {
+        checkstyle.required.set(true)
+        html.required.set(true)
+        markdown.required.set(true)
+        sarif.required.set(true)
+    }
 }
 
 def Properties versionProps = new Properties()

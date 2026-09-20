@@ -46,10 +46,13 @@ internal fun routeTitle(route: AppRoute): String = when (route) {
     is SettingsRoute -> stringResource(R.string.settings)
     is AboutRoute -> stringResource(R.string.dr_about)
     is ChangelogRoute -> stringResource(R.string.changelog)
-    is TextToolRoute -> when (route.tool) {
-        TextTool.ADLER32 -> stringResource(R.string.checksum_adler32)
-        TextTool.CRC32 -> stringResource(R.string.checksum_crc)
-        TextTool.XML -> stringResource(R.string.unescape_xml)
-        TextTool.TIMESTAMP -> stringResource(R.string.timestamp_converter)
-    }
+    is TextToolRoute -> textToolTitle(route.tool)
+}
+
+@Composable
+private fun textToolTitle(tool: TextTool): String = when (tool) {
+    TextTool.ADLER32 -> stringResource(R.string.checksum_adler32)
+    TextTool.CRC32 -> stringResource(R.string.checksum_crc)
+    TextTool.XML -> stringResource(R.string.unescape_xml)
+    TextTool.TIMESTAMP -> stringResource(R.string.timestamp_converter)
 }

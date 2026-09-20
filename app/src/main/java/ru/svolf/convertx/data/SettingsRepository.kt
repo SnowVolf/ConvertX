@@ -12,14 +12,22 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
+private const val DefaultFontSize = 16
+private const val MinFontSize = 12
+private const val MaxFontSize = 32
+private const val DefaultBase64Mode = 0
+private const val MaxBase64Mode = 5
+private const val DefaultHexMode = 0
+private const val MaxHexMode = 1
+
 enum class ThemeMode { LIGHT, DARK }
 
 data class SettingsState(
     val theme: ThemeMode = ThemeMode.LIGHT,
-    val fontSize: Int = 16,
+    val fontSize: Int = DefaultFontSize,
     val twiceBackToExit: Boolean = true,
-    val base64Mode: Int = 0,
-    val hexMode: Int = 0
+    val base64Mode: Int = DefaultBase64Mode,
+    val hexMode: Int = DefaultHexMode
 )
 
 class SettingsRepository(private val dataStore: DataStore<Preferences>) {
@@ -38,12 +46,18 @@ class SettingsRepository(private val dataStore: DataStore<Preferences>) {
         }
         .map { preferences ->
             SettingsState(
-                theme = if (preferences[Keys.theme]?.toIntOrNull() == ThemeMode.DARK.ordinal) ThemeMode.DARK else ThemeMode.LIGHT,
+                theme = if (preferences[Keys.theme]?.toIntOrNull() == ThemeMode.DARK.ordinal) {
+                    ThemeMode.DARK
+                } else {
+                    ThemeMode.LIGHT
+                },
                 fontSize = (preferences[Keys.appFontSize] ?: preferences[Keys.oldFontSize]
-                ?: 16).coerceIn(12, 32),
+                ?: DefaultFontSize).coerceIn(MinFontSize, MaxFontSize),
                 twiceBackToExit = preferences[Keys.twiceBack] ?: true,
-                base64Mode = (preferences[Keys.base64Mode] ?: 0).coerceIn(0, 5),
-                hexMode = (preferences[Keys.hexMode] ?: 0).coerceIn(0, 1)
+                base64Mode = (preferences[Keys.base64Mode] ?: DefaultBase64Mode)
+                    .coerceIn(DefaultBase64Mode, MaxBase64Mode),
+                hexMode = (preferences[Keys.hexMode] ?: DefaultHexMode)
+                    .coerceIn(DefaultHexMode, MaxHexMode)
             )
         }
 
@@ -51,13 +65,14 @@ class SettingsRepository(private val dataStore: DataStore<Preferences>) {
         dataStore.edit { it[Keys.theme] = theme.ordinal.toString() }
 
     suspend fun setFontSize(size: Int) =
-        dataStore.edit { it[Keys.appFontSize] = size.coerceIn(12, 32) }
+        dataStore.edit { it[Keys.appFontSize] = size.coerceIn(MinFontSize, MaxFontSize) }
 
     suspend fun setTwiceBackToExit(enabled: Boolean) =
         dataStore.edit { it[Keys.twiceBack] = enabled }
 
     suspend fun setBase64Mode(mode: Int) =
-        dataStore.edit { it[Keys.base64Mode] = mode.coerceIn(0, 5) }
+        dataStore.edit { it[Keys.base64Mode] = mode.coerceIn(DefaultBase64Mode, MaxBase64Mode) }
 
-    suspend fun setHexMode(mode: Int) = dataStore.edit { it[Keys.hexMode] = mode.coerceIn(0, 1) }
+    suspend fun setHexMode(mode: Int) =
+        dataStore.edit { it[Keys.hexMode] = mode.coerceIn(DefaultHexMode, MaxHexMode) }
 }

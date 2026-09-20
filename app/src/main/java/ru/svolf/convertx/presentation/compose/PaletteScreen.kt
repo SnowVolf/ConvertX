@@ -39,6 +39,8 @@ import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
 import ru.svolf.convertx.data.entity.Palette
 
+private const val PreviewColorIndex = 5
+
 @Composable
 internal fun PaletteScreen(palettes: List<Palette>, snackbar: SnackbarHostState) {
     var selected by rememberSaveable { mutableIntStateOf(0) }
@@ -60,7 +62,7 @@ internal fun PaletteScreen(palettes: List<Palette>, snackbar: SnackbarHostState)
                     modifier = Modifier
                         .size(64.dp)
                         .clickable { selected = index },
-                    color = parseColor(palette.colors.getOrNull(5)?.hex),
+                    color = parseColor(palette.colors.getOrNull(PreviewColorIndex)?.hex),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
                     tonalElevation = if (selected == index) 8.dp else 1.dp
                 ) {}

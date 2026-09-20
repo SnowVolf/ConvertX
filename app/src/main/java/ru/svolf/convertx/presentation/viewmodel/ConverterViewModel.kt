@@ -21,6 +21,8 @@ import ru.svolf.convertx.presentation.navigation.Base64Route
 import ru.svolf.convertx.presentation.navigation.HexRoute
 import javax.inject.Inject
 
+private const val ConversionDebounceMs = 2_000L
+
 data class ConverterUiState(
     val input: String = "",
     val output: String = "",
@@ -104,7 +106,7 @@ class ConverterViewModel(
     private fun schedule(block: suspend () -> Unit) {
         conversionJob?.cancel()
         conversionJob = viewModelScope.launch {
-            delay(2_000)
+            delay(ConversionDebounceMs)
             if (_state.value.input.isNotBlank() || _state.value.output.isNotBlank()) block()
         }
     }
@@ -143,7 +145,9 @@ class ConverterViewModel(
                     )
                 )
             }
-        } catch (error: Throwable) {
+        } catch (error: IllegalArgumentException) {
+            _state.update { it.copy(busy = false, error = error.message ?: "Conversion failed") }
+        } catch (error: StringIndexOutOfBoundsException) {
             _state.update { it.copy(busy = false, error = error.message ?: "Conversion failed") }
         }
     }

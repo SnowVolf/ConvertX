@@ -42,66 +42,95 @@ internal fun Backdrop(
             .background(MaterialTheme.colorScheme.background)
     ) {
         toolbarContent()
-
-        BoxWithConstraints(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .clipToBounds()
-        ) {
-            var backHeightPx by remember { mutableIntStateOf(0) }
-            val density = androidx.compose.ui.platform.LocalDensity.current
-            val maxHeightPx = with(density) { maxHeight.toPx() }
-            val targetOffset = if (isOpen) {
-                with(density) { min(backHeightPx.toFloat(), maxHeightPx).toDp() }
-            } else {
-                0.dp
-            }
-            val offset by animateDpAsState(
-                targetValue = targetOffset,
-                animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing),
-                label = "backdropOffset"
-            )
-            val frontShape = if (isOpen) {
-                RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-            } else {
-                RectangleShape
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .onGloballyPositioned { coordinates ->
-                        if (backHeightPx != coordinates.size.height) {
-                            backHeightPx = coordinates.size.height
-                        }
-                    }
-                    .zIndex(0f)
-            ) {
-                backContent()
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .offset(y = offset)
-                    .clip(frontShape)
-                    .zIndex(1f)
-            ) {
-                frontContent()
-            }
-
-            if (isOpen) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .offset(y = offset)
-                        .zIndex(2f)
-                        .clickable(onClick = onClose)
-                        .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.20f))
-                )
-            }
-        }
+        BackdropLayers(Modifier.weight(1f), isOpen, onClose, backContent, frontContent)
     }
+}
+
+@Composable
+private fun BackdropLayers(
+    modifier: Modifier,
+    isOpen: Boolean,
+    onClose: () -> Unit,
+    backContent: @Composable () -> Unit,
+    frontContent: @Composable () -> Unit
+) {
+    BoxWithConstraints(
+        modifier = modifier
+            .fillMaxWidth()
+            .clipToBounds()
+    ) {
+        var backHeightPx by remember { mutableIntStateOf(0) }
+        val density = androidx.compose.ui.platform.LocalDensity.current
+        val maxHeightPx = with(density) { maxHeight.toPx() }
+        val targetOffset = if (isOpen) {
+            with(density) { min(backHeightPx.toFloat(), maxHeightPx).toDp() }
+        } else {
+            0.dp
+        }
+        val offset by animateDpAsState(
+            targetValue = targetOffset,
+            animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing),
+            label = "backdropOffset"
+        )
+        val frontShape = if (isOpen) {
+            RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+        } else {
+            RectangleShape
+        }
+
+        BackdropBackLayer(backHeightPx, { backHeightPx = it }, backContent)
+        BackdropFrontLayer(offset, frontShape, frontContent)
+        if (isOpen) BackdropScrim(offset, onClose)
+    }
+}
+
+@Composable
+private fun BackdropBackLayer(
+    backHeightPx: Int,
+    onHeightChanged: (Int) -> Unit,
+    content: @Composable () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .onGloballyPositioned { coordinates ->
+                if (backHeightPx != coordinates.size.height) onHeightChanged(coordinates.size.height)
+            }
+            .zIndex(0f)
+    ) {
+        content()
+    }
+}
+
+@Composable
+private fun BackdropFrontLayer(
+    offset: androidx.compose.ui.unit.Dp,
+    shape: androidx.compose.ui.graphics.Shape,
+    content: @Composable () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .offset(y = offset)
+            .clip(shape)
+            .zIndex(1f)
+    ) {
+        content()
+    }
+}
+
+@Composable
+private fun BackdropScrim(
+    offset: androidx.compose.ui.unit.Dp,
+    onClose: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .offset(y = offset)
+            .zIndex(2f)
+            .clickable(onClick = onClose)
+            .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.20f))
+    )
 }

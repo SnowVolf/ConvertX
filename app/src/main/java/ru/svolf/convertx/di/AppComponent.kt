@@ -26,6 +26,7 @@ interface AppComponent {
     fun paletteViewModelFactory(): PaletteViewModelFactory
     fun settingsViewModelFactory(): SettingsViewModelFactory
     fun regexViewModelFactory(): RegexViewModelFactory
+    fun textToolViewModelFactory(): ru.svolf.convertx.presentation.viewmodel.TextToolViewModel.Factory
 
     @Component.Factory
     interface Factory {
