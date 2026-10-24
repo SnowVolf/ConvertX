@@ -8,20 +8,15 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -30,15 +25,10 @@ import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -46,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
@@ -60,12 +51,12 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.hapticfeedback.HapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -74,8 +65,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.svolf.convertx.R
 import ru.svolf.convertx.presentation.navigation.AppRoute
@@ -110,12 +101,11 @@ internal fun ConverterScreen(
     snackbar: SnackbarHostState
 ) {
     val copiedMessage = stringResource(R.string.copied2clipboard)
-    val inputHint = inputHint(route)
-    val outputHint = outputHint(route)
     val textStyle = MaterialTheme.typography.bodyLarge.copy(
         fontFamily = FontFamily.Monospace, fontSize = fontSize.sp
     )
-    var activeField by remember { mutableStateOf(ConverterField.INPUT) }
+    val sideBySide = useSideBySideConverter()
+    var activeField by rememberSaveable { mutableStateOf(ConverterField.INPUT) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -123,46 +113,45 @@ internal fun ConverterScreen(
             .imePadding()
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        ConverterTextField(
-            value = state.input,
-            onValueChange = viewModel::onInputChanged,
-            onSwipeToClear = viewModel::clearInput,
-            isActive = activeField == ConverterField.INPUT,
-            onFocused = { activeField = ConverterField.INPUT },
-            modifier = Modifier.fillMaxWidth(),
-            minLines = 3,
-            label = inputHint,
-            textStyle = textStyle,
-            highlightPulse = if (state.highlightInput) state.conversionPulse else 0L,
-            copyAction = {
-                CopyButton(state.input, copiedMessage, snackbar)
-            }
-        )
-        ConverterControls(
-            route = route,
-            selectedMode = state.mode,
-            activeField = activeField,
-            onFieldToggle = {
-                activeField = when (activeField) {
-                    ConverterField.INPUT -> ConverterField.OUTPUT
-                    ConverterField.OUTPUT -> ConverterField.INPUT
-                }
+        AdaptiveConverterLayout(
+            sideBySide = sideBySide,
+            input = {
+                ConverterTextField(
+                    value = state.input,
+                    onValueChange = viewModel::onInputChanged,
+                    onSwipeToClear = viewModel::clearInput,
+                    isActive = activeField == ConverterField.INPUT,
+                    onFocused = { activeField = ConverterField.INPUT },
+                    label = inputHint(route),
+                    textStyle = textStyle,
+                    highlightPulse = if (state.highlightInput) state.conversionPulse else 0L,
+                    copyAction = {
+                        CopyButton(state.input, copiedMessage, snackbar)
+                    }
+                )
             },
-            onModeSelected = viewModel::onModeChanged
-        )
-        ConverterTextField(
-            value = state.output,
-            onValueChange = viewModel::onOutputChanged,
-            onSwipeToClear = viewModel::clearOutput,
-            isActive = activeField == ConverterField.OUTPUT,
-            onFocused = { activeField = ConverterField.OUTPUT },
-            modifier = Modifier.fillMaxWidth(),
-            minLines = 3,
-            label = outputHint,
-            textStyle = textStyle,
-            highlightPulse = if (state.highlightInput) 0L else state.conversionPulse,
-            copyAction = {
-                CopyButton(state.output, copiedMessage, snackbar)
+            controls = {
+                ConverterControls(
+                    sideBySide = sideBySide,
+                    activeField = activeField,
+                    onFieldToggle = { activeField = activeField.opposite() }
+                )
+            },
+            modeSelector = { ConverterModeSelector(route, state.mode, viewModel::onModeChanged) },
+            output = {
+                ConverterTextField(
+                    value = state.output,
+                    onValueChange = viewModel::onOutputChanged,
+                    onSwipeToClear = viewModel::clearOutput,
+                    isActive = activeField == ConverterField.OUTPUT,
+                    onFocused = { activeField = ConverterField.OUTPUT },
+                    label = outputHint(route),
+                    textStyle = textStyle,
+                    highlightPulse = if (state.highlightInput) 0L else state.conversionPulse,
+                    copyAction = {
+                        CopyButton(state.output, copiedMessage, snackbar)
+                    }
+                )
             }
         )
         state.error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
@@ -176,8 +165,8 @@ private fun ConverterTextField(
     onSwipeToClear: () -> Unit,
     isActive: Boolean,
     onFocused: () -> Unit,
-    modifier: Modifier,
-    minLines: Int,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    minLines: Int = 3,
     label: String,
     textStyle: TextStyle,
     highlightPulse: Long,

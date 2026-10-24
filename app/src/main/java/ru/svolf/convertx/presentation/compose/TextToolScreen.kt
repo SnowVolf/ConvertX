@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
@@ -48,29 +47,7 @@ internal fun TextToolScreen(
         fontFamily = FontFamily.Monospace, fontSize = fontSize.sp
     )
     val copiedMessage = stringResource(R.string.copied2clipboard)
-    val clipboard = LocalClipboard.current
-    val scope = rememberCoroutineScope()
-
-    LaunchedEffect(state.output, setToolbarActions) {
-        setToolbarActions {
-            TextToolToolbarActions(
-                route = route,
-                output = state.output,
-                copiedMessage = copiedMessage,
-                snackbar = snackbar,
-                onInsertTimestamp = {
-                    val currentTimestamp = System.currentTimeMillis().toString()
-                    viewModel.onInputChanged(currentTimestamp)
-                }
-            )
-        }
-    }
-    
-    DisposableEffect(Unit) {
-        onDispose {
-            setToolbarActions {}
-        }
-    }
+    TextToolScreenToolbar(route, state.output, copiedMessage, snackbar, viewModel, setToolbarActions)
 
     Column(
         modifier = Modifier
@@ -80,27 +57,66 @@ internal fun TextToolScreen(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        SwipeToClearTextField(
-            value = state.input,
-            onValueChange = viewModel::onInputChanged,
-            onSwipeToClear = { viewModel.onInputChanged("") },
-            isActive = true,
-            onFocused = { },
-            modifier = Modifier.fillMaxWidth(),
-            minLines = 5,
-            label = inputHint(route),
-            textStyle = textStyle,
-            highlightPulse = 0L,
-            copyAction = {
-                CopyButton(state.input, copiedMessage, snackbar)
+        AdaptiveConverterLayout(
+            sideBySide = useSideBySideConverter(),
+            controlsWidth = 16.dp,
+            input = {
+                SwipeToClearTextField(
+                    value = state.input,
+                    onValueChange = viewModel::onInputChanged,
+                    onSwipeToClear = { viewModel.onInputChanged("") },
+                    isActive = true,
+                    onFocused = { },
+                    modifier = Modifier.fillMaxWidth(),
+                    minLines = 5,
+                    label = inputHint(route),
+                    textStyle = textStyle,
+                    highlightPulse = 0L,
+                    copyAction = {
+                        CopyButton(state.input, copiedMessage, snackbar)
+                    }
+                )
+            },
+            controls = { androidx.compose.foundation.layout.Spacer(Modifier.height(16.dp)) },
+            output = {
+                if (state.output.isNotEmpty()) {
+                    TextToolOutputCard(state.output, textStyle)
+                }
             }
         )
-        
-        if (state.output.isNotEmpty()) {
-            TextToolOutputCard(state.output, textStyle)
-        }
-        
+
         state.error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+    }
+}
+
+@Composable
+private fun TextToolScreenToolbar(
+    route: TextToolRoute,
+    output: String,
+    copiedMessage: String,
+    snackbar: SnackbarHostState,
+    viewModel: TextToolViewModel,
+    setToolbarActions: (@Composable androidx.compose.foundation.layout.RowScope.() -> Unit) -> Unit
+) {
+    LaunchedEffect(output, setToolbarActions) {
+        setToolbarActions {
+            TextToolToolbarActions(
+                route = route,
+                output = output,
+                copiedMessage = copiedMessage,
+                snackbar = snackbar,
+                onInsertTimestamp = {
+                    val currentTimestamp = System.currentTimeMillis().toString()
+                    viewModel.onInputChanged(currentTimestamp)
+                }
+            )
+        }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            setToolbarActions {}
+        }
     }
 }
 

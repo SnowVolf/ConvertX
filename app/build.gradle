@@ -36,6 +36,27 @@ if (!versionPropsFile.canRead()) {
 }
 versionProps.load(new FileInputStream(versionPropsFile))
 
+def requestedTasks = gradle.startParameter.taskNames.collect { it.tokenize(':').last() }
+def isBuildInvocation = requestedTasks.any { taskName ->
+    taskName in ['build', 'assemble', 'bundle', 'install'] ||
+        taskName ==~ /^(assemble|bundle|install)(Debug|Release)$/
+}
+def isReleaseInvocation = requestedTasks.any { taskName ->
+    taskName in ['build', 'assemble', 'bundle'] ||
+        taskName ==~ /^(assemble|bundle|install)Release$/
+}
+
+def versionBuild = versionProps['VERSION_BUILD'].toInteger()
+if (isBuildInvocation) {
+    versionBuild++
+    versionProps['VERSION_BUILD'] = versionBuild.toString()
+    if (isReleaseInvocation) {
+        versionProps['CACHED_VERSION'] = versionBuild.toString()
+    }
+    versionPropsFile.withOutputStream { output -> versionProps.store(output, null) }
+}
+def cachedVersion = versionProps['CACHED_VERSION'].toInteger()
+
 android {
     namespace 'ru.svolf.convertx'
     compileSdk libs.versions.compileSdk.get().toInteger()
@@ -44,7 +65,8 @@ android {
         applicationId 'ru.svolf.convertx'
         minSdk libs.versions.minSdk.get().toInteger()
         targetSdk libs.versions.targetSdk.get().toInteger()
-        versionCode versionProps['CACHED_VERSION'].toInteger()
+        // Keep debug installs stable; publish each release with the new build number.
+        versionCode cachedVersion
         versionName "${versionProps['VERSION_MAJOR']}.${versionProps['VERSION_MINOR']}.${versionProps['VERSION_PATCH']}"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -81,6 +103,16 @@ android {
     }
 }
 
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        if (variant.buildType == 'release') {
+            variant.outputs.each { output ->
+                output.versionCode.set(versionBuild)
+            }
+        }
+    }
+}
+
 kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
@@ -94,6 +126,7 @@ dependencies {
     implementation libs.androidx.activity.compose
     implementation libs.androidx.compose.foundation
     implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.material3.adaptive
     implementation libs.androidx.compose.material.icons.extended
     implementation libs.androidx.compose.runtime
     implementation libs.androidx.compose.ui

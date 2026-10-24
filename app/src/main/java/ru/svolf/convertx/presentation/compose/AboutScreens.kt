@@ -18,7 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.unit.dp
 import ru.svolf.convertx.R
 
@@ -29,14 +31,19 @@ internal fun AboutScreen(onChangelog: () -> Unit) {
         Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(stringResource(R.string.about_preambula))
+        val text = stringResource(R.string.about_preambula)
+
+        Text(
+            text = AnnotatedString.fromHtml(text)
+        )
+
         Button(onClick = onChangelog) { Text(stringResource(R.string.changelog)) }
-        TextButton(onClick = { uriHandler.openUri("https://github.com/SnowVolf/ConvertX/") }) {
+        Button(onClick = { uriHandler.openUri("https://github.com/SnowVolf/ConvertX/") }) {
             Text(stringResource(R.string.git_hub))
         }
-        TextButton(onClick = { uriHandler.openUri("mailto:svolf15@yandex.ru?subject=ConvertX") }) {
+        Button(onClick = { uriHandler.openUri("mailto:svolf15@yandex.ru?subject=ConvertX") }) {
             Text("Email")
         }
     }

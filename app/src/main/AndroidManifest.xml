@@ -16,7 +16,7 @@
         android:supportsRtl="true">
         <activity
             android:name=".presentation.base.MainActivity"
-            android:configChanges="orientation"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|density"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

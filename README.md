@@ -6,9 +6,9 @@ This app converts strings with commonly used algorithms. API 26+
 
 ## Screens
 
-| ![Main Sreen](/screens/main_screen.png) | ![Menu Screen](/screens/menu_screen.png) | ![Base64 Screen](/screens/base64_screen.png) |
+| ![Unicode converter](/screens/main_screen.png) | ![Navigation menu](/screens/menu_screen.png) | ![Base64 converter](/screens/base64_screen.png) |
 |--|--|--|
-| ![Palette Screen](screens/palette_screen.png) | ![Regexp Screen](/screens/regexp_screen.png) | ![History](/screens/history_screen.jpg) |
+| ![HEX color palette](/screens/palette_screen.png) | ![Regular expressions](/screens/regexp_screen.png) | ![Conversion history](/screens/history_screen.jpg) |
 
 ## Converters
 
@@ -30,8 +30,8 @@ You can also build this app from sources in Android Studio or Intellij IDEA (`Bu
 
 The helper script can build an APK and upload it to a Google Drive folder through
 [`rclone`](https://rclone.org/drive/). The uploaded filename contains the app
-version from `app/version.properties`, the upload date, and the build variant:
-`Convert X 2.1.3 (19.09.2026) release.apk`.
+version from `app/version.properties`, the upload date, and the build variant,
+for example `Convert X 3.0.0 (24.10.2026) release.apk`.
 
 Configure an authenticated Google Drive remote once:
 

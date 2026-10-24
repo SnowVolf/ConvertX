@@ -39,6 +39,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.stringResource
@@ -52,7 +53,16 @@ import ru.svolf.convertx.presentation.navigation.TextTool
 import ru.svolf.convertx.presentation.navigation.TextToolRoute
 import ru.svolf.convertx.presentation.navigation.UnicodeRoute
 
-internal enum class ConverterField { INPUT, OUTPUT }
+private const val HorizontalDirectionRotation = -90f
+
+internal enum class ConverterField {
+    INPUT, OUTPUT;
+
+    fun opposite(): ConverterField = when (this) {
+        INPUT -> OUTPUT
+        OUTPUT -> INPUT
+    }
+}
 
 @Composable
 internal fun inputHint(route: AppRoute): String = when (route) {
@@ -78,16 +88,23 @@ internal fun outputHint(route: AppRoute): String = when (route) {
 
 @Composable
 internal fun ConverterControls(
-    route: AppRoute,
-    selectedMode: Int,
     activeField: ConverterField,
     onFieldToggle: () -> Unit,
-    onModeSelected: (Int) -> Unit
+    sideBySide: Boolean = false
 ) {
-    Box(Modifier.fillMaxWidth().height(48.dp)) {
-        DirectionSwitcher(activeField, onFieldToggle, Modifier.align(Alignment.Center))
-        if (route is Base64Route || route is ru.svolf.convertx.presentation.navigation.HexRoute) {
-            ModeMenu(route, selectedMode, onModeSelected, Modifier.align(Alignment.CenterStart))
+    Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+        DirectionSwitcher(
+            activeField, onFieldToggle,
+            Modifier.rotate(if (sideBySide) HorizontalDirectionRotation else 0f)
+        )
+    }
+}
+
+@Composable
+internal fun ConverterModeSelector(route: AppRoute, selectedMode: Int, onModeSelected: (Int) -> Unit) {
+    if (route is Base64Route || route is HexRoute) {
+        Box(Modifier.fillMaxWidth().height(48.dp), contentAlignment = Alignment.CenterStart) {
+            ModeMenu(route, selectedMode, onModeSelected)
         }
     }
 }
