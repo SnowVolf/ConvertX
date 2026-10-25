@@ -27,5 +27,6 @@
     <string-array name="theme_names">
         <item>@string/app_theme_light</item>
         <item>@string/app_theme_dark</item>
+        <item>@string/app_theme_system</item>
     </string-array>
 </resources>

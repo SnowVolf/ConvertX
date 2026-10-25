@@ -57,6 +57,7 @@
     <string name="hint_timestamp">Timestamp</string>
     <string name="app_theme_light">Светлая</string>
     <string name="app_theme_dark">Тёмная</string>
+    <string name="app_theme_system">Как в системе</string>
     <string name="cancel">Отмена</string>
     <string name="settings_theme">Тема</string>
     <string name="settings_fontsize">Размер шрифта полей ввода</string>

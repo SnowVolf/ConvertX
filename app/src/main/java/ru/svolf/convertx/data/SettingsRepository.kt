@@ -20,7 +20,7 @@ private const val MaxBase64Mode = 5
 private const val DefaultHexMode = 0
 private const val MaxHexMode = 1
 
-enum class ThemeMode { LIGHT, DARK }
+enum class ThemeMode { LIGHT, DARK, SYSTEM }
 
 data class SettingsState(
     val theme: ThemeMode = ThemeMode.LIGHT,
@@ -46,11 +46,8 @@ class SettingsRepository(private val dataStore: DataStore<Preferences>) {
         }
         .map { preferences ->
             SettingsState(
-                theme = if (preferences[Keys.theme]?.toIntOrNull() == ThemeMode.DARK.ordinal) {
-                    ThemeMode.DARK
-                } else {
-                    ThemeMode.LIGHT
-                },
+                theme = preferences[Keys.theme]?.toIntOrNull()
+                    ?.let { ThemeMode.entries.getOrNull(it) } ?: ThemeMode.LIGHT,
                 fontSize = (preferences[Keys.appFontSize] ?: preferences[Keys.oldFontSize]
                 ?: DefaultFontSize).coerceIn(MinFontSize, MaxFontSize),
                 twiceBackToExit = preferences[Keys.twiceBack] ?: true,

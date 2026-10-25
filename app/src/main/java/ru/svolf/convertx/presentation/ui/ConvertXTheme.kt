@@ -3,6 +3,7 @@ package ru.svolf.convertx.presentation.ui
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -36,7 +37,11 @@ private val LightOnBackgroundColor = Color(0xFF1B1B1F)
 
 @Composable
 fun ConvertXTheme(settings: SettingsState, content: @Composable () -> Unit) {
-    val dark = settings.theme == ThemeMode.DARK
+    val dark = when (settings.theme) {
+        ThemeMode.LIGHT -> false
+        ThemeMode.DARK -> true
+        ThemeMode.SYSTEM -> isSystemInDarkTheme()
+    }
     val context = LocalContext.current
     val colors = themeColors(dark, context)
     val typography = appTypography()
